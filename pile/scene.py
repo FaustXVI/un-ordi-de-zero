@@ -1,5 +1,5 @@
 from manim import *
-import numpy as np
+from manim.__main__ import main
 
 
 class Element(VGroup):
@@ -48,3 +48,6 @@ class CreateCircle(Scene):
         (zi, a) = z.to_ion()
         self.play(a)
         self.wait()
+
+if __name__ == "__main__":
+    main(["-pql",__file__],prog_name='invoked-command')
