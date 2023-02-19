@@ -1,0 +1,6 @@
+media
+.venv
+.direnv
+env
+nohup.out
+__pycache__
