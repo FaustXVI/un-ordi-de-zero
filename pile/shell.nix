@@ -30,6 +30,7 @@ in pkgs.mkShell rec {
     # required by fastecdsa
     gmp
     jetbrains.pycharm-professional
+    texlive.combined.scheme-full
   ];
 
   shellHook = ''
