@@ -1,25 +1,29 @@
+from abc import ABC
+
 from manim import *
 from manim.__main__ import main
 from manim_voiceover import VoiceoverScene
+from manim_voiceover.services.gtts import GTTSService
 from manim_voiceover.services.recorder import RecorderService
 
 
-class Element(VGroup):
-    def __init__(self, color: str, name: str, radius: float | None = None):
+class Element(VGroup, ABC):
+    def __init__(self, color: str, name: MathTex, radius: float | None = None):
         self.shell = Circle(radius, color)
         self.shell.set_fill(color, 0.5)
-        super().__init__(self.shell, MathTex(name))
+        self.name = name
+        super().__init__(self.shell, name)
 
 
 class HydrogeneIon(Element):
     def __init__(self):
-        super().__init__(RED_A, "H^{+}", 0.5)
+        super().__init__(RED_A, MathTex("H", "^{+}"), 0.5)
 
 
 class TriHydrogene(VGroup):
     def __init__(self):
         super().__init__()
-        self.tri_h = Element(RED_A, "H_{3}^{+}", 1)
+        self.tri_h = Element(RED_A, MathTex("H_{3}^{+}"), 1)
         self.add(self.tri_h)
 
     def decompose(self, animate):
@@ -33,7 +37,7 @@ class TriHydrogene(VGroup):
 
 class AcidRoot(Element):
     def __init__(self):
-        super().__init__(GREEN_B, "PO_{4}^{3-}", 1)
+        super().__init__(GREEN_B, MathTex("PO", "_{4}", "^{3-}"), 1)
 
 
 class AcidPhosphoric(VGroup):
@@ -41,7 +45,7 @@ class AcidPhosphoric(VGroup):
         super().__init__()
         self.acid_root = None
         self.tri_hydro = None
-        self.acid = Element(GRAY_BROWN, "Acid phosphorique", 2)
+        self.acid = Element(GRAY_BROWN, MathTex("Acid phosphorique"), 2)
         self.add(self.acid)
 
     def decompose(self, animate) -> (TriHydrogene, AcidRoot):
@@ -57,7 +61,7 @@ class AcidPhosphoric(VGroup):
 
 class Electron(Element):
     def __init__(self):
-        super().__init__(YELLOW_D, "e^{-}", 0.33)
+        super().__init__(YELLOW_D, MathTex("e^{-}"), 0.33)
 
 
 class Electrons(VGroup):
@@ -71,15 +75,15 @@ class Zinc(VGroup):
         super().__init__()
         self.electrons = None
         self.zincIon = None
-        self.zinc = Element(BLUE, "Zn")
+        self.zinc = Element(BLUE, MathTex("Zn"))
         self.add(self.zinc)
 
     def to_ion(self, animate):
-        self.zincIon = Element(BLUE, "Zn^{2+}")
+        self.zincIon = Element(BLUE, MathTex("Zn", "^{2+}"))
         self.add(self.zincIon)
         self.electrons = Electrons(2)
         self.add(self.electrons)
-        animate(FadeOut(self.zinc), FadeIn(self.zincIon),
+        animate(Transform(self.zinc,self.zincIon),
                 *[GrowFromCenter(e) for e in self.electrons],
                 self.electrons[0].animate.next_to(self.zincIon, RIGHT).shift(UP / 2),
                 self.electrons[1].animate.next_to(self.zincIon, RIGHT).shift(DOWN / 2)
@@ -87,17 +91,24 @@ class Zinc(VGroup):
         self.remove(self.zinc)
 
 
+section_done = True
+
+
 class CreateCircle(VoiceoverScene):
     def construct(self):
-        # self.set_speech_service(GTTSService(lang="fr"))
-        self.set_speech_service(RecorderService())
+        self.next_section(skip_animations=section_done)
+        service = GTTSService(lang="fr") if section_done else RecorderService()
+        self.set_speech_service(service)
+        self.next_section(skip_animations=section_done)
         acid = self.create_acid()
+        self.next_section()
         zinc = self.create_zinc()
+        self.next_section(skip_animations=section_done)
         with self.voiceover(text="Les ions hydrogène de l'acide") as tracker:
             self.play(Indicate(acid.tri_hydro), run_time=tracker.duration)
 
         self.play(Indicate(zinc.electrons))
-        self.wait()
+        self.next_section(skip_animations=section_done)
         zinc2 = zinc.copy()
         zinc3 = zinc.copy()
         acid2 = acid.copy()

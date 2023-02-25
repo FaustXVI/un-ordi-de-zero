@@ -1,0 +1,27 @@
+
+
+
+
+
+
+X : Bonjour,
+Moi c'est Xavier et je suis nul en éléctronique.
+Pour m'aider à monter en compétence, je me suis lancé un défi :
+Créer un ordinateur en partant de rien.
+
+Alors, l'idée n'est pas de moi mais d'Oliver Hubert, un copain qui a fait une conférence sur le sujet.
+
+Sauf qu'Olivier démarre avec quelques composants de bases :
+Une alimentation, des résistances, des boutons,…
+et moi j'ai envie de pousser l'idée encore plus loin en ne m'autorisant que les matériaux brutes :
+des fils de cuivre, des aiments ou bien encore, des patates
+
+
+Je garde ensute la même règle que lui : 
+J'ai le droit d'utiliser un composant moderne dès que j'ai fait un équivalant de mes propres mains, même s'il est de médiocre qualité. Le but est d'apprendre par la pratique.
+
+L'objectif final est pratique, certes, mais pour y arriver, il va falloir passer par un peu de théorie !
+
+
+Théo : Salut !
+
