@@ -6,7 +6,7 @@ from manim_voiceover.services.recorder import RecorderService
 
 from FakeTraker import FakeTracker
 
-section_done = False
+section_done = True
 
 
 class ChemicalReaction(VoiceoverScene):
@@ -21,19 +21,76 @@ class ChemicalReaction(VoiceoverScene):
         self.next_section(skip_animations=section_done)
         service = GTTSService(lang="fr") if section_done else RecorderService()
         self.set_speech_service(service)
+        tesla = MathTex("T", "esla")
+        champ_terrestre = MathTex(r"B_{t} = {{5 \times 10^{-5}}}", "T")
+        angle_formula = MathTex(r"\alpha", r"&= 90 \times \frac{B}{B + B_{t}}")
+        angle_formula_eq_dev = MathTex(r"\alpha", "_{t}", r"&= 90 \times \frac{5 \times 10^{-5}}{5 \times 10^{-5} + {{5 \times 10^{-5}}}}")
+        angle_formula_eq = MathTex(r"\alpha", "_{t}", r"&\approx 45")
+        angle_formula_min_dev = MathTex(r"\alpha", r"_{\frac{t}{100}}", r"&= 90 \times \frac{5 \times 10^{-7}}{5 \times 10^{-7} + {{5 \times 10^{-5}}}}")
+        angle_formula_min = MathTex(r"\alpha", r"_{0.01t}", r"&\approx 1")
+        angle_formula_max_dev = MathTex(r"\alpha", "_{100t}", r"&= 90 \times \frac{5 \times 10^{-3}}{5 \times 10^{-3} + {{5 \times 10^{-5}}}}")
+        angle_formula_max = MathTex(r"\alpha", "_{100t}", r"&\approx 89")
+        cable_formula = MathTex(r"B &= \frac{\mu_0 I}{2 \pi r}")
+        self.next_section(skip_animations=section_done)
+        with self.myVoiceOver(text=
+                              r"Une boussole, ça suit le champ magnétique terrestre et un champ manétique, ça se mesure en Teslas") as tracker:
+            self.play(Create(tesla), run_time=tracker.duration)
+        self.next_section(skip_animations=section_done)
+        with self.myVoiceOver(text=
+                              r"Le champ magnétique terrestre, en France, fait environ 5 * 10-5 Teslas et on le notera B T") as tracker:
+            self.play(TransformMatchingTex(tesla, champ_terrestre), run_time=tracker.duration)
+        self.next_section(skip_animations=section_done)
+        with self.myVoiceOver(text=
+                              r"Cette valeur sera important pour la suite, gardons la dans un coin") as tracker:
+            self.play(champ_terrestre.animate.scale(1 / 2).to_edge(UL, buff=1), run_time=tracker.duration)
+        self.next_section(skip_animations=section_done)
+        with self.myVoiceOver(text=
+                              r"Si on applique un champ magnétique B perpendiculaire au champ terrestre et suffisament fort, on verra la boussole bouger"
+                              r"Le mouvement de l'aiguille est propotionnel à rapport entre le champ créé et le champ terrestre"
+                              r"On peut calculer l'angle dont va se déplacer l'aiguille avec la formule alpha = 90 * B / (B + 5*10-5)") as tracker:
+            self.play(Create(angle_formula), run_time=tracker.duration)
+        angle_formula.save_state()
+        self.next_section(skip_animations=section_done)
+        with self.myVoiceOver(text=
+                              r"Si on applique un champ magnétique égal au champ terrestre") as tracker:
+            self.play(TransformMatchingTex(Group(angle_formula, champ_terrestre.copy()), angle_formula_eq_dev), run_time=tracker.duration)
+        with self.myVoiceOver(text=
+                              r"Alors l'aiguille devrait bouger à 45 degrées") as tracker:
+            self.play(TransformMatchingTex(angle_formula_eq_dev, angle_formula_eq), run_time=tracker.duration)
+
+        self.next_section(skip_animations=section_done)
+        self.play(angle_formula_eq.animate.scale(1 / 2).next_to(champ_terrestre, DOWN, aligned_edge=LEFT))
+        self.play(Restore(angle_formula))
+        self.next_section(skip_animations=section_done)
+        with self.myVoiceOver(text=
+                              r"Si on applique un champ magnétique 100 fois plus faible") as tracker:
+            self.play(TransformMatchingTex(angle_formula, angle_formula_min_dev), run_time=tracker.duration)
+        with self.myVoiceOver(text=
+                              r"Alors l'aiguille devrait bouger de seulement 1 degré") as tracker:
+            self.play(TransformMatchingTex(angle_formula_min_dev, angle_formula_min), run_time=tracker.duration)
+
+        self.next_section(skip_animations=section_done)
+        self.play(angle_formula_min.animate.scale(1 / 2).next_to(angle_formula_eq, DOWN, aligned_edge=LEFT))
+        self.play(Restore(angle_formula))
+        self.next_section(skip_animations=section_done)
+        with self.myVoiceOver(text=
+                              r"Si on applique un champ magnétique 100 fois plus for") as tracker:
+            self.play(TransformMatchingTex(angle_formula, angle_formula_max_dev), run_time=tracker.duration)
+        with self.myVoiceOver(text=
+                              r"Alors l'aiguille devrait bouger à 89 degré") as tracker:
+            self.play(TransformMatchingTex(angle_formula_max_dev, angle_formula_max), run_time=tracker.duration)
+
+        self.next_section(skip_animations=section_done)
+        self.play(angle_formula_max.animate.scale(1 / 2).next_to(angle_formula_min, DOWN, aligned_edge=LEFT))
+        self.next_section(skip_animations=section_done)
+        with self.myVoiceOver(text=
+                              r"Si on arrive à exprimer la relation entre notre champ magnétique et le nombre d'éléctrons qui se déplacent (c'est à dire l'intensité) alors on aura un ampèremetre") as tracker:
+            self.wait(tracker.duration)
         self.next_section(skip_animations=False)
         with self.myVoiceOver(text=
-                              r"Une boussole, ça suit le champ magnétique terrestre"
-                              r"Un champ manétique, ça se mesure en Teslas"
-                              r"Le champ magnétique terrestre, en France, fait environ 5 * 10-5 Teslas"
-                              r"Si on applique un champ magnétique B perpendiculaire au champ terrestre et suffisament fort, on devrait voir la boussole bouger"
-                              r"Le mouvement de l'aiguille devrait être propotionnel à rapport entre le champ créé et le champ terrestre"
-                              r"On peut calculer l'angle dont va se déplacer l'aiguille avec la formule alpha = 90 * B / (B + 5*10-5)"
-                              r"Si on applique un champ magnétique égal au champ terrestre, alors l'aiguille devrait bouger de 45 degrées"
-                              r"De 1 degré pour un champ 100 fois plus faible"
-                              r"De presque 90 degré pour un champ 100 fois plus fort"
-                              r"Si on arrive à exprimer la relation entre notre champ magnétique et le nombre d'éléctrons qui se déplacent (c'est à dire l'intensité) alors on aura un ampèremetre"
-                              r"La formule du champ magnétique d'un fil traversé par un courant est B=mu0 I / 2 PI r"
+                              r"La formule du champ magnétique d'un fil traversé par un courant est B=mu0 I / 2 PI r") as tracker:
+            self.play(Create(cable_formula), run_time=tracker.duration)
+        with self.myVoiceOver(text=
                               r"Mu 0 est une constante de la perméabilité magnétique du vide et vaut 4 PI 10-7"
                               r"r est la distance entre le fil et le point qu'on mesure. Notre boussole devrais être à environ 1 cm soit 10-2 m"
                               r"En simplifiant, on obtient B = 2I 10-5"
