@@ -92,19 +92,6 @@ class ElectroMagnetism(VoiceoverScene):
         # return FakeTracker()
 
 
-class FakeTracker:
-
-    def __init__(self) -> None:
-        super().__init__()
-        self.duration = 0.001
-
-    def __enter__(self):
-        return self
-
-    def __exit__(self, exc_type, exc_value, exc_tb):
-        pass
-
-
 if __name__ == "__main__":
     main(["-pqm",
           # "--disable_caching",
