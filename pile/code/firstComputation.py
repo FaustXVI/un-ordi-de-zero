@@ -21,17 +21,67 @@ class ChemicalReaction(VoiceoverScene):
         self.next_section(skip_animations=section_done)
         self.set_speech_service(RecorderService())
         tesla = MathTex("T", "esla")
-        champ_terrestre = MathTex(r"B_{t} = {{5 \times 10^{-5}}}", "T")
-        angle_formula = MathTex(r"\alpha", r"&= 90 \times \frac{B}{B + B_{t}}")
+        champ_terrestre = VGroup(MathTex(r"B_{t} = "), MathTex(r"5 \times 10^{-5}"), MathTex(r"T")).arrange()
+        angle_formula = MathTex(r"\alpha", r"=",
+                                           r" 90 \times ",
+                                           r"{",
+                                           r"{",
+                                           r"B",
+                                           r"}",
+                                           r"\over",
+                                           r"{",
+                                           r"B",
+                                           r" + ",
+                                           r"B_{t}",
+                                           r"}",
+                                           r"}")
         angle_formula_eq_dev = MathTex(r"\alpha", r"_{5 \times 10^{-5}}",
-                                       r"&= 90 \times \frac{5 \times 10^{-5}}{5 \times 10^{-5} + {{5 \times 10^{-5}}}}")
-        angle_formula_eq = MathTex(r"\alpha", r"_{5 \times 10^{-5}}", r"&\approx 45")
+                                       r"=",
+                                       r" 90 \times ",
+                                       r"{",
+                                       r"{",
+                                       r"5 \times 10^{-5}",
+                                       r"}",
+                                       r"\over",
+                                       r"{ ",
+                                       r"5 \times 10^{-5}",
+                                       r" + ",
+                                       r"5 \times 10^{-5}",
+                                       r"}",
+                                       r"}")
+        angle_formula_eq = MathTex(r"\alpha", r"_{5 \times 10^{-5}}", r"\approx", r" 45")
         angle_formula_min_dev = MathTex(r"\alpha", r"_{5 \times 10^{-7}}",
-                                        r"&= 90 \times \frac{5 \times 10^{-7}}{5 \times 10^{-7} + {{5 \times 10^{-5}}}}")
-        angle_formula_min = MathTex(r"\alpha", r"_{5 \times 10^{-7}}", r"&\approx 1")
+                                        r"=",
+                                        r" 90 \times ",
+                                        r"{",
+                                        r"{",
+                                        r"5 \times 10^{-7}",
+                                        r"}",
+                                        r"\over",
+                                        r"{ ",
+                                        r"5 \times 10^{-7}",
+                                        r" + ",
+                                        r"5 \times 10^{-5}",
+                                        r"}",
+                                        r"}")
+
+        angle_formula_min = MathTex(r"\alpha", r"_{5 \times 10^{-7}}", r"\approx", r" 1")
         angle_formula_max_dev = MathTex(r"\alpha", r"_{5 \times 10^{-3}}",
-                                        r"&= 90 \times \frac{5 \times 10^{-3}}{5 \times 10^{-3} + {{5 \times 10^{-5}}}}")
-        angle_formula_max = MathTex(r"\alpha", r"_{5 \times 10^{-3}}", r"&\approx 89")
+                                        r"=",
+                                        r" 90 \times ",
+                                        r"{",
+                                        r"{",
+                                        r"5 \times 10^{-3}",
+                                        r"}",
+                                        r"\over",
+                                        r"{ ",
+                                        r"5 \times 10^{-3}",
+                                        r" + ",
+                                        r"5 \times 10^{-5}",
+                                        r"}",
+                                        r"}")
+
+        angle_formula_max = MathTex(r"\alpha", r"_{5 \times 10^{-3}}", r"\approx", r" 89")
         cable_formula = MathTex(r"{{B = }}{ \frac{\mu_0}{2 \pi r} } {{I}}")
         mu_0 = VGroup(MathTex(r"\mu_0 ="), MathTex(r"4 \pi \times 10^{-7}")).arrange().next_to(cable_formula, UP)
         cable_formula_with_mu = MathTex(r"{{B = }}\frac{4 \pi \times 10^{-7}}{2 \pi r}{{I}}")
@@ -67,42 +117,39 @@ class ChemicalReaction(VoiceoverScene):
         with self.myVoiceOver(text=
                               r"Une boussole, ça suit le champ magnétique terrestre et un champ manétique, ça se mesure en Teslas") as tracker:
             self.play(Create(tesla), run_time=tracker.duration)
-        self.next_section(skip_animations=section_done)
         with self.myVoiceOver(text=
                               r"Le champ magnétique terrestre, en France, fait environ 5 * 10-5 Teslas et on le notera B T") as tracker:
             self.play(TransformMatchingTex(tesla, champ_terrestre), run_time=tracker.duration)
         self.next_section(skip_animations=section_done)
         with self.myVoiceOver(text=
-                              r"Cette valeur sera important pour la suite, gardons la dans un coin") as tracker:
+                              r"Cette valeur sera important pour la suite, gardons la dans un coin", duration=3) as tracker:
             self.play(champ_terrestre.animate.scale(1 / 2).to_edge(UL, buff=1), run_time=tracker.duration)
         self.next_section(skip_animations=section_done)
         with self.myVoiceOver(text=
                               r"Si on applique un champ magnétique B perpendiculaire au champ terrestre et suffisament fort, on verra la boussole bouger"
                               r"Le mouvement de l'aiguille est propotionnel à rapport entre le champ créé et le champ terrestre"
                               r"On peut calculer l'angle dont va se déplacer l'aiguille avec la formule alpha = 90 * B / (B + 5*10-5)") as tracker:
-            self.play(Create(angle_formula), run_time=tracker.duration)
+            self.play(FadeIn(angle_formula), run_time=tracker.duration)
         angle_formula.save_state()
         self.next_section(skip_animations=section_done)
         with self.myVoiceOver(text=
-                              r"Si on applique un champ magnétique égal au champ terrestre") as tracker:
+                              r"Si on applique un champ magnétique égal au champ terrestre",duration=3) as tracker:
             self.play(TransformMatchingTex(Group(angle_formula, champ_terrestre.copy()), angle_formula_eq_dev),
                       run_time=tracker.duration)
         with self.myVoiceOver(text=
                               r"Alors l'aiguille devrait bouger à 45 degrées") as tracker:
-            self.play(TransformMatchingTex(angle_formula_eq_dev, angle_formula_eq), run_time=tracker.duration)
+            self.play(TransformMatchingTex(angle_formula_eq_dev, angle_formula_eq,key_map={"=":r"\approx"}), run_time=tracker.duration)
 
-        self.next_section(skip_animations=section_done)
         self.play(angle_formula_eq.animate.scale(1 / 2).next_to(champ_terrestre, DOWN, aligned_edge=LEFT))
         self.play(Restore(angle_formula))
         self.next_section(skip_animations=section_done)
         with self.myVoiceOver(text=
-                              r"Si on applique un champ magnétique 100 fois plus faible") as tracker:
+                              r"Si on applique un champ magnétique 100 fois plus faible",duration=3) as tracker:
             self.play(TransformMatchingTex(angle_formula, angle_formula_min_dev), run_time=tracker.duration)
         with self.myVoiceOver(text=
                               r"Alors l'aiguille devrait bouger de seulement 1 degré") as tracker:
-            self.play(TransformMatchingTex(angle_formula_min_dev, angle_formula_min), run_time=tracker.duration)
+            self.play(TransformMatchingTex(angle_formula_min_dev, angle_formula_min,key_map={"=":r"\approx"}), run_time=tracker.duration)
 
-        self.next_section(skip_animations=section_done)
         self.play(angle_formula_min.animate.scale(1 / 2).next_to(angle_formula_eq, DOWN, aligned_edge=LEFT))
         self.play(Restore(angle_formula))
         self.next_section(skip_animations=section_done)
@@ -111,9 +158,8 @@ class ChemicalReaction(VoiceoverScene):
             self.play(TransformMatchingTex(angle_formula, angle_formula_max_dev), run_time=tracker.duration)
         with self.myVoiceOver(text=
                               r"Alors l'aiguille devrait bouger à 89 degré") as tracker:
-            self.play(TransformMatchingTex(angle_formula_max_dev, angle_formula_max), run_time=tracker.duration)
+            self.play(TransformMatchingTex(angle_formula_max_dev, angle_formula_max,key_map={"=":r"\approx"}), run_time=tracker.duration)
 
-        self.next_section(skip_animations=section_done)
         self.play(angle_formula_max.animate.scale(1 / 2).next_to(angle_formula_min, DOWN, aligned_edge=LEFT))
         self.next_section(skip_animations=section_done)
         with self.myVoiceOver(text=
