@@ -8,7 +8,7 @@ from manim_voiceover.services.recorder import RecorderService
 from FakeTraker import FakeTracker
 
 section_done = False
-recording = False
+recording = True
 
 
 def my_frac(d, n):
@@ -114,7 +114,7 @@ class ChemicalReaction(VoiceoverScene, ABC):
         with self.my_voiceover(text=
                                """On peut calculer l'angle dont va se déplacer l'aiguille avec la formule alpha = 90 * B / (B + Bt)""") as tracker:
             self.play(FadeIn(angle_formula_with_bt), run_time=tracker.duration)
-        self.wait(2)
+        self.wait(3)
         with self.my_voiceover(text=
                                r"Bt étant le champ terrestre vu précédemment", duration=2) as tracker:
             self.play(TransformMatchingTex(VGroup(angle_formula_with_bt, champ_terrestre.copy()), angle_formula,
@@ -126,7 +126,7 @@ class ChemicalReaction(VoiceoverScene, ABC):
                                r"Si on applique un champ magnétique égal au champ terrestre", duration=3) as tracker:
             self.play(TransformMatchingTex(angle_formula, angle_formula_eq_dev),
                       run_time=tracker.duration)
-        self.wait(2)
+        self.wait(3)
         with self.my_voiceover(text=
                                r"Alors l'aiguille devrait bouger à 45 degrées") as tracker:
             self.play(TransformMatchingTex(angle_formula_eq_dev, angle_formula_eq, key_map={"=": r"\approx"},
@@ -139,7 +139,7 @@ class ChemicalReaction(VoiceoverScene, ABC):
         with self.my_voiceover(text=
                                r"Si on applique un champ magnétique 100 fois plus faible", duration=3) as tracker:
             self.play(TransformMatchingTex(angle_formula, angle_formula_min_dev), run_time=tracker.duration)
-        self.wait(2)
+        self.wait(3)
         with self.my_voiceover(text=
                                r"Alors l'aiguille devrait bouger de seulement 1 degré") as tracker:
             self.play(TransformMatchingTex(angle_formula_min_dev, angle_formula_min, key_map={"=": r"\approx"},
@@ -152,7 +152,7 @@ class ChemicalReaction(VoiceoverScene, ABC):
         with self.my_voiceover(text=
                                r"Si on applique un champ magnétique 100 fois plus for") as tracker:
             self.play(TransformMatchingTex(angle_formula, angle_formula_max_dev), run_time=tracker.duration)
-        self.wait(2)
+        self.wait(3)
         with self.my_voiceover(text=
                                r"Alors l'aiguille devrait bouger à 89 degré") as tracker:
             self.play(TransformMatchingTex(angle_formula_max_dev, angle_formula_max, key_map={"=": r"\approx"},
@@ -179,7 +179,7 @@ class ChemicalReaction(VoiceoverScene, ABC):
                                r"r est la distance entre le fil et le point qu'on mesure. Notre boussole devrais être à environ 1 cm soit 10-2 m") as tracker:
             self.play(Create(cable_distance), run_time=tracker.duration)
         self.play(TransformMatchingTex(VGroup(cable_formula_with_mu, cable_distance), cable_formula_with_mu_r))
-        self.wait(2)
+        self.wait(3)
         self.next_section(skip_animations=section_done)
         with self.my_voiceover(text=r"En simplifiant, on obtient B = 2 fois 10-5 I") as tracker:
             self.play(TransformMatchingTex(cable_formula_with_mu_r, cable_reduced_formula, transform_mismatches=True),
@@ -210,7 +210,7 @@ class ChemicalReaction(VoiceoverScene, ABC):
         with self.my_voiceover(text=
                                r"Le champ magnétique d'une bobine suit la formule suivante : B = K mu 0 N / L I") as tracker:
             self.play(FadeIn(coil_formula), run_time=tracker.duration)
-        self.wait(2)
+        self.wait(3)
         self.next_section(skip_animations=section_done)
         with self.my_voiceover(text=
                                r"Mu 0 est la même constant qu'auparavant qui vaut 4 PI 10-7") as tracker:
@@ -249,10 +249,10 @@ class ChemicalReaction(VoiceoverScene, ABC):
         self.next_section(skip_animations=section_done)
         with self.my_voiceover(text=
                                r"Notre objectif est de produire un champ magnétique égal à celui du champ terrestre") as tracker:
-            self.play(Indicate(champ_terrestre), run_time=tracker.duration)
+            self.play(AnimationGroup(FocusOn(champ_terrestre),Indicate(champ_terrestre,scale_factor=1.5),lag_ratio=0.5), run_time=tracker.duration)
         self.play(TransformMatchingTex(VGroup(coil_formula_mu_l_k_i, champ_terrestre.copy()), coil_formula_without_n))
         self.next_section(skip_animations=section_done)
-        self.wait(2)
+        self.wait(3)
         with self.my_voiceover(text=
                                r"Si on simplifie nos calculs, on obtiens 5 10-5 = 4 PI 10 -7 N", duration=3) as tracker:
             self.play(
