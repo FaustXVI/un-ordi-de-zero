@@ -62,14 +62,14 @@ class ChemicalReaction(VoiceoverScene, ABC):
         cable_formula_with_mu = MathTex(r"B",
                                         r"=",
                                         *my_frac([r"4 \pi \times 10^{-7}", r"I"], [r"2 \pi", r"r"]))
-        cable_distance = MathTex(r"r =",r"10^-2").to_edge(UP, buff=2)
+        cable_distance = MathTex(r"r =",r"10^{-2}").to_edge(UP, buff=2)
         cable_formula_with_mu_r = MathTex(r"B",
                                           r"=",
-                                          *my_frac([r"4 \pi \times 10^{-7}", r"I"], [r"2 \pi", r"\times", r"10^-2"]))
-        cable_reduced_formula = MathTex(r"B", r"=", r"2 \times 10^-5", r"I")
-        potato_intesity = MathTex(r"I \approx ",r"10^-4").to_edge(UP, buff=2)
-        cable_reduced_formula_before_final = MathTex(r"B", r"=", r"2 \times 10^-5", r"\times", r"10^-4")
-        cable_field = MathTex(r"B", r"=", r"2 \times 10^-9")
+                                          *my_frac([r"4 \pi \times 10^{-7}", r"I"], [r"2 \pi", r"\times", r"10^{-2}"]))
+        cable_reduced_formula = MathTex(r"B", r"=", r"2 \times 10^{-5}", r"I")
+        potato_intesity = MathTex(r"I \approx ",r"10^{-4}").to_edge(UP, buff=2)
+        cable_reduced_formula_before_final = MathTex(r"B", r"=", r"2 \times 10^{-5}", r"\times", r"10^{-4}")
+        cable_field = MathTex(r"B", r"=", r"2 \times 10^{-9}")
 
         coil_formula = MathTex(r"B ", "=", "k", r"\mu_0", *my_frac(["N"], ["L"]), "I")
         coil_formula_mu = MathTex(r"B ", "=", "k", r"\times", r"4 \pi \times 10^{-7}", r"\times",
@@ -84,10 +84,10 @@ class ChemicalReaction(VoiceoverScene, ABC):
                                       "I")
         coil_formula_mu_l_k_i = MathTex(r"B ", "=", "100", r"\times", r"4 \pi \times 10^{-7}", r"\times",
                                         *my_frac(["N"], ["10^{-2}"]),
-                                        "10^-4")
+                                        "10^{-4}")
         coil_formula_without_n = MathTex(r"5 \times 10^{-5}", "=", "100", r"\times", r"4 \pi \times 10^{-7}", r"\times",
                                          *my_frac(["N"], ["10^{-2}"]),
-                                         "10^-4")
+                                         "10^{-4}")
         coil_formula_reduced = MathTex(r"5 \times 10^{-5}", "=", r"4 \pi \times 10^{-7}", r"N")
         n_formula = MathTex(r"N", "=", *my_frac([r"4 \pi \times 10^{-7}"], [r"5 \times 10^{-5}"]))
         n_40 = MathTex(r"N", "=", "40")
