@@ -7,7 +7,7 @@ from manim_voiceover.services.recorder import RecorderService
 
 from FakeTraker import FakeTracker
 
-recording = False
+recording = True
 
 
 def my_frac(d, n):
@@ -34,7 +34,7 @@ class K_Correction(VoiceoverScene, ABC):
         Group(coil_formula_mu_l, iron_permeability, champ_terrestre, angle_formula_min).arrange(DOWN)
         new_iron_permeability.move_to(iron_permeability.get_center())
         with self.my_voiceover(text=
-                               """Pour rappel, on a calculé la valeur de notre champ magnétique en utilisant la formule B = 100 x 4 pi 10-7 N / 10-2 I"""
+                               """Pour rappel, au moment de choisir k on avait la formule B = k x 4 pi 10-7 N / 10-2 I"""
                                ) as tracker:
             self.play(FadeIn(coil_formula_mu_l), run_time=tracker.duration)
         with self.my_voiceover(text=
