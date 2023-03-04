@@ -38,7 +38,7 @@ class K_Correction(VoiceoverScene, ABC):
                                Ce qui est égal à 12 et qui veut dire que notre champ est 144 fois plus faible que prévu.
                                Si on veut voir quelquechose avec notre situation actuelle, il va falloir faire 144 fois plus de tours soit prêt de 6 000 tours.
                                Avant d'en arriver là, je te propose d'être optimiste car on a un clou en fer et on calcul avec k = 1. Or k = 1 c'est l'équivalant d'avoir de l'air au centre de notre bobine.
-                               On sait que k est inférieur à 100 mais il est peut-être égale à 1 non plus. Commence par faire une bobine de 1 000 tours et si ça marche pas monte à 6 000.
+                               On sait que k est inférieur à 100 mais il est peut-être égale à 1 non plus. Enlève le scotch histoire d'être le plus pur possible et commence par faire une bobine de 1 000 tours et si ça marche pas monte à 6 000.
                                """
                                ) as tracker:
           self.wait(tracker.duration)
