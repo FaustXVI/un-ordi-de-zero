@@ -62,12 +62,12 @@ class ChemicalReaction(VoiceoverScene, ABC):
         cable_formula_with_mu = MathTex(r"B",
                                         r"=",
                                         *my_frac([r"4 \pi \times 10^{-7}", r"I"], [r"2 \pi", r"r"]))
-        cable_distance = MathTex(r"r =",r"10^{-2}").to_edge(UP, buff=2)
+        cable_distance = MathTex(r"r =", r"10^{-2}").to_edge(UP, buff=2)
         cable_formula_with_mu_r = MathTex(r"B",
                                           r"=",
                                           *my_frac([r"4 \pi \times 10^{-7}", r"I"], [r"2 \pi", r"\times", r"10^{-2}"]))
         cable_reduced_formula = MathTex(r"B", r"=", r"2 \times 10^{-5}", r"I")
-        potato_intesity = MathTex(r"I \approx ",r"10^{-4}").to_edge(UP, buff=2)
+        potato_intesity = MathTex(r"I \approx ", r"10^{-4}").to_edge(UP, buff=2)
         cable_reduced_formula_before_final = MathTex(r"B", r"=", r"2 \times 10^{-5}", r"\times", r"10^{-4}")
         cable_field = MathTex(r"B", r"=", r"2 \times 10^{-9}")
 
@@ -78,7 +78,7 @@ class ChemicalReaction(VoiceoverScene, ABC):
         coil_formula_mu_l = MathTex(r"B ", "=", "k", r"\times", r"4 \pi \times 10^{-7}", r"\times",
                                     *my_frac(["N"], ["10^{-2}"]),
                                     "I")
-        iron_permeability = MathTex(r"k =",r"100").to_edge(UP, buff=2)
+        iron_permeability = MathTex(r"k =", r"100").to_edge(UP, buff=2)
         coil_formula_mu_l_k = MathTex(r"B ", "=", "100", r"\times", r"4 \pi \times 10^{-7}", r"\times",
                                       *my_frac(["N"], ["10^{-2}"]),
                                       "I")
@@ -89,7 +89,7 @@ class ChemicalReaction(VoiceoverScene, ABC):
                                          *my_frac(["N"], ["10^{-2}"]),
                                          "10^{-4}")
         coil_formula_reduced = MathTex(r"5 \times 10^{-5}", "=", r"4 \pi \times 10^{-7}", r"N")
-        n_formula = MathTex(r"N", "=", *my_frac([r"4 \pi \times 10^{-7}"], [r"5 \times 10^{-5}"]))
+        n_formula = MathTex(r"N", "=", *my_frac([r"5 \times 10^{-5}"], [r"4 \pi \times 10^{-7}"]))
         n_40 = MathTex(r"N", "=", "40")
         n_100 = MathTex(r"N", "=", "100")
 
@@ -123,7 +123,8 @@ class ChemicalReaction(VoiceoverScene, ABC):
         angle_formula.save_state()
         self.next_section(skip_animations=section_done)
         with self.my_voiceover(text=
-                               r"Si on applique un champ magnétique égal au champ terrestre", duration=3) as tracker:
+                               r"Si on applique un champ magnétique équivalant au champ terrestre",
+                               duration=3) as tracker:
             self.play(TransformMatchingTex(angle_formula, angle_formula_eq_dev),
                       run_time=tracker.duration)
         self.wait(3)
@@ -243,14 +244,19 @@ class ChemicalReaction(VoiceoverScene, ABC):
         self.next_section(skip_animations=section_done)
         with self.my_voiceover(text=
                                r"Pour trouver N, partons du principe que notre patate nous donne 10-4 ampères") as tracker:
-            self.play(Create(potato_intesity), run_time=tracker.duration)
-        self.play(TransformMatchingTex(VGroup(coil_formula_mu_l_k, potato_intesity), coil_formula_mu_l_k_i))
+            self.play(Create(potato_intesity), run_time=tracker.duration / 2)
+            self.play(TransformMatchingTex(VGroup(coil_formula_mu_l_k, potato_intesity), coil_formula_mu_l_k_i),
+                      run_time=tracker.duration / 2)
         self.wait()
         self.next_section(skip_animations=section_done)
         with self.my_voiceover(text=
-                               r"Notre objectif est de produire un champ magnétique égal à celui du champ terrestre") as tracker:
-            self.play(AnimationGroup(FocusOn(champ_terrestre),Indicate(champ_terrestre,scale_factor=1.5),lag_ratio=0.5), run_time=tracker.duration)
-        self.play(TransformMatchingTex(VGroup(coil_formula_mu_l_k_i, champ_terrestre.copy()), coil_formula_without_n))
+                               r"Si on veut faire bouger notre boussolle à 45 degrées alors on remplace B par la valeur Bt") as tracker:
+            self.play(
+                AnimationGroup(FocusOn(angle_formula_eq), Indicate(angle_formula_eq, scale_factor=1.5), lag_ratio=0.5),
+                run_time=tracker.duration / 2)
+            self.play(
+                TransformMatchingTex(VGroup(coil_formula_mu_l_k_i, champ_terrestre.copy()), coil_formula_without_n),
+                run_time=tracker.duration / 2)
         self.next_section(skip_animations=section_done)
         self.wait(3)
         with self.my_voiceover(text=
