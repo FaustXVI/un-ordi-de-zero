@@ -8,7 +8,7 @@ from manim_voiceover.services.recorder import RecorderService
 from FakeTraker import FakeTracker
 
 section_done = False
-recording = False
+recording = True
 
 
 def my_frac(d, n):
@@ -28,8 +28,8 @@ class K_Correction(VoiceoverScene, ABC):
         formula_R = MathTex("R", "=", *my_frac(["d"], ["r"]))
         radius = MathTex("r", "=", r"25 \times 10^{-4}").to_edge(UP, buff=2)
         formula_R_radius = MathTex("R", "=", *my_frac(["d"], [r"25 \times 10^{-4}"]))
-        distance = MathTex("d", "=", r"30 \times 10^{-3}").to_edge(UP, buff=2)
-        formula_R_complete = MathTex("R", "=", *my_frac([r"30 \times 10^{-3}"], [r"25 \times 10^{-4}"]))
+        distance = MathTex("d", "=", r"3 \times 10^{-2}").to_edge(UP, buff=2)
+        formula_R_complete = MathTex("R", "=", *my_frac([r"3 \times 10^{-2}"], [r"25 \times 10^{-4}"]))
         R_result = MathTex("R", "=", "12")
         formula_Bp_final = MathTex("B_p", "=", *my_frac(["B_b"], ["12", "^2"]))
         Bp_result = MathTex("B_p", "=", *my_frac(["B_b"], ["144"]))
@@ -93,11 +93,12 @@ class K_Correction(VoiceoverScene, ABC):
         self.play(TransformMatchingTex(VGroup(formula_R, radius), formula_R_radius))
         with self.my_voiceover(text=
                                """
-                               Notre boussolle se trouve, après mesure, à 30 mm de notre bobine soit 30 x 10-3 m
+                               Notre boussolle se trouve, après mesure, à 3 cm de notre bobine soit 3 x 10-2 m
                                """
                                ) as tracker:
             self.play(FadeIn(distance), run_time=tracker.duration)
         self.play(TransformMatchingTex(VGroup(formula_R_radius,distance), formula_R_complete))
+        self.wait(2)
         with self.my_voiceover(text=
                                """
                                On obtien alors R = 12
