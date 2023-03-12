@@ -40,21 +40,21 @@ class ChemicalReaction(VoiceoverScene, ABC):
                                        *my_frac([r"5 \times 10^{-5} "],
                                                 [r"5 \times 10^{-5} ", r" + ", r"5 \times 10^{-5}"])
                                        )
-        angle_formula_eq = MathTex(r"\alpha", r"_{5 \times 10^{-5}}", r"\approx", r" 45")
+        angle_formula_eq = MathTex(r"\alpha", r"_{5 \times 10^{-5}}", r"\approx", r" 45^{\circ}")
         angle_formula_min_dev = MathTex(r"\alpha", r"_{5 \times 10^{-7}}",
                                         r"=",
                                         r" 90 \times ",
                                         *my_frac([r"5 \times 10^{-7}"],
                                                  [r"5 \times 10^{-7}", r" + ", r"5 \times 10^{-5}"]))
 
-        angle_formula_min = MathTex(r"\alpha", r"_{5 \times 10^{-7}}", r"\approx", r" 1")
+        angle_formula_min = MathTex(r"\alpha", r"_{5 \times 10^{-7}}", r"\approx", r" 1^{\circ}")
         angle_formula_max_dev = MathTex(r"\alpha", r"_{5 \times 10^{-3}}",
                                         r"=",
                                         r" 90 \times ",
                                         *my_frac([r"5 \times 10^{-3}"],
                                                  [r"5 \times 10^{-3}", r" + ", r"5 \times 10^{-5}"]))
 
-        angle_formula_max = MathTex(r"\alpha", r"_{5 \times 10^{-3}}", r"\approx", r" 89")
+        angle_formula_max = MathTex(r"\alpha", r"_{5 \times 10^{-3}}", r"\approx", r" 89^{\circ}")
         cable_formula = MathTex(r"B",
                                 r"=",
                                 *my_frac([r"\mu_0", r"I"], [r"2 \pi", r"r"]))
