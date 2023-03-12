@@ -28,6 +28,6 @@ class MyScene(VoiceoverScene, ABC):
         return [r"{", r"{", *d, r"}", r"\over", r"{", *n, r"}", r"}"]
 
     def __init__(self, recording, **kwargs):
-        super().__init__(**kwargs)
+        super().__init__(random_seed=42,**kwargs)
         self.recording = recording
         self.set_speech_service(RecorderService(device_index=12))

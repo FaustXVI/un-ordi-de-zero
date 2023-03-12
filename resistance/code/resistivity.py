@@ -42,6 +42,7 @@ class Resistivity_Part_1(MyScene):
         super().__init__(recording=False)
 
     def construct(self):
+        screen = FullScreenRectangle()
         ptable = [
             ["H", "He"],
             ["Li", "Be", "B", "C", "N", "O", "F", "Ne"],
@@ -94,21 +95,30 @@ class Resistivity_Part_1(MyScene):
                                  AnimationGroup(FadeIn(copper), valanceShell.fade_electron_in(0))),
                       run_time=traker.duration)
             self.remove(nucleus, *shells)
-        self.next_section(skip_animations=False)
+        self.next_section(skip_animations=section_done)
         with self.my_voiceover(
                 """Quand un electron libre arrive à proximité de l'atome, il y a deux scenarios possible""",
                 duration=1.33) as traker:
             free_electron.save_state()
             self.add(free_electron)
-            self.play(free_electron.animate(rate_func=linear).move_to(LEFT * 2), run_time=traker.duration)
+            self.wait(traker.duration)
+        self.next_section(skip_animations=section_done)
+        with self.my_voiceover(
+                """Soit il arrive à un endroit où il y a déjà un électron. Et dans ce cas l'électron déjà en place repousse l'électron libre""") as traker:
+            p = valanceShell.get_electron(0).copy().rotate(traker.duration * PI / 2,
+                                                           about_point=valanceShell.get_center()).get_center()
+            path = Line(screen.get_edge_center(LEFT) + LEFT, p + (LEFT * 0.5))
+            self.play(MoveAlongPath(free_electron, path, rate_func=there_and_back), run_time=traker.duration)
         self.next_section(skip_animations=False)
         with self.my_voiceover(
-                """Soit il arrive à un endroit où il y a déjà un électron.""") as traker:
-            self.play(free_electron.animate(rate_func=linear).move_to(
-                valanceShell.get_electron(0).copy().rotate(traker.duration * PI,
-                                                           about_point=valanceShell.get_center())))
+                """Soit il arrive à un endroit où il n'y a pas d'électron et se met sur la couche de valance""") as traker:
+            p = valanceShell.get_electron(4).copy().rotate(traker.duration * PI,
+                                                           about_point=valanceShell.get_center()).get_center()
+            path = Line(screen.get_edge_center(LEFT) + LEFT, p)
+            self.play(MoveAlongPath(free_electron, path, rate_func=linear), run_time=traker.duration)
+            free_electron.to_edge(LEFT).shift(LEFT)
+            valanceShell.opacities[4].set_value(1)
 
-        self.next_section(skip_animations=False)
         self.wait()
 
 
