@@ -5,8 +5,9 @@ pkgs.mkShell {
   packages = [
     sox
     jetbrains.pycharm-professional
-    (python3.withPackages (p: with p;[ manim-voiceover manim] 
-   # ++ manim-voiceover.optional-dependencies.recorder
+    (python3.withPackages (p: with p;[ manim-voiceover manim pip ] 
+    ++ manim-voiceover.optional-dependencies.recorder
+    ++ manim-voiceover.optional-dependencies.transcribe
     ))
     texlive.combined.scheme-full
     gst_all_1.gstreamer

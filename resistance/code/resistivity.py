@@ -1,9 +1,11 @@
-from colour import Color
+import operator
+from itertools import accumulate
+
 from manim import *
 from manim.__main__ import main
 from MyScene import MyScene
 
-section_done = False
+section_done = True
 
 
 class Electron(Dot):
@@ -93,6 +95,15 @@ class Resistivity_Part_1(MyScene):
             anim_carbon
         ), (n_copper, n_carbon))
 
+    def electron_passing(self, valance_size, nb_electrons_on_valance):
+        return 0 if np.random.randint(valance_size) < nb_electrons_on_valance else 1
+
+    def electron_passing_copper(self):
+        return self.electron_passing(8, 1)
+
+    def electron_passing_carbon(self):
+        return self.electron_passing(8, 4)
+
     def construct(self):
         screen = FullScreenRectangle()
         ptable = [
@@ -121,29 +132,30 @@ class Resistivity_Part_1(MyScene):
         self.add(*shells)
         self.next_section(skip_animations=section_done)
         with self.my_voiceover(
-                """Pour commencer, sache qu'on va utiliser un modèle atomique suffisament correct pour comprendre le concept de resistance mais qui reste bien plus simple que le modèle atomique réel""") as traker:
+                """Bon, pour commencer, faut garder en tête que je vais simplifier pas mal de choses. Ceci dit, ce que je vais te montrer est suffisament correct pour comprendre le concept de resistance""") as traker:
             text = Text(r"Simplifications devant !")
             self.play(Succession(FadeIn(text), Wait(), FadeOut(text)), run_time=traker.duration)
         self.next_section(skip_animations=section_done)
         with self.my_voiceover(
-                "Un atome, c'est composé d'un noyeau qu'on va représenter par la lettre de l'élément") as traker:
+                "Un atome, c'est composé d'un noyeau qu'on va représenter par la lettre de l'élément en question, ici l'hydrogène") as traker:
             self.play(FadeIn(nucleus), run_time=traker.duration)
         self.next_section(skip_animations=section_done)
-        with self.my_voiceover("et d'éléctrons qui tournent autour du noyau") as traker:
+        with self.my_voiceover("Autour du noyau, il y a des électrons qui tournent") as traker:
             self.play(firstShell.fade_electron_in(0), run_time=traker.duration)
         self.next_section(skip_animations=section_done)
-        with self.my_voiceover("""Les éléctrons se répartissent en couches et on ne  peut passer à la couche N+1 qu'après avoir remplis complètement la couche N.\n
-        Les 3 premières couches contiennent respectivement 2, 8, 8 éléctrons""") as traker:
+        with self.my_voiceover("""À chaque fois qu'on passe à un atome plus lourd, son besoin en éléctrons grandit.\n
+        Les éléctrons se répartissent en couches et on ne  peut passer à la couche N+1 qu'après avoir remplis complètement la couche N.\n
+        Les 3 premières couches contiennent respectivement 2, 8 et 8 éléctrons""") as traker:
             self.play(Succession(*transitions[1:]), run_time=max(traker.duration, len(elements)))
         self.next_section(skip_animations=section_done)
         with self.my_voiceover(
-                """La dernière couche d'électrons d'un atome est appelé la couche de valence.""") as traker:
-            self.play(Indicate(shells[-1]), run_time=traker.duration)
+                """La dernière couche d'électrons, celle qui est le plus à l'exterieur, est appelé la couche de valence.""") as traker:
+            self.play(Indicate(shells[-1], scale_factor=1.5), run_time=traker.duration)
         self.next_section(skip_animations=section_done)
         with self.my_voiceover(
                 """C'est la seule qui va nous interesser, donc à partir de maintenant, c'est la seule qu'on va représenter""") as traker:
-            self.play(*[s.fade_out() for s in shells[:-1]], run_time=traker.duration)
-        self.play(shells[-1].animate.scale(2 / 3))
+            self.play(*[s.fade_out() for s in shells[:-1]], run_time=traker.duration * 0.6)
+            self.play(shells[-1].animate.scale(2 / 3), run_time=traker.duration * 0.4)
         self.next_section(skip_animations=section_done)
         with self.my_voiceover(
                 """Pour la suite, nous allons regarder un atome de cuivre qui a la particularité de n'avoir qu'un seul electron sur sa couche de valance""") as traker:
@@ -193,15 +205,16 @@ class Resistivity_Part_1(MyScene):
 
         self.next_section(skip_animations=section_done)
         with self.my_voiceover(
-                """Faisons une experience en comparant un atome de cuivre avec un atome de carbone""") as traker:
+                """Faisons une experience afin de comparer ce qui se passe avec un atome de cuivre et un atome de carbone""") as traker:
             self.add(carbon_valance_shell)
             self.play(copper_valance_shell.animate.shift(UP * 1.5), copper.animate.shift(UP * 1.5),
                       run_time=traker.duration / 2)
             self.play(FadeIn(carbon), *[carbon_valance_shell.fade_electron_in(n * 2) for n in range(4)],
                       run_time=traker.duration / 2)
         self.next_section(skip_animations=section_done)
+        nb_trials = 50
         with self.my_voiceover(
-                """On va essayer de faire passer 50 electrons et compter combien arrivent à passer pour chaque atome""") as traker:
+                f"""On va essayer de faire passer {nb_trials} electrons et compter combien arrivent à passer pour chaque atome""") as traker:
             self.play(*[FadeIn(nb, scale=3) for nb in [nb_send, nb_copper_pass, nb_carbon_pass]],
                       run_time=traker.duration)
 
@@ -209,7 +222,6 @@ class Resistivity_Part_1(MyScene):
         with self.my_voiceover(
                 """C'est parti. On va accelerer un peu au milieu car sinon ça serai vraiment long.""") as traker:
             total_duration = 25
-            nb_trials = 50
             for i in range(nb_trials):
                 duration = (total_duration / nb_trials) * 2 * abs(
                     1 - rate_functions.there_and_back(i / (nb_trials - 1)))
@@ -222,20 +234,67 @@ class Resistivity_Part_1(MyScene):
                 nb_carbon_pass.set_value(nb_carbon_pass.get_value() + n_carbon)
 
         self.next_section(skip_animations=section_done)
-        with self.my_voiceover("""Le cuivre a laissé passer 48 éléctrons""") as traker:
+        with self.my_voiceover(f"""Le cuivre a laissé passer {nb_copper_pass.get_value()} éléctrons !""") as traker:
             self.play(Indicate(nb_copper_pass, scale_factor=2), run_time=traker.duration)
-        with self.my_voiceover("""Et le carbon en a laissé passer seulement 24""") as traker:
+        with self.my_voiceover(f"""Et le carbon en a laissé passer seulement {nb_carbon_pass.get_value()}""") as traker:
             self.play(Indicate(nb_carbon_pass, scale_factor=2), run_time=traker.duration)
+        with self.my_voiceover(
+                f"""On commence à voir quelque chose d'interessant mais là, c'est un exemple avec seulement {nb_trials} electrons.\n
+                Ça sera bien d'avoir plus d'éléctrons pour valider.""") as traker:
+            self.play(AnimationGroup(copper_valance_shell.fade_out(), carbon_valance_shell.fade_out(),
+                                     FadeOut(copper, carbon, nb_copper_pass, nb_carbon_pass, nb_send),
+                                     rate_func=rate_functions.ease_in_expo), run_time=traker.duration)
+        self.next_section(skip_animations=True)
+        nb_electrons = 10000
+        with self.my_voiceover(
+                f"""Pour ça on va refaire l'experience avec {nb_electrons} ! Et on va dessiner les résultats sur un graphique""") as traker:
+            self.wait(traker.duration)
+        axes = Axes(x_range=[0, nb_electrons, nb_electrons / 10],
+                    y_range=[0, nb_electrons, nb_electrons / 10],
+                    tips=False,
+                    axis_config={"include_numbers": True,
+                                 "font_size": 30,
+                                 "decimal_number_config": {"num_decimal_places": 0, "group_with_commas": False}})
+        electrons_copper = self.compute_electrons_passing(self.electron_passing_copper, nb_electrons)
+        electrons_carbon = self.compute_electrons_passing(self.electron_passing_carbon, nb_electrons)
+        graph_of = lambda array: lambda x: array[round(x)]
+        graph_copper = axes.plot(graph_of(electrons_copper), x_range=[0, nb_electrons], dt=1, use_smoothing=False,
+                                 color=ORANGE)
+        graph_carbon = axes.plot(graph_of(electrons_carbon), x_range=[0, nb_electrons], dt=1, use_smoothing=False,
+                                 color=RED)
+        labels = axes.get_axis_labels(x_label=Tex("Électrons envoyés"), y_label=Tex("Électrons reçus"))
+        with self.my_voiceover(
+                f"""En absisse, on va mettre le nombre d'electrons qu'on va envoyer et on va monter jusqu'à {nb_electrons}""") as traker:
+            self.play(Create(axes[0]), Create(labels[0]), run_time=traker.duration)
+        with self.my_voiceover(
+                f"""En ordonnée, on va le nombre d'electrons qui arrivent à passer""") as traker:
+            self.play(Create(axes[1]), Create(labels[1]), run_time=traker.duration)
+        with self.my_voiceover(
+                f"""Si on trace le cuivre en orange et le carbon en rouge""") as traker:
+            self.play(Create(graph_copper), Create(graph_carbon), run_time=traker.duration)
+        with self.my_voiceover(
+                f"""On vois que le cuivre fin loin devant avec {electrons_copper[nb_electrons]} électrons qui passent""") as traker:
+            result_copper = MathTex(electrons_copper[nb_electrons]).next_to(graph_copper.points[-1], buff=0.1)
+            self.play(FadeIn(result_copper), run_time=traker.duration)
+        with self.my_voiceover(
+                f"""alors que le carbone n'en a laissé passer que {electrons_carbon[nb_electrons]}""") as traker:
+            result_carbon = MathTex(electrons_carbon[nb_electrons]).next_to(graph_carbon.points[-1], buff=0.1)
+            self.play(FadeIn(result_carbon), run_time=traker.duration)
+        self.next_section(skip_animations=section_done)
         self.next_section(skip_animations=False)
         with self.my_voiceover(
-                """Le cuivre est donc un meilleur conducteur que le carbone. Dit autrement, le carbone a une résistance plus élevée que le cuivre""") as traker:
-            self.play(AnimationGroup(copper_valance_shell.fade_out(), carbon_valance_shell.fade_out(),
-                  FadeOut(copper, carbon, nb_copper_pass, nb_carbon_pass, nb_send),rate_func=rate_functions.ease_in_expo), run_time=traker.duration)
+                """On peut en déduire que le cuivre est donc un meilleur conducteur que le carbone.\n
+                Dit autrement, le carbone a une résistance plus élevée que le cuivre""") as traker:
+            self.wait(traker.duration)
         self.next_section(skip_animations=False)
-        self.wait()
+        self.play(*[FadeOut(o) for o in self.mobjects], run_time=2)
+
+    def compute_electrons_passing(self, random_result, number_sent):
+        return [0, *accumulate([random_result() for _ in range(number_sent + 1)], operator.add)]
 
 
 if __name__ == "__main__":
     main(["-pql",
           # "--disable_caching",
-          __file__], prog_name='invoked-command')
+          __file__,
+          ], prog_name='invoked-command')
