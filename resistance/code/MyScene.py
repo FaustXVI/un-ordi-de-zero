@@ -17,6 +17,10 @@ class FakeTracker:
         pass
 
 
+def my_frac(d, n):
+    return [r"{", r"{", *d, r"}", r"\over", r"{", *n, r"}", r"}"]
+
+
 class MyScene(VoiceoverScene, ABC):
     def my_voiceover(self, text, duration=3):
         if self.recording:
@@ -24,10 +28,7 @@ class MyScene(VoiceoverScene, ABC):
         else:
             return FakeTracker(duration)
 
-    def my_frac(d, n):
-        return [r"{", r"{", *d, r"}", r"\over", r"{", *n, r"}", r"}"]
-
     def __init__(self, recording, **kwargs):
-        super().__init__(random_seed=42,**kwargs)
+        super().__init__(random_seed=42, **kwargs)
         self.recording = recording
         self.set_speech_service(RecorderService(device_index=12))

@@ -3,7 +3,10 @@ from itertools import accumulate
 
 from manim import *
 from manim.__main__ import main
-from MyScene import MyScene
+from MyScene import MyScene, my_frac
+import locale
+
+locale.setlocale(locale.LC_ALL, 'fr_FR')
 
 section_done = True
 
@@ -132,7 +135,7 @@ class Resistivity_Part_1(MyScene):
         self.add(*shells)
         self.next_section(skip_animations=section_done)
         with self.my_voiceover(
-                """Bon, pour commencer, faut garder en tête que je vais simplifier pas mal de choses. Ceci dit, ce que je vais te montrer est suffisament correct pour comprendre le concept de resistance""") as traker:
+                """Bon, pour commencer, faut garder en tête que je vais simplifier pas mal de choses. Ceci dit, ce que je vais te montrer est suffisament correct pour comprendre le concept de résistivité""") as traker:
             text = Text(r"Simplifications devant !")
             self.play(Succession(FadeIn(text), Wait(), FadeOut(text)), run_time=traker.duration)
         self.next_section(skip_animations=section_done)
@@ -205,7 +208,7 @@ class Resistivity_Part_1(MyScene):
 
         self.next_section(skip_animations=section_done)
         with self.my_voiceover(
-                """Faisons une experience afin de comparer ce qui se passe avec un atome de cuivre et un atome de carbone""") as traker:
+                """Faisons une simulation afin de comparer ce qui se passe avec un atome de cuivre et un atome de carbone""") as traker:
             self.add(carbon_valance_shell)
             self.play(copper_valance_shell.animate.shift(UP * 1.5), copper.animate.shift(UP * 1.5),
                       run_time=traker.duration / 2)
@@ -239,7 +242,7 @@ class Resistivity_Part_1(MyScene):
         with self.my_voiceover(f"""Et le carbon en a laissé passer seulement {nb_carbon_pass.get_value()}""") as traker:
             self.play(Indicate(nb_carbon_pass, scale_factor=2), run_time=traker.duration)
         with self.my_voiceover(
-                f"""On commence à voir quelque chose d'interessant mais là, c'est un exemple avec seulement {nb_trials} electrons.\n
+                f"""On commence à voir quelque chose d'interessant mais là, c'est une simulation avec seulement {nb_trials} electrons.\n
                 Ça sera bien d'avoir plus d'éléctrons pour valider.""") as traker:
             self.play(AnimationGroup(copper_valance_shell.fade_out(), carbon_valance_shell.fade_out(),
                                      FadeOut(copper, carbon, nb_copper_pass, nb_carbon_pass, nb_send),
@@ -247,7 +250,7 @@ class Resistivity_Part_1(MyScene):
         self.next_section(skip_animations=True)
         nb_electrons = 10000
         with self.my_voiceover(
-                f"""Pour ça on va refaire l'experience avec {nb_electrons} ! Et on va dessiner les résultats sur un graphique""") as traker:
+                f"""Pour ça on va refaire la simulation avec {nb_electrons} ! Et on va dessiner les résultats sur un graphique""") as traker:
             self.wait(traker.duration)
         axes = Axes(x_range=[0, nb_electrons, nb_electrons / 10],
                     y_range=[0, nb_electrons, nb_electrons / 10],
@@ -260,8 +263,10 @@ class Resistivity_Part_1(MyScene):
         graph_of = lambda array: lambda x: array[round(x)]
         graph_copper = axes.plot(graph_of(electrons_copper), x_range=[0, nb_electrons], dt=1, use_smoothing=False,
                                  color=ORANGE)
+        copper_text = MathTex("Cuivre", color=ORANGE).next_to(axes[1].get_end(), RIGHT + DOWN, buff=1)
         graph_carbon = axes.plot(graph_of(electrons_carbon), x_range=[0, nb_electrons], dt=1, use_smoothing=False,
                                  color=RED)
+        carbon_text = MathTex("Carbone", color=RED).next_to(copper_text, DOWN)
         labels = axes.get_axis_labels(x_label=Tex("Électrons envoyés"), y_label=Tex("Électrons reçus"))
         with self.my_voiceover(
                 f"""En absisse, on va mettre le nombre d'electrons qu'on va envoyer et on va monter jusqu'à {nb_electrons}""") as traker:
@@ -269,22 +274,64 @@ class Resistivity_Part_1(MyScene):
         with self.my_voiceover(
                 f"""En ordonnée, on va le nombre d'electrons qui arrivent à passer""") as traker:
             self.play(Create(axes[1]), Create(labels[1]), run_time=traker.duration)
+        self.next_section(skip_animations=section_done)
         with self.my_voiceover(
                 f"""Si on trace le cuivre en orange et le carbon en rouge""") as traker:
-            self.play(Create(graph_copper), Create(graph_carbon), run_time=traker.duration)
+            self.play(Create(graph_copper), Create(graph_carbon), FadeIn(carbon_text), FadeIn(copper_text),
+                      run_time=traker.duration)
+        nb_copper_electrons = MathTex(electrons_copper[nb_electrons])
         with self.my_voiceover(
                 f"""On vois que le cuivre fin loin devant avec {electrons_copper[nb_electrons]} électrons qui passent""") as traker:
-            result_copper = MathTex(electrons_copper[nb_electrons]).next_to(graph_copper.points[-1], buff=0.1)
+            result_copper = nb_copper_electrons.next_to(graph_copper.points[-1], buff=0.1)
             self.play(FadeIn(result_copper), run_time=traker.duration)
+        nb_carbon_electrons = MathTex(electrons_carbon[nb_electrons])
         with self.my_voiceover(
                 f"""alors que le carbone n'en a laissé passer que {electrons_carbon[nb_electrons]}""") as traker:
-            result_carbon = MathTex(electrons_carbon[nb_electrons]).next_to(graph_carbon.points[-1], buff=0.1)
+            result_carbon = nb_carbon_electrons.next_to(graph_carbon.points[-1], buff=0.1)
             self.play(FadeIn(result_carbon), run_time=traker.duration)
         self.next_section(skip_animations=section_done)
-        self.next_section(skip_animations=False)
+        conductivity_copper = MathTex(r"\sigma", "_{", "Cuivre", "}", "=",
+                                      *my_frac([f"{electrons_copper[nb_electrons]}"], [f"{nb_electrons}"]))
+        conductivity_carbon = MathTex(r"\sigma", "_{", "Carbone", "}", "=",
+                                      *my_frac([f"{electrons_carbon[nb_electrons]}"], [f"{nb_electrons}"]))
+        VGroup(conductivity_copper, conductivity_carbon).arrange(DOWN, buff=1)
         with self.my_voiceover(
-                """On peut en déduire que le cuivre est donc un meilleur conducteur que le carbone.\n
-                Dit autrement, le carbone a une résistance plus élevée que le cuivre""") as traker:
+                f"""Si on note sigma la conductivité d'un élément, alors, dans notre simulation, le cuivre a une conductivité de {electrons_copper[nb_electrons]} sur {nb_electrons}
+        et le carbone a une conductivité de {electrons_carbon[nb_electrons]} / {nb_electrons}""") as traker:
+            self.play(*[FadeOut(o) for o in [axes, graph_copper, graph_carbon, labels]],
+                      TransformMatchingTex(Group(nb_copper_electrons, copper_text), conductivity_copper),
+                      TransformMatchingTex(Group(nb_carbon_electrons, carbon_text), conductivity_carbon),
+                      run_time=traker.duration)
+        resistivity_copper = MathTex(r"\rho", "_{", "Cuivre", "}", "=",
+                                     *my_frac([nb_electrons], [electrons_copper[nb_electrons]]))
+        resistivity_carbon = MathTex(r"\rho", "_{", "Carbone", "}", "=",
+                                     *my_frac([nb_electrons], [electrons_carbon[nb_electrons]]))
+        VGroup(resistivity_copper, resistivity_carbon).arrange(DOWN, buff=1)
+        self.next_section(skip_animations=section_done)
+        self.wait()
+        with self.my_voiceover(
+                f"""La résistivité, c'est l'inverse de la conductivité et elle est notée Rho""") as traker:
+            self.play(
+                TransformMatchingTex(conductivity_copper, resistivity_copper),
+                TransformMatchingTex(conductivity_carbon, resistivity_carbon),
+                run_time=traker.duration)
+        resistivity_copper_value = MathTex(r"\rho", "_{", "Cuivre", "}", r"\approx",
+                                           locale.format_string('%.3f', nb_electrons / electrons_copper[nb_electrons]))
+        resistivity_carbon_value = MathTex(r"\rho", "_{", "Carbone", "}", r"\approx",
+                                           locale.format_string('%.3f', nb_electrons / electrons_carbon[nb_electrons]))
+        VGroup(resistivity_copper_value, resistivity_carbon_value).arrange(DOWN, buff=1)
+        self.next_section(skip_animations=False)
+        self.wait()
+        with self.my_voiceover(
+                f"""On peut calculer la résistivité du cuivre et du carbon dans notre simulation""") as traker:
+            self.play(
+                TransformMatchingTex(resistivity_copper, resistivity_copper_value, transform_mismatches=True,
+                                     key_map={"=": r"\approx"}),
+                TransformMatchingTex(resistivity_carbon, resistivity_carbon_value, transform_mismatches=True,
+                                     key_map={"=": r"\approx"}),
+                run_time=traker.duration)
+        with self.my_voiceover(
+                f"""On voit alors que le carbon a une résistivité plus grande que le cuivre, ce qui est effectivement le cas dans la réalité.""") as traker:
             self.wait(traker.duration)
         self.next_section(skip_animations=False)
         self.play(*[FadeOut(o) for o in self.mobjects], run_time=2)
