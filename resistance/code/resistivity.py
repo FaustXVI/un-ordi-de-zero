@@ -330,11 +330,10 @@ class Resistivity_Part_1(MyScene):
                 TransformMatchingTex(resistivity_carbon, resistivity_carbon_value, transform_mismatches=True,
                                      key_map={"=": r"\approx"}),
                 run_time=traker.duration)
+        self.next_section(skip_animations=False)
         with self.my_voiceover(
-                f"""On voit alors que le carbon a une résistivité plus grande que le cuivre, ce qui est effectivement le cas dans la réalité.""") as traker:
-            self.wait(traker.duration)
-        self.next_section(skip_animations=section_done)
-        self.play(*[FadeOut(o) for o in self.mobjects], run_time=2)
+                f"""On voit alors que le carbon a une résistivité plus grande que le cuivre, ce qui est effectivement le cas dans la réalité mais avec des valeurs différentes""") as traker:
+            self.play(*[FadeOut(o,rate_func=rush_into) for o in self.mobjects], run_time=traker.duration)
 
     def compute_electrons_passing(self, random_result, number_sent):
         return [0, *accumulate([random_result() for _ in range(number_sent + 1)], operator.add)]
