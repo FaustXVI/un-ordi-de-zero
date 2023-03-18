@@ -43,69 +43,85 @@ class Shell(VGroup):
         return self.electrons[n]
 
 
-class Resistivity_Part_1(MyScene):
+def compute_electrons_passing(random_result, number_sent):
+    return [0, *accumulate([random_result() for _ in range(number_sent + 1)], operator.add)]
+
+
+def refuse_electron(duration, entry_point, indexTarget, shell):
+    free_electron = Electron().move_to(entry_point)
+    p = shell.get_electron(indexTarget).copy().rotate(duration * PI / 2,
+                                                      about_point=shell.get_center()).get_center()
+    path = Line(entry_point, p + (LEFT * 0.5))
+    return MoveAlongPath(free_electron, path, rate_func=there_and_back, run_time=duration)
+
+
+def passing_electron(duration, entry_point, exit_point, indexTarget, shell):
+    free_electron = Electron().move_to(entry_point)
+    free_electron_2 = free_electron.copy()
+    indexEjected = np.random.choice([i for i, o in enumerate(shell.opacities) if o.get_value() == 1], 1)[0]
+    eTarget = shell.get_electron(indexTarget)
+    lag_ratio = 0.7
+    target = eTarget.copy().rotate(duration / 2 * PI,
+                                   about_point=shell.get_center()).get_center()
+    pathGoing = Line(entry_point, target)
+    eEjected = shell.get_electron(indexEjected)
+    ejected = eEjected.copy().rotate(lag_ratio * duration / 2 * PI,
+                                     about_point=shell.get_center()).get_center()
+    pathLeaving = Line(ejected, exit_point)
+    ejectionAnimation = AnimationGroup(
+        Succession(MoveAlongPath(free_electron, pathGoing, rate_func=linear, run_time=duration / 2),
+                   shell.opacities[indexTarget].animate(run_time=0).set_value(1),
+                   free_electron.animate(run_time=0).to_edge(LEFT).shift(LEFT)),
+        Succession(Wait(0.00001), shell.opacities[indexEjected].animate(run_time=0).set_value(0),
+                   MoveAlongPath(free_electron_2, pathLeaving, rate_func=linear, run_time=duration / 2)),
+        lag_ratio=lag_ratio)
+    return ejectionAnimation
+
+
+def try_eject_electron(duration, entry_point, exit_point, indexTarget, shell):
+    if shell.opacities[indexTarget].get_value() == 1:
+        return (refuse_electron(duration, entry_point, indexTarget, shell), 0)
+    else:
+        return (passing_electron(duration, entry_point, exit_point, indexTarget, shell), 1)
+
+
+screen = FullScreenRectangle()
+entry_point = screen.get_edge_center(LEFT) + LEFT
+exit_point = screen.get_edge_center(RIGHT) + RIGHT
+
+
+def single_atom_experiment_trial(carbon_valance_shell, copper_valance_shell, duration, i):
+    copper_entry = entry_point + (UP * 1.5)
+    copper_exit = exit_point + (UP * 1.5)
+    carbon_entry = entry_point + (DOWN * 1.5)
+    carbon_exit = exit_point + (DOWN * 1.5)
+    anim_copper, n_copper = try_eject_electron(duration, copper_entry, copper_exit, i, copper_valance_shell)
+    anim_carbon, n_carbon = try_eject_electron(duration, carbon_entry, carbon_exit, i, carbon_valance_shell)
+    return (AnimationGroup(
+        anim_copper,
+        anim_carbon
+    ), (n_copper, n_carbon))
+
+
+def electron_passing(valance_size, nb_electrons_on_valance):
+    return 0 if np.random.randint(valance_size) < nb_electrons_on_valance else 1
+
+
+def electron_passing_copper():
+    return electron_passing(8, 1)
+
+
+def electron_passing_carbon():
+    return electron_passing(8, 4)
+
+
+nb_electrons = 10000
+
+
+class Resistivity(MyScene):
 
     def __init__(self):
         super().__init__(recording=False)
-
-    def refuse_electron(self, duration, entry_point, indexTarget, shell):
-        free_electron = Electron().move_to(entry_point)
-        p = shell.get_electron(indexTarget).copy().rotate(duration * PI / 2,
-                                                          about_point=shell.get_center()).get_center()
-        path = Line(entry_point, p + (LEFT * 0.5))
-        return MoveAlongPath(free_electron, path, rate_func=there_and_back, run_time=duration)
-
-    def try_eject_electron(self, duration, entry_point, exit_point, indexTarget, shell):
-        if shell.opacities[indexTarget].get_value() == 1:
-            return (self.refuse_electron(duration, entry_point, indexTarget, shell), 0)
-        else:
-            return (self.eject_electron(duration, entry_point, exit_point, indexTarget, shell), 1)
-
-    def eject_electron(self, duration, entry_point, exit_point, indexTarget, shell):
-        free_electron = Electron().move_to(entry_point)
-        free_electron_2 = free_electron.copy()
-        indexEjected = np.random.choice([i for i, o in enumerate(shell.opacities) if o.get_value() == 1], 1)[0]
-        eTarget = shell.get_electron(indexTarget)
-        lag_ratio = 0.7
-        target = eTarget.copy().rotate(duration / 2 * PI,
-                                       about_point=shell.get_center()).get_center()
-        pathGoing = Line(entry_point, target)
-        eEjected = shell.get_electron(indexEjected)
-        ejected = eEjected.copy().rotate(lag_ratio * duration / 2 * PI,
-                                         about_point=shell.get_center()).get_center()
-        pathLeaving = Line(ejected, exit_point)
-        ejectionAnimation = AnimationGroup(
-            Succession(MoveAlongPath(free_electron, pathGoing, rate_func=linear, run_time=duration / 2),
-                       shell.opacities[indexTarget].animate(run_time=0).set_value(1),
-                       free_electron.animate(run_time=0).to_edge(LEFT).shift(LEFT)),
-            Succession(Wait(0.00001), shell.opacities[indexEjected].animate(run_time=0).set_value(0),
-                       MoveAlongPath(free_electron_2, pathLeaving, rate_func=linear, run_time=duration / 2)),
-            lag_ratio=lag_ratio)
-        return ejectionAnimation
-
-    def experiment_trial(self, carbon_valance_shell, copper_valance_shell, duration, i):
-        screen = FullScreenRectangle()
-        entry_point = screen.get_edge_center(LEFT) + LEFT
-        exit_point = screen.get_edge_center(RIGHT) + RIGHT
-        copper_entry = entry_point + (UP * 1.5)
-        copper_exit = exit_point + (UP * 1.5)
-        carbon_entry = entry_point + (DOWN * 1.5)
-        carbon_exit = exit_point + (DOWN * 1.5)
-        anim_copper, n_copper = self.try_eject_electron(duration, copper_entry, copper_exit, i, copper_valance_shell)
-        anim_carbon, n_carbon = self.try_eject_electron(duration, carbon_entry, carbon_exit, i, carbon_valance_shell)
-        return (AnimationGroup(
-            anim_copper,
-            anim_carbon
-        ), (n_copper, n_carbon))
-
-    def electron_passing(self, valance_size, nb_electrons_on_valance):
-        return 0 if np.random.randint(valance_size) < nb_electrons_on_valance else 1
-
-    def electron_passing_copper(self):
-        return self.electron_passing(8, 1)
-
-    def electron_passing_carbon(self):
-        return self.electron_passing(8, 4)
 
     def construct(self):
         screen = FullScreenRectangle()
@@ -178,7 +194,7 @@ class Resistivity_Part_1(MyScene):
         with self.my_voiceover(
                 """Soit il arrive à un endroit où il y a déjà un électron. Et dans ce cas l'électron déjà en place repousse l'électron libre""") as traker:
             self.play(
-                self.refuse_electron(traker.duration, screen.get_edge_center(LEFT) + LEFT, 0, copper_valance_shell))
+                refuse_electron(traker.duration, screen.get_edge_center(LEFT) + LEFT, 0, copper_valance_shell))
         self.next_section(skip_animations=section_done)
         with self.my_voiceover(
                 """Soit il arrive à un endroit où il n'y a pas d'électron et se met sur la couche de valance""") as traker:
@@ -204,7 +220,7 @@ class Resistivity_Part_1(MyScene):
         self.next_section(skip_animations=section_done)
         entry_point = screen.get_edge_center(LEFT) + LEFT
         exit_point = screen.get_edge_center(RIGHT) + RIGHT
-        self.play(self.eject_electron(3, entry_point, exit_point, 0, copper_valance_shell))
+        self.play(passing_electron(3, entry_point, exit_point, 0, copper_valance_shell))
 
         self.next_section(skip_animations=section_done)
         with self.my_voiceover(
@@ -229,9 +245,10 @@ class Resistivity_Part_1(MyScene):
                 duration = (total_duration / nb_trials) * 2 * abs(
                     1 - rate_functions.there_and_back(i / (nb_trials - 1)))
                 nb_send.set_value(nb_send.get_value() + 1)
-                (animation, (n_copper, n_carbon)) = self.experiment_trial(carbon_valance_shell, copper_valance_shell,
-                                                                          duration,
-                                                                          np.random.randint(8))
+                (animation, (n_copper, n_carbon)) = single_atom_experiment_trial(carbon_valance_shell,
+                                                                                 copper_valance_shell,
+                                                                                 duration,
+                                                                                 np.random.randint(8))
                 self.play(animation)
                 nb_copper_pass.set_value(nb_copper_pass.get_value() + n_copper)
                 nb_carbon_pass.set_value(nb_carbon_pass.get_value() + n_carbon)
@@ -248,7 +265,6 @@ class Resistivity_Part_1(MyScene):
                                      FadeOut(copper, carbon, nb_copper_pass, nb_carbon_pass, nb_send),
                                      rate_func=rate_functions.ease_in_expo), run_time=traker.duration)
         self.next_section(skip_animations=section_done)
-        nb_electrons = 10000
         with self.my_voiceover(
                 f"""Pour ça on va refaire la simulation avec {nb_electrons} ! Et on va dessiner les résultats sur un graphique""") as traker:
             self.wait(traker.duration)
@@ -258,8 +274,8 @@ class Resistivity_Part_1(MyScene):
                     axis_config={"include_numbers": True,
                                  "font_size": 30,
                                  "decimal_number_config": {"num_decimal_places": 0, "group_with_commas": False}})
-        electrons_copper = self.compute_electrons_passing(self.electron_passing_copper, nb_electrons)
-        electrons_carbon = self.compute_electrons_passing(self.electron_passing_carbon, nb_electrons)
+        electrons_copper = compute_electrons_passing(electron_passing_copper, nb_electrons)
+        electrons_carbon = compute_electrons_passing(electron_passing_carbon, nb_electrons)
         graph_of = lambda array: lambda x: array[round(x)]
         graph_copper = axes.plot(graph_of(electrons_copper), x_range=[0, nb_electrons], dt=1, use_smoothing=False,
                                  color=ORANGE)
@@ -298,7 +314,8 @@ class Resistivity_Part_1(MyScene):
         with self.my_voiceover(
                 f"""Si on note sigma la conductivité d'un élément, alors, dans notre simulation, le cuivre a une conductivité de {electrons_copper[nb_electrons]} sur {nb_electrons}
         et le carbone a une conductivité de {electrons_carbon[nb_electrons]} / {nb_electrons}""") as traker:
-            self.play(*[FadeOut(o,rate_func=rate_functions.ease_out_expo) for o in [axes, graph_copper, graph_carbon, labels]],
+            self.play(*[FadeOut(o, rate_func=rate_functions.ease_out_expo) for o in
+                        [axes, graph_copper, graph_carbon, labels]],
                       TransformMatchingTex(Group(nb_copper_electrons, copper_text), conductivity_copper),
                       TransformMatchingTex(Group(nb_carbon_electrons, carbon_text), conductivity_carbon),
                       run_time=traker.duration)
@@ -333,14 +350,158 @@ class Resistivity_Part_1(MyScene):
         self.next_section(skip_animations=False)
         with self.my_voiceover(
                 f"""On voit alors que le carbon a une résistivité plus grande que le cuivre, ce qui est effectivement le cas dans la réalité mais avec des valeurs différentes""") as traker:
-            self.play(*[FadeOut(o,rate_func=rush_into) for o in self.mobjects], run_time=traker.duration)
+            self.play(*[FadeOut(o, rate_func=rush_into) for o in self.mobjects], run_time=traker.duration)
 
-    def compute_electrons_passing(self, random_result, number_sent):
-        return [0, *accumulate([random_result() for _ in range(number_sent + 1)], operator.add)]
+
+class Resistance(MyScene):
+    def __init__(self):
+        super().__init__(recording=False)
+
+    def construct(self):
+        self.next_section(skip_animations=section_done)
+        with self.my_voiceover(
+                f"""On va faire trois simulation""") as traker:
+            self.wait(traker.duration)
+
+        self.next_section(skip_animations=section_done)
+        carbon1_nucleus = MathTex("C")
+        carbon1_shell = Shell(8)
+        carbon2_nucleus = MathTex("C").shift(DOWN * 1.5)
+        carbon2_shell = Shell(8).shift(DOWN * 1.5)
+        self.add(carbon1_shell)
+        self.add(carbon2_shell)
+        with self.my_voiceover(
+                f"""La première, que nous avons déjà faite, avec un atome de carbone. On appellera cette simulation, la simulation «atome»""") as traker:
+            self.play(FadeIn(carbon1_nucleus), *[carbon1_shell.fade_electron_in(i * 2) for i in range(4)],
+                      run_time=traker.duration)
+        self.next_section(skip_animations=section_done)
+        with self.my_voiceover(
+                f"""Dans la deuxième simulation, on va ajouter de l'épaisseur en ajoutant un atome au dessus""") as traker:
+            self.play(VGroup(carbon1_nucleus, carbon1_shell).animate.shift(UP * 1.5), FadeIn(carbon2_nucleus),
+                      *[carbon2_shell.fade_electron_in(i * 2) for i in range(4)], run_time=traker.duration)
+        with self.my_voiceover(
+                f"""Quand on envoie un éléctron il y a alors trois scénarios possible""") as traker:
+            self.wait(traker.duration)
+        with self.my_voiceover(
+                f"""Soit l'electron passe par l'atome du dessus et on reçoit un éléctron de l'autre côté""") as traker:
+            self.play(passing_electron(traker.duration, entry_point, exit_point, 1, carbon1_shell))
+        with self.my_voiceover(
+                f"""Soit il passe par l'atome du dessous et on reçoit un éléctron de l'autre côté""") as traker:
+            self.play(passing_electron(traker.duration, entry_point, exit_point, 1, carbon2_shell))
+        with self.my_voiceover(
+                f"""Soit il se fait rejeter par les deux atomes du dessous et on ne reçoit rien de l'autre côté""") as traker:
+            self.play(refuse_electron(traker.duration / 2, entry_point, 1, carbon1_shell))
+            self.play(refuse_electron(traker.duration / 2, entry_point, 1, carbon2_shell))
+        with self.my_voiceover(
+                f"""On appellera cette simulation, la simulation «épaisseur»""") as traker:
+            self.wait(traker.duration)
+        self.next_section(skip_animations=False)
+        with self.my_voiceover(
+                f"""Dans la troisième simulation, on va ajouter de la longueur en mettant le second atome après le premier""") as traker:
+            self.play(
+                VGroup(carbon1_nucleus, carbon1_shell).animate.shift(DOWN * 1.5 + LEFT * 1.5),
+                VGroup(carbon2_nucleus, carbon2_shell).animate.shift(UP * 1.5 + RIGHT * 1.5)
+                , run_time=traker.duration)
+        with self.my_voiceover(
+                f"""Quand on envoie un éléctron il y a aussi trois scénarios possible""") as traker:
+            self.wait(traker.duration)
+        with self.my_voiceover(
+                f"""Soit il se fait rejeter par le premier atome et on reçoit un éléctron de l'autre côté""") as traker:
+            self.play(refuse_electron(traker.duration, entry_point, 1, carbon1_shell))
+        with self.my_voiceover(
+                f"""Soit l'électron du premier atome fait rejeter par le second atome et on reçoit un éléctron de l'autre côté""") as traker:
+            self.play(refuse_electron(traker.duration, entry_point, 2, carbon1_shell))
+        with self.my_voiceover(
+                f"""Soit les deux atomes laissent passer les éléctrons et on reçoit un électron de l'autre côté""") as traker:
+            self.wait(traker.duration)
+        with self.my_voiceover(
+                f"""On appellera cette simulation, la simulation «longueur»""") as traker:
+            self.wait(traker.duration)
+        self.next_section(skip_animations=section_done)
+        axes = Axes(x_range=[0, nb_electrons, nb_electrons / 10],
+                    y_range=[0, nb_electrons, nb_electrons / 10],
+                    tips=False,
+                    axis_config={"include_numbers": True,
+                                 "font_size": 30,
+                                 "decimal_number_config": {"num_decimal_places": 0, "group_with_commas": False}})
+        electrons_copper = compute_electrons_passing(electron_passing_carbon, nb_electrons)
+        electrons_2_copper_vertical = compute_electrons_passing(
+            lambda: electron_passing_carbon() or electron_passing_carbon(), nb_electrons)
+        electrons_2_copper_horizontal = compute_electrons_passing(
+            lambda: electron_passing_carbon() and electron_passing_carbon(), nb_electrons)
+        graph_of = lambda array: lambda x: array[round(x)]
+        graph_copper = axes.plot(graph_of(electrons_copper), x_range=[0, nb_electrons], dt=1, use_smoothing=False,
+                                 color=ORANGE)
+        graph_copper_vertical = axes.plot(graph_of(electrons_2_copper_vertical), x_range=[0, nb_electrons], dt=1,
+                                          use_smoothing=False,
+                                          color=GREEN)
+        graph_copper_horizontal = axes.plot(graph_of(electrons_2_copper_horizontal), x_range=[0, nb_electrons], dt=1,
+                                            use_smoothing=False,
+                                            color=RED)
+        labels = axes.get_axis_labels(x_label=Tex("Électrons envoyés"), y_label=Tex("Électrons reçus"))
+        result_copper = MathTex(electrons_copper[nb_electrons]).next_to(graph_copper.points[-1], buff=0.1)
+        result_copper_vertical = MathTex(electrons_2_copper_vertical[nb_electrons]).next_to(
+            graph_copper_vertical.points[-1], buff=0.1)
+        result_copper_horizontal = MathTex(electrons_2_copper_horizontal[nb_electrons]).next_to(
+            graph_copper_horizontal.points[-1], buff=0.1)
+        with self.my_voiceover(
+                f"""Comme précédement, on va essayer de faire passer {nb_electrons} et comparer les courbes""") as traker:
+            self.play(Create(axes), Create(labels), run_time=traker.duration)
+        with self.my_voiceover(
+                f"""On va tracer la simulation atome en orange, l'epaisseur en vert et la longueur en rouge""") as traker:
+            self.play(FadeIn(VGroup(Tex("Atome", color=ORANGE), Tex(r"Épaisseur", color=GREEN),
+                                    Tex("Longueur", color=RED))
+                             .arrange_in_grid(3, 1, col_alignments="l")
+                             .next_to(axes[1].get_end(), RIGHT + DOWN, buff=1)
+                             ),
+                      run_time=traker.duration)
+        with self.my_voiceover(
+                f"""La simulation avec un atome laisse passer {result_copper} éléctrons, ce qui est proche de notre simulation précédente""") as traker:
+            self.play(Create(graph_copper), FadeIn(result_copper, rate_func=rate_functions.ease_in_quart),
+                      run_time=traker.duration)
+        with self.my_voiceover(
+                f"""La simulation avec deux atomes disposées en epaisseur laisse passer {result_copper_vertical} électrons""") as traker:
+            self.play(Create(graph_copper_vertical),
+                      FadeIn(result_copper_vertical, rate_func=rate_functions.ease_in_quart),
+                      run_time=traker.duration)
+        with self.my_voiceover(
+                f"""La simulation avec deux atomes disposées en longueur laisse passer {result_copper_horizontal} électrons""") as traker:
+            self.play(Create(graph_copper_horizontal),
+                      FadeIn(result_copper_horizontal, rate_func=rate_functions.ease_in_quart),
+                      run_time=traker.duration)
+        with self.my_voiceover(
+                f"""Donc l'épaisseur a l'air de réduire la résistance et la longueur a l'air de l'augmenter""") as traker:
+            self.wait(traker.duration)
+        with self.my_voiceover(
+                f"""Maintenant qu'on a ça en tête, je te propose de regarder la formule qui permet de calculer une résistance""") as traker:
+            self.play(*[FadeOut(o) for o in self.mobjects], run_time=traker.duration)
+        self.next_section(skip_animations=section_done)
+        r_eq = MathTex("R", " = ", r"\rho", *my_frac(["l"], ["A"]))
+        with self.my_voiceover(
+                f"""R, la valeur de notre résistance, est égale à """) as traker:
+            self.play(FadeIn(r_eq[:2]), run_time=traker.duration)
+        with self.my_voiceover(
+                f"""Rho, la résistivité de la matière qu'on utilise""") as traker:
+            self.play(FadeIn(r_eq[2]), run_time=traker.duration)
+        with self.my_voiceover(
+                f"""fois l sur A""") as traker:
+            self.play(FadeIn(r_eq[3:]), run_time=traker.duration)
+        self.next_section(skip_animations=section_done)
+        with self.my_voiceover(
+                f"""ou l est la longueur de la résistance""") as traker:
+            self.play(Circumscribe(r_eq.get_part_by_tex("l")), run_time=traker.duration)
+        with self.my_voiceover(
+                f"""et A est l'air d'une coupe de la résistance. Dit autrement, son épaisseur.""") as traker:
+            self.play(Circumscribe(r_eq.get_part_by_tex("A")), run_time=traker.duration)
+        self.next_section(skip_animations=section_done)
+        with self.my_voiceover(
+                f"""Dit autrement, plus une résistance est longue, plus elle résiste et plus elle est épaisse, moins elle résiste.""") as traker:
+            self.play(*[FadeOut(o) for o in self.mobjects], run_time=traker.duration)
 
 
 if __name__ == "__main__":
     main(["-pql",
           # "--disable_caching",
           __file__,
+          "Resistance"
           ], prog_name='invoked-command')
