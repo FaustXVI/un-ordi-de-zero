@@ -42,40 +42,76 @@ class Shell(VGroup):
     def get_electron(self, n):
         return self.electrons[n]
 
+    def electron_position_in(self, indexTarget, duration):
+        return self.get_electron(indexTarget).copy() \
+            .rotate(duration * PI, about_point=self.shell.get_center()) \
+            .get_center()
+
+    def get_any_electron_index(self):
+        return np.random.choice([i for i, o in enumerate(self.opacities) if o.get_value() == 1], 1)[0]
+
+    def get_any_free_electron_spot_index(self):
+        return np.random.choice([i for i, o in enumerate(self.opacities) if o.get_value() == 0], 1)[0]
+
 
 def compute_electrons_passing(random_result, number_sent):
     return [0, *accumulate([random_result() for _ in range(number_sent + 1)], operator.add)]
 
 
-def refuse_electron(duration, entry_point, indexTarget, shell):
+def refuse_electron(duration, start_point, indexTarget, shell):
     free_electron = Electron().move_to(entry_point)
     p = shell.get_electron(indexTarget).copy().rotate(duration * PI / 2,
                                                       about_point=shell.get_center()).get_center()
-    path = Line(entry_point, p + (LEFT * 0.5))
-    return MoveAlongPath(free_electron, path, rate_func=there_and_back, run_time=duration)
+    return Succession(
+        MoveAlongPath(free_electron, Line(start_point, p + (LEFT * 0.5)), run_time=duration / 2),
+        MoveAlongPath(free_electron, Line(p + (LEFT * 0.5), entry_point), run_time=duration / 2)
+    )
+
+
+def electron_leaving_animation(shell, out_point):
+    def animate(duration, lag):
+        index_ejected = shell.get_any_electron_index()
+        ejected = shell.electron_position_in(index_ejected, lag)
+        pathLeaving = Line(ejected, out_point)
+        free_electron = Electron().move_to(entry_point)
+        return Succession(Wait(0.00001),
+                          shell.opacities[index_ejected].animate(run_time=0).set_value(0),
+                          MoveAlongPath(free_electron, pathLeaving, rate_func=linear,
+                                        run_time=duration),
+                          free_electron.animate(run_time=0).set_opacity(0)
+                          )
+
+    return animate
+
+
+def electron_entering_animation(indexTarget, shell, start_point):
+    def animate(duration, lag):
+        free_electron = Electron().move_to(entry_point)
+        target = shell.electron_position_in(indexTarget, lag + duration)
+        pathGoing = Line(start_point, target)
+        return Succession(MoveAlongPath(free_electron, pathGoing, rate_func=linear, run_time=duration),
+                          shell.opacities[indexTarget].animate(run_time=0).set_value(1),
+                          free_electron.animate(run_time=0).to_edge(LEFT).shift(LEFT))
+
+    return animate
+
+
+def electrons_chaining_animation(animations, duration):
+    lag_ratio = 0.7
+    nb_animations = len(animations)
+    each_duration = duration / nb_animations
+    return AnimationGroup(
+        *[a(each_duration, (max(0, i - 1) * each_duration) + (i * lag_ratio * each_duration)) for (i, a) in
+          enumerate(animations)],
+        lag_ratio=lag_ratio)
 
 
 def passing_electron(duration, entry_point, exit_point, indexTarget, shell):
-    free_electron = Electron().move_to(entry_point)
-    free_electron_2 = free_electron.copy()
-    indexEjected = np.random.choice([i for i, o in enumerate(shell.opacities) if o.get_value() == 1], 1)[0]
-    eTarget = shell.get_electron(indexTarget)
-    lag_ratio = 0.7
-    target = eTarget.copy().rotate(duration / 2 * PI,
-                                   about_point=shell.get_center()).get_center()
-    pathGoing = Line(entry_point, target)
-    eEjected = shell.get_electron(indexEjected)
-    ejected = eEjected.copy().rotate(lag_ratio * duration / 2 * PI,
-                                     about_point=shell.get_center()).get_center()
-    pathLeaving = Line(ejected, exit_point)
-    ejectionAnimation = AnimationGroup(
-        Succession(MoveAlongPath(free_electron, pathGoing, rate_func=linear, run_time=duration / 2),
-                   shell.opacities[indexTarget].animate(run_time=0).set_value(1),
-                   free_electron.animate(run_time=0).to_edge(LEFT).shift(LEFT)),
-        Succession(Wait(0.00001), shell.opacities[indexEjected].animate(run_time=0).set_value(0),
-                   MoveAlongPath(free_electron_2, pathLeaving, rate_func=linear, run_time=duration / 2)),
-        lag_ratio=lag_ratio)
-    return ejectionAnimation
+    return electrons_chaining_animation(
+        [
+            electron_entering_animation(indexTarget, shell, entry_point),
+            electron_leaving_animation(shell, exit_point)
+        ], duration)
 
 
 def try_eject_electron(duration, entry_point, exit_point, indexTarget, shell):
@@ -384,14 +420,18 @@ class Resistance(MyScene):
             self.wait(traker.duration)
         with self.my_voiceover(
                 f"""Soit l'electron passe par l'atome du dessus et on reçoit un éléctron de l'autre côté""") as traker:
-            self.play(passing_electron(traker.duration, entry_point, exit_point, 1, carbon1_shell))
+            self.play(passing_electron(traker.duration, entry_point, exit_point,
+                                       carbon1_shell.get_any_free_electron_spot_index(), carbon1_shell))
         with self.my_voiceover(
                 f"""Soit il passe par l'atome du dessous et on reçoit un éléctron de l'autre côté""") as traker:
-            self.play(passing_electron(traker.duration, entry_point, exit_point, 1, carbon2_shell))
+            self.play(passing_electron(traker.duration, entry_point, exit_point,
+                                       carbon2_shell.get_any_free_electron_spot_index(), carbon2_shell))
         with self.my_voiceover(
                 f"""Soit il se fait rejeter par les deux atomes du dessous et on ne reçoit rien de l'autre côté""") as traker:
-            self.play(refuse_electron(traker.duration / 2, entry_point, 1, carbon1_shell))
-            self.play(refuse_electron(traker.duration / 2, entry_point, 1, carbon2_shell))
+            self.play(refuse_electron(traker.duration / 2, entry_point, carbon1_shell.get_any_electron_index(),
+                                      carbon1_shell))
+            self.play(refuse_electron(traker.duration / 2, entry_point, carbon2_shell.get_any_electron_index(),
+                                      carbon2_shell))
         with self.my_voiceover(
                 f"""On appellera cette simulation, la simulation «épaisseur»""") as traker:
             self.wait(traker.duration)
@@ -406,14 +446,36 @@ class Resistance(MyScene):
                 f"""Quand on envoie un éléctron il y a aussi trois scénarios possible""") as traker:
             self.wait(traker.duration)
         with self.my_voiceover(
-                f"""Soit il se fait rejeter par le premier atome et on reçoit un éléctron de l'autre côté""") as traker:
-            self.play(refuse_electron(traker.duration, entry_point, 1, carbon1_shell))
+                f"""Soit il se fait rejeter par le premier atome et on reçoit rien de l'autre côté""") as traker:
+            self.play(
+                refuse_electron(traker.duration, entry_point, carbon1_shell.get_any_electron_index(), carbon1_shell))
         with self.my_voiceover(
-                f"""Soit l'électron du premier atome fait rejeter par le second atome et on reçoit un éléctron de l'autre côté""") as traker:
-            self.play(refuse_electron(traker.duration, entry_point, 2, carbon1_shell))
+                f"""Soit l'électron du premier atome se fait rejeter par le second atome et on ne reçoit rien de l'autre côté""") as traker:
+            rejection_position = carbon2_shell.electron_position_in(carbon2_shell.get_any_electron_index(),
+                                                                    1.7 * (traker.duration / 3)) + LEFT * 0.5
+            free_e = Electron().move_to(entry_point)
+            self.play(electrons_chaining_animation(
+                [
+                    electron_entering_animation(carbon1_shell.get_any_free_electron_spot_index(), carbon1_shell,
+                                                entry_point),
+                    lambda d, l: Succession(electron_leaving_animation(carbon1_shell, rejection_position)(d / 2, l),
+                                            Succession(Wait(0.0001),
+                                                       MoveAlongPath(free_e, Line(rejection_position, entry_point),
+                                                                     run_time=d / 2)))
+                ], traker.duration))
         with self.my_voiceover(
                 f"""Soit les deux atomes laissent passer les éléctrons et on reçoit un électron de l'autre côté""") as traker:
-            self.wait(traker.duration)
+            new_c2_electron = carbon2_shell.get_any_free_electron_spot_index()
+            self.play(electrons_chaining_animation(
+                [
+                    electron_entering_animation(carbon1_shell.get_any_free_electron_spot_index(), carbon1_shell,
+                                                entry_point),
+                    lambda d, l: Succession(
+                        electron_leaving_animation(carbon1_shell, carbon2_shell.electron_position_in(
+                            new_c2_electron, l + d))(d, l),
+                        carbon2_shell.opacities[new_c2_electron].animate(run_time=0).set_value(1)),
+                    electron_leaving_animation(carbon2_shell, exit_point),
+                ], traker.duration))
         with self.my_voiceover(
                 f"""On appellera cette simulation, la simulation «longueur»""") as traker:
             self.wait(traker.duration)
