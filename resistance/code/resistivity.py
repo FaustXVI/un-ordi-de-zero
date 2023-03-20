@@ -97,7 +97,7 @@ def electron_entering_animation(indexTarget, shell, start_point):
 
 
 def electrons_chaining_animation(animations, duration):
-    lag_ratio = 0.7
+    lag_ratio = 1
     nb_animations = len(animations)
     each_duration = duration / nb_animations
     return AnimationGroup(
@@ -187,7 +187,8 @@ class Resistivity(MyScene):
         self.add(*shells)
         self.next_section(skip_animations=section_done)
         with self.my_voiceover(
-                """Bon, pour commencer, faut garder en tête que je vais simplifier pas mal de choses. Ceci dit, ce que je vais te montrer est suffisament correct pour comprendre le concept de résistivité""") as traker:
+                """Bon, pour commencer, faut garder en tête que je vais simplifier pas mal de choses, ne serait-ce que parce que les éléctrons sont des objets quantiques qui n'ont rien à voir avec ce qu'on a l'habitude de voir.\n
+                Ceci étant dit, ce que je vais te montrer est suffisament correct pour comprendre le concept de résistivité""") as traker:
             text = Text(r"Simplifications devant !")
             self.play(Succession(FadeIn(text), Wait(), FadeOut(text)), run_time=traker.duration)
         self.next_section(skip_animations=section_done)
@@ -206,11 +207,11 @@ class Resistivity(MyScene):
         with self.my_voiceover(
                 """La dernière couche d'électrons, celle qui est le plus à l'exterieur, est appelé la couche de valence.""") as traker:
             self.play(Indicate(shells[-1], scale_factor=1.5), run_time=traker.duration)
-        self.next_section(skip_animations=section_done)
+        self.next_section(skip_animations=False)
         with self.my_voiceover(
                 """C'est la seule qui va nous interesser, donc à partir de maintenant, c'est la seule qu'on va représenter""") as traker:
             self.play(*[s.fade_out() for s in shells[:-1]], run_time=traker.duration * 0.6)
-            self.play(shells[-1].animate.scale(2 / 3), run_time=traker.duration * 0.4)
+            self.play(shells[-1].shell.animate.scale(2 / 3), run_time=traker.duration * 0.4)
         self.next_section(skip_animations=section_done)
         with self.my_voiceover(
                 """Pour la suite, nous allons regarder un atome de cuivre qui a la particularité de n'avoir qu'un seul electron sur sa couche de valance""") as traker:
@@ -228,12 +229,12 @@ class Resistivity(MyScene):
             self.wait(traker.duration)
         self.next_section(skip_animations=section_done)
         with self.my_voiceover(
-                """Soit il arrive à un endroit où il y a déjà un électron. Et dans ce cas l'électron déjà en place repousse l'électron libre""") as traker:
+                """Soit il arrive avec trop peu d'énergie et dans ce cas le ou les électrons déjà en place repousse l'électron libre""") as traker:
             self.play(
                 refuse_electron(traker.duration, screen.get_edge_center(LEFT) + LEFT, 0, copper_valance_shell))
         self.next_section(skip_animations=section_done)
         with self.my_voiceover(
-                """Soit il arrive à un endroit où il n'y a pas d'électron et se met sur la couche de valance""") as traker:
+                """Soit il arrive avec suffisament d'énergie et se met sur la couche de valance""") as traker:
             p = copper_valance_shell.get_electron(4).copy().rotate(traker.duration * PI,
                                                                    about_point=copper_valance_shell.get_center()).get_center()
             path = Line(screen.get_edge_center(LEFT) + LEFT, p)
@@ -242,7 +243,7 @@ class Resistivity(MyScene):
             copper_valance_shell.opacities[4].set_value(1)
         self.next_section(skip_animations=section_done)
         with self.my_voiceover(
-                """L'atome a alors un electron en trop et va rejeter l'autre électron de sa couche de valance""") as traker:
+                """L'arrivée de l'électron vas alors pousser en éléctron de la couche de valance""") as traker:
             p = copper_valance_shell.get_electron(0).get_center()
             path = Line(p, screen.get_edge_center(RIGHT) + RIGHT)
             free_electron.move_to(p)
@@ -435,12 +436,12 @@ class Resistance(MyScene):
         with self.my_voiceover(
                 f"""On appellera cette simulation, la simulation «épaisseur»""") as traker:
             self.wait(traker.duration)
-        self.next_section(skip_animations=False)
+        self.next_section(skip_animations=section_done)
         with self.my_voiceover(
                 f"""Dans la troisième simulation, on va ajouter de la longueur en mettant le second atome après le premier""") as traker:
             self.play(
-                VGroup(carbon1_nucleus, carbon1_shell).animate.shift(DOWN * 1.5 + LEFT * 1.5),
-                VGroup(carbon2_nucleus, carbon2_shell).animate.shift(UP * 1.5 + RIGHT * 1.5)
+                VGroup(carbon1_nucleus, carbon1_shell).animate.shift(DOWN * 1.5 + LEFT * 2.5),
+                VGroup(carbon2_nucleus, carbon2_shell).animate.shift(UP * 1.5 + RIGHT * 2.5)
                 , run_time=traker.duration)
         with self.my_voiceover(
                 f"""Quand on envoie un éléctron il y a aussi trois scénarios possible""") as traker:
@@ -452,7 +453,7 @@ class Resistance(MyScene):
         with self.my_voiceover(
                 f"""Soit l'électron du premier atome se fait rejeter par le second atome et on ne reçoit rien de l'autre côté""") as traker:
             rejection_position = carbon2_shell.electron_position_in(carbon2_shell.get_any_electron_index(),
-                                                                    1.7 * (traker.duration / 3)) + LEFT * 0.5
+                                                                    2 * (traker.duration / 3)) + LEFT * 0.5
             free_e = Electron().move_to(entry_point)
             self.play(electrons_chaining_animation(
                 [
@@ -479,6 +480,7 @@ class Resistance(MyScene):
         with self.my_voiceover(
                 f"""On appellera cette simulation, la simulation «longueur»""") as traker:
             self.wait(traker.duration)
+        self.play(*[o.fade_out() for o in [carbon1_shell, carbon2_shell]])
         self.next_section(skip_animations=section_done)
         axes = Axes(x_range=[0, nb_electrons, nb_electrons / 10],
                     y_range=[0, nb_electrons, nb_electrons / 10],
@@ -534,8 +536,47 @@ class Resistance(MyScene):
         with self.my_voiceover(
                 f"""Donc l'épaisseur a l'air de réduire la résistance et la longueur a l'air de l'augmenter""") as traker:
             self.wait(traker.duration)
+        self.play(*[FadeOut(o) for o in self.mobjects], run_time=1)
+        self.next_section(skip_animations=False)
+        vulgarised_conductivity_formula = MathTex(r"\textit{Conductivité}", " = ",
+                                                  *my_frac([r"\textit{Éléctrons reçus}"],
+                                                           [r"\textit{Éléctrons envoyés}"]))
+        vulgarised_formula = MathTex(r"\textit{Résistance}", "=",
+                                     *my_frac([r"\textit{Éléctrons envoyés}"], [r"\textit{Éléctrons reçus}"]))
+        vulgarised_formula_I = MathTex(r"\textit{Résistance}", "=",
+                                       *my_frac([r"\textit{Éléctrons envoyés}"], [r"I"]))
+        vulgarised_formula_I_U = MathTex(r"\textit{Résistance}", "=",
+                                         *my_frac([r"U"], [r"I"]))
+        vulgarised_R = MathTex(r"R", "=",
+                               *my_frac([r"U"], [r"I"]))
+        ohm_law = MathTex(r"U", "=", r"R", r"\times", r"I")
         with self.my_voiceover(
-                f"""Maintenant qu'on a ça en tête, je te propose de regarder la formule qui permet de calculer une résistance""") as traker:
+                f"""Tu remarqueras, que quand je te parle de conductivité, on utilise toujours la même formule : conductivité = nb éléctrons reçus sur nb éléctrons envoyés""") as traker:
+            self.play(FadeIn(vulgarised_conductivity_formula), run_time=traker.duration)
+        with self.my_voiceover(
+                f"""Et pour rappel, la résistance, c'est l'inverse de la conductivité, donc la résistance est égale aux nb d'éléctrons envoyés sur le nb d'éléctrons reçus""") as traker:
+            self.play(TransformMatchingTex(vulgarised_conductivity_formula, vulgarised_formula,
+                                           key_map={r"\textit{Conductivité}": r"\textit{Résistance}"}),
+                      run_time=traker.duration)
+        with self.my_voiceover(
+                f"""Or on sait déjà que le nombre d'éléctrons reçus, on appelle ça l'intensité et on la note I""") as traker:
+            self.play(TransformMatchingTex(vulgarised_formula, vulgarised_formula_I, transform_mismatches=True),
+                      run_time=traker.duration)
+        with self.my_voiceover(
+                f"""Le nombre d'éléctrons envoyé, on appelle ça la tension, et on la note U""") as traker:
+            self.play(TransformMatchingTex(vulgarised_formula_I, vulgarised_formula_I_U, transform_mismatches=True),
+                      run_time=traker.duration)
+        with self.my_voiceover(f"""On obtiens donc R = U sur I""") as traker:
+            self.play(TransformMatchingTex(vulgarised_formula_I_U, vulgarised_R, transform_mismatches=True),
+                      run_time=traker.duration)
+        with self.my_voiceover(f"""Ce qu'on a plus l'habitude de voir sous la forme U = R fois I""") as traker:
+            self.play(TransformMatchingTex(vulgarised_R, ohm_law, transform_mismatches=True),
+                      run_time=traker.duration)
+        with self.my_voiceover(
+                f"""Cette formule s'appelle la loi d'ohm, et c'est l'une des plus importantes en éléctronique. Retiens là bien.""") as traker:
+            self.wait(traker.duration)
+        with self.my_voiceover(
+                f"""Revenons à nos moutons et regardons la formule qui permet de calculer la résistance d'une vrai résistance physique""") as traker:
             self.play(*[FadeOut(o) for o in self.mobjects], run_time=traker.duration)
         self.next_section(skip_animations=section_done)
         r_eq = MathTex("R", " = ", r"\rho", *my_frac(["l"], ["A"]))
@@ -558,12 +599,15 @@ class Resistance(MyScene):
         self.next_section(skip_animations=section_done)
         with self.my_voiceover(
                 f"""Dit autrement, plus une résistance est longue, plus elle résiste et plus elle est épaisse, moins elle résiste.""") as traker:
-            self.play(*[FadeOut(o) for o in self.mobjects], run_time=traker.duration)
+            self.wait(traker.duration)
+        self.play(*[FadeOut(o) for o in self.mobjects], run_time=2)
 
 
 if __name__ == "__main__":
     main(["-pql",
           # "--disable_caching",
           __file__,
+          # "--write_all",
+          # "Resistivity"
           "Resistance"
           ], prog_name='invoked-command')
