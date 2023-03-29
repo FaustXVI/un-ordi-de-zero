@@ -8,7 +8,7 @@ import locale
 
 locale.setlocale(locale.LC_ALL, 'fr_FR')
 
-section_done = True
+section_done = False
 
 
 class Electron(Dot):
@@ -157,7 +157,7 @@ nb_electrons = 10000
 class Resistivity(MyScene):
 
     def __init__(self):
-        super().__init__(recording=False)
+        super().__init__(recording=True)
 
     def construct(self):
         screen = FullScreenRectangle()
@@ -193,10 +193,10 @@ class Resistivity(MyScene):
             self.play(Succession(FadeIn(text), Wait(), FadeOut(text)), run_time=traker.duration)
         self.next_section(skip_animations=section_done)
         with self.my_voiceover(
-                "Un atome, c'est composé d'un noyeau qu'on va représenter par la lettre de l'élément en question, ici l'hydrogène") as traker:
+                "Un atome, c'est composé d'un noyeau qu'on va représenter par le symbole de l'élément en question, ici l'hydrogène") as traker:
             self.play(FadeIn(nucleus), run_time=traker.duration)
         self.next_section(skip_animations=section_done)
-        with self.my_voiceover("Autour du noyau, il y a des électrons qui tournent") as traker:
+        with self.my_voiceover("et autour du noyau, il y a des électrons qui tournent") as traker:
             self.play(firstShell.fade_electron_in(0), run_time=traker.duration)
         self.next_section(skip_animations=section_done)
         with self.my_voiceover("""À chaque fois qu'on passe à un atome plus lourd, son besoin en éléctrons grandit.\n
@@ -214,7 +214,7 @@ class Resistivity(MyScene):
             self.play(shells[-1].shell.animate.scale(2 / 3), run_time=traker.duration * 0.4)
         self.next_section(skip_animations=section_done)
         with self.my_voiceover(
-                """Pour la suite, nous allons regarder un atome de cuivre qui a la particularité de n'avoir qu'un seul electron sur sa couche de valance""") as traker:
+                """Interessons nous à l'atome de cuivre qui a la particularité de n'avoir qu'un seul electron sur sa couche de valance""") as traker:
             self.add(copper_valance_shell)
             self.play(Succession(AnimationGroup(shells[-1].fade_out(), FadeOut(nucleus)),
                                  AnimationGroup(FadeIn(copper), copper_valance_shell.fade_electron_in(0))),
@@ -227,37 +227,15 @@ class Resistivity(MyScene):
             free_electron.save_state()
             self.add(free_electron)
             self.wait(traker.duration)
-        self.next_section(skip_animations=section_done)
+        self.next_section(skip_animations=False)
+        with self.my_voiceover(
+                """Soit il arrive avec suffisament d'énergie, pousse un electron hors de la couche de valance et se met dessus""") as traker:
+            self.play(passing_electron(traker.duration, entry_point, exit_point, 4, copper_valance_shell))
+        self.next_section(skip_animations=False)
         with self.my_voiceover(
                 """Soit il arrive avec trop peu d'énergie et dans ce cas le ou les électrons déjà en place repousse l'électron libre""") as traker:
             self.play(
-                refuse_electron(traker.duration, screen.get_edge_center(LEFT) + LEFT, 0, copper_valance_shell))
-        self.next_section(skip_animations=section_done)
-        with self.my_voiceover(
-                """Soit il arrive avec suffisament d'énergie et se met sur la couche de valance""") as traker:
-            p = copper_valance_shell.get_electron(4).copy().rotate(traker.duration * PI,
-                                                                   about_point=copper_valance_shell.get_center()).get_center()
-            path = Line(screen.get_edge_center(LEFT) + LEFT, p)
-            self.play(MoveAlongPath(free_electron, path, rate_func=linear), run_time=traker.duration)
-            free_electron.to_edge(LEFT).shift(LEFT)
-            copper_valance_shell.opacities[4].set_value(1)
-        self.next_section(skip_animations=section_done)
-        with self.my_voiceover(
-                """L'arrivée de l'électron vas alors pousser en éléctron de la couche de valance""") as traker:
-            p = copper_valance_shell.get_electron(0).get_center()
-            path = Line(p, screen.get_edge_center(RIGHT) + RIGHT)
-            free_electron.move_to(p)
-            copper_valance_shell.opacities[0].set_value(0)
-            self.play(MoveAlongPath(free_electron, path, rate_func=linear), run_time=traker.duration)
-
-        self.next_section(skip_animations=section_done)
-        with self.my_voiceover(
-                """Maintenant, il faut garder en tête que c'est comme si un electron en poussait un autre. Sans pause, ça ressemble à ça.""") as traker:
-            self.wait(traker.duration)
-        self.next_section(skip_animations=section_done)
-        entry_point = screen.get_edge_center(LEFT) + LEFT
-        exit_point = screen.get_edge_center(RIGHT) + RIGHT
-        self.play(passing_electron(3, entry_point, exit_point, 0, copper_valance_shell))
+                refuse_electron(traker.duration, entry_point, 0, copper_valance_shell))
 
         self.next_section(skip_animations=section_done)
         with self.my_voiceover(
@@ -293,11 +271,11 @@ class Resistivity(MyScene):
         self.next_section(skip_animations=section_done)
         with self.my_voiceover(f"""Le cuivre a laissé passer {nb_copper_pass.get_value()} éléctrons !""") as traker:
             self.play(Indicate(nb_copper_pass, scale_factor=2), run_time=traker.duration)
-        with self.my_voiceover(f"""Et le carbon en a laissé passer seulement {nb_carbon_pass.get_value()}""") as traker:
+        with self.my_voiceover(f"""Et le carbon en a laissé passer seulement {nb_carbon_pass.get_value()} !""") as traker:
             self.play(Indicate(nb_carbon_pass, scale_factor=2), run_time=traker.duration)
         with self.my_voiceover(
                 f"""On commence à voir quelque chose d'interessant mais là, c'est une simulation avec seulement {nb_trials} electrons.\n
-                Ça sera bien d'avoir plus d'éléctrons pour valider.""") as traker:
+                Ça sera bien d'avoir plus d'éléctrons pour valider !""") as traker:
             self.play(AnimationGroup(copper_valance_shell.fade_out(), carbon_valance_shell.fade_out(),
                                      FadeOut(copper, carbon, nb_copper_pass, nb_carbon_pass, nb_send),
                                      rate_func=rate_functions.ease_in_expo), run_time=traker.duration)
@@ -322,7 +300,7 @@ class Resistivity(MyScene):
         carbon_text = MathTex("Carbone", color=RED).next_to(copper_text, DOWN)
         labels = axes.get_axis_labels(x_label=Tex("Électrons envoyés"), y_label=Tex("Électrons reçus"))
         with self.my_voiceover(
-                f"""En absisse, on va mettre le nombre d'electrons qu'on va envoyer et on va monter jusqu'à {nb_electrons}""") as traker:
+                f"""En absisse, on va mettre le nombre d'electrons qu'on va envoyer""") as traker:
             self.play(Create(axes[0]), Create(labels[0]), run_time=traker.duration)
         with self.my_voiceover(
                 f"""En ordonnée, on va le nombre d'electrons qui arrivent à passer""") as traker:
@@ -334,7 +312,7 @@ class Resistivity(MyScene):
                       run_time=traker.duration)
         nb_copper_electrons = MathTex(electrons_copper[nb_electrons])
         with self.my_voiceover(
-                f"""On vois que le cuivre fin loin devant avec {electrons_copper[nb_electrons]} électrons qui passent""") as traker:
+                f"""On vois que le cuivre fini loin devant avec {electrons_copper[nb_electrons]} électrons qui passent""") as traker:
             result_copper = nb_copper_electrons.next_to(graph_copper.points[-1], buff=0.1)
             self.play(FadeIn(result_copper), run_time=traker.duration)
         nb_carbon_electrons = MathTex(electrons_carbon[nb_electrons])
@@ -351,10 +329,11 @@ class Resistivity(MyScene):
         with self.my_voiceover(
                 f"""Si on note sigma la conductivité d'un élément, alors, dans notre simulation, le cuivre a une conductivité de {electrons_copper[nb_electrons]} sur {nb_electrons}
         et le carbone a une conductivité de {electrons_carbon[nb_electrons]} / {nb_electrons}""") as traker:
-            self.play(*[FadeOut(o, rate_func=rate_functions.ease_out_expo) for o in
+            self.play(*[FadeOut(o,rate_func=rate_functions.exponential_decay,run_time=traker.duration/2) for o in
                         [axes, graph_copper, graph_carbon, labels]],
                       TransformMatchingTex(Group(nb_copper_electrons, copper_text), conductivity_copper),
                       TransformMatchingTex(Group(nb_carbon_electrons, carbon_text), conductivity_carbon),
+                      rate_func=rate_functions.ease_out_expo,
                       run_time=traker.duration)
         resistivity_copper = MathTex(r"\rho", "_{", "Cuivre", "}", "=",
                                      *my_frac([nb_electrons], [electrons_copper[nb_electrons]]))
@@ -386,13 +365,14 @@ class Resistivity(MyScene):
                 run_time=traker.duration)
         self.next_section(skip_animations=False)
         with self.my_voiceover(
-                f"""On voit alors que le carbon a une résistivité plus grande que le cuivre, ce qui est effectivement le cas dans la réalité mais avec des valeurs différentes""") as traker:
+                f"""On voit alors que le carbon a une résistivité plus grande que le cuivre, ce qui est effectivement le cas dans la réalité même si les valeurs sont différentes""") as traker:
             self.play(*[FadeOut(o, rate_func=rush_into) for o in self.mobjects], run_time=traker.duration)
+        self.wait(2)
 
 
 class Resistance(MyScene):
     def __init__(self):
-        super().__init__(recording=False)
+        super().__init__(recording=True)
 
     def construct(self):
         self.next_section(skip_animations=section_done)
@@ -447,7 +427,7 @@ class Resistance(MyScene):
                 f"""Quand on envoie un éléctron il y a aussi trois scénarios possible""") as traker:
             self.wait(traker.duration)
         with self.my_voiceover(
-                f"""Soit il se fait rejeter par le premier atome et on reçoit rien de l'autre côté""") as traker:
+                f"""Soit il se fait rejeter par le premier atome et on ne reçoit rien de l'autre côté""") as traker:
             self.play(
                 refuse_electron(traker.duration, entry_point, carbon1_shell.get_any_electron_index(), carbon1_shell))
         with self.my_voiceover(
@@ -480,7 +460,8 @@ class Resistance(MyScene):
         with self.my_voiceover(
                 f"""On appellera cette simulation, la simulation «longueur»""") as traker:
             self.wait(traker.duration)
-        self.play(*[o.fade_out() for o in [carbon1_shell, carbon2_shell]])
+        self.play(*[o.fade_out() for o in [carbon1_shell, carbon2_shell]], FadeOut(carbon1_nucleus),
+                  FadeOut(carbon2_nucleus))
         self.next_section(skip_animations=section_done)
         axes = Axes(x_range=[0, nb_electrons, nb_electrons / 10],
                     y_range=[0, nb_electrons, nb_electrons / 10],
@@ -520,7 +501,7 @@ class Resistance(MyScene):
                              ),
                       run_time=traker.duration)
         with self.my_voiceover(
-                f"""La simulation avec un atome laisse passer {result_copper} éléctrons, ce qui est proche de notre simulation précédente""") as traker:
+                f"""La simulation avec un atome laisse passer {result_copper} éléctrons, ce qui est très proche de notre simulation précédente""") as traker:
             self.play(Create(graph_copper), FadeIn(result_copper, rate_func=rate_functions.ease_in_quart),
                       run_time=traker.duration)
         with self.my_voiceover(
@@ -534,7 +515,7 @@ class Resistance(MyScene):
                       FadeIn(result_copper_horizontal, rate_func=rate_functions.ease_in_quart),
                       run_time=traker.duration)
         with self.my_voiceover(
-                f"""Donc l'épaisseur a l'air de réduire la résistance et la longueur a l'air de l'augmenter""") as traker:
+                f"""Donc l'épaisseur a l'air d'augmenter la conductivité et la longueur a l'air de la réduire""") as traker:
             self.wait(traker.duration)
         self.play(*[FadeOut(o) for o in self.mobjects], run_time=1)
         self.next_section(skip_animations=False)
@@ -573,13 +554,14 @@ class Resistance(MyScene):
             self.play(TransformMatchingTex(vulgarised_R, ohm_law, transform_mismatches=True),
                       run_time=traker.duration)
         with self.my_voiceover(
-                f"""Cette formule s'appelle la loi d'ohm, et c'est l'une des plus importantes en éléctronique. Retiens là bien.""") as traker:
+                f"""Cette formule s'appelle la loi d'ohm, et c'est l'une des plus importantes en éléctronique.\n
+                Retiens là bien, on aura l'occasion d'en reparler et on l'utilisera souvent.""") as traker:
             self.wait(traker.duration)
         with self.my_voiceover(
-                f"""Revenons à nos moutons et regardons la formule qui permet de calculer la résistance d'une vrai résistance physique""") as traker:
+                f"""Ce qui nous interesse maintenant, c'est de pouvoir calculer R en fonction des propriétés physique de notre résistance.""") as traker:
             self.play(*[FadeOut(o) for o in self.mobjects], run_time=traker.duration)
         self.next_section(skip_animations=section_done)
-        r_eq = MathTex("R", " = ", r"\rho", *my_frac(["l"], ["A"]))
+        r_eq = MathTex("R", " = ", r"\rho", *my_frac(["l"], ["S"]))
         with self.my_voiceover(
                 f"""R, la valeur de notre résistance, est égale à """) as traker:
             self.play(FadeIn(r_eq[:2]), run_time=traker.duration)
@@ -587,15 +569,15 @@ class Resistance(MyScene):
                 f"""Rho, la résistivité de la matière qu'on utilise""") as traker:
             self.play(FadeIn(r_eq[2]), run_time=traker.duration)
         with self.my_voiceover(
-                f"""fois l sur A""") as traker:
+                f"""fois l sur S""") as traker:
             self.play(FadeIn(r_eq[3:]), run_time=traker.duration)
         self.next_section(skip_animations=section_done)
         with self.my_voiceover(
                 f"""ou l est la longueur de la résistance""") as traker:
             self.play(Circumscribe(r_eq.get_part_by_tex("l")), run_time=traker.duration)
         with self.my_voiceover(
-                f"""et A est l'air d'une coupe de la résistance. Dit autrement, son épaisseur.""") as traker:
-            self.play(Circumscribe(r_eq.get_part_by_tex("A")), run_time=traker.duration)
+                f"""et S est la surface d'une section de la résistance, ce qu'on appelle communement, son épaisseur.""") as traker:
+            self.play(Circumscribe(r_eq.get_part_by_tex("S")), run_time=traker.duration)
         self.next_section(skip_animations=section_done)
         with self.my_voiceover(
                 f"""Dit autrement, plus une résistance est longue, plus elle résiste et plus elle est épaisse, moins elle résiste.""") as traker:
