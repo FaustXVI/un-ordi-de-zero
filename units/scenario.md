@@ -72,6 +72,8 @@ X: Et comment on a résolut le problème ?
 T: En continuant à faire de la recherche en utilisant nos unités étalons !
 X: .............
 T: Avec une bonne avancée technologique, on va découvrir plein de truc.
+
+# Animation ?
 On va découvrir entre autre que ce qu'on appelle de l'éléctricité, ce sont des charges electriques qui se déplacent, et pas forcément des éléctrons. Ils y a aussi les ions (comme à l'intérieur de notre patate) et l'abscence d'electron, ce qu'on appelera des trous. 
 On va aussi décrouvrir que notre patate produit un nombre précis d'électrons par secondes. Par exemple : 1.2483018e+15 electrons. Vu que c'est un grand nombre long à prononcer, on pourrait appeler ça un Xav.
 Enfin, on va découvrir aussi que tous les éléctrons sont identique et qu'il portent tous la même charge.
@@ -80,9 +82,13 @@ On peut alors dire qu'un electron a une charge de 1 / 1.2483018 e+15 Xav.
 
 X: Et ça nous avance à quoi ?
 T: Et bien on vien de trouver une valeur d'une constante de l'univers ! L'astuce maintenant, c'est d'inverser le relation entre l'unité et la constante. La valeur arbitraire est descendu au niveau de la constante. L'unité patate a une nouvelle définition : 1 patate de courant, c'est 1.2483018e+15 éléctrons par seconde soit 1 Xav par seconde.
+
+
 X: Malin ! Ca permet de ne pas toucher au unités au moment du changement mais d'avoir des unités qui sont stables dans le temps !
 T: Exactement ! Maintenant, il ne nous reste plus qu'à convaincre la terre entière d'untiliser notre unité !
 X: Ce qui permettrait à tous les scientifiques de la terre de parler de la même chose !
+
+# Animation ?
 T: C'est ce qu'on appelle le Systeme Internationale d'Unité et ça existe déjà.
 X: Et ça marche comment ?
 T: Il y a deux types d'unités
