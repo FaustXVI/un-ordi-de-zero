@@ -79,6 +79,8 @@ On va aussi décrouvrir que notre patate produit un nombre précis d'électrons 
 Enfin, on va découvrir aussi que tous les éléctrons sont identique et qu'il portent tous la même charge.
 On peut alors dire qu'un electron a une charge de 1 / 1.2483018 e+15 Xav.
 
+# simplifier pour 1.248e+15 ?
+
 
 X: Et ça nous avance à quoi ?
 T: Et bien on vien de trouver une valeur d'une constante de l'univers ! L'astuce maintenant, c'est d'inverser le relation entre l'unité et la constante. La valeur arbitraire est descendu au niveau de la constante. L'unité patate a une nouvelle définition : 1 patate de courant, c'est 1.2483018e+15 éléctrons par seconde soit 1 Xav par seconde.
