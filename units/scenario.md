@@ -112,11 +112,7 @@ X: ça resemble pas mal à la définition de notre patate ça !
 T: oui, et on peut convertir les patates en ampères et inversements car un ampère est égale à 5 kilo-patates et donc une patate fait 0.2 milli-ampères
 X: et spintronics dans tout ça ? ils s'en sorte comment ?
 T: Et bha étonnament très bien ! Si au lieu de compter des charges élémentaires tu comptes des maillons de chaine. Ils ont même définit l'équivalant du Coulomb comme étant 1667 maillons soit 10 metres de chaines. Après, toutes les formules restent les mêmes.
-X: La classe !
-T: L'analogie peut même aller plus loin ! Je te l'ai dit, les éléctrons se poussent les un les autres, comme dans les chaines utilisées dans spintronics, les maillons se poussent les un les autres.
-X: Mais si c'est pareil en éléctronique, ça veut dire que dans une boucle de circuit, l'intensité est toujours la même, quelque soit le point où on mesure ?
-T: Félicitations, tu viens d'intuiter un point essentiel qui nous sera utile sous peu.
-X: Ok, top ! On passe à l'unité suivante ?
+X: La classe ! On passe à l'unité suivante ?
 
 # Volts
 
@@ -159,10 +155,6 @@ X: Et elle viens d'où cette energie donnée aux charges ?
 
 T: De l'energie dépensé pour produire les charges electriques. Dans notre pile à patate, l'energie viens de la réaction chimique qui produit les electrons.
 
-X: Ok, et si j'ai bien compris, vu qu'il y a toujours conservation de l'energie, il y a aussi conservation du voltage ?
-
-T: Exactement ! On aura l'occasion d'en reparler !
-
 X: Ok, il nous reste quoi à voir ?
 
 # Ohms
@@ -179,7 +171,7 @@ X: Ok. Et comme 1 ohm = 1 Volt / 1 ampère, on peut aussi dire que 1 Volt = 1 om
 
 T: Oui, totalement ! On retrouve la loi d'ohm qui dit que la tension est égale à la résistance * l'intensité soit U = RI.
 
-X: Ooooooooooh ! Attends, je crois que je viens de trouver ce qu'il se passe si on met deux résistance l'une après l'autre ! Fait voir tes lunettes !
+X: Ooooooooooh ! Fait voir tes lunettes !
 
 T: Euh, pourquoi ?
 
@@ -187,45 +179,40 @@ X: Parce que je m'apprête à faire une explication théorique et que je veux fa
 
 T: Ok, faut vraiment que je vois ça ! Tiens !
 
-X: Si on mets deux résistance l'une après l'autre, la loi d'ohm nous dit que :
-U1 = R1 I1
-et
-U2 = R2 I2
+X: Vu qu'on a commencé avec des étalons, on sait quel est la tension de notre pile étalon, donc si on met un résistance qu'on ne connait pas, et qu'on mesure l'intensité, on peut calculer R !
 
-T: Exact
+T: Oui, et on obtient un ohm-metre comme ça !
 
-X: Et on a dit que dans une boucle, l'intensité est toujours la même. Donc I1 = I2, qu'on peut noter I.
-On obtient alors :
-U1 = R1 I
-et
-U2 = R2 I
+X: Et inversement, si j'ai une resistance dont je connais la valeur et une pile dont je connais pas l'intensité, en mesurant I, je peux calculer U.
 
-T: Jusque là, tout va bien
+T: Totalement, et c'est le début de ce qu'on appele un volt-metre !
 
-X: On a aussi dit qu'il y a conservation d'energie. Donc la tensions sans les résistances, doit être égale à lai somme tension avec les résistance.
-On obtient :
-U = U1 + U2
+X: On viens de débloquer les deux composants là non ?
 
-T: Yes !
+T: Presque, pour le volt-metre, il nous manque un petit élément dont on parlera plus tard. Mais ta version fonctionne pour mesurer la tension d'une pile. Donc on peut dire que tu as le droit de connaitre la tension des piles que tu utilise.
 
-X: On remplace avec ce qu'on a trouvé avant :
-U = R1 I + R2 I
-on peut factoriser I et on a 
-U = (R1 + R2) I
+X: C'est déjà ça. Et mon ohm metre.
 
-Donc les résistances qui se suivent s'additionnent !
+T: Pour ton ohm metre, tu ha la théorie, mais faut le mettre en pratique maintenant.
 
-T: Ouais top ! Et comment tu vas tester ça ?
-
-X: Je mesure la tension sans résistance. Puis avec une. J'observe une chute d'intensité. Si je met la même résistance derrière, doit y avoir la même chute d'intensité.
-U = R I1
-U = 2R I2
-
-R I1 = 2R I2
-
-I1 = 2 I2
+# Close up ohm metre.
 
 
-# Ok next
+Pile = 1,5 V
+R = 1 000 ohm
+I = 1,5 mA
 
-Next video 
+
+# Unlock
+
+T: Félicitation, tu viens de débolquer le ohm metre! Petite parenthèse, il n'y a pas d'équivalent dans spintronics.
+
+X: Top. Et maintenant, qu'on a vu ça, je me demande ce qu'il se passe quand on met 2 résistance l'une après l'autre dans le circuit !
+
+T: C'est une bonne question, mais je te propose de regarder ça la prochaine fois ok ?
+
+X: Ouais, ok. Un pas
+
+T: Après l'autre.
+
+
