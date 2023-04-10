@@ -44,14 +44,13 @@ class Resistance(Electronic):
         n = 9
         step = 2 / n
 
-        self.pts = [LEFT * 2, LEFT,
-                    *[LEFT * (1 - i * step) + (DOWN if i % 2 == 0 else UP) for i in range(1, round(n / 2) + 1)],
-                    *[RIGHT * (1 - (round(n / 2) - i) * step) + (UP if i % 2 == 0 else DOWN) for i in
+        self.pts = [LEFT, LEFT/2,
+                    *[LEFT/2 * (1 - i * step) + (DOWN/4 if i % 2 == 0 else UP/4) for i in range(1, round(n / 2) + 1)],
+                    *[RIGHT/2 * (1 - (round(n / 2) - i) * step) + (UP/4 if i % 2 == 0 else DOWN/4) for i in
                       range(0, round(n / 2))],
-                    RIGHT, RIGHT * 2]
+                    RIGHT/2, RIGHT]
         self.lines = [Line(a, b) for a, b in zip(self.pts, self.pts[1:])]
         self.add(*self.lines)
-        self.scale(1 / 2)
 
     def energize(self, dot):
         return Succession(*[
@@ -93,13 +92,12 @@ class Switch(Electronic):
 class Battery(Electronic):
     def __init__(self):
         super().__init__()
-        self.add(Line(LEFT * 2, LEFT),
-                 Line(LEFT + (UP * 0.5), LEFT + (DOWN * 0.5)),
-                 Line((LEFT * 1 / 3) + UP, (LEFT * 1 / 3) + DOWN),
-                 Line((RIGHT * 1 / 3) + (UP * 0.5), (RIGHT * 1 / 3) + (DOWN * 0.5)),
-                 Line(RIGHT + UP, RIGHT + DOWN),
-                 Line(RIGHT, RIGHT * 2))
-        self.scale(1 / 2)
+        self.add(Line(LEFT, LEFT/2),
+                 Line(LEFT/2 + (UP /4), LEFT/2 + (DOWN /4)),
+                 Line((LEFT * 1 / 6) + UP/2, (LEFT * 1 / 6) + DOWN/2),
+                 Line((RIGHT * 1 / 6) + (UP /4), (RIGHT * 1 / 6) + (DOWN /4)),
+                 Line((RIGHT + UP)/2, (RIGHT + DOWN)/2),
+                 Line(RIGHT/2, RIGHT))
 
     def energize(self, dot):
         dot.set_opacity(0).move_to(self.submobjects[-1].get_start())
@@ -114,12 +112,11 @@ class Battery(Electronic):
 class Mesurement(Electronic):
     def __init__(self, letter):
         super().__init__()
-        self.circle = Circle(color=WHITE).rotate(PI)
+        self.circle = Circle(color=WHITE,radius=1/2).rotate(PI)
         self.letter = Tex(letter)
         self.entry = Line(LEFT * self.circle.radius * 2, LEFT * self.circle.radius)
         self.exit = Line(RIGHT * self.circle.radius, RIGHT * self.circle.radius * 2)
         self.add(self.entry, self.circle, self.letter, self.exit)
-        self.scale(1 / 2)
 
     def rotate(self, angle: float, axis: np.ndarray = OUT, about_point: Sequence[float] | None = None, **kwargs):
         r = super().rotate(angle, axis, about_point, **kwargs)
