@@ -44,11 +44,12 @@ class Resistance(Electronic):
         n = 9
         step = 2 / n
 
-        self.pts = [LEFT, LEFT/2,
-                    *[LEFT/2 * (1 - i * step) + (DOWN/4 if i % 2 == 0 else UP/4) for i in range(1, round(n / 2) + 1)],
-                    *[RIGHT/2 * (1 - (round(n / 2) - i) * step) + (UP/4 if i % 2 == 0 else DOWN/4) for i in
+        self.pts = [LEFT, LEFT / 2,
+                    *[LEFT / 2 * (1 - i * step) + (DOWN / 4 if i % 2 == 0 else UP / 4) for i in
+                      range(1, round(n / 2) + 1)],
+                    *[RIGHT / 2 * (1 - (round(n / 2) - i) * step) + (UP / 4 if i % 2 == 0 else DOWN / 4) for i in
                       range(0, round(n / 2))],
-                    RIGHT/2, RIGHT]
+                    RIGHT / 2, RIGHT]
         self.lines = [Line(a, b) for a, b in zip(self.pts, self.pts[1:])]
         self.add(*self.lines)
 
@@ -62,9 +63,9 @@ class Switch(Electronic):
     def __init__(self):
         super().__init__()
         self.closed = False
-        self.moving_line = Line(LEFT/2, RIGHT/2).rotate(-PI / 12, about_point=LEFT/2)
-        self.add(Line(LEFT, LEFT/2), Dot().move_to(LEFT/2).scale(1/3), self.moving_line,
-                 Dot().move_to(RIGHT/2).scale(1/3), Line(RIGHT/2, RIGHT))
+        self.moving_line = Line(LEFT / 2, RIGHT / 2).rotate(-PI / 12, about_point=LEFT / 2)
+        self.add(Line(LEFT, LEFT / 2), Dot().move_to(LEFT / 2).scale(1 / 3), self.moving_line,
+                 Dot().move_to(RIGHT / 2).scale(1 / 3), Line(RIGHT / 2, RIGHT))
 
     def energize(self, dot):
         if not self.closed:
@@ -92,12 +93,12 @@ class Switch(Electronic):
 class Battery(Electronic):
     def __init__(self):
         super().__init__()
-        self.add(Line(LEFT, LEFT/2),
-                 Line(LEFT/2 + (UP /4), LEFT/2 + (DOWN /4)),
-                 Line((LEFT * 1 / 6) + UP/2, (LEFT * 1 / 6) + DOWN/2),
-                 Line((RIGHT * 1 / 6) + (UP /4), (RIGHT * 1 / 6) + (DOWN /4)),
-                 Line((RIGHT + UP)/2, (RIGHT + DOWN)/2),
-                 Line(RIGHT/2, RIGHT))
+        self.add(Line(LEFT, LEFT / 2),
+                 Line(LEFT / 2 + (UP / 4), LEFT / 2 + (DOWN / 4)),
+                 Line((LEFT * 1 / 6) + UP / 2, (LEFT * 1 / 6) + DOWN / 2),
+                 Line((RIGHT * 1 / 6) + (UP / 4), (RIGHT * 1 / 6) + (DOWN / 4)),
+                 Line((RIGHT + UP) / 2, (RIGHT + DOWN) / 2),
+                 Line(RIGHT / 2, RIGHT))
 
     def energize(self, dot):
         dot.set_opacity(0).move_to(self.submobjects[-1].get_start())
@@ -112,7 +113,7 @@ class Battery(Electronic):
 class Mesurement(Electronic):
     def __init__(self, letter):
         super().__init__()
-        self.circle = Circle(color=WHITE,radius=1/2).rotate(PI)
+        self.circle = Circle(color=WHITE, radius=1 / 2).rotate(PI)
         self.letter = Tex(letter)
         self.entry = Line(LEFT * self.circle.radius * 2, LEFT * self.circle.radius)
         self.exit = Line(RIGHT * self.circle.radius, RIGHT * self.circle.radius * 2)
@@ -165,6 +166,13 @@ class Circuit(VGroup):
         return Succession(*[o.energize(electron) for o in self.submobjects], self.battery.consume(electron))
 
 
+config.background_color = WHITE
+
+Mobject.set_default(color=BLACK)
+Dot.set_default(color=BLACK)
+Arc.set_default(color=BLACK, stroke_color=BLACK)
+
+
 class Electronics(MyScene):
 
     def __init__(self):
@@ -177,7 +185,7 @@ class Electronics(MyScene):
         switch = Switch()
         switch.rotate(PI / 2).shift(LEFT)
         circuit = Circuit(battery, battery.connect(resistance), resistance, resistance.connect(amter), amter,
-                          amter.connect(switch), switch, switch.connect(battery)).scale(2)
+                          amter.connect(switch), switch, switch.connect(battery)).scale(2.5)
         switch.open()
         self.play(Create(circuit))
         self.play(switch.animate.close())
