@@ -59,6 +59,37 @@ class Resistance(Electronic):
         ])
 
 
+class Switch(Electronic):
+    def __init__(self):
+        super().__init__()
+        self.closed = False
+        self.moving_line = Line(LEFT/2, RIGHT/2).rotate(-PI / 12, about_point=LEFT/2)
+        self.add(Line(LEFT, LEFT/2), Dot().move_to(LEFT/2).scale(1/3), self.moving_line,
+                 Dot().move_to(RIGHT/2).scale(1/3), Line(RIGHT/2, RIGHT))
+
+    def energize(self, dot):
+        if not self.closed:
+            raise RuntimeError("Trying to energize an open circuit")
+        return Succession(*[
+            MoveAlongPath(dot, line, rate_func=linear) for line in self.submobjects if isinstance(line, Line)
+        ])
+
+    def rotate(self, angle: float, axis: np.ndarray = OUT, about_point: Sequence[float] | None = None, **kwargs):
+        if about_point is None:
+            about_point = Line(self.submobjects[0].get_start(), self.submobjects[-1].get_end()).get_center()
+        return super().rotate(angle, axis, about_point, **kwargs)
+
+    def close(self):
+        if not self.closed:
+            self.moving_line.rotate(PI / 12, about_point=self.moving_line.get_start())
+            self.closed = True
+
+    def open(self):
+        if self.closed:
+            self.moving_line.rotate(-PI / 12, about_point=self.moving_line.get_start())
+            self.closed = False
+
+
 class Battery(Electronic):
     def __init__(self):
         super().__init__()
@@ -146,10 +177,15 @@ class Electronics(MyScene):
         battery = Battery().shift(UP)
         amter = Ameter().shift(DOWN).rotate(-PI)
         resistance = Resistance().rotate(-PI / 2).shift(RIGHT)
+        switch = Switch()
+        switch.rotate(PI / 2).shift(LEFT)
         circuit = Circuit(battery, battery.connect(resistance), resistance, resistance.connect(amter), amter,
-                          amter.connect(battery)).scale(2)
+                          amter.connect(switch), switch, switch.connect(battery)).scale(2)
+        switch.open()
         self.play(Create(circuit))
-        self.play(AnimationGroup(*[circuit.run_electron() for i in range(20)], lag_ratio=0.1, run_time=10))
+        self.play(switch.animate.close())
+        # self.play(AnimationGroup(*[circuit.run_electron() for i in range(20)], lag_ratio=0.1, run_time=10))
+        self.play(switch.animate.open())
         self.wait()
 
 
