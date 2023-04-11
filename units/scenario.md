@@ -31,7 +31,7 @@ X: Dans les recettes de cuisine on utilise souvent un, deux ou trois oeufs.
 Pourtant, au marché, on entends souvent des gens demandé deux douzaine d'oeuf ou une demi douzaine d'oeuf.
 T: Exactement, dans le context de la cuisine, l'unité la plus facile à utiliser est l'oeuf lui même, dans le context de l'achat, la douzaine d'oeufs, est plus adapté.
 
-# Intensity from potato
+# SC 5 Intensity from potato
 
 X: Donc une unité, c'est complètement arbitraire en fait ! On pourrait créer la notre et ça serait tout aussi valide !
 T: Tout à fait oui ! Et je te propose qu'on fasse exactement ça.
@@ -64,33 +64,32 @@ T: Ok. Avant, toutes les unités étaient définies via des étalons. Or les ét
 X: Il pourrissent ?
 T: On peut dire ça comme ça oui. L'étalon qui te parlera le plus, c'est l'étalon kilogramme. C'était un poids fait dans un alliage métalique bien précis.
 X: Et tu vas me dire que le métal pourrit peut être ?
-T: En quelque sort oui. Tous les éléments de l'univers sont présents en différentes version, c'est ce qu'on appèle des isotopes. Pour un même élément, différents isotopes contiennent un nombre différents de neutrons. Or, la grande majorité des isotopes sont instables, ce qui veut dire qu'ils vont changer dans le temps en se débarassant, d'une manière ou une autre, de neutrons, c'est ce qu'on appelle la radioactivité. Et un neutrons, ça a une masse. Donc le faite que les isotopes contenus dans l'étalons changent fait que sa masse change. La conséquence est donc la même qu'avec notre patate qui pourrit.
+T: En quelque sort oui. C'est du à la radioactivité naturelle. Je t'explique.
 
-# Animation atomique ?
 
+# SC 6 Manim
+Tous les éléments de l'univers sont présents en différentes version, c'est ce qu'on appèle des isotopes. Pour un même élément, différents isotopes contiennent un nombre différents de neutrons. Or, la grande majorité des isotopes sont instables, ce qui veut dire qu'ils vont changer dans le temps en se débarassant, d'une manière ou une autre, de neutrons, c'est ce qu'on appelle la radioactivité. Et un neutrons, ça a une masse. Donc le faite que les isotopes contenus dans l'étalons changent fait que sa masse change. La conséquence est donc la même qu'avec notre patate qui pourrit.
+
+
+# SC 7
 X: Et comment on a résolut le problème ?
 T: En continuant à faire de la recherche en utilisant nos unités étalons !
 X: .............
 T: Avec une bonne avancée technologique, on va découvrir plein de truc.
-
-# Animation ?
 On va découvrir entre autre que ce qu'on appelle de l'éléctricité, ce sont des charges electriques qui se déplacent, et pas forcément des éléctrons. Ils y a aussi les ions (comme à l'intérieur de notre patate) et l'abscence d'electron, ce qu'on appelera des trous. 
-On va aussi décrouvrir que notre patate produit un nombre précis d'électrons par secondes. Par exemple : 1.2483018e+15 electrons. Vu que c'est un grand nombre long à prononcer, on pourrait appeler ça un Xav.
+On va aussi décrouvrir que notre patate produit un nombre précis d'électrons par secondes. Par exemple : 1.248e+15 electrons. Vu que c'est un grand nombre long à prononcer, on pourrait appeler ça un Xav.
 Enfin, on va découvrir aussi que tous les éléctrons sont identique et qu'il portent tous la même charge.
-On peut alors dire qu'un electron a une charge de 1 / 1.2483018 e+15 Xav soit environ 8 * 10-16 Xav
-
-# simplifier pour 1.248e+15 ?
-
+On peut alors dire qu'un electron a une charge de 1 / 1.248 e+15 Xav soit environ 8 * 10-16 Xav
 
 X: Et ça nous avance à quoi ?
 T: Et bien on vien de trouver une valeur d'une constante de l'univers ! L'astuce maintenant, c'est d'inverser le relation entre l'unité et la constante. La valeur arbitraire est descendu au niveau de la constante. L'unité patate a une nouvelle définition : 1 patate de courant, c'est 1.2483018e+15 éléctrons par seconde soit 1 Xav par seconde.
 
-
 X: Malin ! Ca permet de ne pas toucher au unités au moment du changement mais d'avoir des unités qui sont stables dans le temps !
+
+# SC 8 SI
+
 T: Exactement ! Maintenant, il ne nous reste plus qu'à convaincre la terre entière d'untiliser notre unité !
 X: Ce qui permettrait à tous les scientifiques de la terre de parler de la même chose !
-
-# Animation ?
 T: C'est ce qu'on appelle le Systeme Internationale d'Unité et ça existe déjà.
 X: Et ça marche comment ?
 T: Il y a deux types d'unités
@@ -106,7 +105,7 @@ T: Seulement 7 !
 - le candela pour l'intensité lumineuse
 - et enfin, celle qui va nous interesser le plus, l'Ampère pour l'intensité électrique.
 
-# Ampère
+# SC 9 Ampère
 
 X: Et c'est quoi un Ampère ? 
 T: c'est 6.241509e+18 charges élémentaires par seconde. Soit 1 Coulomb par secondes.
@@ -116,7 +115,7 @@ X: et spintronics dans tout ça ? ils s'en sorte comment ?
 T: Et bha étonnament très bien ! Si au lieu de compter des charges élémentaires tu comptes des maillons de chaine. Ils ont même définit l'équivalant du Coulomb comme étant 1667 maillons soit 10 metres de chaines. Après, toutes les formules restent les mêmes.
 X: La classe ! On passe à l'unité suivante ?
 
-# Volts
+# SC 10 Volts
 
 T: Yes ! Les volts !
 Les volts est l'unité utilisé pour mesurer la tension éléctrique.
@@ -124,14 +123,14 @@ Contrairement à ce que je t'ai dit lors des simulations, c'est pas le nombre d'
 
 X: Stooooooooooooooop ! C'est quoi des Joules ?
 
-# Joules
+# SC 11 Joules
 
 T: Les joules c'est l'unité du système international pour mesurer l'energie.
 1 Joule = 1 Newton * metre
 
 X: Stooooooooooop ! C'est quoi des Newtons ?
 
-# Newton
+# SC 12 Newton
 
 T: Les Newtons, c'est l'unité utilisé pour mesurer les forces.
 1N = 1kg m / S^2
@@ -141,6 +140,8 @@ X: Là on est sur des unités primaires qu'on manipule tous les jours, le kilogr
 T: Expliqué physiquement, un newton, c'est la force nécessaire pour faire passer une masse de 1kg de 0 à 1 metre seconde en une seconde.
 Si on parle de km/h au lieu de metre seconde, on obtient : 1 Newton c'est la force necessaire pour faire passer une masse de 1kg de 0 à 3,6 km/h en 1 seconde.
 
+# SC 13 back to joules
+
 X: Ha ok ! C'est clair ! Et tu me parlais des Joules.
 
 T: Oui, 1 Joule c'est 1 Newton mètre, dit autrement, c'est l'energie necessaire pour appliquer une force de 1 Newton sur 1 metre.
@@ -148,6 +149,8 @@ T: Oui, 1 Joule c'est 1 Newton mètre, dit autrement, c'est l'energie necessaire
 X: Donc si je prends une bouteille d'eau d'un litre, immobile au départ, que je la pousse sur 1 metre en 1 seconde, j'ai appliqué 1Newton pendant 1 mètre donc j'ai dépensé 1 Joule.
 
 T: C'est ça ! Et de l'energie, y'en a partout. Donc pour éviter d'avoir des mesures qui ne veulent rien dire, en général, on mesure l'energie de manière relative à un point de référence. Dit autrement, pour mesurer des Joules, il faut 2 points, le point qui nous interesse et le point de référence.
+
+# SC 14 back to volts
 
 X: Et tout ça pour me parler des volts ? 
 
@@ -159,7 +162,7 @@ T: De l'energie dépensé pour produire les charges electriques. Dans notre pile
 
 X: Ok, il nous reste quoi à voir ?
 
-# Ohms
+# SC 15 Ohms
 
 T : Les ohm ! C'est l'unité de mesure de la résistance.
 1 ohm = 1 Volts / 1 ampères.
@@ -173,6 +176,7 @@ X: Ok. Et comme 1 ohm = 1 Volt / 1 ampère, on peut aussi dire que 1 Volt = 1 om
 
 T: Oui, totalement ! On retrouve la loi d'ohm qui dit que la tension est égale à la résistance * l'intensité soit U = RI.
 
+# SC 16 Ommetre 
 X: Ooooooooooh ! Fait voir tes lunettes !
 
 T: Euh, pourquoi ?
@@ -197,7 +201,7 @@ X: C'est déjà ça. Et mon ohm metre.
 
 T: Pour ton ohm metre, tu as la théorie, mais faut le mettre en pratique maintenant.
 
-# Close up ohm metre.
+# SC 17 Close up ohm metre.
 
 
 Pile = 1,5 V
@@ -205,7 +209,7 @@ R = 1 000 ohm
 I = 1,5 mA
 
 
-# Unlock
+# SC 18 Unlock
 
 T: Félicitation, tu viens de débolquer le ohm metre! Petite parenthèse, il n'y a pas d'équivalent dans spintronics.
 
