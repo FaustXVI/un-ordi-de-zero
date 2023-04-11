@@ -10,7 +10,6 @@ locale.setlocale(locale.LC_ALL, 'fr_FR')
 
 section_done = False
 
-
 config.background_color = WHITE
 
 Mobject.set_default(color=BLACK)
@@ -24,7 +23,8 @@ class SI(MyScene):
         super().__init__(recording=True)
 
     def construct(self):
-        units = [r"A = \frac{C}{s}",r"V = \frac{J}{C}",r"J = N \times m",r"N = \frac{kg \times m}{s^2}",r"\Omega = \frac{V}{A}", ]
+        units = [r"A = \frac{C}{s}", r"V = \frac{J}{C}", r"J = N \times m", r"N = \frac{kg \times m}{s^2}",
+                 r"\Omega = \frac{V}{A}", r"U = R \times I", r"R =\frac{U}{I}", ]
         tex_units = [MathTex(unit).scale(5) for unit in units]
         self.play(Create(tex_units[0]))
         for i in range(1, len(units)):
