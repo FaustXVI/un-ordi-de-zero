@@ -77,7 +77,7 @@ T: Avec une bonne avancée technologique, on va découvrir plein de truc.
 On va découvrir entre autre que ce qu'on appelle de l'éléctricité, ce sont des charges electriques qui se déplacent, et pas forcément des éléctrons. Ils y a aussi les ions (comme à l'intérieur de notre patate) et l'abscence d'electron, ce qu'on appelera des trous. 
 On va aussi décrouvrir que notre patate produit un nombre précis d'électrons par secondes. Par exemple : 1.2483018e+15 electrons. Vu que c'est un grand nombre long à prononcer, on pourrait appeler ça un Xav.
 Enfin, on va découvrir aussi que tous les éléctrons sont identique et qu'il portent tous la même charge.
-On peut alors dire qu'un electron a une charge de 1 / 1.2483018 e+15 Xav.
+On peut alors dire qu'un electron a une charge de 1 / 1.2483018 e+15 Xav soit environ 8 * 10-16 Xav
 
 # simplifier pour 1.248e+15 ?
 
@@ -147,15 +147,15 @@ T: Oui, 1 Joule c'est 1 Newton mètre, dit autrement, c'est l'energie necessaire
 
 X: Donc si je prends une bouteille d'eau d'un litre, immobile au départ, que je la pousse sur 1 metre en 1 seconde, j'ai appliqué 1Newton pendant 1 mètre donc j'ai dépensé 1 Joule.
 
-T: C'est ça ! Et l'energie est toujours transféré d'une partie d'un système à un autre. Et est toujours conservée. Donc mesuré des joules n'a de sens que pour comparer un état d'un système à un autre. En electricité, un point de notre circuit comparé à un autre.
+T: C'est ça ! Et de l'energie, y'en a partout. Donc pour éviter d'avoir des mesures qui ne veulent rien dire, en général, on mesure l'energie de manière relative à un point de référence. Dit autrement, pour mesurer des Joules, il faut 2 points, le point qui nous interesse et le point de référence.
 
 X: Et tout ça pour me parler des volts ? 
 
-T: Qui sont des Joules / Coulomb, dit autrement l'energie contenue dans un colomb de charge electrique. On parle aussi de différence de potentiel car, comme expliqué pour les joules, ça n'a de sens que si on compare deux points.
+T: Qui sont des Joules / Coulomb, dit autrement l'energie contenue dans un colomb de charge electrique. On parle aussi de différence de potentiel car, comme expliqué pour les joules, ça n'a d'utilité que si on compare deux points.
 
 X: Et elle viens d'où cette energie donnée aux charges ?
 
-T: De l'energie dépensé pour produire les charges electriques. Dans notre pile à patate, l'energie viens de la réaction chimique qui produit les electrons.
+T: De l'energie dépensé pour produire les charges electriques. Dans notre pile, l'energie viens de la réaction chimique qui produit les electrons.
 
 X: Ok, il nous reste quoi à voir ?
 
@@ -195,7 +195,7 @@ T: Presque, pour le volt-metre, il nous manque un petit élément dont on parler
 
 X: C'est déjà ça. Et mon ohm metre.
 
-T: Pour ton ohm metre, tu ha la théorie, mais faut le mettre en pratique maintenant.
+T: Pour ton ohm metre, tu as la théorie, mais faut le mettre en pratique maintenant.
 
 # Close up ohm metre.
 
