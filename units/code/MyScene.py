@@ -31,4 +31,4 @@ class MyScene(VoiceoverScene, ABC):
     def __init__(self, recording, **kwargs):
         super().__init__(random_seed=42, **kwargs)
         self.recording = recording
-        self.set_speech_service(RecorderService(device_index=12))
+        self.set_speech_service(RecorderService())

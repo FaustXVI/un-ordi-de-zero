@@ -23,7 +23,7 @@ class SI(MyScene):
         super().__init__(recording=True)
 
     def construct(self):
-        units = [r"A = \frac{C}{s}", r"V = \frac{J}{C}", r"J = N \times m", r"N = \frac{kg \times m}{s^2}",
+        units = [r"Unus",r"A = \frac{C}{s}", r"V = \frac{J}{C}", r"J = N \times m", r"N = \frac{kg \times m}{s^2}",
                  r"\Omega = \frac{V}{A}", r"U = R \times I", r"R =\frac{U}{I}", ]
         tex_units = [MathTex(unit).scale(5) for unit in units]
         self.play(Create(tex_units[0]))

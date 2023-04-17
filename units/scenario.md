@@ -34,19 +34,17 @@ T: Exactement, dans le context de la cuisine, l'unité la plus facile à utilise
 # SC 5 Intensity from potato
 
 X: Donc une unité, c'est complètement arbitraire en fait ! On pourrait créer la notre et ça serait tout aussi valide !
-T: Tout à fait oui ! Et je te propose qu'on fasse exactement ça.
-X: On commence par l'intensité ?
-T: Aller !
-X: On a utilisé une patate pour créer notre éléctricité. On pourrait mesurer en patate ?
-T: Oui on peut ! Et même si ça paraît bête comme ça, c'est très proche de la manière dont c'était fait au début des science !
+T: Tout à fait oui ! Et je te propose qu'on fasse exactement ça pour l'intensité.
+X: Aller ! On a utilisé une patate pour créer notre éléctricité. On pourrait mesurer en patate ?
+T: Oui on peut ! Et même si ça paraît bête comme ça, c'est très proche de la manière dont c'était fait au début des sciences !
 X: Tu m'intrigue là !
 T: Continuons, on vas se refaire l'histoire en accélèré.
-X: OK. Donc notre unité c'est la patate. Donc si on a le double d'intensité on a 2 patates d'intensité, c'est ça ?
-T: Oui, et si on a 1000 dois plus d'intensité on a 1000 patates, on peut alors se mettre à parler de kilo-patates.
-X: Ha ha ! Excellent ! Et si on a 1000 fois moins d'intensité on parle de milli-patate c'est ça ?
+X: OK. Donc notre unité c'est la patate. Si on a le double d'intensité on a 2 patates d'intensité, c'est ça ?
+T: C'est ça, et si on a 1000 dois plus d'intensité on a 1000 patates, on peut alors se mettre à parler de kilo-patates.
+X: Excellent ! Et si on a 1000 fois moins d'intensité on parle de milli-patate ?
 T: Exactement. Et on peut aussi définir les méga-patate, les micro-patates, etc etc
 X: C'est tout bête en fait.
-T: Oui, mais notre unité un de GROS défauts:
+T: Oui, mais notre unité a de GROS défauts:
 X: Alors, j'en vois un assez facilement, c'est que toutes les patates ne sont pas les mêmes.
 T: Yes ! Une solution à se problème est d'avoir une patate - étalon. C'est une unique patate qui est, par définition, la seule patate au monde à produire une patate d'intensité.
 X: Mais du coup cette patate deviens super importante !
@@ -68,29 +66,38 @@ T: En quelque sort oui. C'est du à la radioactivité naturelle. Je t'explique.
 
 
 # SC 6 Manim
-Tous les éléments de l'univers sont présents en différentes version, c'est ce qu'on appèle des isotopes. Pour un même élément, différents isotopes contiennent un nombre différents de neutrons. Or, la grande majorité des isotopes sont instables, ce qui veut dire qu'ils vont changer dans le temps en se débarassant, d'une manière ou une autre, de neutrons, c'est ce qu'on appelle la radioactivité. Et un neutrons, ça a une masse. Donc le faite que les isotopes contenus dans l'étalons changent fait que sa masse change. La conséquence est donc la même qu'avec notre patate qui pourrit.
+Tous les éléments de l'univers sont présents en différentes version, c'est ce qu'on appèle des isotopes. Pour un même élément, différents isotopes contiennent un nombre différents de neutrons. Or, la grande majorité des isotopes sont instables, ce qui veut dire qu'ils vont changer dans le temps en se débarassant, d'une manière ou une autre, de neutrons, c'est ce qu'on appelle la radioactivité. 
 
 
 # SC 7
+T: Et un neutrons, ça a une masse. Donc le faite que les isotopes contenus dans l'étalons changent fait que sa masse change. La conséquence est donc la même qu'avec notre patate qui pourrit.
 X: Et comment on a résolut le problème ?
 T: En continuant à faire de la recherche en utilisant nos unités étalons !
 X: .............
 T: Avec une bonne avancée technologique, on va découvrir plein de truc.
-On va découvrir entre autre que ce qu'on appelle de l'éléctricité, ce sont des charges electriques qui se déplacent, et pas forcément des éléctrons. Ils y a aussi les ions (comme à l'intérieur de notre patate) et l'abscence d'electron, ce qu'on appelera des trous. 
-On va aussi décrouvrir que notre patate produit un nombre précis d'électrons par secondes. Par exemple : 1.248e+15 electrons. Vu que c'est un grand nombre long à prononcer, on pourrait appeler ça un Xav.
+On va découvrir entre autre que ce qu'on appelle de l'éléctricité, ce sont des charges electriques qui se déplacent, et pas forcément des éléctrons. Ils y a aussi les ions et l'abscence d'electron, ce qu'on appelera des trous. 
+X: Les ions, ça me dit quelquechose, y'en a à l'intérieur de la patate non ?
+T: oui, tout à fait, et ils se déplacent à l'intérieur de la patate, ce qui ferme la boucle d'ailleurs.
+X: OK, compris, et qu'est-ce qu'on va découvrir d'autre ?
+T: Et bien que notre patate produit un nombre précis d'électrons par secondes. Par exemple : 1.248e+15 electrons.
+X: Sacré nombre ! Et vachement long à prononcer !
+T: Oui, on pourrait créer une unité pour en parler et appeler ça un Xav.
+X: Comme avec la douzaine d'œufs
+T: Exactement.
 Enfin, on va découvrir aussi que tous les éléctrons sont identique et qu'il portent tous la même charge.
 On peut alors dire qu'un electron a une charge de 1 / 1.248 e+15 Xav soit environ 8 * 10-16 Xav
-
 X: Et ça nous avance à quoi ?
-T: Et bien on vien de trouver une valeur d'une constante de l'univers ! L'astuce maintenant, c'est d'inverser le relation entre l'unité et la constante. La valeur arbitraire est descendu au niveau de la constante. L'unité patate a une nouvelle définition : 1 patate de courant, c'est 1.2483018e+15 éléctrons par seconde soit 1 Xav par seconde.
-
+T: Et bien on viens de trouver une valeur d'une constante de l'univers, à savoir la charge élémentaire !
+L'astuce maintenant, c'est d'inverser le relation entre l'unité et la constante, comme ça, le côté arbitraire est descendu au niveau de la constante.
+L'unité patate a une nouvelle définition : 1 patate d'intensité, c'est 1.248e+15 charges élémentaires par seconde soit 1 Xav par seconde.
 X: Malin ! Ca permet de ne pas toucher au unités au moment du changement mais d'avoir des unités qui sont stables dans le temps !
 
 # SC 8 SI
 
-T: Exactement ! Maintenant, il ne nous reste plus qu'à convaincre la terre entière d'untiliser notre unité !
-X: Ce qui permettrait à tous les scientifiques de la terre de parler de la même chose !
-T: C'est ce qu'on appelle le Systeme Internationale d'Unité et ça existe déjà.
+T: Exactement !
+X: Maintenant, il ne nous reste plus qu'à convaincre la terre entière d'untiliser notre unité !
+Ça permettrait à tous les scientifiques de la terre de parler de la même chose !
+T: Ça existe déjà, et c'est ce qu'on appelle le Systeme Internationale d'Unité.
 X: Et ça marche comment ?
 T: Il y a deux types d'unités
 - les unités primaires, qui, depuis 2019, sont toutes définies via des constantes de l'univers.

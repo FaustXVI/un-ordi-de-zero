@@ -28,12 +28,12 @@ class SI(MyScene):
         tex_units = [MathTex(unit).scale(15) for unit in units]
         self.play(FadeIn(tex_units[0], shift=DOWN*4, scale=0))
         for i in range(1, len(units)):
-            self.wait()
+            self.wait(3)
             self.play(
                 FadeOut(tex_units[i - 1], shift=DOWN*4, scale=0),
                 FadeIn(tex_units[i], shift=DOWN*4, scale=0
                        ))
-        self.wait()
+        self.wait(3)
 
 
 if __name__ == "__main__":

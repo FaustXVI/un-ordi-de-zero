@@ -28,11 +28,13 @@ class Values(MyScene):
         tex_numbers = [MathTex(unit).scale(4) for unit in numbers]
         self.play(Write(tex_numbers[0]))
         for i in range(1, len(numbers)):
-            self.wait()
+            self.wait(3)
             self.play(FadeOut(tex_numbers[i - 1]))
-            self.wait()
+            self.wait(3)
             self.play(Write(tex_numbers[i]))
-        self.wait()
+        self.wait(3)
+        self.play(FadeOut(tex_numbers[-1]))
+        self.wait(3)
 
 
 if __name__ == "__main__":
