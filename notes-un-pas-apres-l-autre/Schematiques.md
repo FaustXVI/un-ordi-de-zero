@@ -117,7 +117,7 @@
 > 
 > Et en électronique, on avait remplacé notre combo pile / résistance / ampère-mètre par un ohm-mètre ce qui donne ce schema
 > 
-> ![[Schematiques 2023-09-03 17.45.01.excalidraw]]
+> ![[Porte-ET-ohm-metre.excalidraw]]
 > 
 > -------------
 > 
@@ -138,4 +138,3 @@
 > 
 > > [!theo]+
 > >… après l'autre !
-

@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "f2be6739ac72689f",
+        "id": "451907adc69438d1",
         "type": "tabs",
         "children": [
           {
-            "id": "9583553909ebabea",
+            "id": "35ffe885ad4ec124",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -18,29 +18,8 @@
                 "source": false
               }
             }
-          },
-          {
-            "id": "548a47665951fda8",
-            "type": "leaf",
-            "state": {
-              "type": "excalidraw",
-              "state": {
-                "file": "Excalidraw/ohm-mètre.excalidraw.md"
-              }
-            }
-          },
-          {
-            "id": "6ebbdd162ae7da85",
-            "type": "leaf",
-            "state": {
-              "type": "excalidraw",
-              "state": {
-                "file": "Excalidraw/Port ET.excalidraw.md"
-              }
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -106,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Excalidraw/ohm-mètre.excalidraw.md",
+                "file": "Schematiques.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -123,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Excalidraw/ohm-mètre.excalidraw.md",
+                "file": "Schematiques.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -146,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Excalidraw/ohm-mètre.excalidraw.md"
+                "file": "Schematiques.md"
               }
             }
           }
@@ -168,26 +147,26 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "548a47665951fda8",
+  "active": "35ffe885ad4ec124",
   "lastOpenFiles": [
-    "Excalidraw/Schematiques 2023-09-03 17.45.01.excalidraw.md",
-    "Excalidraw/ohm-mètre.excalidraw.md",
+    "Unités.md",
     "Schematiques.md",
+    "résistance.md",
+    "Porte ET.md",
+    "pile.md",
+    "ohm-mètre.md",
+    "interrupteur.md",
+    "ampère-mètre.md",
+    "Excalidraw/plie.excalidraw.md",
+    "Excalidraw/Porte-ET-ohm-metre.excalidraw.md",
     "Excalidraw/Port ET.excalidraw.md",
+    "Excalidraw/ohm-mètre.excalidraw.md",
     "Excalidraw/Pile+résistance.excalidraw.md",
     "Excalidraw/résistance.excalidraw.md",
     "Excalidraw/ampère-mètre.excalidraw.md",
     "Excalidraw/interrupteur.excalidraw.md",
-    "Excalidraw/plie.excalidraw.md",
     "Excalidraw/fil.excalidraw.md",
     "Excalidraw/interrupteur-fermé.excalidraw.md",
-    "Porte ET.md",
-    "interrupteur.md",
-    "ohm-mètre.md",
-    "Unités.md",
-    "pile.md",
-    "résistance.md",
-    "ampère-mètre.md",
     "Excalidraw",
     "templates/Scene manim.md",
     "templates/Scene dialog.md",

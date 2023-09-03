@@ -1,4 +1,5 @@
 
+![[résistance.excalidraw]]
 # Création 
 https://www.youtube.com/watch?v=gGyxI5CayDM
 # En série
