@@ -1,0 +1,20 @@
+.callout[data-callout="scene"] {
+    --callout-color: 100, 100, 100;
+    --callout-icon: lucide-clapperboard;
+}
+.callout[data-callout="manim"] {
+    --callout-color: 100, 100, 100;
+    --callout-icon: lucide-brush;
+}
+.callout[data-callout="close-up"] {
+    --callout-color: 100, 100, 100;
+    --callout-icon: lucide-zoom-in;
+}
+.callout[data-callout="xav"] {
+    --callout-color: 200, 0, 0;
+    --callout-icon: lucide-hand-metal;
+}
+.callout[data-callout="theo"] {
+    --callout-color: 0, 200, 0;
+    --callout-icon: lucide-brain;
+}
