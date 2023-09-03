@@ -29,7 +29,7 @@
 > 
 > On peut le représenter avec un simple trait
 > 
-> ![[Schematiques 2023-09-03 16.53.22.excalidraw]]
+> ![[fil.excalidraw]]
 > 
 > ---------------
 > 
@@ -37,38 +37,38 @@
 > La bare la plus longue représente la cathode, qu'on marque souvent avec un $+$ sur les piles.
 > Et le côté le lpus court représente l'anode.
 > 
-> ![[Schematiques 2023-09-03 16.58.51.excalidraw]]
+> ![[plie.excalidraw]]
 > 
 > -----------------
 > 
 > On peut représenter l'[[ampère-mètre]] avec un cercle et un $A$ dedans.
 > 
-> ![[Schematiques 2023-09-03 17.04.33.excalidraw]]
+> ![[ampère-mètre.excalidraw]]
 > 
 > -----------------
 > 
 > La [[résistance]] se dessine comme un fil en zigzag
 > 
-> ![[Schematiques 2023-09-03 17.07.37.excalidraw]]
+> ![[résistance.excalidraw]]
 > 
 > -----------------
 > 
 > Le [[ohm-mètre]] se dessine comme l'ampère-mètre mais avec un $\Omega$ à la place du $A$
 > 
-> ![[Schematiques 2023-09-03 17.13.17.excalidraw]]
+> ![[ohm-mètre.excalidraw]]
 > 
 > -----------------
 > 
 > Et enfin, l'[[interrupteur]] se représente comme un clapet.
 > Ainsi, on peut le dessiner ouvert
 > 
-> ![[Schematiques 2023-09-03 17.17.26.excalidraw]]
+> ![[interrupteur.excalidraw]]
 > 
 > ---------------
 > 
 > Ou fermé
 > 
-> ![[Schematiques 2023-09-03 17.20.46.excalidraw]]
+> ![[interrupteur-fermé.excalidraw]]
 
 > [!scene]- 3 / dialogue dessin
 > 
@@ -84,7 +84,9 @@
 
 > [!manim]- 4 / Pile + résistance
 > 
-> Pour représenter ce circuit, on dessine notre symbol de pile et celui de la résistance et on relie les deux par des fils.
+> Pour représenter ce circuit, on dessine notre symbol de pile, celui de la résistance et celui de l'ampère-mètre. Enfin on relie le tout par des fils.
+> 
+> ![[Schematiques 2023-09-03 17.35.50.excalidraw]]
 > 
 > --------------
 > 

@@ -11,11 +11,19 @@
             "id": "bd04cf465a044cf7",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "excalidraw",
               "state": {
-                "file": "Porte ET.md",
-                "mode": "source",
-                "source": false
+                "file": "Excalidraw/Schematiques 2023-09-03 17.35.50.excalidraw.md"
+              }
+            }
+          },
+          {
+            "id": "a17c5c20da720b4c",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "Excalidraw/résistance.excalidraw.md"
               }
             }
           }
@@ -85,7 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Porte ET.md",
+                "file": "Excalidraw/Schematiques 2023-09-03 17.35.50.excalidraw.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +110,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Porte ET.md",
+                "file": "Excalidraw/Schematiques 2023-09-03 17.35.50.excalidraw.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +133,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Porte ET.md"
+                "file": "Excalidraw/Schematiques 2023-09-03 17.35.50.excalidraw.md"
               }
             }
           }
@@ -150,6 +158,14 @@
   "active": "bd04cf465a044cf7",
   "lastOpenFiles": [
     "Schematiques.md",
+    "Excalidraw/résistance.excalidraw.md",
+    "Excalidraw/Schematiques 2023-09-03 17.35.50.excalidraw.md",
+    "Excalidraw/ampère-mètre.excalidraw.md",
+    "Excalidraw/interrupteur-fermé.excalidraw.md",
+    "Excalidraw/interrupteur.excalidraw.md",
+    "Excalidraw/ohm-mètre.excalidraw.md",
+    "Excalidraw/plie.excalidraw.md",
+    "Excalidraw/fil.excalidraw.md",
     "Porte ET.md",
     "interrupteur.md",
     "ohm-mètre.md",
@@ -157,13 +173,6 @@
     "pile.md",
     "résistance.md",
     "ampère-mètre.md",
-    "Excalidraw/Schematiques 2023-09-03 17.20.46.excalidraw.md",
-    "Excalidraw/Schematiques 2023-09-03 17.17.26.excalidraw.md",
-    "Excalidraw/Schematiques 2023-09-03 17.04.33.excalidraw.md",
-    "Excalidraw/Schematiques 2023-09-03 17.13.17.excalidraw.md",
-    "Excalidraw/Schematiques 2023-09-03 16.53.22.excalidraw.md",
-    "Excalidraw/Schematiques 2023-09-03 16.58.51.excalidraw.md",
-    "Excalidraw/Schematiques 2023-09-03 17.07.37.excalidraw.md",
     "Excalidraw",
     "templates/Scene manim.md",
     "templates/Scene dialog.md",
