@@ -4,26 +4,38 @@
     "type": "split",
     "children": [
       {
-        "id": "e924ce7a9c0bccf1",
+        "id": "f2be6739ac72689f",
         "type": "tabs",
         "children": [
           {
-            "id": "bd04cf465a044cf7",
+            "id": "9583553909ebabea",
             "type": "leaf",
             "state": {
-              "type": "excalidraw",
+              "type": "markdown",
               "state": {
-                "file": "Excalidraw/résistance.excalidraw.md"
+                "file": "Schematiques.md",
+                "mode": "source",
+                "source": false
               }
             }
           },
           {
-            "id": "50080705f6e4343d",
+            "id": "548a47665951fda8",
             "type": "leaf",
             "state": {
               "type": "excalidraw",
               "state": {
-                "file": "Excalidraw/Schematiques 2023-09-03 17.39.54.excalidraw.md"
+                "file": "Excalidraw/ohm-mètre.excalidraw.md"
+              }
+            }
+          },
+          {
+            "id": "6ebbdd162ae7da85",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "Excalidraw/Port ET.excalidraw.md"
               }
             }
           }
@@ -94,7 +106,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Excalidraw/Schematiques 2023-09-03 17.39.54.excalidraw.md",
+                "file": "Excalidraw/ohm-mètre.excalidraw.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -111,7 +123,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Excalidraw/Schematiques 2023-09-03 17.39.54.excalidraw.md",
+                "file": "Excalidraw/ohm-mètre.excalidraw.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -134,7 +146,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Excalidraw/Schematiques 2023-09-03 17.39.54.excalidraw.md"
+                "file": "Excalidraw/ohm-mètre.excalidraw.md"
               }
             }
           }
@@ -156,18 +168,19 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "50080705f6e4343d",
+  "active": "548a47665951fda8",
   "lastOpenFiles": [
-    "Excalidraw/interrupteur.excalidraw.md",
-    "Excalidraw/Schematiques 2023-09-03 17.39.54.excalidraw.md",
-    "Excalidraw/résistance.excalidraw.md",
+    "Excalidraw/Schematiques 2023-09-03 17.45.01.excalidraw.md",
+    "Excalidraw/ohm-mètre.excalidraw.md",
     "Schematiques.md",
-    "Excalidraw/plie.excalidraw.md",
-    "Excalidraw/Schematiques 2023-09-03 17.35.50.excalidraw.md",
+    "Excalidraw/Port ET.excalidraw.md",
+    "Excalidraw/Pile+résistance.excalidraw.md",
+    "Excalidraw/résistance.excalidraw.md",
     "Excalidraw/ampère-mètre.excalidraw.md",
+    "Excalidraw/interrupteur.excalidraw.md",
+    "Excalidraw/plie.excalidraw.md",
     "Excalidraw/fil.excalidraw.md",
     "Excalidraw/interrupteur-fermé.excalidraw.md",
-    "Excalidraw/ohm-mètre.excalidraw.md",
     "Porte ET.md",
     "interrupteur.md",
     "ohm-mètre.md",

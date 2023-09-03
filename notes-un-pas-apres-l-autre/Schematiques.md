@@ -86,7 +86,7 @@
 > 
 > Pour représenter ce circuit, on dessine notre symbol de pile, celui de la résistance et celui de l'ampère-mètre. Enfin on relie le tout par des fils.
 > 
-> ![[Schematiques 2023-09-03 17.35.50.excalidraw]]
+> ![[Pile+résistance.excalidraw]]
 > 
 > --------------
 > 
@@ -107,7 +107,7 @@
 > 
 > Alors, on avait, une pile relié à une résistance, puis nos deux interrupteurs et l'amprè-mètre pour voir le courant passer.
 > 
-> ![[Schematiques 2023-09-03 17.39.54.excalidraw]]
+> ![[Port ET.excalidraw]]
 > 
 > ---------
 > 
@@ -116,6 +116,8 @@
 > ----------
 > 
 > Et en électronique, on avait remplacé notre combo pile / résistance / ampère-mètre par un ohm-mètre ce qui donne ce schema
+> 
+> ![[Schematiques 2023-09-03 17.45.01.excalidraw]]
 > 
 > -------------
 > 
