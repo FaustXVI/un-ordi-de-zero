@@ -21,7 +21,7 @@ class Electron(Dot):
 class ElectronMovement(MyScene, ZoomedScene):
 
     def __init__(self):
-        super().__init__(recording=False)
+        super().__init__(recording=True)
         ZoomedScene.__init__(
             self,
             zoomed_display_height=1,
@@ -79,7 +79,7 @@ class ElectronMovement(MyScene, ZoomedScene):
             self.play(electrons.animate.shift(RIGHT), rate_functions=linear, run_time=electron_move_duration)
         with self.my_voiceover(
                 """C'est la première loi de Kirchoff qu'on appele également la loi des nœuds""") as timer:
-            self.play(FadeOut(electrons), run_time=timer.duration)
+            self.play(FadeOut(*self.mobjects), run_time=timer.duration)
 
 
 if __name__ == "__main__":

@@ -9,13 +9,13 @@ import locale
 
 locale.setlocale(locale.LC_ALL, 'fr_FR')
 
-section_done = True
+section_done = False
 
 
 class Internal_Resistance(MyScene):
 
     def __init__(self):
-        super().__init__(recording=False)
+        super().__init__(recording=True)
 
     def construct(self):
         self.next_section(skip_animations=section_done)
@@ -89,7 +89,7 @@ class Internal_Resistance(MyScene):
                 15) as timer:
             self.play(r_value.animate.set_value(r_min), run_time=timer.duration, rate_func=rate_functions.ease_out_quad)
         with self.my_voiceover(
-                """Une batterie a donc forcément une résistance interne""") as timer:
+                """Une pile a donc forcément une résistance interne""") as timer:
             self.play(FadeOut(*self.mobjects), run_time=timer.duration)
 
 

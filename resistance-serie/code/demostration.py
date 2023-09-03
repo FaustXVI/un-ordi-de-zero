@@ -15,7 +15,7 @@ section_done = False
 class Demonstration(MyScene):
 
     def __init__(self):
-        super().__init__(recording=False)
+        super().__init__(recording=True)
 
     def construct(self):
         self.next_section(skip_animations=section_done)
@@ -50,7 +50,7 @@ class Demonstration(MyScene):
             self.play(TransformMatchingTex(tension, sum_u), run_time=timer.duration)
         self.next_section(skip_animations=section_done)
         first_uri = MathTex("U", "=", "R_1", r"\times", "I_{R_1}", "+", "R_2", r"\times", "I_{R_2}")
-        with self.my_voiceover("""U = UR1 + UR2""") as timer:
+        with self.my_voiceover("""on peut en déduire que U = R1 * I1 + R2 * I2""") as timer:
             self.play(TransformMatchingTex(equations, first_uri), run_time=timer.duration)
         with self.my_voiceover("""Et la loi des nœuds nous dit que""", 2) as timer:
             self.wait(timer.duration)
