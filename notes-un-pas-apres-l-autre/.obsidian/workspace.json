@@ -13,21 +13,22 @@
             "state": {
               "type": "excalidraw",
               "state": {
-                "file": "Excalidraw/Schematiques 2023-09-03 17.35.50.excalidraw.md"
+                "file": "Excalidraw/résistance.excalidraw.md"
               }
             }
           },
           {
-            "id": "a17c5c20da720b4c",
+            "id": "50080705f6e4343d",
             "type": "leaf",
             "state": {
               "type": "excalidraw",
               "state": {
-                "file": "Excalidraw/résistance.excalidraw.md"
+                "file": "Excalidraw/Schematiques 2023-09-03 17.39.54.excalidraw.md"
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -93,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Excalidraw/Schematiques 2023-09-03 17.35.50.excalidraw.md",
+                "file": "Excalidraw/Schematiques 2023-09-03 17.39.54.excalidraw.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -110,7 +111,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Excalidraw/Schematiques 2023-09-03 17.35.50.excalidraw.md",
+                "file": "Excalidraw/Schematiques 2023-09-03 17.39.54.excalidraw.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -133,7 +134,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Excalidraw/Schematiques 2023-09-03 17.35.50.excalidraw.md"
+                "file": "Excalidraw/Schematiques 2023-09-03 17.39.54.excalidraw.md"
               }
             }
           }
@@ -155,17 +156,18 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "bd04cf465a044cf7",
+  "active": "50080705f6e4343d",
   "lastOpenFiles": [
-    "Schematiques.md",
+    "Excalidraw/interrupteur.excalidraw.md",
+    "Excalidraw/Schematiques 2023-09-03 17.39.54.excalidraw.md",
     "Excalidraw/résistance.excalidraw.md",
+    "Schematiques.md",
+    "Excalidraw/plie.excalidraw.md",
     "Excalidraw/Schematiques 2023-09-03 17.35.50.excalidraw.md",
     "Excalidraw/ampère-mètre.excalidraw.md",
-    "Excalidraw/interrupteur-fermé.excalidraw.md",
-    "Excalidraw/interrupteur.excalidraw.md",
-    "Excalidraw/ohm-mètre.excalidraw.md",
-    "Excalidraw/plie.excalidraw.md",
     "Excalidraw/fil.excalidraw.md",
+    "Excalidraw/interrupteur-fermé.excalidraw.md",
+    "Excalidraw/ohm-mètre.excalidraw.md",
     "Porte ET.md",
     "interrupteur.md",
     "ohm-mètre.md",

@@ -107,6 +107,8 @@
 > 
 > Alors, on avait, une pile relié à une résistance, puis nos deux interrupteurs et l'amprè-mètre pour voir le courant passer.
 > 
+> ![[Schematiques 2023-09-03 17.39.54.excalidraw]]
+> 
 > ---------
 > 
 > C'est exactement ce qu'on avait en spintronics

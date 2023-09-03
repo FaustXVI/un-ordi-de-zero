@@ -22,8 +22,8 @@ tags: [excalidraw]
 	"elements": [
 		{
 			"type": "ellipse",
-			"version": 46,
-			"versionNonce": 1155171886,
+			"version": 47,
+			"versionNonce": 306442798,
 			"isDeleted": false,
 			"id": "3msGm9ot8AvPerYTh-xmp",
 			"fillStyle": "hachure",
@@ -39,20 +39,22 @@ tags: [excalidraw]
 			"width": 80,
 			"height": 80,
 			"seed": 1688047662,
-			"groupIds": [],
+			"groupIds": [
+				"j3wAQhDzSg4YAS5cds_VH"
+			],
 			"frameId": null,
 			"roundness": {
 				"type": 2
 			},
 			"boundElements": [],
-			"updated": 1693754129865,
+			"updated": 1693755462266,
 			"link": null,
 			"locked": false
 		},
 		{
 			"type": "line",
-			"version": 31,
-			"versionNonce": 1204447534,
+			"version": 32,
+			"versionNonce": 432934834,
 			"isDeleted": false,
 			"id": "4QNSlItWVYxnH3KINy55M",
 			"fillStyle": "hachure",
@@ -68,13 +70,15 @@ tags: [excalidraw]
 			"width": 88,
 			"height": 1,
 			"seed": 2065983794,
-			"groupIds": [],
+			"groupIds": [
+				"j3wAQhDzSg4YAS5cds_VH"
+			],
 			"frameId": null,
 			"roundness": {
 				"type": 2
 			},
 			"boundElements": [],
-			"updated": 1693753860138,
+			"updated": 1693755462266,
 			"link": null,
 			"locked": false,
 			"startBinding": null,
@@ -95,8 +99,8 @@ tags: [excalidraw]
 		},
 		{
 			"type": "line",
-			"version": 36,
-			"versionNonce": 1824911794,
+			"version": 37,
+			"versionNonce": 1033993326,
 			"isDeleted": false,
 			"id": "urlKRvv-FtnkkviarZXMd",
 			"fillStyle": "hachure",
@@ -112,13 +116,15 @@ tags: [excalidraw]
 			"width": 79,
 			"height": 0,
 			"seed": 1899803634,
-			"groupIds": [],
+			"groupIds": [
+				"j3wAQhDzSg4YAS5cds_VH"
+			],
 			"frameId": null,
 			"roundness": {
 				"type": 2
 			},
 			"boundElements": [],
-			"updated": 1693753858405,
+			"updated": 1693755462266,
 			"link": null,
 			"locked": false,
 			"startBinding": null,
@@ -139,8 +145,8 @@ tags: [excalidraw]
 		},
 		{
 			"type": "image",
-			"version": 34,
-			"versionNonce": 408106926,
+			"version": 35,
+			"versionNonce": 76892530,
 			"isDeleted": false,
 			"id": "JRMCJtzS",
 			"fillStyle": "hachure",
@@ -156,11 +162,13 @@ tags: [excalidraw]
 			"width": 80,
 			"height": 48,
 			"seed": 62043,
-			"groupIds": [],
+			"groupIds": [
+				"j3wAQhDzSg4YAS5cds_VH"
+			],
 			"frameId": null,
 			"roundness": null,
 			"boundElements": [],
-			"updated": 1693754213990,
+			"updated": 1693755462266,
 			"link": null,
 			"locked": false,
 			"status": "pending",
@@ -186,10 +194,10 @@ tags: [excalidraw]
 		"currentItemTextAlign": "left",
 		"currentItemStartArrowhead": null,
 		"currentItemEndArrowhead": "arrow",
-		"scrollX": 453.2036311194061,
-		"scrollY": 246.9298343893958,
+		"scrollX": 449.5,
+		"scrollY": 245.3671875,
 		"zoom": {
-			"value": 2.011818445360101
+			"value": 2
 		},
 		"currentItemRoundness": "round",
 		"gridSize": 20,
