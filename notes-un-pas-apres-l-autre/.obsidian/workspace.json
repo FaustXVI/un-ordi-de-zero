@@ -4,19 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "451907adc69438d1",
+        "id": "f548161d4bebc2d5",
         "type": "tabs",
         "children": [
           {
-            "id": "35ffe885ad4ec124",
+            "id": "66856f43fad56b95",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Schematiques.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -85,7 +81,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Schematiques.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +97,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Schematiques.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -124,9 +118,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "Schematiques.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -147,17 +139,17 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "35ffe885ad4ec124",
+  "active": "66856f43fad56b95",
   "lastOpenFiles": [
-    "Unités.md",
+    "Excalidraw/plie.excalidraw.md",
     "Schematiques.md",
+    "Unités.md",
     "résistance.md",
     "Porte ET.md",
     "pile.md",
     "ohm-mètre.md",
     "interrupteur.md",
     "ampère-mètre.md",
-    "Excalidraw/plie.excalidraw.md",
     "Excalidraw/Porte-ET-ohm-metre.excalidraw.md",
     "Excalidraw/Port ET.excalidraw.md",
     "Excalidraw/ohm-mètre.excalidraw.md",
