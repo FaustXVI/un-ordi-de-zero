@@ -16,7 +16,14 @@ class Electronic(VGroup):
         return self.submobjects[-1].get_end()
 
     def connect(self, other_electronic):
-        return Cable(self.exit_point(), other_electronic.entry_point())
+        start = self.exit_point()
+        finish = other_electronic.entry_point()
+        if (abs(finish[0]) > abs(start[0])):
+            midpoint = [finish[0], start[1], 0]
+        else:
+            midpoint = [start[0], finish[1], 0]
+
+        return VGroup(Cable(start, midpoint), Cable(midpoint, finish))
 
     def energize(self, dot):
         raise NotImplementedError("Todo : implement energize")
