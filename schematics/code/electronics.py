@@ -1,13 +1,6 @@
-import operator
-from itertools import accumulate
 from typing import Sequence
 
 from manim import *
-from manim.__main__ import main
-from MyScene import MyScene, my_frac
-import locale
-
-locale.setlocale(locale.LC_ALL, 'fr_FR')
 
 section_done = False
 
@@ -93,12 +86,10 @@ class Switch(Electronic):
 class Battery(Electronic):
     def __init__(self):
         super().__init__()
-        self.add(Line(LEFT, LEFT / 2),
-                 Line(LEFT / 2 + (UP / 4), LEFT / 2 + (DOWN / 4)),
-                 Line((LEFT * 1 / 6) + UP / 2, (LEFT * 1 / 6) + DOWN / 2),
-                 Line((RIGHT * 1 / 6) + (UP / 4), (RIGHT * 1 / 6) + (DOWN / 4)),
-                 Line((RIGHT + UP) / 2, (RIGHT + DOWN) / 2),
-                 Line(RIGHT / 2, RIGHT))
+        self.add(Line(LEFT, LEFT / 6),
+                 Line((LEFT / 6) + UP / 2, (LEFT / 6) + DOWN / 2),
+                 Line((RIGHT / 6) + (UP / 4), (RIGHT / 6) + (DOWN / 4)),
+                 Line(RIGHT / 6, RIGHT))
 
     def energize(self, dot):
         dot.set_opacity(0).move_to(self.submobjects[-1].get_start())
@@ -164,39 +155,3 @@ class Circuit(VGroup):
     def run_electron(self):
         electron = Dot(color=YELLOW)
         return Succession(*[o.energize(electron) for o in self.submobjects], self.battery.consume(electron))
-
-
-config.background_color = WHITE
-
-Mobject.set_default(color=BLACK)
-Dot.set_default(color=BLACK)
-Arc.set_default(color=BLACK, stroke_color=BLACK)
-
-
-class Electronics(MyScene):
-
-    def __init__(self):
-        super().__init__(recording=True)
-
-    def construct(self):
-        battery = Battery().shift(UP)
-        amter = Ameter().shift(DOWN).rotate(-PI)
-        resistance = Resistance().rotate(-PI / 2).shift(RIGHT)
-        switch = Switch()
-        switch.rotate(PI / 2).shift(LEFT)
-        circuit = Circuit(battery, battery.connect(resistance), resistance, resistance.connect(amter), amter,
-                          amter.connect(switch), switch, switch.connect(battery)).scale(2.5)
-        switch.open()
-        self.play(Create(circuit))
-        self.play(switch.animate.close())
-        # self.play(AnimationGroup(*[circuit.run_electron() for i in range(20)], lag_ratio=0.1, run_time=10))
-        self.play(switch.animate.open())
-        self.wait()
-
-
-if __name__ == "__main__":
-    main(["-pql",
-          # "--disable_caching",
-          __file__,
-          # "--write_all",
-          ], prog_name='invoked-command')
