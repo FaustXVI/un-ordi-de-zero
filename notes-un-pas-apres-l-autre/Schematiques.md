@@ -25,7 +25,7 @@
 
 > [!manim]- 2 / Schemas
 > 
-> Oui, commençons par le plus simple de tours : le fil.
+> Oui, commençons par le plus simple de tous : le fil.
 > 
 > On peut le représenter avec un simple trait
 > 
@@ -92,9 +92,13 @@
 > 
 > Physiquement, en spintronics, ça donne ça.
 > 
+> ![[sprintronics-pile-resistance.png]]
+> 
 > --------------
 > 
 > Et en électronique, ça donne ça.
+> 
+> ![[electronics-pile-resistance.png]]
 > 
 
 > [!scene]- 5 / challenge
@@ -113,6 +117,8 @@
 > 
 > C'est exactement ce qu'on avait en spintronics
 > 
+> ![[sprintronics-porte-et.png]]
+> 
 > ----------
 > 
 > Et en électronique, on avait remplacé notre combo pile / résistance / ampère-mètre par un ohm-mètre ce qui donne ce schema
@@ -122,6 +128,8 @@
 > -------------
 > 
 > Et ce qui avait physiquement donné ça
+> 
+> ![[electronics-porte-et.png]]
 > 
 > -------------
 
