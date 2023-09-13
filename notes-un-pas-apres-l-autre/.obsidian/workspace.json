@@ -139,6 +139,16 @@
                 "file": "images/schematiques/electronics-pile-resistance.png"
               }
             }
+          },
+          {
+            "id": "d2cfb195140650e6",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency"
+              }
+            }
           }
         ]
       }
@@ -158,7 +168,7 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "0806ec93f0070948",
+  "active": "fda21f26c5e0a903",
   "lastOpenFiles": [
     "images/schematiques/sprintronics-porte-et.png",
     "Schematiques.md",
