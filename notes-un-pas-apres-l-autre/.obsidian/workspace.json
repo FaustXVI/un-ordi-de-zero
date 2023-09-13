@@ -14,12 +14,23 @@
               "type": "markdown",
               "state": {
                 "file": "Schematiques.md",
-                "mode": "preview",
+                "mode": "source",
                 "source": false
               }
             }
+          },
+          {
+            "id": "fda21f26c5e0a903",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "images/schematiques/electronics-pile-resistance.png"
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -85,7 +96,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Schematiques.md",
+                "file": "images/schematiques/electronics-pile-resistance.png",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +113,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Schematiques.md",
+                "file": "images/schematiques/electronics-pile-resistance.png",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +136,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Schematiques.md"
+                "file": "images/schematiques/electronics-pile-resistance.png"
               }
             }
           }
@@ -147,16 +158,16 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "66856f43fad56b95",
+  "active": "0806ec93f0070948",
   "lastOpenFiles": [
-    "images/schematiques/electronics-porte-et.png",
     "images/schematiques/sprintronics-porte-et.png",
+    "Schematiques.md",
+    "images/schematiques/electronics-porte-et.png",
     "images/schematiques/electronics-pile-resistance.png",
     "images/schematiques/sprintronics-pile-resistance.png",
     "images/schematiques",
     "images",
     "Excalidraw/plie.excalidraw.md",
-    "Schematiques.md",
     "Unités.md",
     "résistance.md",
     "Porte ET.md",
