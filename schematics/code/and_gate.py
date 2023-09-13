@@ -33,11 +33,20 @@ class Pile_Resistance(MyScene):
             ameter,
             ameter.connect(battery)
         )
+        spin = ImageMobject(
+            "../../notes-un-pas-apres-l-autre/images/schematiques/sprintronics-porte-et.png").shift(
+            DOWN * 2).scale(0.5)
+        elec = ImageMobject(
+            "../../notes-un-pas-apres-l-autre/images/schematiques/electronics-porte-et.png").shift(
+            DOWN * 2).scale(0.5)
         with self.my_voiceover(
                 """Alors, on avait, une pile relié à une résistance, puis nos deux interrupteurs et l'amprè-mètre pour voir le courant passer.""") as timer:
             self.play(Create(and_gate), run_time=timer.duration)
+        with self.my_voiceover(
+                """C'est exactement ce qu'on avait en spintronics""") as timer:
+            self.play(and_gate.animate.shift(UP), FadeIn(spin), run_time=timer.duration)
         self.wait()
-        self.play(FadeOut(and_gate))
+        self.play(FadeOut(and_gate, spin))
         ohmmetre = Ohmmeter().shift(UP)
         and_gate_elec = Circuit(
             ohmmetre,
@@ -50,8 +59,11 @@ class Pile_Resistance(MyScene):
         with self.my_voiceover(
                 """Et en électronique, on avait remplacé notre combo pile / résistance / ampère-mètre par un ohm-mètre ce qui donne ce schema""") as timer:
             self.play(Create(and_gate_elec), run_time=timer.duration)
+        with self.my_voiceover(
+                """Et ce qui avait physiquement donné ça""") as timer:
+            self.play(and_gate_elec.animate.shift(UP), FadeIn(elec), run_time=timer.duration)
         self.wait()
-        self.play(FadeOut(and_gate_elec))
+        self.play(FadeOut(and_gate_elec, elec))
 
 
 if __name__ == "__main__":
