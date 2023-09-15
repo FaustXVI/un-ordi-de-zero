@@ -25,8 +25,8 @@ class Schemas(MyScene):
         self.next_section(skip_animations=section_done)
         battery = Battery()
         with self.my_voiceover("""Ensuite, on a la pile, qu'on représente avec deux barres verticales.
-La bare la plus longue représente la cathode, qu'on marque souvent avec un + sur les piles.
-Et le côté le plus court représente l'anode.""") as timer:
+La bare la plus longue représente l'anode, qu'on marque souvent avec un + sur les piles.
+Et le côté le plus court représente la cathode.""") as timer:
             self.play(Create(battery), run_time=timer.duration)
         self.wait()
         self.play(FadeOut(battery))
@@ -51,7 +51,7 @@ Et le côté le plus court représente l'anode.""") as timer:
         self.next_section(skip_animations=section_done)
         switch = Switch()
         with self.my_voiceover("""Et enfin, l'interrupteur se représente comme un clapet.
-Ainsi, on peut le dessiner ouvert""") as timer:
+On peut le dessiner ouvert""") as timer:
             self.play(Create(switch), run_time=timer.duration)
             self.wait()
         with self.my_voiceover("""Ou fermé""") as timer:

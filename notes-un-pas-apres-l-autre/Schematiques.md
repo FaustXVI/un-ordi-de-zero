@@ -34,8 +34,8 @@
 > ---------------
 > 
 > Ensuite, on a la [[pile]], qu'on représente avec deux barres verticales.
-> La bare la plus longue représente la cathode, qu'on marque souvent avec un $+$ sur les piles.
-> Et le côté le plus court représente l'anode.
+> La bare la plus longue représente l'anode, qu'on marque souvent avec un $+$ sur les piles.
+> Et le côté le plus court représente la cathode.
 > 
 > ![[plie.excalidraw]]
 > 
