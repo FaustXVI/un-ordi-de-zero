@@ -23,9 +23,11 @@
             "id": "fda21f26c5e0a903",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "images/schematiques/electronics-pile-resistance.png"
+                "file": "Schematiques.md",
+                "mode": "preview",
+                "source": false
               }
             }
           }
@@ -96,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "images/schematiques/electronics-pile-resistance.png",
+                "file": "Schematiques.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -113,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "images/schematiques/electronics-pile-resistance.png",
+                "file": "Schematiques.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -136,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "images/schematiques/electronics-pile-resistance.png"
+                "file": "Schematiques.md"
               }
             }
           },
@@ -170,10 +172,10 @@
   },
   "active": "fda21f26c5e0a903",
   "lastOpenFiles": [
+    "images/schematiques/electronics-pile-resistance.png",
     "images/schematiques/sprintronics-porte-et.png",
     "Schematiques.md",
     "images/schematiques/electronics-porte-et.png",
-    "images/schematiques/electronics-pile-resistance.png",
     "images/schematiques/sprintronics-pile-resistance.png",
     "images/schematiques",
     "images",

@@ -12,7 +12,7 @@ section_done = False
 class Schemas(MyScene):
 
     def __init__(self):
-        super().__init__(recording=False)
+        super().__init__(recording=True)
 
     def construct(self):
         self.next_section(skip_animations=section_done)
