@@ -109,7 +109,7 @@
 
 > [!manim]- 6 / [[Porte ET]]
 > 
-> Alors, on avait, une pile relié à une résistance, puis nos deux interrupteurs et l'amprè-mètre pour voir le courant passer.
+> Alors, on avait, une pile relié à une résistance, puis nos deux interrupteurs et l'amprè-mètre pour voir le signal passer.
 > 
 > ![[Port ET.excalidraw]]
 > 

@@ -12,7 +12,7 @@ section_done = False
 class Pile_Resistance(MyScene):
 
     def __init__(self):
-        super().__init__(recording=False)
+        super().__init__(recording=True)
 
     def construct(self):
         self.next_section(skip_animations=section_done)
@@ -36,9 +36,11 @@ class Pile_Resistance(MyScene):
         with self.my_voiceover(
                 """Pour représenter ce circuit, on dessine notre symbol de pile, celui de la résistance et celui de l'ampère-mètre. Enfin on relie le tout par des fils.""") as timer:
             self.play(Create(pile_res_schema), run_time=timer.duration)
+        self.wait(2)
         with self.my_voiceover(
                 """Physiquement, en spintronics, ça donne ça.""") as timer:
             self.play(pile_res_schema.animate.shift(UP), FadeIn(spin), run_time=timer.duration)
+        self.wait()
         with self.my_voiceover(
                 """Et en électronique, ça donne ça.""") as timer:
             self.play(FadeIn(elec), run_time=timer.duration)
