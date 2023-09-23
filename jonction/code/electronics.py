@@ -4,6 +4,8 @@ from manim import *
 
 section_done = False
 
+flat_map = lambda f, xs: (y for ys in xs for y in f(ys))
+
 
 class Electronic(VGroup):
     def __init__(self):
@@ -28,6 +30,18 @@ class Electronic(VGroup):
     def energize(self, dot):
         raise NotImplementedError("Todo : implement energize")
 
+
+class Contact(Electronic):
+    def __init__(self, position):
+        super().__init__()
+        self.dot = Dot(position).set_opacity(0)
+        self.add(self.dot)
+
+    def entry_point(self):
+        return self.dot.get_center()
+
+    def exit_point(self):
+        return self.dot.get_center()
 
 class Cable(Line):
 
@@ -165,3 +179,29 @@ class Circuit(VGroup):
     def run_electron(self):
         electron = Dot(color=YELLOW)
         return Succession(*[o.energize(electron) for o in self.submobjects], self.battery.consume(electron))
+
+
+class Junction(Electronic):
+    def __init__(self, *branches):
+        super().__init__()
+        self.start = Contact(center_of_mass([branch.entry_point() for branch in branches]))
+        self.stop = Contact(center_of_mass([branch.exit_point() for branch in branches]))
+        self.add(self.start, *flat_map(lambda b: [self.start.connect(b),b,b.connect(self.stop)], branches), self.stop)
+
+    def entry_point(self):
+        return self.start.entry_point()
+
+    def exit_point(self):
+        return self.stop.exit_point()
+
+
+class Branch(Electronic):
+    def __init__(self, *vmobjects):
+        super().__init__()
+        self.add(*vmobjects)
+
+    def entry_point(self):
+        return self.submobjects[0].entry_point()
+
+    def exit_point(self):
+        return self.submobjects[-1].exit_point()
