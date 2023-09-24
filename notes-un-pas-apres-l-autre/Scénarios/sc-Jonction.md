@@ -93,7 +93,7 @@
 > > Ah ! bha c'est le bien venu parce que ça commençait à prendre de la place !
 > 
 > > [!theo]+
-> > Bon, par contre, on est loin d'avoir tout vu hein ! Par exemple, on a vu nos ampères-mètres bouger, mais pour l'instant on sais pas prédire la valeur qu'ils vont afficher !
+> > Bon, par contre, on est loin d'avoir tout vu hein ! Par exemple, on a vu nos ampères-mètres bouger, mais pour l'instant on sais pas prédire la valeur qu'ils vont afficher !  Ni ce qu'afficherai un ampère-mètre après que les deux branches se rejoignent.
 > 
 > > [!xav]+
 > > Oulà ! Je te vois venir ! Tu vas me donner plein de formules et faire des calculs compliqués ! On se fait ça une prochaine fois ?

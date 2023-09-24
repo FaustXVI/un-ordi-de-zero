@@ -8,13 +8,13 @@
         "type": "tabs",
         "children": [
           {
-            "id": "562d7a020766ffdc",
+            "id": "30e9f668a889df0d",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Scénarios/sc-Jonction.md",
-                "mode": "preview",
+                "file": "résistance.md",
+                "mode": "source",
                 "source": false
               }
             }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Scénarios/sc-Jonction.md",
+                "file": "résistance.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Scénarios/sc-Jonction.md",
+                "file": "résistance.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Scénarios/sc-Jonction.md"
+                "file": "résistance.md"
               }
             }
           },
@@ -157,18 +157,22 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "562d7a020766ffdc",
+  "active": "30e9f668a889df0d",
   "lastOpenFiles": [
+    "Scénarios/sc-Jonction.md",
+    "résistance.md",
+    "Unités.md",
+    "Lois de Kirchhoff.md",
+    "Lois.md",
+    "loi des mailles.md",
+    "loi d'ohm.md",
     "pile.md",
     "Scénarios/Schematiques.md",
-    "Scénarios/sc-Jonction.md",
     "Excalidraw/jonction.excalidraw.md",
     "Excalidraw/ampère-mètre.excalidraw.md",
     "Excalidraw/sc-Jonction 2023-09-23 16.20.43.excalidraw.md",
     "Excalidraw/plie.excalidraw.md",
     "Excalidraw/résistance.excalidraw.md",
-    "Unités.md",
-    "résistance.md",
     "Porte ET.md",
     "ohm-mètre.md",
     "interrupteur.md",
@@ -189,10 +193,6 @@
     "Excalidraw/fil.excalidraw.md",
     "Excalidraw/interrupteur-fermé.excalidraw.md",
     "Excalidraw",
-    "templates/Scene manim.md",
-    "templates/Scene dialog.md",
-    "templates/Scene close-up.md",
-    "templates/followup dialog.md",
     "templates"
   ]
 }
