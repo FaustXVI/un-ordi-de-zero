@@ -2,6 +2,11 @@ from typing import Sequence
 
 from manim import *
 
+
+def without_none(tab):
+    return filter(lambda e: e is not None, tab)
+
+
 class Electronic(VGroup):
     def __init__(self, *vmobjects, **kwargs):
         super().__init__(**kwargs)
@@ -21,7 +26,14 @@ class Electronic(VGroup):
         else:
             midpoint = [start[0], finish[1], 0]
 
-        return Branch(Cable(start, midpoint), Cable(midpoint, finish))
+        c1 = Cable(start, midpoint)
+        c2 = Cable(midpoint, finish)
+        cables = [*filter(lambda c: c.get_length() > 0, [c1, c2])]
+
+        if len(cables) > 0:
+            return Branch(*cables)
+        else:
+            return None
 
     def energize(self, dot):
         raise NotImplementedError("Todo : implement energize")
@@ -30,7 +42,7 @@ class Electronic(VGroup):
 class Branch(Electronic):
     def __init__(self, *vmobjects, **kwargs):
         super().__init__(**kwargs)
-        self.add(*vmobjects)
+        self.add(*without_none(vmobjects))
 
     def entry_point(self):
         return self.submobjects[0].entry_point()
@@ -39,8 +51,12 @@ class Branch(Electronic):
         return self.submobjects[-1].exit_point()
 
     def energize(self, electron):
-        return Succession(*filter(lambda e: e is not None, [o.energize(electron) for o in self.submobjects]),
+        return Succession(*without_none([o.energize(electron) for o in self.submobjects]),
                           rate_func=linear)
+
+    @override_animation(Create)
+    def _create_override(self, **kwargs):
+        return Succession(*[Create(o) for o in self.submobjects], **kwargs)
 
 
 class Circuit(Branch):
@@ -49,7 +65,7 @@ class Circuit(Branch):
         super().__init__(**kwargs)
         self.battery = battery
         self.add(battery)
-        self.add(*vmobjects)
+        self.add(*without_none(vmobjects))
 
     def run_electron(self):
         electron = Dot(color=YELLOW)
@@ -71,18 +87,26 @@ class Contact(Electronic):
     def energize(self, electron):
         pass
 
+    @override_animation(Create)
+    def _create_override(self):
+        return Wait(0)
+
 
 class Junction(Branch):
-    def __init__(self, *branches):
+    def __init__(self, *branches, draw_delay=0):
         super().__init__()
         self.start = Contact(center_of_mass([branch.entry_point() for branch in branches]))
         self.stop = Contact(center_of_mass([branch.exit_point() for branch in branches]))
         self.branches = [Branch(self.start.connect(b), b, b.connect(self.stop)) for b in branches]
         self.add(self.start, *self.branches, self.stop)
+        self.draw_delay = draw_delay
+
+    @override_animation(Create)
+    def _create_override(self, **kwargs):
+        kwargs["lag_ratio"] = self.draw_delay
+        return AnimationGroup(*[Create(o) for o in self.branches], **kwargs)
 
     def energize(self, electron):
-        print(self)
-
         def energizeBranch(branch):
             e = electron.copy()
             return Succession(*[
