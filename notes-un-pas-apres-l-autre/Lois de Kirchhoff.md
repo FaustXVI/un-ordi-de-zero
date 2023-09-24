@@ -1,8 +1,10 @@
+#loi
+
 https://en.wikipedia.org/wiki/Kirchhoff%27s_circuit_laws
 
 # Loi  des mailles
 aka voltage law
-![[Lois de Kirchhoff 2023-09-24 22.42.24.excalidraw]]
+![[maille.excalidraw]]
 > dans une maille orientée, la somme des tensions fléchées dans un sens de parcours est égale à la somme des tensions fléchées dans l'autre sens de parcours
 
 $$\sum_{k}^{n}{U_k} = 0$$

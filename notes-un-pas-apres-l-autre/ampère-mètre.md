@@ -1,3 +1,8 @@
+---
+category: instrument
+---
+
+#composant 
 # Schéma
 ![[ampère-mètre.excalidraw]]
 # Création

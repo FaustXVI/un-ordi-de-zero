@@ -8,25 +8,23 @@
         "type": "tabs",
         "children": [
           {
-            "id": "30e9f668a889df0d",
+            "id": "5fb4c40930cd1e72",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Lois de Kirchhoff.md",
+                "file": "toc/Unités.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "6a9b02e744d2c5f2",
+            "id": "f393c5edf683ada9",
             "type": "leaf",
             "state": {
-              "type": "excalidraw",
-              "state": {
-                "file": "Excalidraw/Lois de Kirchhoff 2023-09-24 22.42.24.excalidraw.md"
-              }
+              "type": "graph",
+              "state": {}
             }
           }
         ],
@@ -96,7 +94,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Excalidraw/Lois de Kirchhoff 2023-09-24 22.42.24.excalidraw.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -113,7 +110,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Excalidraw/Lois de Kirchhoff 2023-09-24 22.42.24.excalidraw.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -135,9 +131,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "Excalidraw/Lois de Kirchhoff 2023-09-24 22.42.24.excalidraw.md"
-              }
+              "state": {}
             }
           },
           {
@@ -168,29 +162,35 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "6a9b02e744d2c5f2",
+  "active": "f393c5edf683ada9",
   "lastOpenFiles": [
+    "loi d'ohm.md",
+    "Porte ET.md",
+    "interrupteur.md",
+    "résistance.md",
+    "Ohm.md",
+    "Volt.md",
+    "Joule.md",
+    "toc/Vidéo.md",
+    "pile.md",
+    "ohm-mètre.md",
+    "jonction.md",
+    "toc/Unités.md",
+    "Newton.md",
+    "Ampère.md",
+    "Coulomb.md",
+    "toc/Composants.md",
+    "toc/Lois.md",
+    "toc",
+    "ampère-mètre.md",
     "Lois de Kirchhoff.md",
-    "Excalidraw/Lois de Kirchhoff 2023-09-24 22.42.24.excalidraw.md",
+    "Excalidraw/maille.excalidraw.md",
     "Excalidraw/nœud.excalidraw.md",
     "Scénarios/sc-Jonction.md",
-    "résistance.md",
-    "Unités.md",
-    "Lois.md",
     "loi des mailles.md",
-    "loi d'ohm.md",
-    "pile.md",
     "Scénarios/Schematiques.md",
     "Excalidraw/jonction.excalidraw.md",
     "Excalidraw/ampère-mètre.excalidraw.md",
-    "Excalidraw/sc-Jonction 2023-09-23 16.20.43.excalidraw.md",
-    "Excalidraw/plie.excalidraw.md",
-    "Excalidraw/résistance.excalidraw.md",
-    "Porte ET.md",
-    "ohm-mètre.md",
-    "interrupteur.md",
-    "ampère-mètre.md",
-    "jonction.md",
     "Scénarios",
     "images/schematiques/electronics-pile-resistance.png",
     "images/schematiques/sprintronics-porte-et.png",
@@ -198,11 +198,6 @@
     "images/schematiques/sprintronics-pile-resistance.png",
     "images/schematiques",
     "images",
-    "Excalidraw/Porte-ET-ohm-metre.excalidraw.md",
-    "Excalidraw/Port ET.excalidraw.md",
-    "Excalidraw/ohm-mètre.excalidraw.md",
-    "Excalidraw/Pile+résistance.excalidraw.md",
-    "Excalidraw/interrupteur.excalidraw.md",
     "Excalidraw",
     "templates"
   ]

@@ -1,3 +1,8 @@
+---
+category: porte
+video: https://www.youtube.com/watch?v=A6urmeLnHLU
+---
+#composant 
 # Schéma
 
 ## Avec des [[interrupteur]]s
@@ -6,5 +11,3 @@ Version détaillée
 
 Version simplifiée
 ![[Porte-ET-ohm-metre.excalidraw]]
-# Création
-https://www.youtube.com/watch?v=A6urmeLnHLU
