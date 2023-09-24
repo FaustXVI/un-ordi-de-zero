@@ -2,14 +2,10 @@ from typing import Sequence
 
 from manim import *
 
-section_done = False
-
-flat_map = lambda f, xs: (y for ys in xs for y in f(ys))
-
-
 class Electronic(VGroup):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, *vmobjects, **kwargs):
+        super().__init__(**kwargs)
+        self.add(*vmobjects)
 
     def entry_point(self):
         return self.submobjects[0].get_start()
@@ -25,10 +21,39 @@ class Electronic(VGroup):
         else:
             midpoint = [start[0], finish[1], 0]
 
-        return VGroup(Cable(start, midpoint), Cable(midpoint, finish))
+        return Branch(Cable(start, midpoint), Cable(midpoint, finish))
 
     def energize(self, dot):
         raise NotImplementedError("Todo : implement energize")
+
+
+class Branch(Electronic):
+    def __init__(self, *vmobjects, **kwargs):
+        super().__init__(**kwargs)
+        self.add(*vmobjects)
+
+    def entry_point(self):
+        return self.submobjects[0].entry_point()
+
+    def exit_point(self):
+        return self.submobjects[-1].exit_point()
+
+    def energize(self, electron):
+        return Succession(*filter(lambda e: e is not None, [o.energize(electron) for o in self.submobjects]),
+                          rate_func=linear)
+
+
+class Circuit(Branch):
+
+    def __init__(self, battery, *vmobjects, **kwargs):
+        super().__init__(**kwargs)
+        self.battery = battery
+        self.add(battery)
+        self.add(*vmobjects)
+
+    def run_electron(self):
+        electron = Dot(color=YELLOW)
+        return Succession(self.energize(electron), self.battery.consume(electron), rate_func=linear)
 
 
 class Contact(Electronic):
@@ -42,6 +67,37 @@ class Contact(Electronic):
 
     def exit_point(self):
         return self.dot.get_center()
+
+    def energize(self, electron):
+        pass
+
+
+class Junction(Branch):
+    def __init__(self, *branches):
+        super().__init__()
+        self.start = Contact(center_of_mass([branch.entry_point() for branch in branches]))
+        self.stop = Contact(center_of_mass([branch.exit_point() for branch in branches]))
+        self.branches = [Branch(self.start.connect(b), b, b.connect(self.stop)) for b in branches]
+        self.add(self.start, *self.branches, self.stop)
+
+    def energize(self, electron):
+        print(self)
+
+        def energizeBranch(branch):
+            e = electron.copy()
+            return Succession(*[
+                AnimationGroup(e.animate(run_time=0).set_opacity(1)),
+                branch.energize(e),
+                AnimationGroup(e.animate(run_time=0).set_opacity(0)),
+            ], rate_func=linear)
+
+        anims = [energizeBranch(o) for o in self.branches]
+        return Succession(*[
+            AnimationGroup(electron.animate(run_time=0).set_opacity(0)),
+            AnimationGroup(*anims),
+            AnimationGroup(electron.animate(run_time=0).set_opacity(1))
+        ], rate_func=linear)
+
 
 class Cable(Line):
 
@@ -70,7 +126,7 @@ class Resistance(Electronic):
     def energize(self, dot):
         return Succession(*[
             MoveAlongPath(dot, line, rate_func=linear) for line in self.submobjects
-        ])
+        ], rate_func=linear)
 
 
 class Switch(Electronic):
@@ -86,7 +142,7 @@ class Switch(Electronic):
             raise RuntimeError("Trying to energize an open circuit")
         return Succession(*[
             MoveAlongPath(dot, line, rate_func=linear) for line in self.submobjects if isinstance(line, Line)
-        ])
+        ], rate_func=linear)
 
     def rotate(self, angle: float, axis: np.ndarray = OUT, about_point: Sequence[float] | None = None, **kwargs):
         if about_point is None:
@@ -118,11 +174,12 @@ class Battery(Electronic):
     def energize(self, dot):
         dot.set_opacity(0).move_to(self.submobjects[-1].get_start())
         return Succession(dot.animate(rate_func=linear).set_opacity(1),
-                          MoveAlongPath(dot, self.submobjects[-1], rate_func=linear))
+                          MoveAlongPath(dot, self.submobjects[-1], rate_func=linear), rate_func=linear)
 
     def consume(self, dot):
         return Succession(MoveAlongPath(dot, self.submobjects[0], rate_func=linear),
-                          dot.animate(rate_func=linear).set_opacity(0).move_to(self.submobjects[0].get_end()))
+                          dot.animate(rate_func=linear).set_opacity(0).move_to(self.submobjects[0].get_end()),
+                          rate_func=linear)
 
 
 class Mesurement(Electronic):
@@ -151,7 +208,8 @@ class Mesurement(Electronic):
                            self.letter.animate(rate_func=linear).set_color(color),
                            ),
             AnimationGroup(dot.animate(run_time=0).set_opacity(1)),
-            MoveAlongPath(dot, self.submobjects[-1], rate_func=linear)
+            MoveAlongPath(dot, self.submobjects[-1], rate_func=linear),
+            rate_func=linear
         )
 
 
@@ -168,40 +226,3 @@ class Voltmeter(Mesurement):
 class Ohmmeter(Mesurement):
     def __init__(self):
         super().__init__(r"$\Omega$")
-
-
-class Circuit(VGroup):
-
-    def __init__(self, battery, *vmobjects, **kwargs):
-        super().__init__(battery, *vmobjects, **kwargs)
-        self.battery = battery
-
-    def run_electron(self):
-        electron = Dot(color=YELLOW)
-        return Succession(*[o.energize(electron) for o in self.submobjects], self.battery.consume(electron))
-
-
-class Junction(Electronic):
-    def __init__(self, *branches):
-        super().__init__()
-        self.start = Contact(center_of_mass([branch.entry_point() for branch in branches]))
-        self.stop = Contact(center_of_mass([branch.exit_point() for branch in branches]))
-        self.add(self.start, *flat_map(lambda b: [self.start.connect(b),b,b.connect(self.stop)], branches), self.stop)
-
-    def entry_point(self):
-        return self.start.entry_point()
-
-    def exit_point(self):
-        return self.stop.exit_point()
-
-
-class Branch(Electronic):
-    def __init__(self, *vmobjects):
-        super().__init__()
-        self.add(*vmobjects)
-
-    def entry_point(self):
-        return self.submobjects[0].entry_point()
-
-    def exit_point(self):
-        return self.submobjects[-1].exit_point()

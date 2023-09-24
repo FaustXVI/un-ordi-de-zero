@@ -15,7 +15,7 @@ class JunctionSc(MyScene):
         super().__init__(recording=False)
 
     def construct(self):
-        self.next_section(skip_animations=False)
+        self.next_section(skip_animations=section_done)
         battery = Battery().shift(LEFT * 2).rotate(-PI / 2)
         r1 = Resistance().shift(UP)
         r2 = Resistance().shift(DOWN)
@@ -45,7 +45,7 @@ On va faire deux branches identiques avec :
 Si notre jonction fonctionne correctement, on verra une valeur sur les deux ampère-mètres en même temps.""") as timer:
             self.play(Create(circuit), run_time=timer.duration)
         self.wait(2)
-        self.wait()
+        self.play(FadeOut(circuit))
 
 
 if __name__ == "__main__":
