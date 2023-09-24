@@ -6,7 +6,7 @@ from electronics import *
 
 locale.setlocale(locale.LC_ALL, 'fr_FR')
 
-section_done = False
+section_done = True
 
 
 class JunctionSc(MyScene):
@@ -45,7 +45,6 @@ On va faire deux branches identiques avec :
 Si notre jonction fonctionne correctement, on verra une valeur sur les deux ampère-mètres en même temps.""") as timer:
             self.play(Create(circuit), run_time=timer.duration)
         self.wait(2)
-        self.play(ShowPassingFlash(j))
         self.play(FadeOut(circuit))
 
 

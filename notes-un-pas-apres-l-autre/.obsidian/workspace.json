@@ -13,13 +13,24 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "résistance.md",
+                "file": "Lois de Kirchhoff.md",
                 "mode": "source",
                 "source": false
               }
             }
+          },
+          {
+            "id": "6a9b02e744d2c5f2",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "Excalidraw/Lois de Kirchhoff 2023-09-24 22.42.24.excalidraw.md"
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -85,7 +96,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "résistance.md",
+                "file": "Excalidraw/Lois de Kirchhoff 2023-09-24 22.42.24.excalidraw.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +113,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "résistance.md",
+                "file": "Excalidraw/Lois de Kirchhoff 2023-09-24 22.42.24.excalidraw.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +136,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "résistance.md"
+                "file": "Excalidraw/Lois de Kirchhoff 2023-09-24 22.42.24.excalidraw.md"
               }
             }
           },
@@ -157,12 +168,14 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "30e9f668a889df0d",
+  "active": "6a9b02e744d2c5f2",
   "lastOpenFiles": [
+    "Lois de Kirchhoff.md",
+    "Excalidraw/Lois de Kirchhoff 2023-09-24 22.42.24.excalidraw.md",
+    "Excalidraw/nœud.excalidraw.md",
     "Scénarios/sc-Jonction.md",
     "résistance.md",
     "Unités.md",
-    "Lois de Kirchhoff.md",
     "Lois.md",
     "loi des mailles.md",
     "loi d'ohm.md",
@@ -190,8 +203,6 @@
     "Excalidraw/ohm-mètre.excalidraw.md",
     "Excalidraw/Pile+résistance.excalidraw.md",
     "Excalidraw/interrupteur.excalidraw.md",
-    "Excalidraw/fil.excalidraw.md",
-    "Excalidraw/interrupteur-fermé.excalidraw.md",
     "Excalidraw",
     "templates"
   ]
