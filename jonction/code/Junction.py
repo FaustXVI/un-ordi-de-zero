@@ -26,7 +26,7 @@ class JunctionSc(MyScene):
         j = Junction(b1, b2).shift(DOWN)
         c = Contact(j.exit_point() + RIGHT)
 
-        pile_res_schema = Circuit(
+        circuit = Circuit(
             battery,
             battery.connect(j),
             j,
@@ -43,7 +43,7 @@ On va faire deux branches identiques avec :
 - un ampère-mètre pour voir le courant passer
 
 Si notre jonction fonctionne correctement, on verra une valeur sur les deux ampère-mètres en même temps.""") as timer:
-            self.play(Create(pile_res_schema), run_time=timer.duration)
+            self.play(Create(circuit), run_time=timer.duration)
         self.wait(2)
         self.wait()
 
