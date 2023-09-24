@@ -1,3 +1,13 @@
+# Description
+Aujourd'hui, on représente nos circuits sur le papier grâce à des schémas !
+# Références
+[[Faire bouger une boussole avec une patate]]
+[[Faire une résistance avec une mine de criterium]]
+[[Les unités en électronique]]
+[[L'interrupteur]]
+[[La porte ET]]
+
+# Textes
 
 > [!scene]- 1/ Intro
 > 

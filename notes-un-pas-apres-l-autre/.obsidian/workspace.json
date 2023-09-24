@@ -4,31 +4,22 @@
     "type": "split",
     "children": [
       {
-        "id": "f548161d4bebc2d5",
+        "id": "b82cea37714a4a40",
         "type": "tabs",
         "children": [
           {
-            "id": "5fb4c40930cd1e72",
+            "id": "3c75e2e101becc76",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "toc/Unités.md",
+                "file": "templates/Scene dialog.md",
                 "mode": "source",
                 "source": false
               }
             }
-          },
-          {
-            "id": "f393c5edf683ada9",
-            "type": "leaf",
-            "state": {
-              "type": "graph",
-              "state": {}
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -94,6 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "templates/Scene dialog.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -110,6 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "templates/Scene dialog.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -131,7 +124,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "templates/Scene dialog.md"
+              }
             }
           },
           {
@@ -162,37 +157,37 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "f393c5edf683ada9",
+  "active": "3c75e2e101becc76",
   "lastOpenFiles": [
-    "loi d'ohm.md",
-    "Porte ET.md",
-    "interrupteur.md",
+    "templates/Vidéo.md",
+    "Scénarios/Schematiques.md",
+    "Scénarios/Création d'une jonction.md",
+    "Scénarios/Les unités en électronique.md",
+    "Scénarios/La porte ET.md",
+    "Scénarios/L'interrupteur.md",
+    "Scénarios/Faire une résistance avec une mine de criterium.md",
+    "Scénarios/Faire bouger une boussole avec une patate.md",
+    "Scénarios/2 résistances en séries.md",
+    "Scénarios/sc-Jonction 1.md",
+    "images/schematiques/electronics-pile-resistance.png",
     "résistance.md",
+    "interrupteur.md",
+    "loi d'ohm.md",
+    "toc/Unités.md",
+    "Lois de Kirchhoff.md",
+    "jonction.md",
+    "pile.md",
+    "Porte ET.md",
+    "ohm-mètre.md",
+    "ampère-mètre.md",
+    "toc/Vidéo.md",
     "Ohm.md",
     "Volt.md",
     "Joule.md",
-    "toc/Vidéo.md",
-    "pile.md",
-    "ohm-mètre.md",
-    "jonction.md",
-    "toc/Unités.md",
     "Newton.md",
     "Ampère.md",
-    "Coulomb.md",
-    "toc/Composants.md",
-    "toc/Lois.md",
     "toc",
-    "ampère-mètre.md",
-    "Lois de Kirchhoff.md",
-    "Excalidraw/maille.excalidraw.md",
-    "Excalidraw/nœud.excalidraw.md",
-    "Scénarios/sc-Jonction.md",
-    "loi des mailles.md",
-    "Scénarios/Schematiques.md",
-    "Excalidraw/jonction.excalidraw.md",
-    "Excalidraw/ampère-mètre.excalidraw.md",
     "Scénarios",
-    "images/schematiques/electronics-pile-resistance.png",
     "images/schematiques/sprintronics-porte-et.png",
     "images/schematiques/electronics-porte-et.png",
     "images/schematiques/sprintronics-pile-resistance.png",

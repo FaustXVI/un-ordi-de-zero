@@ -1,9 +1,10 @@
 ---
 category: instrument
+video: "https://www.youtube.com/watch?v=DIqkrREIk-8"
 ---
 
-#composant 
+Mesure l'intensité du courant en [[Ampère]]
 # Schéma
 ![[ampère-mètre.excalidraw]]
-# Création
-https://www.youtube.com/watch?v=DIqkrREIk-8
+
+#composant 
