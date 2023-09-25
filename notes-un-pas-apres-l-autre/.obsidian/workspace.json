@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "b82cea37714a4a40",
+        "id": "c9a876ac443e969c",
         "type": "tabs",
         "children": [
           {
-            "id": "3c75e2e101becc76",
+            "id": "24ef9b4310886859",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "templates/Scene dialog.md",
+                "file": "Scénarios/Création d'une jonction.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "templates/Scene dialog.md",
+                "file": "Scénarios/Création d'une jonction.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "templates/Scene dialog.md",
+                "file": "Scénarios/Création d'une jonction.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "templates/Scene dialog.md"
+                "file": "Scénarios/Création d'une jonction.md"
               }
             }
           },
@@ -157,8 +157,9 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "3c75e2e101becc76",
+  "active": "24ef9b4310886859",
   "lastOpenFiles": [
+    "templates/Scene dialog.md",
     "templates/Vidéo.md",
     "Scénarios/Schematiques.md",
     "Scénarios/Création d'une jonction.md",
@@ -185,7 +186,6 @@
     "Volt.md",
     "Joule.md",
     "Newton.md",
-    "Ampère.md",
     "toc",
     "Scénarios",
     "images/schematiques/sprintronics-porte-et.png",

@@ -17,7 +17,7 @@
 > > Alors, une jonction, en fait c'est tout simple hein. C'est ce qui permet de passer de 1 seul fil à deux ou plusieurs fils.
 > 
 > > [!xav]+ Xav, dessin en live
-> > Ok, ça, c'est facile à dessiner. On dessine un fil qui est notre file de départ et on fait une fourche pour le séparer en deux. Ça le fait non ?
+> > Ok, ça, c'est facile à dessiner. On dessine notre fil de départ et on fait une fourche pour le séparer en deux. Ça le fait non ?
 > > ![[jonction.excalidraw]]
 > 
 > > [!theo]+
@@ -29,7 +29,7 @@
 > Pour rappel, en spintronics, les fils sont représentés par des chaines. La jonction, permet donc de passer d'une seule chaîne à deux chaînes. On peut par exemple faire tourner deux résistances sur deux chaînes différentes.
 > 
 
-> [!scene]- 3 / un clou
+> [!scene]- 3 / un trombone
 > 
 > > [!xav]+
 > > Ok, et en éléctronique, comment on peut faire ça ?

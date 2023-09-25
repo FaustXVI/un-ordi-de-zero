@@ -123,13 +123,21 @@ class Junction(Branch):
         ], rate_func=linear)
 
 
-class Cable(Line):
+class Cable(Line,Electronic):
 
     def __init__(self, start=LEFT, end=RIGHT, buff=0, path_arc=None, **kwargs):
         super().__init__(start, end, buff, path_arc, **kwargs)
+        self.start = start
+        self.end = end
 
     def energize(self, dot):
         return MoveAlongPath(dot, self, rate_func=linear, run_time=self.get_length() / 2)
+
+    def entry_point(self):
+        return self.start
+
+    def exit_point(self):
+        return self.end
 
 
 class Resistance(Electronic):
