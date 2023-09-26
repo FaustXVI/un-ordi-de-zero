@@ -4,19 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "c9a876ac443e969c",
+        "id": "85b05e5dbd5f1adc",
         "type": "tabs",
         "children": [
           {
-            "id": "24ef9b4310886859",
+            "id": "e588046849d2b254",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Scénarios/Création d'une jonction.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -85,7 +81,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Scénarios/Création d'une jonction.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +97,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Scénarios/Création d'une jonction.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -124,9 +118,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "Scénarios/Création d'une jonction.md"
-              }
+              "state": {}
             }
           },
           {
@@ -157,12 +149,15 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "24ef9b4310886859",
+  "active": "e588046849d2b254",
   "lastOpenFiles": [
+    "toc/Composants.md",
+    "toc/Unités.md",
+    "toc/Vidéo.md",
+    "Scénarios/Création d'une jonction.md",
     "templates/Scene dialog.md",
     "templates/Vidéo.md",
     "Scénarios/Schematiques.md",
-    "Scénarios/Création d'une jonction.md",
     "Scénarios/Les unités en électronique.md",
     "Scénarios/La porte ET.md",
     "Scénarios/L'interrupteur.md",
@@ -174,18 +169,15 @@
     "résistance.md",
     "interrupteur.md",
     "loi d'ohm.md",
-    "toc/Unités.md",
     "Lois de Kirchhoff.md",
     "jonction.md",
     "pile.md",
     "Porte ET.md",
     "ohm-mètre.md",
     "ampère-mètre.md",
-    "toc/Vidéo.md",
     "Ohm.md",
     "Volt.md",
     "Joule.md",
-    "Newton.md",
     "toc",
     "Scénarios",
     "images/schematiques/sprintronics-porte-et.png",

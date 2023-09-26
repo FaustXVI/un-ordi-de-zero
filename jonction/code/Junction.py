@@ -44,7 +44,7 @@ On va faire deux branches identiques avec :
 
 Si notre jonction fonctionne correctement, on verra une valeur sur les deux ampère-mètres en même temps.""") as timer:
             self.play(Create(circuit), run_time=timer.duration)
-        self.wait(2)
+        self.wait()
         self.play(FadeOut(circuit))
 
 
