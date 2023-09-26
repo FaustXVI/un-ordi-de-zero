@@ -12,10 +12,9 @@ section_done = True
 class JunctionSc(MyScene):
 
     def __init__(self):
-        super().__init__(recording=False)
+        super().__init__(recording=True)
 
     def construct(self):
-        self.next_section(skip_animations=section_done)
         battery = Battery().shift(LEFT * 2).rotate(-PI / 2)
         r1 = Resistance().shift(UP)
         r2 = Resistance().shift(DOWN)
