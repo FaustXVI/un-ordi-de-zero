@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Scénarios/2 résistances en parallèle.md",
+                "file": "résistance.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Scénarios/2 résistances en parallèle.md",
+                "file": "résistance.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Scénarios/2 résistances en parallèle.md",
+                "file": "résistance.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Scénarios/2 résistances en parallèle.md"
+                "file": "résistance.md"
               }
             }
           },
@@ -159,8 +159,8 @@
   },
   "active": "46a7c8730a774320",
   "lastOpenFiles": [
-    "Excalidraw/nœud.excalidraw.md",
     "Scénarios/2 résistances en parallèle.md",
+    "Excalidraw/nœud.excalidraw.md",
     "Lois de Kirchhoff.md",
     "templates/Vidéo.md",
     "toc/Vidéo.md",

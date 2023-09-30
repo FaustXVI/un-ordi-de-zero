@@ -63,3 +63,9 @@ Aujourd'hui, on essaie de comprendre ce qui se passe dans le dernier circuit qu'
 > > [!theo]+
 > > Exactement.
 > 
+> > [!xav]+
+> > Du coup, pour connaitre l'intensité dans chacune des branches
+> 
+> > [!theo]+
+> >
+> 
