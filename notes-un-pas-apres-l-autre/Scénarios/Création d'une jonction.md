@@ -1,5 +1,9 @@
+# Titre
+Faire une jonction avec un trombone
 # Description
+Aujourd'hui, on fait des jonctions pour faire passer le courant dans deux branches en même temps.
 # Références
+La schématique fin sc5
 # Textes
 
 > [!scene]- 1 / intro
