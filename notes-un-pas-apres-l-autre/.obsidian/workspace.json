@@ -4,15 +4,19 @@
     "type": "split",
     "children": [
       {
-        "id": "330f7916b845d0b5",
+        "id": "636ebaacac394e70",
         "type": "tabs",
         "children": [
           {
-            "id": "ef104575e172f40b",
+            "id": "46a7c8730a774320",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "Scénarios/2 résistances en parallèle.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -81,6 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Scénarios/2 résistances en parallèle.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "Scénarios/2 résistances en parallèle.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,7 +124,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "Scénarios/2 résistances en parallèle.md"
+              }
             }
           },
           {
@@ -149,35 +157,35 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "ef104575e172f40b",
+  "active": "46a7c8730a774320",
   "lastOpenFiles": [
+    "Excalidraw/nœud.excalidraw.md",
+    "Scénarios/2 résistances en parallèle.md",
+    "Lois de Kirchhoff.md",
+    "templates/Vidéo.md",
+    "toc/Vidéo.md",
+    "Scénarios/2 résistances en séries.md",
     "Scénarios/Création d'une jonction.md",
     "toc/Composants.md",
     "toc/Unités.md",
-    "toc/Vidéo.md",
     "templates/Scene dialog.md",
-    "templates/Vidéo.md",
     "Scénarios/Schematiques.md",
     "Scénarios/Les unités en électronique.md",
     "Scénarios/La porte ET.md",
     "Scénarios/L'interrupteur.md",
     "Scénarios/Faire une résistance avec une mine de criterium.md",
     "Scénarios/Faire bouger une boussole avec une patate.md",
-    "Scénarios/2 résistances en séries.md",
     "Scénarios/sc-Jonction 1.md",
     "images/schematiques/electronics-pile-resistance.png",
     "résistance.md",
     "interrupteur.md",
     "loi d'ohm.md",
-    "Lois de Kirchhoff.md",
     "jonction.md",
     "pile.md",
     "Porte ET.md",
     "ohm-mètre.md",
     "ampère-mètre.md",
     "Ohm.md",
-    "Volt.md",
-    "Joule.md",
     "toc",
     "Scénarios",
     "images/schematiques/sprintronics-porte-et.png",
