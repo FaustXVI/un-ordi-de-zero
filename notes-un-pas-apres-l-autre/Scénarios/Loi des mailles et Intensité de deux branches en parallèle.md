@@ -122,6 +122,7 @@ La [[résistance]] : https://www.youtube.com/watch?v=gGyxI5CayDM
 > [!close-up]+ 6 / intensité dans les branches
 > 
 > Aller, j'ai refait le circuit sur une breadboard. On retrouve bien, notre pile, connecté à deux branches, une verte, une jaune qui contiennent toute les deux un résistances et retournent à la pile.
+> ![[2_résistances_parallèles_bb.png]]
 > 
 > Si je place l'ampère mètre sur la branche jaune, j'obtiens XXX mA
 > 
