@@ -59,7 +59,7 @@ La schématique fin sc5
 >   - une [[résistance]] pour éviter les courts circuits
 >   - un [[ampère-mètre]] pour voir le courant passer
 >    
->    ![[sc-Jonction 2023-09-23 16.20.43.excalidraw]]
+>    ![[2-resistances-parallel-amp.excalidraw]]
 > 
 > Si notre [[jonction]] fonctionne correctement, on verra une valeur sur les deux [[ampère-mètre]]s en même temps.
 
