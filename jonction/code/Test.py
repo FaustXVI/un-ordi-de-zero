@@ -20,8 +20,11 @@ class Test(MyScene):
         r2 = Resistance().shift(DOWN)
         ameter1 = Ameter().shift(UP + RIGHT * 2)
         ameter2 = Ameter().shift(DOWN + RIGHT * 2)
-        j1 = Junction(Branch(r1, r1.connect(ameter1), ameter1), Branch(r2, r2.connect(ameter2), ameter2)).shift(DOWN)
-        j2 = Junction(Branch(r1), Branch(r2)).shift(DOWN)
+        c2 = Contact(ameter2.exit_point())
+        c1 = Contact(ameter1.exit_point())
+        j1 = Junction(Branch(r1.copy(), r1.copy().connect(ameter1), ameter1),
+                      Branch(r2.copy(), r2.copy().connect(ameter2), ameter2)).shift(DOWN)
+        j2 = Junction(Branch(r1.copy(), r1.copy().connect(c1), c1), Branch(r2.copy(), r2.connect(c2), c2)).shift(DOWN)
         c = Contact(j1.exit_point() + RIGHT)
 
         circuit1 = Circuit(
@@ -33,16 +36,16 @@ class Test(MyScene):
             c.connect(battery)
         )
         circuit2 = Circuit(
-            battery,
-            battery.connect(j2),
+            battery.copy(),
+            battery.copy().connect(j2),
             j2,
-            j2.connect(c),
-            c,
-            c.connect(battery)
+            j2.connect(c.copy()),
+            c.copy(),
+            c.copy().connect(battery.copy())
         )
         self.play(Create(circuit1), run_time=3)
         self.wait()
-        self.play(Transform(circuit1, circuit2), run_time=3)
+        self.play(FadeOut(circuit1), FadeIn(circuit2), run_time=3)
         self.wait()
         self.play(FadeOut(circuit2))
 

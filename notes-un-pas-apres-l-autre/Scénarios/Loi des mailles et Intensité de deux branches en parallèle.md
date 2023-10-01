@@ -53,6 +53,9 @@ La [[résistance]] : https://www.youtube.com/watch?v=gGyxI5CayDM
 > Si on prend le schéma de notre circuit. On y vois une grande boucle, dit autrement une maille.
 > ![[2-resistances-parallel-amp.excalidraw]]
 > 
+> Les ampères mètres n'étant là que pour nous permettre de mesurer, on peut les supprimer le temps de notre réflexion.
+> ![[2-resistances-parallel.excalidraw]]
+> 
 > On peut y placer 4 points, $a$, $b$, $c$ et $d$.
 > 
 > D'après la loi des mailles, on a donc $U_{ab} + U_{bc} + U_{cd} + U_{da} = 0$
@@ -110,31 +113,44 @@ La [[résistance]] : https://www.youtube.com/watch?v=gGyxI5CayDM
 > 
 > donc 150 milli-ampères
 
+> [!scene]- 5 / Ok, check
+> 
+> > [!theo]+
+> > Ok, super. On monte le circuit et on vérifie ça ?
+> 
 
-Changement : U=RI => intensité dans les branche
-=> quid après ?
-=> loi des nœuds
-=> un moyen plus rapide ?
-=> loi des mailles et calcul du R général
+> [!close-up]+ 6 / intensité dans les branches
+> 
+> Aller, j'ai refait le circuit sur une breadboard. On retrouve bien, notre pile, connecté à deux branches, une verte, une jaune qui contiennent toute les deux un résistances et retournent à la pile.
+> 
+> Si je place l'ampère mètre sur la branche jaune, j'obtiens XXX mA
+> 
+> Et si je me place sur la branche verte, j'obtiens XXX mA
+> 
 
-> [!manim]- X / [[Lois de Kirchhoff#Loi des nœuds|loi des nœuds]]
+> [!scene]- 7 / et après ?
 > 
-> Un nœud, c'est un point de notre circuit où il y a une ou plusieurs intensités en entrée et une ou plusieurs intensités en sorties.
-> ![[nœud.excalidraw]]
+> > [!theo]+
+> > Super, et c'est très proche de ce qu'on avait prédit ! La différence s'explique majoritairement par la faible qualité de nos composants et de notre ampère mètre.
 > 
-> Prenons un exemple avec deux intensités entrantes $i_1$ et $i_2$ et deux intensités sortantes $i_3$ et $i_4$
+> > [!xav]+
+> > Bon bha voilà, c'était pas bien compliqué en fait !
 > 
-> La loi des nœuds dit que tout ce qui entre dans un nœud doit sortir.
+> > [!theo]+
+> > Oui, sauf que tu n'as pas fini !
 > 
-> Dit autrement, que la somme des intensités entrantes est égale à l'opposé de la somme des intensités sortantes.
-> $$i_1 + i_2 = i_3 + i_4$$
+> > [!xav]+
+> > Comment ça ?
 > 
-> Cependant, une intensité peut être mesurée dans les deux sens, on peut donc tout mesurer comme si on avait que des intensités en entrée. On a juste à inverser $i_3$ et $i_4$
-> $$i_1 + i_2 = (-i_3) + (-i_4)$$
+> > [!theo]+
+> > Si je mets un ampère mètre après les deux branches, qu'est-ce qu'il va afficher ?
 > 
-> Si on passe $i_3$ et $i_4$ de l'autre côté, on obtient $$i_1 + i_2 + i_3 + i_4 = 0$$
+> > [!xav]+
+> > Euh bha euh… pffffff… nan mais tu sais quoi, j'ai fait assez de maths pour aujourd'hui. On vois ça la prochaine fois ok ?
 > 
-> Si on généralise, on retrouve la vrai formulation de la loi des nœuds : la sommes des intensités en un point, toutes mesurées dans le même sens par rapport au nœud, est égal à zéro
-> $$\sum_{n}{i_n} = 0$$
+> > [!theo]+
+> > Ça marche, un pas…
 > 
- 
+> > [!xav]+
+> > après l'autre.
+> 

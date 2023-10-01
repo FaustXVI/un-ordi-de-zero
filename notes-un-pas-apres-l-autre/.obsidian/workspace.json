@@ -13,9 +13,31 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Scénarios/2 résistances en parallèle.md",
+                "file": "Scénarios/Loi des mailles et Intensité de deux branches en parallèle.md",
                 "mode": "source",
                 "source": false
+              }
+            }
+          },
+          {
+            "id": "a6d34a8968b334c1",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Loi des nœuds et intensité générale d'un circuit avec des branches.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "deae528b6f093ede",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "Excalidraw/2-resistances-parallel-amp.excalidraw.md"
               }
             }
           }
@@ -85,7 +107,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Scénarios/2 résistances en parallèle.md",
+                "file": "Scénarios/Loi des mailles et Intensité de deux branches en parallèle.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +124,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Scénarios/2 résistances en parallèle.md",
+                "file": "Scénarios/Loi des mailles et Intensité de deux branches en parallèle.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +147,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Scénarios/2 résistances en parallèle.md"
+                "file": "Scénarios/Loi des mailles et Intensité de deux branches en parallèle.md"
               }
             }
           },
@@ -159,15 +181,18 @@
   },
   "active": "46a7c8730a774320",
   "lastOpenFiles": [
-    "résistance.md",
-    "Scénarios/2 résistances en parallèle.md",
-    "Excalidraw/2-resistances-parallel-amp.excalidraw.md",
+    "Loi des nœuds et intensité générale d'un circuit avec des branches.md",
+    "Scénarios/Loi des mailles et Intensité de deux branches en parallèle.md",
     "Scénarios/Création d'une jonction.md",
+    "Scénarios/2 résistances en séries.md",
+    "Excalidraw/2-resistances-parallel.excalidraw.md",
+    "Excalidraw/2-resistances-parallel-amp.excalidraw.md",
+    "2-resistances-parallel.excalidraw.md",
+    "résistance.md",
     "Excalidraw/nœud.excalidraw.md",
     "Lois de Kirchhoff.md",
     "templates/Vidéo.md",
     "toc/Vidéo.md",
-    "Scénarios/2 résistances en séries.md",
     "toc/Composants.md",
     "toc/Unités.md",
     "templates/Scene dialog.md",
@@ -183,9 +208,6 @@
     "loi d'ohm.md",
     "jonction.md",
     "pile.md",
-    "Porte ET.md",
-    "ohm-mètre.md",
-    "ampère-mètre.md",
     "toc",
     "Scénarios",
     "images/schematiques/sprintronics-porte-et.png",
