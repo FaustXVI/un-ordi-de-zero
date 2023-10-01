@@ -34,6 +34,12 @@ Aujourd'hui, on essaie de comprendre ce qui se passe dans le dernier circuit qu'
 > > [!theo]+
 > > Oui tout à fait. Commençons par la [[Lois de Kirchhoff#Loi des nœuds|loi des nœuds]
 
+Changement : U=RI => intensité dans les branche
+=> quid après ?
+=> loi des nœuds
+=> un moyen plus rapide ?
+=> loi des mailles et calcul du R général
+
 > [!manim]- 2 / [[Lois de Kirchhoff#Loi des nœuds|loi des nœuds]]
 > 
 > Un nœud, c'est un point de notre circuit où il y a une ou plusieurs intensités en entrée et une ou plusieurs intensités en sorties.

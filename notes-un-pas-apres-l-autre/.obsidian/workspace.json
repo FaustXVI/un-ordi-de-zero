@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "résistance.md",
+                "file": "Scénarios/2 résistances en parallèle.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "résistance.md",
+                "file": "Scénarios/2 résistances en parallèle.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "résistance.md",
+                "file": "Scénarios/2 résistances en parallèle.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "résistance.md"
+                "file": "Scénarios/2 résistances en parallèle.md"
               }
             }
           },
@@ -159,6 +159,7 @@
   },
   "active": "46a7c8730a774320",
   "lastOpenFiles": [
+    "résistance.md",
     "Scénarios/2 résistances en parallèle.md",
     "Excalidraw/nœud.excalidraw.md",
     "Lois de Kirchhoff.md",
@@ -177,7 +178,6 @@
     "Scénarios/Faire bouger une boussole avec une patate.md",
     "Scénarios/sc-Jonction 1.md",
     "images/schematiques/electronics-pile-resistance.png",
-    "résistance.md",
     "interrupteur.md",
     "loi d'ohm.md",
     "jonction.md",
