@@ -1,9 +1,10 @@
 => un ampère mètre après les branches ?
 => loi des nœuds
-=> un moyen plus rapide ?
+=> démo
+=> un moyen plus rapide ? (autre vidéo ?)
 => calcul du R général
 => avant et après, c'est la même chose
-=> démo
+=> démo avec un ohm mêtre
 
 > [!manim]- X / [[Lois de Kirchhoff#Loi des nœuds|loi des nœuds]]
 > 

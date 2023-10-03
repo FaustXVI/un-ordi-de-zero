@@ -125,8 +125,10 @@ La [[résistance]] : https://www.youtube.com/watch?v=gGyxI5CayDM
 > ![[2_résistances_parallèles_bb.png]]
 > 
 > Si je place l'ampère mètre sur la branche jaune, j'obtiens XXX mA
+> ![[2_résistances_parallèles_branche_jaune_bb.png]]
 > 
 > Et si je me place sur la branche verte, j'obtiens XXX mA
+> ![[2_résistances_parallèles_branche_verte_bb.png]]
 > 
 
 > [!scene]- 7 / et après ?
