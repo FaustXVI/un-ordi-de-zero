@@ -121,13 +121,13 @@ La [[résistance]] : https://www.youtube.com/watch?v=gGyxI5CayDM
 
 > [!close-up]+ 6 / intensité dans les branches
 > 
-> Aller, j'ai refait le circuit sur une breadboard. On retrouve bien, notre pile, connecté à deux branches, une verte, une jaune qui contiennent toute les deux un résistances et retournent à la pile.
+> Aller, j'ai refait le circuit sur une breadboard. On retrouve bien, notre pile, connecté à deux branches, une verte, une jaune qui contiennent toute les deux une résistance de 1K$\Omega$ et retournent à la pile.
 > ![[2_résistances_parallèles_bb.png]]
 > 
-> Si je place l'ampère mètre sur la branche jaune, j'obtiens XXX mA
+> Si je place l'ampère mètre sur la branche jaune, j'obtiens 1.5 mA
 > ![[2_résistances_parallèles_branche_jaune_bb.png]]
 > 
-> Et si je me place sur la branche verte, j'obtiens XXX mA
+> Et si je me place sur la branche verte, j'obtiens 1.5 mA
 > ![[2_résistances_parallèles_branche_verte_bb.png]]
 > 
 
