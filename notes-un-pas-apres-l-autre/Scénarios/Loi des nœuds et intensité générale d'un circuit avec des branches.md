@@ -5,6 +5,26 @@
 => calcul du R général
 => avant et après, c'est la même chose
 => démo avec un ohm mêtre
+# Description
+
+# Références
+
+# Textes
+
+> [!scene]- 1 / Intro
+> 
+> > [!xav]+
+> > Bonjour !
+> 
+> > [!theo]+
+> > Salut !
+> 
+> > [!xav]+
+> >
+> 
+> > [!theo]+
+> >
+> 
 
 > [!manim]- X / [[Lois de Kirchhoff#Loi des nœuds|loi des nœuds]]
 > 

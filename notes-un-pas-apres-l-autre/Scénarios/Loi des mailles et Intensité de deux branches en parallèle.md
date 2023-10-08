@@ -102,16 +102,16 @@ La [[résistance]] : https://www.youtube.com/watch?v=gGyxI5CayDM
 > Or on viens de dire que $U$ est égal à la tension de notre pile. Et comme on la choisie, on peut la fixer à la valeur que l'on veut, par exemple, $1.5\ V$
 > $$1.5 = R \times I$$
 > 
-> Ensuite, dans la même logique, on choisie $R$ donc on peut y mettre valeur que l'on veut, par exemple $10\ \Omega$
-> $$1.5 = 10 \times I$$
+> Ensuite, dans la même logique, on choisie $R$ donc on peut y mettre valeur que l'on veut, par exemple $1000\ \Omega$
+> $$1.5 = 1000 \times I$$
 > 
-> Donc $I$ est égal à 1.5 sur 10
-> $$\frac{1.5}{10} = I$$
+> Donc $I$ est égal à 1.5 sur 1000
+> $$\frac{1.5}{1000} = I$$
 > 
-> soit 0.15 Ampères
-> $$0.15 = I$$
+> soit 0.0015 Ampères
+> $$0.0015 = I$$
 > 
-> donc 150 milli-ampères
+> donc 1.5 milli-ampères
 
 > [!scene]- 5 / Ok, check
 > 
@@ -119,9 +119,9 @@ La [[résistance]] : https://www.youtube.com/watch?v=gGyxI5CayDM
 > > Ok, super. On monte le circuit et on vérifie ça ?
 > 
 
-> [!close-up]+ 6 / intensité dans les branches
+> [!close-up]- 6 / intensité dans les branches
 > 
-> Aller, j'ai refait le circuit sur une breadboard. On retrouve bien, notre pile, connecté à deux branches, une verte, une jaune qui contiennent toute les deux une résistance de 1K$\Omega$ et retournent à la pile.
+> Aller, j'ai refait le circuit sur une breadboard. On retrouve bien, notre pile, connecté à deux branches, une verte, une jaune qui contiennent toute les deux une résistance de 1000$\Omega$ et retournent à la pile.
 > ![[2_résistances_parallèles_bb.png]]
 > 
 > Si je place l'ampère mètre sur la branche jaune, j'obtiens 1.5 mA
@@ -134,7 +134,7 @@ La [[résistance]] : https://www.youtube.com/watch?v=gGyxI5CayDM
 > [!scene]- 7 / et après ?
 > 
 > > [!theo]+
-> > Super, et c'est très proche de ce qu'on avait prédit ! La différence s'explique majoritairement par la faible qualité de nos composants et de notre ampère mètre.
+> > Super, et c'est suffisamment proche de ce qu'on avait prédit ! La différence s'explique majoritairement par la faible qualité de nos composants et de notre ampère mètre.
 > 
 > > [!xav]+
 > > Bon bha voilà, c'était pas bien compliqué en fait !
