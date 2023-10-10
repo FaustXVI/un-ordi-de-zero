@@ -60,11 +60,11 @@ La [[résistance]] : https://www.youtube.com/watch?v=gGyxI5CayDM
 > 
 > D'après la loi des mailles, on a donc $U_{ab} + U_{bc} + U_{cd} + U_{da} = 0$
 > 
-> $U_da$ est la tension de notre pile, si on la met de l'autre côté on obtient $$U_{ab} + U_{bc} + U_{cd} = - U_{da}$$ soit $$U_{ab} + U_{bc} + U_{cd} = U_{ad}$$
+> $U_{da}$ est la tension de notre pile, si on la met de l'autre côté on obtient $$U_{ab} + U_{bc} + U_{cd} = - U_{da}$$ soit $$U_{ab} + U_{bc} + U_{cd} = U_{ad}$$
 > 
 > On est donc loin de ce qui tu disais. Pourtant tu as vu juste car $U_{ab}$ et $U_{cd}$ sont sur le même fil sans rien au milieu. Quand on réfléchis théoriquement, on manipule des fils dits idéaux. Cela veut dire qu'ils ont la même tension du début à la fin.
 > 
-> Donc $U_{ab}$ et $U_cd$ sont tous deux égaux à zéro.
+> Donc $U_{ab}$ et $U_{cd}$ sont tous deux égaux à zéro.
 > 
 > $$0 + U_{bc} + 0 = U_{ad}$$
 > $$U_{bc} = U_{ad}$$
