@@ -13,35 +13,26 @@
             "state": {
               "type": "markdown",
               "state": {
+                "file": "Lois de Kirchhoff.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "52ce8fc8779c1caf",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
                 "file": "Scénarios/Loi des mailles et Intensité de deux branches en parallèle.md",
                 "mode": "source",
                 "source": false
               }
             }
-          },
-          {
-            "id": "a6d34a8968b334c1",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Scénarios/Loi des nœuds et intensité générale d'un circuit avec des branches.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "deae528b6f093ede",
-            "type": "leaf",
-            "state": {
-              "type": "excalidraw",
-              "state": {
-                "file": "Excalidraw/2-resistances-parallel-amp.excalidraw.md"
-              }
-            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -179,10 +170,12 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "46a7c8730a774320",
+  "active": "52ce8fc8779c1caf",
   "lastOpenFiles": [
-    "Scénarios/Loi des nœuds et intensité générale d'un circuit avec des branches.md",
+    "Lois de Kirchhoff.md",
     "Scénarios/Loi des mailles et Intensité de deux branches en parallèle.md",
+    "Excalidraw/2-resistances-parallel-amp.excalidraw.md",
+    "Scénarios/Loi des nœuds et intensité générale d'un circuit avec des branches.md",
     "images/2_résistances_parallèles_branche_verte_bb.png",
     "images/2_résistances_parallèles_branche_jaune_bb.png",
     "Scénarios/Les unités en électronique.md",
@@ -190,11 +183,9 @@
     "Scénarios/Création d'une jonction.md",
     "Scénarios/2 résistances en séries.md",
     "Excalidraw/2-resistances-parallel.excalidraw.md",
-    "Excalidraw/2-resistances-parallel-amp.excalidraw.md",
     "2-resistances-parallel.excalidraw.md",
     "résistance.md",
     "Excalidraw/nœud.excalidraw.md",
-    "Lois de Kirchhoff.md",
     "templates/Vidéo.md",
     "toc/Vidéo.md",
     "toc/Composants.md",

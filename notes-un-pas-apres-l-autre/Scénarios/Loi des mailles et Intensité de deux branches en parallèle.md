@@ -134,7 +134,7 @@ La [[résistance]] : https://www.youtube.com/watch?v=gGyxI5CayDM
 > [!scene]- 7 / et après ?
 > 
 > > [!theo]+
-> > Super, et c'est suffisamment proche de ce qu'on avait prédit ! La différence s'explique majoritairement par la faible qualité de nos composants et de notre ampère mètre.
+> > Super, et c'est suffisamment proche de ce qu'on avait prédit ! La différence s'explique par la faible qualité de nos composants et de notre ampère mètre. On en parlera sous peu dans une autre vidéo, c'est promis.
 > 
 > > [!xav]+
 > > Bon bha voilà, c'était pas bien compliqué en fait !
