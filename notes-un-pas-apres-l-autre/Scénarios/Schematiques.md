@@ -96,7 +96,7 @@ Aujourd'hui, on représente nos circuits sur le papier grâce à des schémas !
 > 
 > Pour représenter ce circuit, on dessine notre symbol de pile, celui de la résistance et celui de l'ampère-mètre. Enfin on relie le tout par des fils.
 > 
-> ![[Pile+résistance.excalidraw]]
+> ![[Pile+résistance+amp.excalidraw]]
 > 
 > --------------
 > 

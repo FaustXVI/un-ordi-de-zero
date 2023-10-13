@@ -28,7 +28,7 @@ La [[résistance]] : https://www.youtube.com/watch?v=gGyxI5CayDM
 > > Tout à fait.
 >
 > > [!xav]+
-> > Mais ça c'est facile en fait. On a la [[loi d'ohm]], U=RI, or on connait R puisse qu'on la choisie et on connaît U, la tension de notre pile qu'on choisit aussi.
+> > Mais ça c'est facile en fait. On a la [[loi d'ohm]], U=RI, or on connait R puisse qu'on choisie nos résistances et on connaît U, la tension de notre pile qu'on choisit aussi.
 > 
 > > [!theo]+
 > > Stop !
@@ -37,7 +37,7 @@ La [[résistance]] : https://www.youtube.com/watch?v=gGyxI5CayDM
 > > Quoi ?
 > 
 > > [!theo]+
-> > Je pense que tu pré-suppose beaucoup de chose. Par exemple, comment tu sais que les tensions aux bornes des résistances sont le même et qu'en plus elles sont égale à la tension de la pile ?
+> > Je pense que tu pré-suppose beaucoup de chose. Par exemple, comment tu sais que les tensions aux bornes des résistances sont les même et qu'en plus elles sont égale à la tension de la pile ?
 > 
 > > [!xav]+
 > > Euh, bah, c'est évident non ?
@@ -48,17 +48,42 @@ La [[résistance]] : https://www.youtube.com/watch?v=gGyxI5CayDM
 
 > [!manim]- 2 / [[Lois de Kirchhoff#Loi des mailles|loi des mailles]]
 > 
-> La loi des mailles dit que $$\sum_{n}{U_n} = 0$$
+> Pour rappel, la loi des mailles s'intéresse aux tensions, et les tensions c'est une histoire d'énergie. Il faut donc respecter la loi de conservation de l'énergie, c'est à dire que la somme des énergies consommées doit être égale à la somme des énergie produites.
+> $$\sum_{n}{E\ consommée_n} = \sum_{n}{E\ produite_n}$$
 > 
-> Si on prend le schéma de notre circuit. On y vois une grande boucle, dit autrement une maille.
+> Comme nous on parle d'électricité, on parle d'énergie par Coulomb, dit autrement, de tensions. On obtient donc :
+> $$\sum_{n}{U\ consommée_n} = \sum_{n}{U\ produite_n}$$
+> 
+> Prenons un circuit très simple, composé d'une pile et d'une résistance.
+> ![[Pile+résistance.excalidraw]]
+> 
+> La tension consommée par la résistance doit être égale à celle générée par la pile.
+> 
+> On constate que les flèches des tensions vont dans des sens différents par rapport au circuit, qu'on appel aussi maille.
+> 
+> Or, il est facile d'inverser le sens d'une flèche, il suffit de prendre la mesure dans l'autre sens. Cela reviens à mesurer une tension produite comme si c'était une tension consommée. On aura juste une valeur négative dans le cas où il s'agit d'un tension produite mesurée à l'envers.
+> 
+> De plus, maintenant que toutes les flèches sont dans le même sens, on obtient ce que l'on appelle une maille orientée.
+> 
+> Si on reviens à notre équation, nous n'avons plus de tension produite, donc leur somme vaut zéro.
+> $$\sum_{n}{U\ consommée_n} = 0$$
+> 
+> On retrouve alors la loi des mailles telle qu'elle est habituellement exprimée : 
+> La somme des tensions dans une maille orientée est égale à zéro.
+> $$\sum_{n}{U_n} = 0$$
+> 
+> Maintenant que nous avons correctement défini la loi des mailles, regardons ce que cela donne sur notre circuit.
 > ![[2-resistances-parallel-amp.excalidraw]]
+> On y vois une grande boucle composée de notre circuit ainsi qu'une petite boucle intérieure.
 > 
 > Les ampères mètres n'étant là que pour nous permettre de mesurer, on peut les supprimer le temps de notre réflexion.
 > ![[2-resistances-parallel.excalidraw]]
 > 
 > On peut y placer 4 points, $a$, $b$, $c$ et $d$.
 > 
-> D'après la loi des mailles, on a donc $U_{ab} + U_{bc} + U_{cd} + U_{da} = 0$
+> Dans notre boucle intérieure, la loi des mailles nous dit que $U_{bc} + U_{cb} = 0$ ce qui est plutôt logique puisqu'on mesure la même tension dans deux sens différents.
+> 
+> Notre boucle extérieure est plus intérésante et d'après la loi des mailles, on a $U_{ab} + U_{bc} + U_{cd} + U_{da} = 0$
 > 
 > $U_{da}$ est la tension de notre pile, si on la met de l'autre côté on obtient $$U_{ab} + U_{bc} + U_{cd} = - U_{da}$$ soit $$U_{ab} + U_{bc} + U_{cd} = U_{ad}$$
 > 
@@ -79,19 +104,22 @@ La [[résistance]] : https://www.youtube.com/watch?v=gGyxI5CayDM
 > 
 > > [!theo]+
 > > Souviens toi, on en a déjà parlé quand on a parlé des résistances. Les fils ont leur propre résistance qui dépend de leur composition, de leur longueur et de leur diamètre.
-> > Mais dans ce que nous on fait, l'impact est tellement faible qu'on peut le négliger et faire comme si on avait des fils idéaux.
 > 
 > > [!xav]+
-> > Ok, donc j'ai eu un coup de bol mais j'avais raison.
+> > Ok, donc on a des résistances de partout quoi
+> 
+> > [!theo]+
+> > Oui, mais dans ce qu'on fait, elles sont très faibles et l'impact sera du même ordre de grandeur que toutes les autres imprécisions que nous avons dans notre circuit. On en parlera sous peu dans une autre vidéo, c'est promis.
+> 
+> > [!xav]+
+> > Ok…
+> > Bref! J'ai eu un coup de bol mais j'avais raison !
 > 
 > > [!theo]+
 > > Oui
 > 
 > > [!xav]+
 > > Donc si j'ai bien tout compris, je peux te faire les calculs regarde.
-> 
-> [!manim]+ N / name
-> 
 > 
 
 > [!manim]- 4 / calcul de i
@@ -134,7 +162,7 @@ La [[résistance]] : https://www.youtube.com/watch?v=gGyxI5CayDM
 > [!scene]- 7 / et après ?
 > 
 > > [!theo]+
-> > Super, et c'est suffisamment proche de ce qu'on avait prédit ! La différence s'explique par la faible qualité de nos composants et de notre ampère mètre. On en parlera sous peu dans une autre vidéo, c'est promis.
+> > Super, c'est très proche de ce qu'on avait prédit !
 > 
 > > [!xav]+
 > > Bon bha voilà, c'était pas bien compliqué en fait !

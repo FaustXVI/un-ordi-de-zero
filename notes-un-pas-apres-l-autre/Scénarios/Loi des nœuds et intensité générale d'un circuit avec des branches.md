@@ -4,7 +4,8 @@
 => un moyen plus rapide ? (autre vidéo ?)
 => calcul du R général
 => avant et après, c'est la même chose
-=> démo avec un ohm mêtre
+=> démo avec un ohm mètre
+=> idée du voltmètre => prochaine vidée
 # Description
 
 # Références
