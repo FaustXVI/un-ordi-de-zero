@@ -81,7 +81,7 @@ La [[résistance]] : https://www.youtube.com/watch?v=gGyxI5CayDM
 > Les ampères mètres n'étant là que pour nous permettre de mesurer, on peut les supprimer le temps de notre réflexion.
 > ![[2-resistances-parallel.excalidraw]]
 > 
-> On peut y placer 4 points, $a$, $b$, $c$ et $d$.
+> On peut y placer 4 points, $a$ sur le + de notre plie, $b$ à la création des branches, $c$ à la fin des branches et $d$ sur le - de notre pile,
 > 
 > Dans notre boucle intérieure, la loi des mailles nous dit que $U_{bc} + U_{cb} = 0$ ce qui est plutôt logique puisqu'on mesure la même tension dans deux sens différents.
 > 
