@@ -61,7 +61,9 @@ La [[résistance]] : https://www.youtube.com/watch?v=gGyxI5CayDM
 > 
 > On constate que les flèches des tensions vont dans des sens différents par rapport au circuit, qu'on appel aussi maille.
 > 
-> Or, il est facile d'inverser le sens d'une flèche, il suffit de prendre la mesure dans l'autre sens. Cela reviens à mesurer une tension produite comme si c'était une tension consommée. On aura juste une valeur négative dans le cas où il s'agit d'un tension produite mesurée à l'envers.
+> Or, il est facile d'inverser le sens d'une flèche, il suffit de prendre la mesure dans l'autre sens.Cela reviens à mesurer une tension produite comme si c'était une tension consommée.
+> 
+> On aura juste une valeur négative dans le cas où il s'agit d'un tension produite mesurée à l'envers.
 > 
 > De plus, maintenant que toutes les flèches sont dans le même sens, on obtient ce que l'on appelle une maille orientée.
 > 
