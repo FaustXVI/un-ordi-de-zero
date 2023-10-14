@@ -7,7 +7,7 @@ from electronics import Circuit, Battery, Resistance, Ameter, Branch, Junction, 
 
 locale.setlocale(locale.LC_ALL, 'fr_FR')
 
-section_done = True
+section_done = False
 
 
 class LoiMaille(MyScene):
@@ -102,18 +102,22 @@ class LoiMaille(MyScene):
             c,
             c.connect(battery)
         ).move_to(ORIGIN)
+        battery = battery.copy()
         c1 = Contact(ameter1.exit_point())
         c2 = Contact(ameter2.exit_point())
         b1prime = Branch(r1.copy(), r1.connect(c1), c1)
         b2prime = Branch(r2.copy(), r2.connect(c2), c2)
         j2 = Junction(b1prime, b2prime)
+        cable1 = battery.connect(j2)
+        cable2 = j2.connect(c)
+        cable3 = c.connect(battery)
         parallel_circuit = Circuit(
-            battery.copy(),
-            battery.connect(j2),
+            battery,
+            cable1,
             j2,
-            j2.connect(c),
+            cable2,
             c.copy(),
-            c.connect(battery)
+            cable3
         )
         with self.my_voiceover(
                 """Maintenant que nous avons correctement défini la loi des mailles, mettons la de coté et""") as timer:
@@ -176,11 +180,17 @@ class LoiMaille(MyScene):
         ucb = Arrow(start=dotC.get_center(), end=dotB.get_center()).shift(UP * 1.5)
         with self.my_voiceover(
                 """Dans notre boucle intérieure, la loi des mailles nous dit que U_{bc} + U_{cb} = 0""") as timer:
-            little_loop_maille = MathTex("U_{bc} + U_{cb} = 0").move_to(j2.get_center())
+            little_loop_maille = MathTex("U_{bc}", " + ", "U_{cb}", " = ", "0").move_to(j2.get_center())
             self.play(AnimationGroup(Create(little_loop_maille), FadeIn(ubc), FadeIn(ucb)), run_time=timer.duration)
+        self.next_section(skip_animations=section_done)
         with self.my_voiceover(
-                """ ce qui est plutôt logique puisqu'on mesure la même tension dans deux sens différents.""") as timer:
-            self.play(Wait(), run_time=timer.duration)
+                """ ce qui est plutôt logique puisque U_{bc}""") as timer:
+            self.play(AnimationGroup(Indicate(VGroup(ubc), scale_factor=1),
+                                     Indicate(little_loop_maille.get_part_by_tex("U_{bc}"))), run_time=timer.duration)
+        with self.my_voiceover(
+                """mesure la même tension que U_{cb} mais dans des sens inverses.""") as timer:
+            self.play(AnimationGroup(Indicate(VGroup(ucb), scale_factor=1),
+                                     Indicate(little_loop_maille.get_part_by_tex("U_{cb}"))), run_time=timer.duration)
         with self.my_voiceover(
                 """Notre boucle extérieure est plus intérésante.""") as timer:
             self.play(FadeOut(little_loop_maille, ubc, ucb), run_time=timer.duration)
@@ -192,14 +202,60 @@ class LoiMaille(MyScene):
             self.play(Create(big_loop_maille), run_time=timer.duration)
         with self.my_voiceover(
                 """U_{da} est la tension consommée de notre pile""") as timer:
-            self.play(Indicate(big_loop_maille.get_part_by_tex("U_{da}")), run_time=timer.duration)
-        self.next_section(skip_animations=False)
+            self.play(AnimationGroup(Indicate(VGroup(battery, dotA, dotD), scale_factor=1),
+                                     Indicate(big_loop_maille.get_part_by_tex("U_{da}"))), run_time=timer.duration)
+        self.next_section(skip_animations=section_done)
         with self.my_voiceover(
                 """si on la met de l'autre côté on obtient U_{ab} + U_{bc} + U_{cd} = - U_{da}""") as timer:
-            big_loop_maille_moved = MathTex("U_{ab}", " + ", "U_{bc}", " + ", "U_{cd}", " + ", " = ", "-","U_{da}") \
+            big_loop_maille_moved = MathTex("U_{ab}", " + ", "U_{bc}", " + ", "U_{cd}", " = ", "-", "U_{da}") \
                 .shift(DOWN * 2.5)
-            self.play(TransformMatchingTex(big_loop_maille,big_loop_maille_moved), run_time=timer.duration)
+            self.play(TransformMatchingTex(big_loop_maille, big_loop_maille_moved), run_time=timer.duration)
+        self.next_section(skip_animations=section_done)
+        with self.my_voiceover(
+                """et - U_{da} c'est égal à U_{ad}""") as timer:
+            big_loop_maille_switched = MathTex("U_{ab}", " + ", "U_{bc}", " + ", "U_{cd}", " = ", "U_{ad}") \
+                .shift(DOWN * 2.5)
+            self.play(
+                TransformMatchingTex(big_loop_maille_moved, big_loop_maille_switched, key_map={"U_{da}": "U_{ad}"}),
+                run_time=timer.duration)
+        self.next_section(skip_animations=section_done)
+        with self.my_voiceover("""Tu disais que la tension produite par la pile ,ici U_{ad}""") as timer:
+            self.play(AnimationGroup(Indicate(VGroup(battery, dotA, dotD), scale_factor=1),
+                                     Indicate(big_loop_maille_switched.get_part_by_tex("U_{ad}"))),
+                      run_time=timer.duration)
+        with self.my_voiceover(
+                """était égale à la tension aux consommée par les résistances, ici $U_{bc}$.""") as timer:
+            self.play(AnimationGroup(Indicate((VGroup(j2, dotB, dotC)), scale_factor=1),
+                                     Indicate(big_loop_maille_switched.get_part_by_tex("U_{bc}"))),
+                      run_time=timer.duration)
+        with self.my_voiceover("""Et clairement, pour l'instant, ce n'est pas ça.""") as timer:
+            self.play(Wait(), run_time=timer.duration)
+        self.next_section(skip_animations=section_done)
+        with self.my_voiceover(
+                """Pourtant tu as vu juste car $U_{ab}$ et $U_{cd}$ sont sur des fils sans rien au milieu. """) as timer:
+            self.play(AnimationGroup(Indicate(VGroup(dotA, dotB, dotC, dotD, cable2, cable1, cable3), scale_factor=1),
+                                     Indicate(big_loop_maille_switched.get_part_by_tex("U_{ab}")),
+                                     Indicate(big_loop_maille_switched.get_part_by_tex("U_{cd}"))
+                                     ),
+                      run_time=timer.duration)
+        self.next_section(skip_animations=section_done)
+        with self.my_voiceover(
+                """Quand on réfléchis théoriquement, on manipule des fils dits idéaux. Cela veut dire qu'ils ont la même tension du début à la fin.
+                Donc U_{ab} et U_{cd} sont tous deux égaux à zéro.""") as timer:
+            big_loop_maille_zeroed = MathTex("0", " + ", "U_{bc}", " + ", "0", " = ", "U_{ad}") \
+                .shift(DOWN * 2.5)
+            self.play(TransformMatchingTex(big_loop_maille_switched, big_loop_maille_zeroed), run_time=timer.duration)
+        self.next_section(skip_animations=section_done)
+        with self.my_voiceover(
+                """On a donc bien U_{bc}, la tension aux bornes des branches, qui est égal à U_{ad} la tension de notre pile.""") as timer:
+            big_loop_maille_final = MathTex("U_{bc}", " = ", "U_{ad}") \
+                .shift(DOWN * 2.5)
+            self.play(
+                TransformMatchingTex(big_loop_maille_zeroed, big_loop_maille_final),
+                run_time=timer.duration)
+        self.next_section(skip_animations=False)
         self.wait()
+        self.play(AnimationGroup(*[FadeOut(o) for o in self.mobjects]))
 
 
 if __name__ == "__main__":
