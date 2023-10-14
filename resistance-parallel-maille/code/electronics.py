@@ -123,7 +123,7 @@ class Junction(Branch):
         ], rate_func=linear)
 
 
-class Cable(Line,Electronic):
+class Cable(Line, Electronic):
 
     def __init__(self, start=LEFT, end=RIGHT, buff=0, path_arc=None, **kwargs):
         super().__init__(start, end, buff, path_arc, **kwargs)
@@ -196,10 +196,10 @@ class Battery(Electronic):
     def __init__(self):
         super().__init__()
         self.add(Line(LEFT, LEFT / 6),
-                 Line((LEFT / 6) + UP / 2, (LEFT / 6) + DOWN / 2),
-                 Line((RIGHT / 6) + (UP / 4), (RIGHT / 6) + (DOWN / 4)),
-                 MathTex("+").shift((LEFT / 3) + (UP / 3)).scale(0.75),
-                 MathTex("-").shift((RIGHT / 3) + (UP / 3)).scale(0.75),
+                 Line((LEFT / 6) + UP / 4, (LEFT / 6) + DOWN / 4),
+                 Line((RIGHT / 6) + (UP / 2), (RIGHT / 6) + (DOWN / 2)),
+                 MathTex("-").shift((LEFT / 3) + (UP / 3)).scale(0.75),
+                 MathTex("+").shift((RIGHT / 3) + (UP / 3)).scale(0.75),
                  Line(RIGHT / 6, RIGHT),
                  )
 

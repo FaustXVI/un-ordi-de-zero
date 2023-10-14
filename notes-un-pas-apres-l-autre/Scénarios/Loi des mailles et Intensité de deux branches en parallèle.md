@@ -81,11 +81,12 @@ La [[résistance]] : https://www.youtube.com/watch?v=gGyxI5CayDM
 > Les ampères mètres n'étant là que pour nous permettre de mesurer, on peut les supprimer le temps de notre réflexion.
 > ![[2-resistances-parallel.excalidraw]]
 > 
-> On peut y placer 4 points, $a$ sur le + de notre plie, $b$ à la création des branches, $c$ à la fin des branches et $d$ sur le - de notre pile,
+> On peut y placer 4 points, $a$ sur l'anode de notre plie, $b$ à la création des branches, $c$ à la fin des branches et $d$ sur la cathode de notre pile,
 > 
 > Dans notre boucle intérieure, la loi des mailles nous dit que $U_{bc} + U_{cb} = 0$ ce qui est plutôt logique puisqu'on mesure la même tension dans deux sens différents.
 > 
-> Notre boucle extérieure est plus intérésante et d'après la loi des mailles, on a $U_{ab} + U_{bc} + U_{cd} + U_{da} = 0$
+> Notre boucle extérieure est plus intérésante.
+> D'après la loi des mailles, on a $U_{ab} + U_{bc} + U_{cd} + U_{da} = 0$
 > 
 > $U_{da}$ est la tension de notre pile, si on la met de l'autre côté on obtient $$U_{ab} + U_{bc} + U_{cd} = - U_{da}$$ soit $$U_{ab} + U_{bc} + U_{cd} = U_{ad}$$
 > 

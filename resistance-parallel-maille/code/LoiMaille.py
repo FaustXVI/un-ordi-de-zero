@@ -147,8 +147,8 @@ class LoiMaille(MyScene):
         with self.my_voiceover(
                 """Les ampères mètres n'étant là que pour nous permettre de mesurer, on peut les supprimer le temps de notre réflexion.""") as timer:
             self.play(FadeOut(parallel_circuit_full), FadeIn(parallel_circuit), run_time=timer.duration)
-        self.next_section(skip_animations=False)
-        dotA = Dot(point=battery.exit_point(),radius=2)
+        self.next_section(skip_animations=section_done)
+        dotA = Dot(point=battery.exit_point())
         dotB = Dot(point=j2.entry_point())
         dotC = Dot(point=j2.exit_point())
         dotD = Dot(point=battery.entry_point())
@@ -157,8 +157,32 @@ class LoiMaille(MyScene):
         c = MathTex("C").next_to(dotC.get_center(), direction=DOWN + RIGHT)
         d = MathTex("D").next_to(dotD.get_center(), direction=LEFT)
         with self.my_voiceover(
-                """On peut y placer 4 points, A sur le + de notre plie, b à la création des branches, c à la fin des branches et d sur le - de notre pile.""") as timer:
-            self.play(Create(VGroup(a, b, c, d)), run_time=timer.duration)
+                """On peut y placer 4 points.""") as timer:
+            self.play(Wait(), run_time=timer.duration)
+        with self.my_voiceover(
+                """A sur l'anode de notre plie,""") as timer:
+            self.play(Create(VGroup(a, dotA)), run_time=timer.duration)
+        with self.my_voiceover(
+                """B à la création des branches,""") as timer:
+            self.play(Create(VGroup(b, dotB)), run_time=timer.duration)
+        with self.my_voiceover(
+                """C à la fin des branches,""") as timer:
+            self.play(Create(VGroup(c, dotC)), run_time=timer.duration)
+        with self.my_voiceover(
+                """D sur la cathode de notre pile.""") as timer:
+            self.play(Create(VGroup(d, dotD)), run_time=timer.duration)
+        self.next_section(skip_animations=False)
+        with self.my_voiceover(
+                """Dans notre boucle intérieure, la loi des mailles nous dit que U_{bc} + U_{cb} = 0""") as timer:
+            little_loop_maille = MathTex("U_{bc} + U_{cb} = 0").move_to(j2.get_center())
+            self.play(Write(little_loop_maille), run_time=timer.duration)
+        with self.my_voiceover(
+                """ ce qui est plutôt logique puisqu'on mesure la même tension dans deux sens différents.""") as timer:
+            self.play(Wait(), run_time=timer.duration)
+        with self.my_voiceover(
+                """Notre boucle extérieure est plus intérésante.""") as timer:
+            self.play(FadeOut(little_loop_maille), run_time=timer.duration)
+        self.next_section(skip_animations=False)
         self.wait()
 
 

@@ -159,6 +159,7 @@
   },
   "active": "e1a8fa11535b7f88",
   "lastOpenFiles": [
+    "pile.md",
     "Scénarios/Loi des mailles et Intensité de deux branches en parallèle.md",
     "Scénarios/Loi des nœuds et intensité générale d'un circuit avec des branches.md",
     "Lois de Kirchhoff.md",
@@ -188,7 +189,6 @@
     "Scénarios/Schematiques.md",
     "Scénarios/La porte ET.md",
     "Scénarios/L'interrupteur.md",
-    "Scénarios/Faire une résistance avec une mine de criterium.md",
     "images/schematiques/electronics-pile-resistance.png",
     "toc",
     "Scénarios",
