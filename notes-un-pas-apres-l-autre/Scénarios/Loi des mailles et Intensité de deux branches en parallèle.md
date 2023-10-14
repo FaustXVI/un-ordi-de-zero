@@ -88,9 +88,10 @@ La [[résistance]] : https://www.youtube.com/watch?v=gGyxI5CayDM
 > Notre boucle extérieure est plus intérésante.
 > D'après la loi des mailles, on a $U_{ab} + U_{bc} + U_{cd} + U_{da} = 0$
 > 
-> $U_{da}$ est la tension de notre pile, si on la met de l'autre côté on obtient $$U_{ab} + U_{bc} + U_{cd} = - U_{da}$$ soit $$U_{ab} + U_{bc} + U_{cd} = U_{ad}$$
+> $U_{da}$ est la tension consommée de notre pile, si on la met de l'autre côté on obtient $$U_{ab} + U_{bc} + U_{cd} = - U_{da}$$ soit $$U_{ab} + U_{bc} + U_{cd} = U_{ad}$$
 > 
-> On est donc loin de ce qui tu disais. Pourtant tu as vu juste car $U_{ab}$ et $U_{cd}$ sont sur le même fil sans rien au milieu. Quand on réfléchis théoriquement, on manipule des fils dits idéaux. Cela veut dire qu'ils ont la même tension du début à la fin.
+> Tu disais que la tension produite par la pile ,ici $U_{ad}$ était égale à la tension aux consommée par les résistances, ici $U_{bc}$. Et clairement, pour l'instant, ce n'est pas ça.
+> Pourtant tu as vu juste car $U_{ab}$ et $U_{cd}$ sont sur le même fil sans rien au milieu. Quand on réfléchis théoriquement, on manipule des fils dits idéaux. Cela veut dire qu'ils ont la même tension du début à la fin.
 > 
 > Donc $U_{ab}$ et $U_{cd}$ sont tous deux égaux à zéro.
 > 

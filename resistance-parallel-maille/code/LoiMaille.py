@@ -33,7 +33,7 @@ class LoiMaille(MyScene):
         self.next_section(skip_animations=section_done)
         with self.my_voiceover(
                 """Pour rappel, la loi des mailles s'intéresse aux tensions, et les tensions c'est une histoire d'énergie. Il faut donc respecter la loi de conservation de l'énergie, c'est à dire que la somme des énergies consommées doit être égale à la somme des énergie produites.""") as timer:
-            self.play(Write(conservationEnergie), run_time=timer.duration)
+            self.play(Create(conservationEnergie), run_time=timer.duration)
         with self.my_voiceover(
                 """Comme nous on parle d'électricité, on parle d'énergie par Coulomb, dit autrement, de tensions. On obtient donc la somme des tensions consommées est égale à la somme des tensions produites""") as timer:
             self.play(TransformMatchingTex(conservationEnergie, conservationTension), run_time=timer.duration)
@@ -171,18 +171,34 @@ class LoiMaille(MyScene):
         with self.my_voiceover(
                 """D sur la cathode de notre pile.""") as timer:
             self.play(Create(VGroup(d, dotD)), run_time=timer.duration)
-        self.next_section(skip_animations=False)
+        self.next_section(skip_animations=section_done)
+        ubc = Arrow(start=dotB.get_center(), end=dotC.get_center()).shift(DOWN * 1.5)
+        ucb = Arrow(start=dotC.get_center(), end=dotB.get_center()).shift(UP * 1.5)
         with self.my_voiceover(
                 """Dans notre boucle intérieure, la loi des mailles nous dit que U_{bc} + U_{cb} = 0""") as timer:
             little_loop_maille = MathTex("U_{bc} + U_{cb} = 0").move_to(j2.get_center())
-            self.play(Write(little_loop_maille), run_time=timer.duration)
+            self.play(AnimationGroup(Create(little_loop_maille), FadeIn(ubc), FadeIn(ucb)), run_time=timer.duration)
         with self.my_voiceover(
                 """ ce qui est plutôt logique puisqu'on mesure la même tension dans deux sens différents.""") as timer:
             self.play(Wait(), run_time=timer.duration)
         with self.my_voiceover(
                 """Notre boucle extérieure est plus intérésante.""") as timer:
-            self.play(FadeOut(little_loop_maille), run_time=timer.duration)
+            self.play(FadeOut(little_loop_maille, ubc, ucb), run_time=timer.duration)
+        self.next_section(skip_animations=section_done)
+        with self.my_voiceover(
+                """D'après la loi des mailles, on a U_{ab} + U_{bc} + U_{cd} + U_{da} = 0""") as timer:
+            big_loop_maille = MathTex("U_{ab}", " + ", "U_{bc}", " + ", "U_{cd}", " + ", "U_{da}", " = ", "0") \
+                .shift(DOWN * 2.5)
+            self.play(Create(big_loop_maille), run_time=timer.duration)
+        with self.my_voiceover(
+                """U_{da} est la tension consommée de notre pile""") as timer:
+            self.play(Indicate(big_loop_maille.get_part_by_tex("U_{da}")), run_time=timer.duration)
         self.next_section(skip_animations=False)
+        with self.my_voiceover(
+                """si on la met de l'autre côté on obtient U_{ab} + U_{bc} + U_{cd} = - U_{da}""") as timer:
+            big_loop_maille_moved = MathTex("U_{ab}", " + ", "U_{bc}", " + ", "U_{cd}", " + ", " = ", "-","U_{da}") \
+                .shift(DOWN * 2.5)
+            self.play(TransformMatchingTex(big_loop_maille,big_loop_maille_moved), run_time=timer.duration)
         self.wait()
 
 
