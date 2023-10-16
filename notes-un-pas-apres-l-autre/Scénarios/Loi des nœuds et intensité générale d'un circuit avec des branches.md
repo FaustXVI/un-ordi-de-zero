@@ -5,7 +5,7 @@
 => calcul du R général
 => avant et après, c'est la même chose
 => démo avec un ohm mètre
-=> idée du voltmètre => prochaine vidée
+=> idée du voltmètre => prochaine vidéo
 # Description
 
 # Références

@@ -148,7 +148,7 @@ La [[résistance]] : https://www.youtube.com/watch?v=gGyxI5CayDM
 > [!scene]- 5 / Ok, check
 > 
 > > [!theo]+
-> > Ok, super. On monte le circuit et on vérifie ça ?
+> > Ok, parfait. On monte le circuit et on vérifie ça ?
 > 
 
 > [!close-up]- 6 / intensité dans les branches

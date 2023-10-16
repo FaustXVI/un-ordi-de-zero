@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Scénarios/Loi des mailles et Intensité de deux branches en parallèle.md",
+                "file": "Scénarios/Les imprécisions.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Scénarios/Loi des mailles et Intensité de deux branches en parallèle.md",
+                "file": "Scénarios/Les imprécisions.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Scénarios/Loi des mailles et Intensité de deux branches en parallèle.md",
+                "file": "Scénarios/Les imprécisions.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Scénarios/Loi des mailles et Intensité de deux branches en parallèle.md"
+                "file": "Scénarios/Les imprécisions.md"
               }
             }
           },
@@ -159,9 +159,11 @@
   },
   "active": "e1a8fa11535b7f88",
   "lastOpenFiles": [
-    "pile.md",
-    "Scénarios/Loi des mailles et Intensité de deux branches en parallèle.md",
+    "Scénarios/Le volt-mètre.md",
+    "Scénarios/Les imprécisions.md",
     "Scénarios/Loi des nœuds et intensité générale d'un circuit avec des branches.md",
+    "Scénarios/Loi des mailles et Intensité de deux branches en parallèle.md",
+    "pile.md",
     "Lois de Kirchhoff.md",
     "ohm-mètre.md",
     "Excalidraw/Pile+résistance.excalidraw.md",
@@ -187,8 +189,6 @@
     "toc/Unités.md",
     "templates/Scene dialog.md",
     "Scénarios/Schematiques.md",
-    "Scénarios/La porte ET.md",
-    "Scénarios/L'interrupteur.md",
     "images/schematiques/electronics-pile-resistance.png",
     "toc",
     "Scénarios",
