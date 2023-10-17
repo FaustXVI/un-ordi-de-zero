@@ -1,5 +1,6 @@
 => un ampère mètre après les branches ?
 => loi des nœuds
+=> démo avec spintronics et un switch pour enlever un résistance.
 => démo
 => un moyen plus rapide ? (autre vidéo ?)
 => calcul du R général

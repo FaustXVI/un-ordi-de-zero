@@ -104,18 +104,6 @@ La [[résistance]] : https://www.youtube.com/watch?v=gGyxI5CayDM
 > [!scene]- 3 / ok mais j'ai raison
 > 
 > > [!xav]+
-> > Ok, et dans la vrai vie, avec des fils qui ne sont pas idéaux, il se passe quoi ?
-> 
-> > [!theo]+
-> > Souviens toi, on en a déjà parlé quand on a parlé des résistances. Les fils ont leur propre résistance qui dépend de leur composition, de leur longueur et de leur diamètre.
-> 
-> > [!xav]+
-> > Ok, donc on a des résistances de partout quoi
-> 
-> > [!theo]+
-> > Oui, mais dans ce qu'on fait, elles sont très faibles et l'impact sera du même ordre de grandeur que toutes les autres imprécisions que nous avons dans notre circuit. On en parlera sous peu dans une autre vidéo, c'est promis.
-> 
-> > [!xav]+
 > > Ok…
 > > Bref! J'ai eu un coup de bol mais j'avais raison !
 > 
@@ -147,8 +135,11 @@ La [[résistance]] : https://www.youtube.com/watch?v=gGyxI5CayDM
 
 > [!scene]- 5 / Ok, check
 > 
+> > [!xav]+
+> > C'était plutôt facile en fait !
+> 
 > > [!theo]+
-> > Ok, parfait. On monte le circuit et on vérifie ça ?
+> > On monte le circuit et on vérifie ça ?
 > 
 
 > [!close-up]- 6 / intensité dans les branches
@@ -169,22 +160,22 @@ La [[résistance]] : https://www.youtube.com/watch?v=gGyxI5CayDM
 > > Super, c'est très proche de ce qu'on avait prédit !
 > 
 > > [!xav]+
-> > Bon bha voilà, c'était pas bien compliqué en fait !
+> > Oui, enfin… 1.4 c'est pas 1.5 !
 > 
 > > [!theo]+
-> > Oui, sauf que tu n'as pas fini !
+> > Oui, mais ça c'est normal.
 > 
 > > [!xav]+
 > > Comment ça ?
 > 
 > > [!theo]+
-> > Si je mets un ampère mètre après les deux branches, qu'est-ce qu'il va afficher ?
+> > Bha déjà, quand on passe en pratique, on a plein d’imprécisions héritant du matériel qu'on utilise. Et puis, en plus, tu n'utilises pas ton ampère mètre très bien :/
 > 
 > > [!xav]+
-> > Euh bha euh… pffffff… nan mais tu sais quoi, j'ai fait assez de maths pour aujourd'hui. On vois ça la prochaine fois ok ?
+> > Comment ça j'utilise mal mon ampère mètre ?
 > 
 > > [!theo]+
-> > Ça marche, un pas…
+> > Je t'explique tout ça la prochaine fois ok? Un pas…
 > 
 > > [!xav]+
 > > après l'autre.

@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Scénarios/Loi des mailles et Intensité de deux branches en parallèle.md",
+                "file": "Scénarios/Le volt-mètre.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Scénarios/Loi des mailles et Intensité de deux branches en parallèle.md",
+                "file": "Scénarios/Le volt-mètre.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Scénarios/Loi des mailles et Intensité de deux branches en parallèle.md",
+                "file": "Scénarios/Le volt-mètre.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Scénarios/Loi des mailles et Intensité de deux branches en parallèle.md"
+                "file": "Scénarios/Le volt-mètre.md"
               }
             }
           },
@@ -159,10 +159,10 @@
   },
   "active": "e1a8fa11535b7f88",
   "lastOpenFiles": [
-    "Scénarios/Loi des mailles et Intensité de deux branches en parallèle.md",
-    "Scénarios/Les imprécisions.md",
-    "Scénarios/Le volt-mètre.md",
     "Scénarios/Loi des nœuds et intensité générale d'un circuit avec des branches.md",
+    "Scénarios/Le volt-mètre.md",
+    "Scénarios/Les imprécisions.md",
+    "Scénarios/Loi des mailles et Intensité de deux branches en parallèle.md",
     "pile.md",
     "Lois de Kirchhoff.md",
     "ohm-mètre.md",

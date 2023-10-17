@@ -8,4 +8,4 @@ Loi d'ohm => $U_1 = R_1 \times I_1$ => $U_1 = 10000 \times 0.0001 = 1 V$
 Loi d'ohm => $U_2 = R_2 \times I_2$ => $U_2 = 5000 \times 0.0001 = 0.5 V$
 Loi des mailles => $U = U_1 + U_2 = 1 + 0.5 = 1.5$
 
-Imprecisions de la mesure => prochaine vidéo
+next vidéo => Porte ou
