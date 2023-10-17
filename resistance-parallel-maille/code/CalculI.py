@@ -6,13 +6,13 @@ from electronics import *
 
 locale.setlocale(locale.LC_ALL, 'fr_FR')
 
-section_done = True
+section_done = False
 
 
 class CalculI(MyScene):
 
     def __init__(self):
-        super().__init__(recording=False)
+        super().__init__(recording=True)
 
     def construct(self):
         loi_ohm = MathTex(r"U", " = ", "R", r"\times", "I")

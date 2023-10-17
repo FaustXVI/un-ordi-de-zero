@@ -13,7 +13,7 @@ section_done = False
 class LoiMaille(MyScene):
 
     def __init__(self):
-        super().__init__(recording=False)
+        super().__init__(recording=True)
 
     def construct(self):
         battery = Battery().shift(up)
@@ -32,7 +32,7 @@ class LoiMaille(MyScene):
         loiMaille = MathTex(r"""\sum_{n}{U_n}""", " = ", "0")
         self.next_section(skip_animations=section_done)
         with self.my_voiceover(
-                """Pour rappel, la loi des mailles s'intéresse aux tensions, et les tensions c'est une histoire d'énergie. Il faut donc respecter la loi de conservation de l'énergie, c'est à dire que la somme des énergies consommées doit être égale à la somme des énergie produites.""") as timer:
+                """Pour rappel, la loi des mailles s'intéresse aux tensions, et les tensions c'est une histoire d'énergie. Il faut donc respecter la loi de conservation de l'énergie, c'est à dire que la somme des énergies consommées et la somme des énergie produites doivent être égales.""") as timer:
             self.play(Create(conservationEnergie), run_time=timer.duration)
         with self.my_voiceover(
                 """Comme nous on parle d'électricité, on parle d'énergie par Coulomb, dit autrement, de tensions. On obtient donc la somme des tensions consommées est égale à la somme des tensions produites""") as timer:

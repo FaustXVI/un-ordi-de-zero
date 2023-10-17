@@ -13,8 +13,8 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Scénarios/Le volt-mètre.md",
-                "mode": "source",
+                "file": "Scénarios/Loi des mailles et Intensité de deux branches en parallèle.md",
+                "mode": "preview",
                 "source": false
               }
             }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Scénarios/Le volt-mètre.md",
+                "file": "Scénarios/Loi des mailles et Intensité de deux branches en parallèle.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Scénarios/Le volt-mètre.md",
+                "file": "Scénarios/Loi des mailles et Intensité de deux branches en parallèle.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Scénarios/Le volt-mètre.md"
+                "file": "Scénarios/Loi des mailles et Intensité de deux branches en parallèle.md"
               }
             }
           },
@@ -159,11 +159,11 @@
   },
   "active": "e1a8fa11535b7f88",
   "lastOpenFiles": [
-    "Scénarios/Loi des nœuds et intensité générale d'un circuit avec des branches.md",
-    "Scénarios/Le volt-mètre.md",
-    "Scénarios/Les imprécisions.md",
-    "Scénarios/Loi des mailles et Intensité de deux branches en parallèle.md",
     "pile.md",
+    "Scénarios/Loi des mailles et Intensité de deux branches en parallèle.md",
+    "Scénarios/Le volt-mètre.md",
+    "Scénarios/Loi des nœuds et intensité générale d'un circuit avec des branches.md",
+    "Scénarios/Les imprécisions.md",
     "Lois de Kirchhoff.md",
     "ohm-mètre.md",
     "Excalidraw/Pile+résistance.excalidraw.md",
