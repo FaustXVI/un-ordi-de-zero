@@ -4,7 +4,6 @@ Aujourd'hui, on essaie de comprendre ce qui se passe dans le dernier circuit qu'
 
 # Références
 [[Lois de Kirchhoff]] : https://www.youtube.com/watch?v=Hs1gesB3Lv4 (2 résistances en parallèle)
-La [[résistance]] : https://www.youtube.com/watch?v=gGyxI5CayDM
 # Textes
 
 > [!scene]- 1 / Intro

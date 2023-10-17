@@ -1,3 +1,27 @@
+# Description
+
+# Références
+
+La [[résistance]] : https://www.youtube.com/watch?v=gGyxI5CayDM
+
+# Textes
+
+> [!scene]- 1 / Intro
+> 
+> > [!xav]+
+> > Bonjour !
+> 
+> > [!theo]+
+> > Salut !
+> 
+> > [!xav]+
+> >
+> 
+> > [!theo]+
+> >
+> 
+
+
 Le bon settings sur l'ampère mètre ! si on mesure en micro-ohms on sera plus précis.
 Attention aux chiffres significatifs.
 
