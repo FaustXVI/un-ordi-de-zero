@@ -1,5 +1,5 @@
 Résistance connue plus ampère-mètre => voltmètre
-Objectif : impact minimal => R au max et ampère-mètre sensible
+Objectif : impact minimal (les composants sont prévu pour fonctionner à un certain ampèrage, on veut pas cramer le circuit en faisant une mesure, plus conso alim) => R au max et ampère-mètre sensible
 Démo : 2 résistances en séries $R_1$ (10K$\Omega$) et $R_2$ (5K$\Omega$) + pile 1.5 V
 $R = R_1 + R_2 = 15K\Omega$
 Loi d'ohm => $U = R \times I$ => 1.5 = 15000 I => I = 1.5 / 150000 = 0.0001 A
