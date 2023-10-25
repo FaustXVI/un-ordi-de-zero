@@ -59,7 +59,7 @@ La [[résistance]] : https://www.youtube.com/watch?v=gGyxI5CayDM
 > Et d'ailleurs, pour passer d'un fil à autre chose, on a des contacts à chaque fois, qui ont leur propre résistance qu'on peut représenter en orange.
 > ![[2-resistances-parallel-amp-r-contact.excalidraw]]
 > 
-> Et enfin, il ne faut pas oublier que la pile a une résistance interne ainsi que les ampèremètres. Qu'on peut représenter en. 
+> Et enfin, il ne faut pas oublier que la pile a une résistance interne ainsi que les ampèremètres. Qu'on peut représenter en vert. 
 >  ![[2-resistances-parallel-amp-r-all.excalidraw]]
 
 > [!scene]- 3 / Sérieux
@@ -91,7 +91,7 @@ La [[résistance]] : https://www.youtube.com/watch?v=gGyxI5CayDM
 
 > [!close-up]- 4 / expérience des fils
 > 
-> Je reprends notre circuit, et je remplace tous les résistances et les ampèremètres par des simples fils.
+> Je reprends notre circuit et ne garde qu'une seule branche. Je remplace la résistances et la pile par des simples fils.
 > 
 > Maintenant, je mesure la résistance du circuit.
 > 
@@ -116,10 +116,10 @@ La [[résistance]] : https://www.youtube.com/watch?v=gGyxI5CayDM
 > > Ce qui nous ajoutes encore quelques $\Omega$ d'imprécision.
 > 
 > > [!theo]+
-> > Et il y a la même choses pour les piles. Une pile neuve ne donne pas forcément exactement $1.5 V$, c'est d'ailleurs fréquent qu'elles délivres un peut plus.
+> > Et il y a la même choses pour les piles. Une pile neuve ne donne pas forcément exactement $1.5 V$, c'est d'ailleurs fréquent qu'elles délivres un peu plus.
 > 
 > > [!xav]+
-> > Et puis, y'a le niveau d'usure de la pile aussi. Si j'utilise des vielles piles de batterie, j'aurais probablement moins que $1.5 V$.
+> > Et puis, y'a le niveau d'usure de la pile aussi. Si j'utilise des vielles piles, j'aurais probablement moins que $1.5 V$.
 > 
 > > [!theo]+
 > > Exact. Et enfin, on en arrive à la prise de mesure elle même.
@@ -128,7 +128,7 @@ La [[résistance]] : https://www.youtube.com/watch?v=gGyxI5CayDM
 > > Oui, tu me disait que j'utilisait mal l'ampèremètre ?
 > 
 > > [!theo]+
-> > Oui, tu utilisait une résolution trop faible pour la mesure que tu faisais, et l'exactitude de la mesure peut alors te jouer des tours.
+> > Oui, tu utilisais une résolution trop faible pour la mesure que tu faisais, et l'exactitude de la mesure peut alors te jouer des tours.
 > 
 > > [!xav]+
 > > J'ai rien compris.
@@ -137,23 +137,56 @@ La [[résistance]] : https://www.youtube.com/watch?v=gGyxI5CayDM
 > > Je te fait un dessin, ça sera plus simple.
 > 
 
-> [!manim]+ 6 / Exactitude, résolution et précision
+> [!manim]- 6 / Exactitude, résolution et précision
+> Mesurer quelque chose, ça veut dire place la valeur de la propriété qui nous intéresse sur un axe.
+> Commençons donc par dessiner un axe sur lequel positionner nos valeurs.
+> Pour notre exemple, imaginons qu'on veuille mesurer une valeur d'exactement $1.5mA$, représenté par ce point vert.
 > 
-> Commençons par dessiner un axe sur lequel positionner nos valeurs.
+> ![[axe.excalidraw]]
 > 
-> Résolution : le découpage de l'axe
+> Notre premier problème, c'est que cette axe est de longueur infinie et qu'en pratique, on manipule des instruments de taille finie.
+> Nous devons donc commencer par définir sur quelle partie de cette axe nous allons travailler.
+> Une solution simple à se problème est de deviner une valeur maximal de ce que l'on veut mesurer. 
 > 
-> Imaginons que l'on essaie de mesurer un courant d'exactement $1.5V$.
+> Par exemple, on sait que ce que l'on veut mesurer est entre $100\mu A$ et $10mA$.
 > 
-> L'exactitude de la mesure représente la proximité que l'on a avec la valeur réel.
+> ![[axe-segment.excalidraw]]
 > 
-> La précision nous indique à quelle point la mesure est reproductible. Dit autrement, à quel point on arrive à ignorer les éléments exterieurs : température, pression, etc...
+> C'est exactement ce que tu fais quand tu configure ton ampèremètre ou quand tu choisi d'utiliser un double décimètre plutôt qu'un mètre.
+> 
+> Notre instrument de mesure peut alors déjà nous donner une information : est-ce que la valeur correspond à l'ordre de grandeur que nous avons estimé ou non.
+> 
+> Afin d'avoir plus d'information, on va alors découper notre axe en segments de longueur identique. Plus la longueur des segments sera petite, plus la résolution de notre mesure, c'est à dire le nombre de chiffres que nous pourrons lire, sera grande.
+> 
+> Si on divise notre morceau d'axe en 10 segments, chaque segment va représenter $1mA$.
+> Si on le divise en 100 segments, chaque segment représentera $100 \mu A$.
+> On peut mesurer faire des segments aussi petits que l'on veut, cela ne veut pas dire que notre mesure sera exact.
+> ![[axe-scale.excalidraw]]
+> 
+> Quand on choisi notre fenêtre de mesure, notre ampèremètre choisis automatiquement la résolution maximal qu'il peut afficher.
+>  
+> L'exactitude de la mesure représente la proximité de notre mesure avec la valeur réelle.
+> Dans notre exemple, une exactitude de $\pm 1\%$ veut dire que la mesure de $1.5 mA$ sera comprise entre $1.4 mA$ et $1.6 mA$.
+> ![[axe-accuracy.excalidraw]]
+> 
+> D'après son manuel utilisateur, l'ampèremètre qu'on utilise a une précision de $\pm 1\%$.
+> 
+> Enfin, la précision nous indique à quelle point la mesure est reproductible.
+> Dans notre exemple, si notre mesure est précise, et que nous avons lu $1.4 mA$ la première fois, si nous refaisons la mesure, nous lirons de nouveau $1.4 mA$.
+> A l'inverse, si notre mesure est imprécise, nous pourrions lire $1.6 mA$ ce que reste dans notre fenêtre d'exactitude. 
+> ![[axe-precision.excalidraw]]
 > 
 
 > [!scene]- 7 / Contre-mesure
 > 
 > > [!xav]+
-> > Ok, compris. Est-ce qu'on a moyen de minimiser l'impact de ces imprécisions ?
+> > Ok, compris. Donc j'aurais du mesurer en utilisant une configuration plus petite c'est ça ?
+> 
+> > [!theo]+
+> >  Exactement.
+> 
+> > [!xav]+
+> > Ok, et est-ce qu'on a moyen de minimiser l'impact de ces imprécisions ?
 > 
 > > [!theo]+
 > > Déjà, on peut essayer de faire un montage physique le plus proche possible du montage théorique en utilisant le minimum de fils et de contacts possibles.

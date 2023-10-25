@@ -14,9 +14,19 @@
               "type": "markdown",
               "state": {
                 "file": "Scénarios/Les imprécisions.md",
-                "mode": "source",
+                "mode": "preview",
                 "backlinks": true,
                 "source": false
+              }
+            }
+          },
+          {
+            "id": "c0fd32ecb2ff83f9",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "Excalidraw/axe-segment.excalidraw.md"
               }
             }
           }
@@ -161,35 +171,35 @@
   "active": "e1a8fa11535b7f88",
   "lastOpenFiles": [
     "Excalidraw/2-resistances-parallel-amp-r-all.excalidraw.md",
-    "Excalidraw/2-resistances-parallel-amp.excalidraw.md",
     "Scénarios/Les imprécisions.md",
+    "Excalidraw/2-resistances-parallel-amp-r-contact.excalidraw.md",
+    "Scénarios/L'interrupteur.md",
+    "Zenitech 820B.md",
+    "Scénarios/Loi des nœuds et intensité générale d'un circuit avec des branches.md",
+    "Excalidraw/axe-precision.excalidraw.md",
+    "Excalidraw/axe-accuracy.excalidraw.md",
+    "Excalidraw/axe-scale.excalidraw.md",
+    "Excalidraw/axe-segment.excalidraw.md",
+    "Excalidraw/axe.excalidraw.md",
+    "Excalidraw/2-resistances-parallel-amp.excalidraw.md",
     "Excalidraw/2-resistances-parallel.excalidraw.md",
     "Excalidraw/2-resistances-parallel-amp-r-fil.excalidraw.md",
-    "Excalidraw/2-resistances-parallel-amp-r-contact.excalidraw.md",
     "Excalidraw/2-resistances-parallel-amp-r-breaboard.excalidraw.md",
     "Excalidraw/2-resistances-parallel-amp-r-all-fil.excalidraw.md",
     "Excalidraw/Les imprécisions 2023-10-21 17.03.29.excalidraw.md",
     "Scénarios/Le volt-mètre.md",
-    "Zenitech 820B.md",
     "résistance.md",
     "Lois de Kirchhoff.md",
     "Scénarios/Loi des mailles et Intensité de deux branches en parallèle.md",
     "Newton.md",
     "pile.md",
-    "Scénarios/Loi des nœuds et intensité générale d'un circuit avec des branches.md",
     "ohm-mètre.md",
     "Excalidraw/Pile+résistance.excalidraw.md",
     "Excalidraw/Pile+résistance+amp.excalidraw.md",
-    "Excalidraw/résistance.excalidraw.md",
-    "Excalidraw/plie.excalidraw.md",
     "images/zenitech-830B-caracteristics.png",
     "images/2_résistances_parallèles_branche_verte_bb.png",
     "images/2_résistances_parallèles_branche_jaune_bb.png",
-    "Scénarios/Les unités en électronique.md",
     "images/2_résistances_parallèles_bb.png",
-    "Scénarios/Création d'une jonction.md",
-    "Scénarios/2 résistances en séries.md",
-    "2-resistances-parallel.excalidraw.md",
     "images/schematiques/electronics-pile-resistance.png",
     "toc",
     "Scénarios",
