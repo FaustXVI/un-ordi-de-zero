@@ -138,32 +138,31 @@ La [[résistance]] : https://www.youtube.com/watch?v=gGyxI5CayDM
 > 
 
 > [!manim]- 6 / Exactitude, résolution et précision
-> Mesurer quelque chose, ça veut dire place la valeur de la propriété qui nous intéresse sur un axe.
-> Commençons donc par dessiner un axe sur lequel positionner nos valeurs.
+> Commençons donc par dessiner un axe sur lequel mesurer nos valeurs.
 > Pour notre exemple, imaginons qu'on veuille mesurer une valeur d'exactement $1.5mA$, représenté par ce point vert.
 > 
 > ![[axe.excalidraw]]
 > 
-> Notre premier problème, c'est que cette axe est de longueur infinie et qu'en pratique, on manipule des instruments de taille finie.
-> Nous devons donc commencer par définir sur quelle partie de cette axe nous allons travailler.
-> Une solution simple à se problème est de deviner une valeur maximal de ce que l'on veut mesurer. 
+> Notre premier problème, c'est que cet axe est de longueur infinie. Nous devons donc commencer par définir sur quelle partie de cette axe nous allons regarder.
+> La solution à ce problème est d'estimer une fourchette de la valeur que l'on veut mesurer. 
 > 
 > Par exemple, on sait que ce que l'on veut mesurer est entre $100\mu A$ et $10mA$.
 > 
 > ![[axe-segment.excalidraw]]
 > 
 > C'est exactement ce que tu fais quand tu configure ton ampèremètre ou quand tu choisi d'utiliser un double décimètre plutôt qu'un mètre.
+> 🎥
 > 
-> Notre instrument de mesure peut alors déjà nous donner une information : est-ce que la valeur correspond à l'ordre de grandeur que nous avons estimé ou non.
-> 
-> Afin d'avoir plus d'information, on va alors découper notre axe en segments de longueur identique. Plus la longueur des segments sera petite, plus la résolution de notre mesure, c'est à dire le nombre de chiffres que nous pourrons lire, sera grande.
-> 
+> On va alors découper notre axe en segments de longueur identique. 
 > Si on divise notre morceau d'axe en 10 segments, chaque segment va représenter $1mA$.
-> Si on le divise en 100 segments, chaque segment représentera $100 \mu A$.
-> On peut mesurer faire des segments aussi petits que l'on veut, cela ne veut pas dire que notre mesure sera exact.
-> ![[axe-scale.excalidraw]]
 > 
-> Quand on choisi notre fenêtre de mesure, notre ampèremètre choisis automatiquement la résolution maximal qu'il peut afficher.
+> Plus la longueur des segments sera petite, plus la résolution de notre mesure, c'est à dire le nombre de chiffres que nous pourrons lire, sera grande.
+> 
+> Si on le divise en 100 segments, chaque segment représentera $100 \mu A$.
+> ![[axe-scale.excalidraw]]
+>  
+> Quand on choisi notre fourchette de mesure, notre ampèremètre selectionne aussi la résolution.
+> Avoir une grande résolution, ne veut pas dire que la mesure sera exact.
 >  
 > L'exactitude de la mesure représente la proximité de notre mesure avec la valeur réelle.
 > Dans notre exemple, une exactitude de $\pm 1\%$ veut dire que la mesure de $1.5 mA$ sera comprise entre $1.4 mA$ et $1.6 mA$.
@@ -173,7 +172,7 @@ La [[résistance]] : https://www.youtube.com/watch?v=gGyxI5CayDM
 > 
 > Enfin, la précision nous indique à quelle point la mesure est reproductible.
 > Dans notre exemple, si notre mesure est précise, et que nous avons lu $1.4 mA$ la première fois, si nous refaisons la mesure, nous lirons de nouveau $1.4 mA$.
-> A l'inverse, si notre mesure est imprécise, nous pourrions lire $1.6 mA$ ce que reste dans notre fenêtre d'exactitude. 
+> A l'inverse, si notre mesure est imprécise, nous pourrions lire $1.6 mA$ ce qui reste dans notre fourchette d'exactitude, tout comme $1.5 mA$. 
 > ![[axe-precision.excalidraw]]
 > 
 
