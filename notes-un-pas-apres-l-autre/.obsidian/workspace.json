@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "Scénarios/Les imprécisions.md",
-                "mode": "preview",
+                "mode": "source",
                 "backlinks": true,
                 "source": false
               }
@@ -170,8 +170,9 @@
   },
   "active": "e1a8fa11535b7f88",
   "lastOpenFiles": [
-    "Scénarios/Loi des nœuds et intensité générale d'un circuit avec des branches.md",
+    "Scénarios/Loi des mailles et Intensité de deux branches en parallèle.md",
     "Scénarios/Les imprécisions.md",
+    "Scénarios/Loi des nœuds et intensité générale d'un circuit avec des branches.md",
     "Excalidraw/2-resistances-parallel-amp-r-all.excalidraw.md",
     "Excalidraw/2-resistances-parallel-amp-r-contact.excalidraw.md",
     "Scénarios/L'interrupteur.md",
@@ -190,7 +191,6 @@
     "Scénarios/Le volt-mètre.md",
     "résistance.md",
     "Lois de Kirchhoff.md",
-    "Scénarios/Loi des mailles et Intensité de deux branches en parallèle.md",
     "Newton.md",
     "pile.md",
     "ohm-mètre.md",

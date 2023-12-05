@@ -95,7 +95,7 @@ La [[résistance]] : https://www.youtube.com/watch?v=gGyxI5CayDM
 > 
 > Maintenant, je mesure la résistance du circuit.
 > 
-> On obtient $XXX\Omega$. Et comparé à nos résistances de $1000\Omega$ c'est tout de même $XX.X\%$
+> On obtient $40\Omega$. Et comparé à nos résistances de $1000\Omega$ c'est tout de même $4\%$
 >
 
 > [!scene]- 5 / ouch
@@ -218,11 +218,10 @@ La [[résistance]] : https://www.youtube.com/watch?v=gGyxI5CayDM
 > [!close-up]- 8 / Mesure V2
 > 
 > OK, donc là, j'ai utilisé le moins de fils possibles, des résistances de $100K\Omega$ et une pile neuve.
-> Si je mesure l’ampérage de la première branche, j'obtiens $15.X \mu A$.
-> Et si je mesure sur la seconde branche j'obtiens $15.Y \mu A$
+> Si je mesure l’ampérage de la première branche, j'obtiens $15.8 \mu A$.
+> Et si je mesure sur la seconde branche j'obtiens $15.9 \mu A$
 > Maintenant, je change la pile neuve pour une pile usagée.
-> Si je mesure l’ampérage de la première branche, j'obtiens $15.Z \mu A$.
-> Et si je mesure sur la seconde branche j'obtiens $15.Z \mu A$
+> Si je mesure l’ampérage de la première branche, j'obtiens $5.9 \mu A$.
 
 > [!scene]- 9 / ok next
 > 
