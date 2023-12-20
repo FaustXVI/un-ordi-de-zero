@@ -226,10 +226,16 @@ La [[résistance]] : https://www.youtube.com/watch?v=gGyxI5CayDM
 > [!scene]- 9 / ok next
 > 
 > > [!xav]+
-> > Du coup je comprends bien mes mesures qui correspondent bien aux valeurs auxquelles je m'attendais. 
+> > Du coup si je comprends bien mes mesures, ma pile neuve délivre est plus proche des $1.6V$ que des $1.5$.
 > 
 > > [!theo]+
-> > Super, on passe à la suite alors. A ton avis, si on met l'ampèremètre après les branches, quelle valeur  on va mesurer .
+> > Oui, et c'est tout à fait classique pour une pile neuve.
+>  
+> > [!xav]+
+> > Ok, j'ai compris alors !
+> 
+> > [!theo]+ 
+> > Super, on passe à la suite ! A ton avis, si on met l'ampèremètre après les branches, quelle valeur  on va mesurer .
 > 
 > > [!xav]+
 > > C'est une bonne question, mais la j'ai besoin de digèrer tout ce qu'on viens de voir. On regarde ça la prochaine fois ?
