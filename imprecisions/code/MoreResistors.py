@@ -5,7 +5,7 @@ import locale
 from electronics import *
 from electronics import Circuit, Battery, Resistance, Ameter, Branch, Junction, Contact
 
-locale.setlocale(locale.LC_ALL, 'fr_FR')
+locale.setlocale(locale.LC_ALL, 'en_US.utf8')
 
 section_done = False
 
@@ -13,7 +13,7 @@ section_done = False
 class MoreResistors(MyScene):
 
     def __init__(self):
-        super().__init__(recording=False)
+        super().__init__(recording=True)
 
     def construct(self):
         cable_r_color = DARK_BLUE
