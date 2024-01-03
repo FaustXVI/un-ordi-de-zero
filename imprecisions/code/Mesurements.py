@@ -22,7 +22,7 @@ class Mesurements(MyScene, MovingCameraScene):
         axis100 = NumberLine(x_range=[-150, 150], unit_size=0.1, numbers_with_elongated_ticks=range(-150, 150, 10))
         bigAxis = NumberLine(x_range=[-1000, 1000], include_ticks=False)
         with self.my_voiceover(
-                """La différence entre un fil en théorie et un fil en pratique, c'est qu'en vrai, les fils ont une résistance.""") as timer:
+                """Commençons donc par dessiner un axe sur lequel mesurer nos valeurs.""") as timer:
             self.play(Create(axis, rate_func=linear), run_time=timer.duration)
         self.remove(axis)
         self.add(bigAxis)
