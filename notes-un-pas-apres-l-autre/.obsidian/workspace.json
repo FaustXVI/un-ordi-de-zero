@@ -19,16 +19,6 @@
                 "source": false
               }
             }
-          },
-          {
-            "id": "c0fd32ecb2ff83f9",
-            "type": "leaf",
-            "state": {
-              "type": "excalidraw",
-              "state": {
-                "file": "Excalidraw/axe-segment.excalidraw.md"
-              }
-            }
           }
         ]
       }
@@ -146,7 +136,9 @@
             "state": {
               "type": "all-properties",
               "state": {
-                "sortOrder": "frequency"
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
               }
             }
           }
