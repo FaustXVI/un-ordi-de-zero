@@ -19,8 +19,22 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "5020ff4bec71a5a6",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Scénarios/Loi des nœuds et intensité générale d'un circuit avec des branches.md",
+                "mode": "source",
+                "backlinks": true,
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -160,12 +174,14 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "0806ec93f0070948",
+  "active": "5020ff4bec71a5a6",
   "lastOpenFiles": [
+    "Scénarios/Résistance équivalante.md",
+    "Scénarios/Loi des nœuds et intensité générale d'un circuit avec des branches.md",
     "Scénarios/Loi des mailles et Intensité de deux branches en parallèle.md",
+    "Scénarios/Le volt-mètre.md",
     "Scénarios/Les imprécisions.md",
     "Scénarios/Schematiques.md",
-    "Scénarios/Loi des nœuds et intensité générale d'un circuit avec des branches.md",
     "Excalidraw/2-resistances-parallel-amp-r-all.excalidraw.md",
     "Excalidraw/2-resistances-parallel-amp-r-contact.excalidraw.md",
     "Scénarios/L'interrupteur.md",
@@ -181,13 +197,11 @@
     "Excalidraw/2-resistances-parallel-amp-r-breaboard.excalidraw.md",
     "Excalidraw/2-resistances-parallel-amp-r-all-fil.excalidraw.md",
     "Excalidraw/Les imprécisions 2023-10-21 17.03.29.excalidraw.md",
-    "Scénarios/Le volt-mètre.md",
     "résistance.md",
     "Lois de Kirchhoff.md",
     "Newton.md",
     "pile.md",
     "ohm-mètre.md",
-    "Excalidraw/Pile+résistance.excalidraw.md",
     "images/zenitech-830B-caracteristics.png",
     "images/2_résistances_parallèles_branche_verte_bb.png",
     "images/2_résistances_parallèles_branche_jaune_bb.png",
