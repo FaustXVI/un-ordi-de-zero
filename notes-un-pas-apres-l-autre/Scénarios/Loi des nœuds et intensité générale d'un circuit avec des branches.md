@@ -1,6 +1,6 @@
 => un ampère mètre après les branches ?
+=> démo avec spintronics et un ampère mètre pour voir que ça va plus vite que dans les branches
 => loi des nœuds
-=> démo avec spintronics et un switch pour enlever un résistance.
 => démo
 => un moyen plus rapide ? (autre vidéo ?)
 => calcul du R général
@@ -22,10 +22,10 @@
 > > Salut !
 > 
 > > [!xav]+
-> >
+> > La dernière fois, on se demandait ce que ça donnerai si on mettais un ampèremètre après les deux branches.
 > 
 > > [!theo]+
-> >
+> > Yes ! Et pour se donner une idée de la réponse, regardons ce que ça donne en spintronics !
 > 
 
 > [!manim]- X / [[Lois de Kirchhoff#Loi des nœuds|loi des nœuds]]

@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Scénarios/Les imprécisions.md",
+                "file": "Scénarios/Loi des nœuds et intensité générale d'un circuit avec des branches.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Scénarios/Les imprécisions.md",
+                "file": "Scénarios/Loi des nœuds et intensité générale d'un circuit avec des branches.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Scénarios/Les imprécisions.md",
+                "file": "Scénarios/Loi des nœuds et intensité générale d'un circuit avec des branches.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Scénarios/Les imprécisions.md"
+                "file": "Scénarios/Loi des nœuds et intensité générale d'un circuit avec des branches.md"
               }
             }
           },
@@ -160,11 +160,11 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "e1a8fa11535b7f88",
+  "active": "0806ec93f0070948",
   "lastOpenFiles": [
     "Scénarios/Loi des mailles et Intensité de deux branches en parallèle.md",
-    "Scénarios/Schematiques.md",
     "Scénarios/Les imprécisions.md",
+    "Scénarios/Schematiques.md",
     "Scénarios/Loi des nœuds et intensité générale d'un circuit avec des branches.md",
     "Excalidraw/2-resistances-parallel-amp-r-all.excalidraw.md",
     "Excalidraw/2-resistances-parallel-amp-r-contact.excalidraw.md",
