@@ -50,7 +50,7 @@ Cette fois si, on place l'ampère-mètre après les branches et on regarde l'int
 > Dit autrement, que la somme des intensités entrantes est égale à l'opposé de la somme des intensités sortantes.
 > $$i_1 + i_2 = i_3 + i_4$$
 > 
-> Cependant, une intensité peut être mesurée dans les deux sens, on peut donc tout mesurer comme si on avait que des intensités en entrée. On a juste à inverser $i_3$ et $i_4$
+> Cependant, une intensité peut être mesurée dans les deux sens, on peut donc tout mesurer comme si on avait que des intensités entrantes. On a juste à inverser $i_3$ et $i_4$
 > $$i_1 + i_2 = (-i_3) + (-i_4)$$
 > 
 > Si on passe $i_3$ et $i_4$ de l'autre côté, on obtient $$i_1 + i_2 + i_3 + i_4 = 0$$
