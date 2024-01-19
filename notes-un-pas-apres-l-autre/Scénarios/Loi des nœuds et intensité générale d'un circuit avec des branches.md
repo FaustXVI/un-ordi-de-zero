@@ -72,7 +72,7 @@ Cette fois si, on place l'ampère-mètre après les branches et on regarde l'int
 > 
 > J'ai repris notre circuit avec nos deux branches et une pile neuve. Maintenant, si je mesure l'intensité après les branches, j'obtiens 31.X$\mu$A
 
-> [!scene]- 6 / Conclusion
+> [!scene]- 7 / Conclusion
 > 
 > > [!xav]+
 > > Et bha parfait ! Par contre, on a dû faire 3 vidéo pour en arriver là, y'a pas un moyen plus rapide ?
