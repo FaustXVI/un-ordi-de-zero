@@ -62,7 +62,7 @@ Cette fois si, on place l'ampère-mètre après les branches et on regarde l'int
 > [!scene]- 5 / Calcul
 > 
 > > [!xav]+
-> > Ok, donc en utilisant des résistance de 100K$\Omega$ et la même pile neuve que la dernière fois qui délivre un peu plus que 1.5V, on devrait avoir une mesure de 31.4$\mu$A plus ou moins 1%.
+> > Ok, donc en utilisant des résistance de 100K$\Omega$ avec 1% de tolérance et la même pile neuve que la dernière fois qui semble délivrer 1.57V, et mon ampèremètre qui a une exactitude à 1% on devrait avoir une mesure de 31.4$\mu$A plus ou moins 2%.
 > 
 > > [!theo]+
 > > Exactement ! Ce qui nous fait une mesure entre 30.8$\mu A$ et 32$\mu A$ Aller, on passe à la pratique !
