@@ -4,6 +4,7 @@ Cette fois si, on place l'ampère-mètre après les branches et on regarde l'int
 
 # Références
 - les imprécisions
+- la loi des mailles
 # Textes
 
 > [!scene]- 1 / Intro
