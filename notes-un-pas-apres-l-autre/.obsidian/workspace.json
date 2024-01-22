@@ -176,8 +176,9 @@
   },
   "active": "5020ff4bec71a5a6",
   "lastOpenFiles": [
-    "Scénarios/Résistance équivalante.md",
+    "Lois de Kirchhoff.md",
     "Scénarios/Loi des nœuds et intensité générale d'un circuit avec des branches.md",
+    "Scénarios/Résistance équivalante.md",
     "Scénarios/Loi des mailles et Intensité de deux branches en parallèle.md",
     "Scénarios/Le volt-mètre.md",
     "Scénarios/Les imprécisions.md",
@@ -198,7 +199,6 @@
     "Excalidraw/2-resistances-parallel-amp-r-all-fil.excalidraw.md",
     "Excalidraw/Les imprécisions 2023-10-21 17.03.29.excalidraw.md",
     "résistance.md",
-    "Lois de Kirchhoff.md",
     "Newton.md",
     "pile.md",
     "ohm-mètre.md",
