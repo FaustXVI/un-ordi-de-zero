@@ -4,37 +4,23 @@
     "type": "split",
     "children": [
       {
-        "id": "6e86a6e88ec8436e",
+        "id": "373464c020f8ed45",
         "type": "tabs",
         "children": [
           {
-            "id": "e1a8fa11535b7f88",
+            "id": "2a095e9006e6ee6a",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Scénarios/Loi des nœuds et intensité générale d'un circuit avec des branches.md",
-                "mode": "source",
-                "backlinks": true,
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "5020ff4bec71a5a6",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Scénarios/Loi des nœuds et intensité générale d'un circuit avec des branches.md",
+                "file": "Scénarios/Le volt-mètre.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -100,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Scénarios/Loi des nœuds et intensité générale d'un circuit avec des branches.md",
+                "file": "Scénarios/Le volt-mètre.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -117,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Scénarios/Loi des nœuds et intensité générale d'un circuit avec des branches.md",
+                "file": "Scénarios/Le volt-mètre.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -140,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Scénarios/Loi des nœuds et intensité générale d'un circuit avec des branches.md"
+                "file": "Scénarios/Le volt-mètre.md"
               }
             }
           },
@@ -174,19 +160,20 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "5020ff4bec71a5a6",
+  "active": "0806ec93f0070948",
   "lastOpenFiles": [
     "Scénarios/Résistance équivalante.md",
+    "Zenitech 820B.md",
     "Scénarios/Loi des nœuds et intensité générale d'un circuit avec des branches.md",
-    "Lois de Kirchhoff.md",
     "Scénarios/Loi des mailles et Intensité de deux branches en parallèle.md",
+    "Scénarios/Les unités en électronique.md",
+    "Lois de Kirchhoff.md",
     "Scénarios/Le volt-mètre.md",
     "Scénarios/Les imprécisions.md",
     "Scénarios/Schematiques.md",
     "Excalidraw/2-resistances-parallel-amp-r-all.excalidraw.md",
     "Excalidraw/2-resistances-parallel-amp-r-contact.excalidraw.md",
     "Scénarios/L'interrupteur.md",
-    "Zenitech 820B.md",
     "Excalidraw/axe-precision.excalidraw.md",
     "Excalidraw/axe-accuracy.excalidraw.md",
     "Excalidraw/axe-scale.excalidraw.md",
@@ -201,7 +188,6 @@
     "résistance.md",
     "Newton.md",
     "pile.md",
-    "ohm-mètre.md",
     "images/zenitech-830B-caracteristics.png",
     "images/2_résistances_parallèles_branche_verte_bb.png",
     "images/2_résistances_parallèles_branche_jaune_bb.png",
