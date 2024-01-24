@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Scénarios/Le volt-mètre.md",
+                "file": "Scénarios/Résistance équivalante.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Scénarios/Le volt-mètre.md",
+                "file": "Scénarios/Résistance équivalante.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Scénarios/Le volt-mètre.md",
+                "file": "Scénarios/Résistance équivalante.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Scénarios/Le volt-mètre.md"
+                "file": "Scénarios/Résistance équivalante.md"
               }
             }
           },
@@ -160,15 +160,15 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "0806ec93f0070948",
+  "active": "2a095e9006e6ee6a",
   "lastOpenFiles": [
+    "Scénarios/Le volt-mètre.md",
     "Scénarios/Résistance équivalante.md",
     "Zenitech 820B.md",
     "Scénarios/Loi des nœuds et intensité générale d'un circuit avec des branches.md",
     "Scénarios/Loi des mailles et Intensité de deux branches en parallèle.md",
     "Scénarios/Les unités en électronique.md",
     "Lois de Kirchhoff.md",
-    "Scénarios/Le volt-mètre.md",
     "Scénarios/Les imprécisions.md",
     "Scénarios/Schematiques.md",
     "Excalidraw/2-resistances-parallel-amp-r-all.excalidraw.md",

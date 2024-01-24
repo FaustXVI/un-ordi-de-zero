@@ -8,6 +8,7 @@ Maintenant que l'on connait la loi des nœuds et la loi des mailles, on peut gag
 - loi des nœuds
 - loi des mailles
 - les imprécisions
+- résistances série
 # Textes
 
 > [!scene]- 1 / Intro
@@ -25,7 +26,7 @@ Maintenant que l'on connait la loi des nœuds et la loi des mailles, on peut gag
 > > Un résistance équivalente, c'est la valeur de la résistance que je devrais utiliser, si je voulais remplacer une partie du circuit par une seule résistance sans que cela n'ai le moindre impact pour le reste du circuit.
 > 
 > > [!xav]+
-> > OK, et donc dans notre cas tu voudrais remplacer nos deux résistance par une seule, c'est ça ?
+> > OK, et donc dans notre cas tu voudrais remplacer nos deux résistance mises en parallèles par une seule, c'est ça ?
 > 
 > > [!theo]+
 > > Oui, et maintenant qu'on a compris la loi des nœuds et la loi des mailles, on est capable de la calculer ! Regardes, je te montre
@@ -33,38 +34,30 @@ Maintenant que l'on connait la loi des nœuds et la loi des mailles, on peut gag
 
 > [!manim]+ 2 / Démonstration
 > 
-> Pour rappel, notre circuit est composé 
-> - d'une pile délivrant une tension $U$
-> - et de deux résistances, $R_1$ et $R_2$
->
-> On peut noter l'intensité des deux branches $I_1$ et $I_2$
 > 
-> La loi d'ohm nous dit alors que: 
-> - $U_1 = R_1 \times I_1$
-> - $U_2 = R_2 \times I_2$
->
->
->
-> On veut remplacer nos deux résistances par une seule résistance $R$, on devra donc avoir à la fin 
+> On veut remplacer nos deux résistances par une seule résistance $R$, la loi d'ohm nous dit qu'on aura alors
 > $U = R \times I$
 > 
-> La loi des mailles nous dit que $U_1 = U_2 = U$
-> 
-> On peut donc remplacer les tensions des équations précédentes :
-> - $U = R_1 \times I_1$
-> - $U = R_2 \times I_2$
->   
 > La loi des nœuds nous dit que $I_1 + I_2 = I$
 > 
-> En utilisant les équations précédentes on trouve :
-> - $I_1 = \frac{U}{R_1}$
-> - $I_2 = \frac{U}{R_2}$
->   
-> On obtiens alors :
->  $$I = \frac{U}{R_1} + \frac{U}{R_2}$$
+> On obtiens donc :
 > 
-> Et en utilisant cela dans notre équation de la loi d'ohm pour notre circuit, on obtient :
->  
+> $U = R \times (I_1 + I_2)$
+> 
+> Pour chacune de nos branches, d'après la loi d'ohm on a: 
+> - $U_1 = R_1 \times I_1$
+> - $U_2 = R_2 \times I_2$
+>   
+>  On peut alors trouver que 
+> - $I_1 = \frac{U_1}{R_1}$
+> - $I_2 = \frac{U_2}{R_2}$
+>   
+>   En combinant nos deux équations on obtient
+>   $$U = R \times ( \frac{U_1}{R_1} + \frac{U_2}{R_2})$$
+>
+> La loi des mailles nous dit que $U_1 = U_2 = U$
+> 
+> On obtient alors
 > $$U = R \times ( \frac{U}{R_1} + \frac{U}{R_2})$$
 > 
 > Et en passant $U$ et $R$ de l'autre côté, on obtient :
@@ -75,7 +68,7 @@ Maintenant que l'on connait la loi des nœuds et la loi des mailles, on peut gag
 > 
 >  $$\frac{1}{R} = \frac{1}{R_1} + \frac{1}{R_2}$$
 >  
->  Si on généralise pour $N$ résistances en parallèles, on trouve que l'inverse de la résistance équivalente est égale à la somme des résistances mises en parallèles.
+>  Si on généralise pour $N$ résistances en parallèles, on trouve que l'inverse de la résistance équivalente est égale à la somme des inverses des résistances mises en parallèles.
 >  
 >  $$\frac{1}{R} = \sum\limits_{n}{\frac{1}{R_n}}$$
 >  
@@ -130,7 +123,13 @@ Maintenant que l'on connait la loi des nœuds et la loi des mailles, on peut gag
 > > Ce qui est parfaitement dans notre marge d'erreur !
 > 
 > > [!xav]+
-> > Ok, super ! Avec tout ce qu'on viens de voir, je crois que j'ai compris comment faire un volt-mètre !
+> > Ok, super ! Et pour les résistances en série ?
+> 
+> > [!theo]+
+> > C'est facile, c'est la somme des résistances. Mais ça on la déjà vu lors de notre vidéo sur les résistances en série !
+> 
+> > [!xav]+
+> > Ha ! Oui c'est vrai ! Bon, avec tout ce qu'on viens de voir, je crois que j'ai compris comment faire un volt-mètre !
 > 
 > > [!theo]+
 > > Ça serait top ! Tu me montres ça la prochaine fois ?
