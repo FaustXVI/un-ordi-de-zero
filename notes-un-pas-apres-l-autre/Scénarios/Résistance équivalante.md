@@ -127,7 +127,7 @@ Maintenant que l'on connait la loi des nœuds et la loi des mailles, on peut gag
 > > C'est facile, c'est la somme des résistances. Mais ça on la déjà vu lors de notre vidéo sur les résistances en série !
 > 
 > > [!xav]+
-> > Ha ! Oui c'est vrai ! Bon, avec tout ce qu'on viens de voir, je crois que j'ai compris comment faire un volt-mètre !
+> > Ha oui ! C'est vrai ! Bon, avec tout ce qu'on viens de voir, je crois que j'ai compris comment faire un volt-mètre !
 > 
 > > [!theo]+
 > > Ça serait top ! Tu me montres ça la prochaine fois ?
