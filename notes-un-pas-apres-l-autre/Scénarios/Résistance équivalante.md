@@ -40,9 +40,7 @@ Maintenant que l'on connait la loi des nœuds et la loi des mailles, on peut gag
 > 
 > La loi des nœuds nous dit que $I_1 + I_2 = I$
 > 
-> On obtiens donc :
-> 
-> $U = R \times (I_1 + I_2)$
+> On obtiens donc $U = R \times (I_1 + I_2)$
 > 
 > Pour chacune de nos branches, d'après la loi d'ohm on a: 
 > - $U_1 = R_1 \times I_1$
