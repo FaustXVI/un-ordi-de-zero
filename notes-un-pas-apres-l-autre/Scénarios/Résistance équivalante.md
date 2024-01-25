@@ -50,7 +50,7 @@ Maintenant que l'on connait la loi des nœuds et la loi des mailles, on peut gag
 > - $I_1 = \frac{U_1}{R_1}$
 > - $I_2 = \frac{U_2}{R_2}$
 >   
->   En combinant nos deux équations on obtient
+>  En combinant nos équations on obtient
 >   $$U = R \times ( \frac{U_1}{R_1} + \frac{U_2}{R_2})$$
 >
 > La loi des mailles nous dit que $U_1 = U_2 = U$
