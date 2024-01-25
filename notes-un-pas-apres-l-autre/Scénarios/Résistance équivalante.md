@@ -35,8 +35,8 @@ Maintenant que l'on connait la loi des nœuds et la loi des mailles, on peut gag
 > [!manim]+ 2 / Démonstration
 > 
 > 
-> On veut remplacer nos deux résistances par une seule résistance $R$, la loi d'ohm nous dit qu'on aura alors
-> $U = R \times I$
+> On veut remplacer nos deux résistances par une seule résistance $R$ sans impact sur le reste du circuit. Dit autrement on veut que la tension $U$ et l'intensité $I$ dans le reste du circuit ne soit pas modifié.
+> La loi d'ohm nous dit que $U = R \times I$
 > 
 > La loi des nœuds nous dit que $I_1 + I_2 = I$
 > 
