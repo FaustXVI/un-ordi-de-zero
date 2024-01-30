@@ -7,21 +7,22 @@ from electronics import *
 
 # locale.setlocale(locale.LC_ALL, 'fr_FR')
 
-section_done = True
+section_done = False
 
 
 class Demo(MyScene):
 
     def __init__(self):
-        super().__init__(recording=False)
+        super().__init__(recording=True)
 
     def construct(self):
         self.next_section(skip_animations=section_done)
         general_ohm = MathTex("U", "=", "R", r"\times", "I")
         with self.my_voiceover(
-                """On veut remplacer nos deux résistances par une seule résistance $R$ sans impact sur le reste du circuit.
-                Dit autrement on veut que la tension $U$ et l'intensité $I$ dans le reste du circuit ne soit pas modifié.
-La loi d'ohm nous dit que U = R I""") as timer:
+                """Dire qu'on veut remplacer nos deux résistances par une seule résistance $R$ 
+                sans impact sur le reste du circuit, 
+                c'est dire que dans l'équation de la loi d'ohm, U=R I, 
+                on veut que la tension $U$ et l'intensité $I$ restent les mêmes.""") as timer:
             self.play(Write(general_ohm), run_time=timer.duration)
         noeud = MathTex("I_1", "+", "I_2", "=", "I").shift(DOWN * 1.5)
         with self.my_voiceover(
