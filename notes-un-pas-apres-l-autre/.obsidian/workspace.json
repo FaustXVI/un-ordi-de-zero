@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Scénarios/Résistance équivalante.md",
+                "file": "Scénarios/Le volt-mètre.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Scénarios/Résistance équivalante.md",
+                "file": "Scénarios/Le volt-mètre.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Scénarios/Résistance équivalante.md",
+                "file": "Scénarios/Le volt-mètre.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Scénarios/Résistance équivalante.md"
+                "file": "Scénarios/Le volt-mètre.md"
               }
             }
           },
@@ -162,8 +162,8 @@
   },
   "active": "2a095e9006e6ee6a",
   "lastOpenFiles": [
-    "Scénarios/Le volt-mètre.md",
     "Scénarios/Résistance équivalante.md",
+    "Scénarios/Le volt-mètre.md",
     "Zenitech 820B.md",
     "Scénarios/Loi des nœuds et intensité générale d'un circuit avec des branches.md",
     "Scénarios/Loi des mailles et Intensité de deux branches en parallèle.md",
