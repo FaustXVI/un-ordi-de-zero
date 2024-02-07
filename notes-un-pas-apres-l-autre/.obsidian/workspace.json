@@ -160,12 +160,12 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "0806ec93f0070948",
+  "active": "2a095e9006e6ee6a",
   "lastOpenFiles": [
-    "Scénarios/Les imprécisions.md",
-    "Scénarios/Le volt-mètre.md",
-    "Scénarios/Résistance équivalante.md",
     "Zenitech 820B.md",
+    "Scénarios/Le volt-mètre.md",
+    "Scénarios/Les imprécisions.md",
+    "Scénarios/Résistance équivalante.md",
     "Scénarios/Loi des nœuds et intensité générale d'un circuit avec des branches.md",
     "Scénarios/Loi des mailles et Intensité de deux branches en parallèle.md",
     "Scénarios/Les unités en électronique.md",

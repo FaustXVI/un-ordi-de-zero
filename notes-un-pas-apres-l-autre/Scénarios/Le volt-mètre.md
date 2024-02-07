@@ -85,15 +85,45 @@ Aujourd'hui on créer un voltmètre !
 > > Parfait ! Et pour maximiser R il faudra que tu tienne compte de la sensibilité de ton ampère-mètre et de son exactitude !
 > 
 > > [!xav]+
-> > Aller, on passe à la pratique !
+> > J'y ai déjà réfléchi, je te montre.
 > 
 
-> [!close-up]+ 4 / création du voltmètre
+> [!manim]+ 4 / choix de R
 > 
+> Notre ampère-mètre peut mesurer des micro ampère avec un chiffre après la virgule soit une résolution à $10^{-7}$.
+> 
+> La résistance la plus grosse que j'ai à disposition est de $1M\Omega$ soit $10^6$.
+> 
+> Si je mesure une tension de $1.5V$ avec cette résistance, je devrait lire $1.5\mu A$ sur mon ampère mètre.
+> 
+> Cependant, si je tiens compte de la résolution de mon ampère mètre et de son exactitude de $\pm$ 1%, je me rends compte que ma mesure affichera quelque chose entre $1.4\mu A$ et $1.6\mu A$ ce qui se traduit par une imprécision de $\pm$ 10% ce que je trouve trop important.
+> 
+> Si j'utilise une résistance de $1K\Omega$ soit $10^5$, je devrait lire $15.0\mu A$ et en prenant en compte de nouveau la résolution et une exactitude de $\pm$ 1%, il devrait s'afficher quelque chose entre $14.8\mu A$ et $15.2 \mu A$ ce qui fait une imprécision de $\pm$ 2% qui est bien plus acceptable.
 > 
 
+> [!scene]- 5 / ok go
+> 
+> > [!theo]+
+> > Ok, super, tu peux passer à la pratique !
+> 
 
-Résistance connue plus ampère-mètre => voltmètre
-Objectif : impact minimal (les composants sont prévu pour fonctionner à un certain ampérage, on veut pas cramer le circuit en faisant une mesure, plus conso alim) => R au max et ampère-mètre sensible et mesure en parallèle
+> [!close-up]+ 6 / création du voltmètre
+> 
+> J'ai fait un circuit contenant notre pile neuve et une résistance de $10\Omega$ qui est la plus petite que j'ai.
+> 
+> Je met maintenant en parallèle notre résistance de $100K\Omega$ et notre ampère-mètre.
+> 
+> Et on obtient $15.X \mu A$, multiplié par les $10^5$ de notre résistance, on obtient $1.5X V$
+> 
 
-next vidéo => Porte ou
+> [!scene]- 7 / conclusion et porte ou
+> 
+> > [!theo]+
+> > Ce qui est bien proche des $1.6V$ qu'on trouve souvent sur une pile neuve ! Bien joué, tu peux maintenant utiliser ton voltmètre comme tu veux !
+> 
+> > [!xav]+
+> > Aller ! On passe à la suite ?
+> 
+> > [!theo]+
+> > Oui, pour la prochaine fois, je te propose ?
+> 
