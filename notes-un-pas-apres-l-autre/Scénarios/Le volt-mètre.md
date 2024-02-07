@@ -125,5 +125,11 @@ Aujourd'hui on créer un voltmètre !
 > > Aller ! On passe à la suite ?
 > 
 > > [!theo]+
-> > Oui, pour la prochaine fois, je te propose ?
+> > Oui, pour la prochaine fois, je te propose de regarder ce  qu'il se passe si on met deux interrupteurs en parallèle.
+> 
+> > [!xav]+
+> > Ça semble parfait pour faire un pas
+> 
+> > [!theo]+
+> > après l'autre.
 > 
