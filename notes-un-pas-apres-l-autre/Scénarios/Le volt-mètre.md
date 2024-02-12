@@ -98,7 +98,7 @@ Aujourd'hui on créer un voltmètre !
 > 
 > Cependant, si je tiens compte de la résolution de mon ampère mètre et de son exactitude de $\pm$ 1%, je me rends compte que ma mesure affichera quelque chose entre $1.4\mu A$ et $1.6\mu A$ ce qui se traduit par une imprécision de $\pm$ 10% ce que je trouve trop important.
 > 
-> Si j'utilise une résistance de $1K\Omega$ soit $10^5$, je devrait lire $15.0\mu A$ et en prenant en compte de nouveau la résolution et une exactitude de $\pm$ 1%, il devrait s'afficher quelque chose entre $14.8\mu A$ et $15.2 \mu A$ ce qui fait une imprécision de $\pm$ 2% qui est bien plus acceptable.
+> Si j'utilise une résistance de $100K\Omega$ soit $10^5$, je devrait lire $15.0\mu A$ et en prenant en compte de nouveau la résolution et une exactitude de $\pm$ 1%, il devrait s'afficher quelque chose entre $14.8\mu A$ et $15.2 \mu A$ ce qui fait une imprécision de $\pm$ 2% qui est bien plus acceptable.
 > 
 
 > [!scene]- 5 / ok go
