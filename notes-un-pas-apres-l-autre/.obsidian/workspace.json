@@ -19,22 +19,8 @@
                 "source": false
               }
             }
-          },
-          {
-            "id": "f8fab3dd0f3b441a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "ecole.md",
-                "mode": "source",
-                "backlinks": true,
-                "source": false
-              }
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -100,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "ecole.md",
+                "file": "Scénarios/Le volt-mètre.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -117,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "ecole.md",
+                "file": "Scénarios/Le volt-mètre.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -140,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "ecole.md"
+                "file": "Scénarios/Le volt-mètre.md"
               }
             }
           },
@@ -174,7 +160,7 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "f8fab3dd0f3b441a",
+  "active": "2a095e9006e6ee6a",
   "lastOpenFiles": [
     "Scénarios/Le volt-mètre.md",
     "ecole.md",
