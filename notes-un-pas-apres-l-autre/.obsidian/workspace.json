@@ -19,8 +19,22 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "f8fab3dd0f3b441a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "ecole.md",
+                "mode": "source",
+                "backlinks": true,
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -86,7 +100,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Scénarios/Le volt-mètre.md",
+                "file": "ecole.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +117,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Scénarios/Le volt-mètre.md",
+                "file": "ecole.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +140,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Scénarios/Le volt-mètre.md"
+                "file": "ecole.md"
               }
             }
           },
@@ -160,10 +174,11 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "2a095e9006e6ee6a",
+  "active": "f8fab3dd0f3b441a",
   "lastOpenFiles": [
-    "Zenitech 820B.md",
     "Scénarios/Le volt-mètre.md",
+    "ecole.md",
+    "Zenitech 820B.md",
     "Scénarios/Les imprécisions.md",
     "Scénarios/Résistance équivalante.md",
     "Scénarios/Loi des nœuds et intensité générale d'un circuit avec des branches.md",
@@ -187,7 +202,6 @@
     "Excalidraw/Les imprécisions 2023-10-21 17.03.29.excalidraw.md",
     "résistance.md",
     "Newton.md",
-    "pile.md",
     "images/zenitech-830B-caracteristics.png",
     "images/2_résistances_parallèles_branche_verte_bb.png",
     "images/2_résistances_parallèles_branche_jaune_bb.png",
