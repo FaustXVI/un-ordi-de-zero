@@ -1,7 +1,7 @@
-#with import (fetchTarball https://github.com/FaustXVI/nixpkgs/archive/manim-voiceover-0.17.tar.gz) {};
-with import /home/xadet/nixpkgs {};
+{ pkgs,... }:
+with pkgs;
 
-pkgs.mkShell {
+mkShell {
   name = "un-pas-apres-l-autre-env";
   packages = [
     sox
