@@ -76,7 +76,7 @@ class RChoice(MyScene):
             self.play(Succession(Write(Iread_min), Write(Iread_max)), run_time=timer.duration)
         impFinal = MathTex(r"\pm", r"2", r"\%").next_to(IreadFinal, RIGHT)
         with self.my_voiceover(
-                r"""ce qui fait une imprécision de $\pm$ 2% qui est bien plus acceptable.""") as timer:
+                r"""ce qui fait une imprécision de $\pm$ 2%""") as timer:
             self.play(TransformMatchingTex(VGroup(Iread_max, Iread_min, imp), impFinal, fade_transform_mismatches=True),
                       run_time=timer.duration)
         with self.my_voiceover(
