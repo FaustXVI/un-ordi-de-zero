@@ -31,7 +31,7 @@ Aujourd'hui on créer un voltmètre !
 > 
 > Et si je fais tourner mon circuit
 > 
-> J'obtiens environ 6 spin-volts, ce qui est bien le voltage de la pile spintronics.
+> J'obtiens environ 7 spin-volts, ce qui est bien le voltage de la pile spintronics.
 > 
 
 > [!scene]- 3 / impact
