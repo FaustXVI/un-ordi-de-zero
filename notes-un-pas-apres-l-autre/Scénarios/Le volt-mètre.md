@@ -3,6 +3,7 @@ Aujourd'hui on créer un voltmètre !
 # Références
 - Résistance équivalente
 - Les unités
+- Le imprécisions
 # Textes
 
 > [!scene]- 1 / Intro
