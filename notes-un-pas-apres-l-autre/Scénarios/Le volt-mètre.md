@@ -109,7 +109,7 @@ Aujourd'hui on créer un voltmètre !
 
 > [!close-up]+ 6 / création du voltmètre
 > 
-> J'ai fait un circuit contenant notre pile neuve et une résistance de $10\Omega$ qui est la plus petite que j'ai.
+> J'ai fait un circuit contenant notre pile neuve et une résistance.
 > 
 > Je met maintenant en parallèle notre résistance de $100K\Omega$ et notre ampère-mètre.
 > 
