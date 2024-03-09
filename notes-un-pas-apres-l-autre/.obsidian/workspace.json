@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Scénarios/Le volt-mètre.md",
+                "file": "Scénarios/Porte OU.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Scénarios/Le volt-mètre.md",
+                "file": "Scénarios/Porte OU.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Scénarios/Le volt-mètre.md",
+                "file": "Scénarios/Porte OU.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Scénarios/Le volt-mètre.md"
+                "file": "Scénarios/Porte OU.md"
               }
             }
           },
@@ -162,6 +162,8 @@
   },
   "active": "2a095e9006e6ee6a",
   "lastOpenFiles": [
+    "Scénarios/Le volt-mètre.md",
+    "Scénarios/Porte OU.md",
     "Excalidraw/maille.excalidraw.md",
     "Lois de Kirchhoff.md",
     "loi d'ohm.md",
@@ -169,7 +171,6 @@
     "Excalidraw/interrupteur.excalidraw.md",
     "interrupteur.md",
     "Ampère.md",
-    "Scénarios/Le volt-mètre.md",
     "ecole.md",
     "Zenitech 820B.md",
     "Scénarios/Les imprécisions.md",
@@ -187,7 +188,6 @@
     "Excalidraw/axe-segment.excalidraw.md",
     "Excalidraw/axe.excalidraw.md",
     "Excalidraw/2-resistances-parallel-amp.excalidraw.md",
-    "Excalidraw/2-resistances-parallel.excalidraw.md",
     "images/zenitech-830B-caracteristics.png",
     "images/2_résistances_parallèles_branche_verte_bb.png",
     "images/2_résistances_parallèles_branche_jaune_bb.png",
