@@ -19,8 +19,22 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "18641bf920db2a5f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Capacité.md",
+                "mode": "source",
+                "backlinks": true,
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -86,7 +100,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Scénarios/Porte OU.md",
+                "file": "Capacité.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +117,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Scénarios/Porte OU.md",
+                "file": "Capacité.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +140,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Scénarios/Porte OU.md"
+                "file": "Capacité.md"
               }
             }
           },
@@ -160,10 +174,11 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "2a095e9006e6ee6a",
+  "active": "18641bf920db2a5f",
   "lastOpenFiles": [
-    "Scénarios/Le volt-mètre.md",
     "Scénarios/Porte OU.md",
+    "Capacité.md",
+    "Scénarios/Le volt-mètre.md",
     "Excalidraw/maille.excalidraw.md",
     "Lois de Kirchhoff.md",
     "loi d'ohm.md",
@@ -187,7 +202,6 @@
     "Excalidraw/axe-scale.excalidraw.md",
     "Excalidraw/axe-segment.excalidraw.md",
     "Excalidraw/axe.excalidraw.md",
-    "Excalidraw/2-resistances-parallel-amp.excalidraw.md",
     "images/zenitech-830B-caracteristics.png",
     "images/2_résistances_parallèles_branche_verte_bb.png",
     "images/2_résistances_parallèles_branche_jaune_bb.png",
