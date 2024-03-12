@@ -48,13 +48,13 @@
 
 > [!manim]+ 4 / table de vérité
 > 
-> Tout ce qui va suivre tourne autour de la question : `Du courant passe, vrai ou faux ?`
+> Tout ce qui va suivre tourne autour de l'affirmation suivante : `Du courant passe.`
 > 
 > Ainsi, si on prends un circuit simple contenant juste une pile et un interrupteur. 
 > 
-> Quand l'interrupteur est ouvert, la réponse à la question est `Faux`, car aucun courant ne passe.
+> Quand l'interrupteur est ouvert, l'affirmation est `Fausse`, car aucun courant ne passe.
 > 
-> Quand l'interrupteur est fermé, la réponse à la question est `Vrai`, car du courant ne passe.
+> Quand l'interrupteur est fermé, l'affirmation est `Vrai`, car du courant passe.
 > 
 > On peut donc dire que quand l'interrupteur est ouvert, il est à l'état `Faux` et quand l'interrupteur est fermé, il est à l'état `Vrai`
 > 
