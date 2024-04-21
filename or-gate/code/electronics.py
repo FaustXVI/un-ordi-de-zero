@@ -62,7 +62,7 @@ class Electronic(VGroup):
         cables = [*filter(lambda c: c.get_length() > 0, [c1, c2])]
 
         if len(cables) > 0:
-            return Electronic(*cables)
+            return Component(*cables)
         else:
             return None
 
@@ -76,6 +76,10 @@ class Component(Electronic):
 
     def components(self):
         return [self]
+
+    def energize(self, electron):
+        return Succession(*without_none([o.energize(electron) for o in self.submobjects]),
+                              rate_func=linear)
 
 
 class Branch(Electronic):
@@ -115,7 +119,11 @@ class Circuit(Branch):
 
     def run_electron(self):
         electron = Dot(color=YELLOW)
-        return Succession(self.energize(electron), self.battery.consume(electron), rate_func=linear)
+        return Succession(
+            Create(electron),
+            self.energize(electron),
+                          self.battery.consume(electron),
+            rate_func=linear)
 
 
 class Contact(Electronic):
@@ -215,7 +223,7 @@ class Resistance(Component):
 
     def energize(self, dot):
         return Succession(*[
-            MoveAlongPath(dot, line, rate_func=linear) for line in self.submobjects
+            MoveAlongPath(dot, line, rate_func=linear) for line in self.lines
         ], rate_func=linear)
 
 
@@ -252,23 +260,25 @@ class Switch(Electronic):
 
 class Battery(Component):
     def __init__(self):
-        components = [Line(LEFT, LEFT / 6),
+        self.components = [Line(LEFT, LEFT / 6),
                       Line((LEFT / 6) + UP / 4, (LEFT / 6) + DOWN / 4),
                       Line((RIGHT / 6) + (UP / 2), (RIGHT / 6) + (DOWN / 2)),
                       MathTex("-").shift((LEFT / 3) + (UP / 3)).scale(0.75),
                       MathTex("+").shift((RIGHT / 3) + (UP / 3)).scale(0.75),
                       Line(RIGHT / 6, RIGHT),
                       ]
-        super().__init__(*components)
+        super().__init__(*self.components)
 
     def energize(self, dot):
-        dot.set_opacity(0).move_to(self.submobjects[-1].get_start())
+        dot.set_opacity(0).move_to(self.components[-1].get_start())
         return Succession(dot.animate(rate_func=linear).set_opacity(1),
-                          MoveAlongPath(dot, self.submobjects[-1], rate_func=linear), rate_func=linear)
+                          MoveAlongPath(dot, self.components[-1], rate_func=linear),
+                          rate_func=linear)
 
     def consume(self, dot):
-        return Succession(MoveAlongPath(dot, self.submobjects[0], rate_func=linear),
-                          dot.animate(rate_func=linear).set_opacity(0).move_to(self.submobjects[0].get_end()),
+        return Succession(
+            MoveAlongPath(dot, self.components[0], rate_func=linear),
+                          dot.animate(rate_func=linear).set_opacity(0).move_to(self.components[0].get_end()),
                           rate_func=linear)
 
 

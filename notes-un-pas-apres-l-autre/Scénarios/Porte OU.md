@@ -56,7 +56,9 @@
 > 
 > Quand l'interrupteur est fermé, l'affirmation est `Vrai`, car du courant passe.
 > 
-> On peut donc dire que quand l'interrupteur est ouvert, il est à l'état `Faux` et quand l'interrupteur est fermé, il est à l'état `Vrai`
+> Tout ce joue donc sur l'état de l'interrupteur.
+> Quand il est ouvert, on est dans l'état `Faux` : le courant ne passe pas
+> Quand il est fermé, on est dans l'état `Vrai` : le courant passe
 > 
 > On peut maintenant regarder ce qu'il se passe quand on met deux interrupteurs dans le circuit en faisant un tableau avec les états du premier interrupteur en colonnes et les états du second en ligne.
 > 

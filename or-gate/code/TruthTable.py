@@ -22,7 +22,7 @@ class TruthTable(MyScene):
         with self.my_voiceover(
                 r"""Tout ce qui va suivre tourne autour de l'affirmation suivante : `Du courant passe.`""") as timer:
             self.play(Write(affirm), run_time=timer.duration)
-        self.next_section(skip_animations=False)
+        self.next_section(skip_animations=section_done)
         bat = Battery().shift(UP).rotate(PI)
         switch = Switch().shift(DOWN + LEFT)
         r = Resistance().shift(DOWN + RIGHT)
@@ -35,16 +35,28 @@ class TruthTable(MyScene):
             r.connect(bat)
         )
         with self.my_voiceover(
-                r"""Ainsi, si on prends un circuit simple contenant juste une pile et un interrupteur. """) as timer:
-            self.play(Write(circuit), run_time=timer.duration)
+                r"""Ainsi, si on prends un circuit simple contenant juste une pile, un interrupteur et une résistance. """) as timer:
+            self.play(Create(circuit), run_time=timer.duration)
         faux = Text("Faux")
         vrai = Text("Vrai")
         with self.my_voiceover(
                 r"""Quand l'interrupteur est ouvert, l'affirmation est `Fausse`, car aucun courant ne passe.""") as timer:
             self.play(Write(faux), run_time=timer.duration)
         with self.my_voiceover(
-                r"""Quand l'interrupteur est fermé, l'affirmation est Vrai, car du courant passe.""") as timer:
-            self.play(AnimationGroup(switch.animate.close(), Transform(faux, vrai), circuit.run_electron()), run_time=timer.duration)
+                r"""Quand l'interrupteur est fermé,""") as timer:
+            self.play(AnimationGroup(switch.animate.close(), FadeOut(faux)), run_time=timer.duration)
+        with self.my_voiceover(
+                r"""l'affirmation est Vrai, car du courant passe.""") as timer:
+            self.play(AnimationGroup(circuit.run_electron(), Write(vrai)), run_time=timer.duration)
+        self.next_section(skip_animations=False)
+        with self.my_voiceover(
+                r"""Tout ce joue donc sur l'état de l'interrupteur.""") as timer:
+            self.play(AnimationGroup(*[FadeOut(o) for o in self.mobjects if o != switch],
+                                     switch.animate.move_to(ORIGIN + LEFT + UP), run_time=timer.duration))
+        faux.next_to(switch,RIGHT)
+        with self.my_voiceover(
+                r"""Quand il est ouvert, on est dans l'état `Faux` : le courant ne passe pas""") as timer:
+            self.play(AnimationGroup(switch.animate.open(), Write(faux), run_time=timer.duration))
         self.next_section(skip_animations=False)
         self.wait(3)
         self.play(AnimationGroup(*[FadeOut(o) for o in self.mobjects]))
