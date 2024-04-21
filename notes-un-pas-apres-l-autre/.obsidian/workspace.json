@@ -19,22 +19,8 @@
                 "source": false
               }
             }
-          },
-          {
-            "id": "18641bf920db2a5f",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Scénarios/Porte OU.md",
-                "mode": "source",
-                "backlinks": true,
-                "source": false
-              }
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -174,7 +160,7 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "18641bf920db2a5f",
+  "active": "2a095e9006e6ee6a",
   "lastOpenFiles": [
     "Capacité.md",
     "Scénarios/Porte OU.md",
