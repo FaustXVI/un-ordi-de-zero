@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Scénarios/Porte OU.md",
+                "file": "Condensateur.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Scénarios/Porte OU.md",
+                "file": "Condensateur.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Scénarios/Porte OU.md",
+                "file": "Condensateur.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Scénarios/Porte OU.md"
+                "file": "Condensateur.md"
               }
             }
           },
@@ -160,10 +160,10 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "2a095e9006e6ee6a",
+  "active": "0806ec93f0070948",
   "lastOpenFiles": [
-    "Capacité.md",
     "Scénarios/Porte OU.md",
+    "Condensateur.md",
     "Scénarios/Le volt-mètre.md",
     "Excalidraw/maille.excalidraw.md",
     "Lois de Kirchhoff.md",
