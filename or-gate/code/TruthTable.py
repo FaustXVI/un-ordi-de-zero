@@ -8,7 +8,7 @@ from electronics import *
 # locale.setlocale(locale.LC_ALL, 'fr_FR')
 
 section_done = False
-recording = False
+recording = True
 
 
 class TruthTable(MyScene):
