@@ -1,4 +1,5 @@
 # Description
+Aujourd'hui, on regarde ce qu'il se passe quand on a deux interrupteurs en parallèles. 
 
 # Références
 - Porte ET
