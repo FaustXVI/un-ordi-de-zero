@@ -43,7 +43,7 @@
 > > Leur quoi ?
 > 
 > > [!theo]+
-> > Ouais, ça mérite un dessin !
+> > Ouais, ça mérite une explication !
 > 
 
 > [!manim]+ 4 / table de vérité
