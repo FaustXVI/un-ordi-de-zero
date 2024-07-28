@@ -12,7 +12,7 @@ section_done = False
 recording = False
 
 atomsPerUnit = 3
-atomSize = 1.5
+atomSize = 5
 
 
 class AtomState(Enum):
@@ -40,7 +40,7 @@ def drawAtoms(atoms):
                   *[
                       Text("+").scale(atomSize * 0.33).move_to(ORIGIN + atom.position) for atom in atoms if
                       atom.state == AtomState.POSITIVE
-                  ], )
+                  ], ).scale(0.33)
 
 
 def createAnimationForNextStep(previousAtoms, newAtoms):
@@ -70,9 +70,9 @@ class Atom:
 def createRectangle(start, stop):
     (startx, starty) = start
     (stopx, stopy) = stop
-    return [Atom((x / atomsPerUnit, y / atomsPerUnit, 0), AtomState.NEUTRAL) for x in
-            range(startx * atomsPerUnit, (stopx + 1) * atomsPerUnit) for y in
-            range(starty * atomsPerUnit, (stopy + 1) * atomsPerUnit)]
+    return [Atom((x, y, 0), AtomState.NEUTRAL) for x in
+            range(startx, (stopx + 1)) for y in
+            range(starty, (stopy + 1))]
 
 
 def computeNextAtoms(atoms):
@@ -90,7 +90,7 @@ def computeNextAtoms(atoms):
                 else:
                     newAtoms.append(Atom(atom.position, newStatePosition.state))
                     newAtoms.append(Atom(newStatePosition.position, atom.state))
-    return [*newAtoms,*[n for n in atoms if n.position not in [a.position for a in newAtoms]]]
+    return [*newAtoms, *[n for n in atoms if n.position not in [a.position for a in newAtoms]]]
 
 
 class TruthTable(MyScene):
@@ -100,7 +100,7 @@ class TruthTable(MyScene):
 
     def construct(self):
         self.next_section(skip_animations=section_done)
-        r1 = createRectangle((-1, -1), (1, 1))
+        r1 = createRectangle((-2, -2), (2, 2))
         r1[0].state = AtomState.NEGATIVE
         atoms = drawAtoms(r1)
         with self.my_voiceover(
