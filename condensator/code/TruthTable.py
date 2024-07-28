@@ -84,7 +84,6 @@ def computeNextAtoms(atoms):
                 neighbours = [n for n in atoms if
                               n.closeTo(atom) and (n.position not in [a.position for a in newAtoms])]
                 newStatePosition = random.choice(neighbours)
-                print(newStatePosition.position)
                 if newStatePosition.position == atom.position:
                     newAtoms.append(Atom(atom.position, atom.state))
                 else:
@@ -100,13 +99,11 @@ class TruthTable(MyScene):
 
     def construct(self):
         self.next_section(skip_animations=section_done)
-        r1 = createRectangle((-2, -2), (2, 2))
+        r1 = createRectangle((-2, -2), (2, 0))
         r1[0].state = AtomState.NEGATIVE
         atoms = drawAtoms(r1)
-        with self.my_voiceover(
-                r"""TODO""") as timer:
-            self.play(FadeIn(atoms), run_time=timer.duration)
-
+        self.add(atoms)
+        self.wait(0.08)
         steps = functools.reduce(lambda acc, _: [*acc, computeNextAtoms(acc[-1])], range(1, 50), [r1])
         drawings = [drawAtoms(atoms) for atoms in steps]
         animations = [createAnimationForNextStep(p, n) for (p, n) in zip(drawings, drawings[1:])]
@@ -115,7 +112,7 @@ class TruthTable(MyScene):
             for drawing in drawings:
                 self.clear()
                 self.add(drawing)
-                self.wait(0.2)
+                self.wait(0.08)
 
 
 if __name__ == "__main__":
