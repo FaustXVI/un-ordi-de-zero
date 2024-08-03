@@ -1,4 +1,5 @@
 import functools
+import math
 import random
 
 from manim.__main__ import main
@@ -17,7 +18,8 @@ config.frame_height = 9 * frame_factor
 atomSize = 5
 MAX_DISTANCE_EFFECT = 5
 EFFECT_INTENSITY = 5
-timeBetweenFrames = 0.08
+timeBetweenFrames = 0.5
+# timeBetweenFrames = 0.08
 
 
 class AtomState(Enum):
@@ -140,12 +142,34 @@ def simulate(circuit, nbFrames):
     return [drawAtoms(atoms) for atoms in steps]
 
 
+def constructLeftSide(distance=0):
+    leftBattery = createRectangle((-15 - distance, -3), (-11 - distance, 3))
+    leftCable = createRectangle((-10 - distance, -1), (-4 - distance, 1))
+    leftPlate = createRectangle((-3 - distance, -5), (-1 - distance, 5))
+    for a in leftBattery:
+        a.state = AtomState.NEGATIVE
+    return [*leftBattery, *leftCable, *leftPlate]
+
+
+def constructRightSide(distance=0):
+    rightPlate = createRectangle((1 + distance, -5), (3 + distance, 5))
+    rightCable = createRectangle((4 + distance, -1), (10 + distance, 1))
+    rightBattery = createRectangle((11 + distance, -3), (15 + distance, 3))
+    for a in rightBattery:
+        a.state = AtomState.POSITIVE
+    return [*rightBattery, *rightCable, *rightPlate]
+
+def constructCircuit(distance=0):
+    return [*constructLeftSide(distance),*constructRightSide(distance)]
+
 class TruthTable(MyScene):
 
     def __init__(self):
         super().__init__(recording=recording)
 
-    def playSimulation(self, drawings, timer):
+    def playSimulation(self, circuit, duration):
+        nbFrames = math.ceil(duration / timeBetweenFrames)
+        drawings = simulate(circuit, nbFrames)
         for drawing in drawings:
             self.clear()
             self.add(drawing)
@@ -153,15 +177,14 @@ class TruthTable(MyScene):
 
     def construct(self):
         self.next_section(skip_animations=section_done)
-        r1 = createRectangle((-5, -5), (-1, 5))
-        r2 = createRectangle((1, -5), (5, 5))
-        r1[0].state = AtomState.NEGATIVE
-        r2[-1].state = AtomState.POSITIVE
-        circuit = [*r1, *r2]
-        simulation = simulate(circuit, 10)
+        circuit = constructCircuit(3)
         with self.my_voiceover(
-                r"""TODO""") as timer:
-            self.playSimulation(simulation, timer)
+                r"""TODO""", duration=5) as timer:
+            self.playSimulation(circuit, timer.duration)
+        # circuit = constructCircuit()
+        # with self.my_voiceover(
+        #         r"""TODO""", duration=5) as timer:
+        #     self.playSimulation(circuit, timer.duration)
 
 
 if __name__ == "__main__":
