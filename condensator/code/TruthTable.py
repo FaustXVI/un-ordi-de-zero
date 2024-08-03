@@ -11,7 +11,9 @@ from electronics import *
 section_done = False
 recording = False
 
-atomsPerUnit = 3
+frame_factor = 3
+config.frame_width = 16 * frame_factor
+config.frame_height = 9 * frame_factor
 atomSize = 5
 
 
@@ -40,7 +42,7 @@ def drawAtoms(atoms):
                   *[
                       Text("+").scale(atomSize * 0.33).move_to(ORIGIN + atom.position) for atom in atoms if
                       atom.state == AtomState.POSITIVE
-                  ], ).scale(0.33)
+                  ], )
 
 
 def getX(position):
@@ -83,30 +85,50 @@ def repeatByWeight(e):
     return [(p, i) for _ in range(0, n)]
 
 
+MAX_DISTANCE_EFFECT = 5
+EFFECT_INTENSITY = 5
+
+
 def computeNextAtoms(atoms):
     newAtoms = [Atom(a.position, a.state) for a in atoms]
     negativeAtoms = [Atom(a.position, a.state) for a in atoms if a.state == AtomState.NEGATIVE]
+    positiveAtoms = [Atom(a.position, a.state) for a in atoms if a.state == AtomState.POSITIVE]
 
-    def closestNegativeDistance(nextPosition, currentAtom):
-        result = min([nextPosition.distance(n) for n in negativeAtoms if n.position != currentAtom.position])
+    def closestDistance(nextPosition, currentAtom, poolOfAtoms):
+        result = min([nextPosition.distance(n) for n in poolOfAtoms if n.position != currentAtom.position])
         return result
 
-    def sameStateAttractionWeight(currentAtom, neighbour):
-        distance = closestNegativeDistance(neighbour, currentAtom)
-        return 10 ** (distance - 1)
+    def sameStateAttractionWeight(currentAtom, neighbour, poolOfAtoms):
+        if len(poolOfAtoms) == 0 or (len(poolOfAtoms) == 1 and poolOfAtoms[0].position == currentAtom.position):
+            return 0
+        distance = closestDistance(neighbour, currentAtom, poolOfAtoms)
+        return distance - 1
 
-    def oppositeStateAttractionWeight(currentAtom, neighbour):
-        distance = closestNegativeDistance(neighbour, currentAtom)
-        return 2 ** max(0, (3 - distance))
+    def oppositeStateAttractionWeight(currentAtom, neighbour, poolOfAtoms):
+        if len(poolOfAtoms) == 0 or (len(poolOfAtoms) == 1 and poolOfAtoms[0].position == currentAtom.position):
+            return 0
+        distance = closestDistance(neighbour, currentAtom, poolOfAtoms)
+        return MAX_DISTANCE_EFFECT - (distance - 1)
 
     def attractionWeight(currentAtom, neighbour):
-        return sameStateAttractionWeight(currentAtom, neighbour)
+        assert currentAtom.state != AtomState.NEUTRAL
+        if currentAtom.state == AtomState.NEGATIVE:
+            same = negativeAtoms
+            opposites = positiveAtoms
+        else:
+            same = positiveAtoms
+            opposites = negativeAtoms
+        exponent = (sameStateAttractionWeight(currentAtom, neighbour, same)
+                    + oppositeStateAttractionWeight(currentAtom, neighbour, opposites))
+        # print(exponent, neighbour.position)
+        return EFFECT_INTENSITY ** min(MAX_DISTANCE_EFFECT, max(0, exponent))
 
+    # print("next frame")
     for index, atom in enumerate(atoms):
-        if atom.state == AtomState.NEGATIVE:
+        if atom.state != AtomState.NEUTRAL:
             # print("for", atom.position)
             weightPosition = [(n.position, i, attractionWeight(atom, n)) for i, n in enumerate(atoms) if
-                              n.isNeigbour(atom) and n.state != AtomState.NEGATIVE]
+                              n.isNeigbour(atom) and (n.state == AtomState.NEUTRAL or n == atom)]
             possiblePositions = flat_map(repeatByWeight, weightPosition)
             (newPosition, newIndex) = random.choice(possiblePositions)
             newAtoms[index].state = newAtoms[newIndex].state
@@ -124,9 +146,9 @@ class TruthTable(MyScene):
 
     def construct(self):
         self.next_section(skip_animations=section_done)
-        r1 = createRectangle((0, 0), (4, 4))
+        r1 = createRectangle((0, 0), (10, 10))
         r1[0].state = AtomState.NEGATIVE
-        r1[-1].state = AtomState.NEGATIVE
+        r1[-1].state = AtomState.POSITIVE
         atoms = drawAtoms(r1)
         self.add(atoms)
         self.wait(timeBetweenFrames)
