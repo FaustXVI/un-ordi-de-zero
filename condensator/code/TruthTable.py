@@ -18,8 +18,9 @@ config.frame_height = 9 * frame_factor
 atomSize = 5
 MAX_DISTANCE_EFFECT = 5
 EFFECT_INTENSITY = 5
-timeBetweenFrames = 0.5
-# timeBetweenFrames = 0.08
+# timeBetweenFrames = 0.5
+timeBetweenFrames = 0.08
+SEEP_UP = 10
 
 
 class AtomState(Enum):
@@ -134,6 +135,7 @@ def computeNextAtoms(atoms):
             (newPosition, newIndex) = random.choice(possiblePositions)
             newAtoms[index].state = newAtoms[newIndex].state
             newAtoms[newIndex].state = atom.state
+    random.shuffle(newAtoms)
     return newAtoms
 
 
@@ -159,8 +161,10 @@ def constructRightSide(distance=0):
         a.state = AtomState.POSITIVE
     return [*rightBattery, *rightCable, *rightPlate]
 
+
 def constructCircuit(distance=0):
-    return [*constructLeftSide(distance),*constructRightSide(distance)]
+    return [*constructLeftSide(distance), *constructRightSide(distance)]
+
 
 class TruthTable(MyScene):
 
@@ -170,21 +174,22 @@ class TruthTable(MyScene):
     def playSimulation(self, circuit, duration):
         nbFrames = math.ceil(duration / timeBetweenFrames)
         drawings = simulate(circuit, nbFrames)
-        for drawing in drawings:
-            self.clear()
-            self.add(drawing)
-            self.wait(timeBetweenFrames)
+        for (i, drawing) in enumerate(drawings):
+            if (i % SEEP_UP == 0):
+                self.clear()
+                self.add(drawing)
+                self.wait(timeBetweenFrames)
 
     def construct(self):
         self.next_section(skip_animations=section_done)
-        circuit = constructCircuit(3)
+        circuit = constructCircuit(MAX_DISTANCE_EFFECT)
         with self.my_voiceover(
                 r"""TODO""", duration=5) as timer:
             self.playSimulation(circuit, timer.duration)
-        # circuit = constructCircuit()
-        # with self.my_voiceover(
-        #         r"""TODO""", duration=5) as timer:
-        #     self.playSimulation(circuit, timer.duration)
+        circuit = constructCircuit()
+        with self.my_voiceover(
+                r"""TODO""", duration=5) as timer:
+            self.playSimulation(circuit, timer.duration)
 
 
 if __name__ == "__main__":
