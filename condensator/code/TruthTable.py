@@ -43,10 +43,6 @@ def drawAtoms(atoms):
                   ], ).scale(0.33)
 
 
-def createAnimationForNextStep(previousAtoms, newAtoms):
-    return AnimationGroup(FadeOut(previousAtoms), FadeIn(newAtoms))
-
-
 def getX(position):
     return position[0]
 
@@ -60,11 +56,11 @@ class Atom:
         self.position = position
         self.state = state
 
-    def closeTo(self, atom):
-        return ((abs(getX(self.position) - getX(atom.position)) <= 1 and getY(self.position) == getY(
-            atom.position)) or
-                (abs(getY(self.position) - getY(atom.position)) <= 1 and getX(self.position) == getX(
-                    atom.position)))
+    def distance(self, atom):
+        return abs(getX(self.position) - getX(atom.position)) + abs(getY(self.position) - getY(atom.position))
+
+    def isNeigbour(self, atom):
+        return self.distance(atom) <= 1
 
 
 def createRectangle(start, stop):
@@ -77,19 +73,21 @@ def createRectangle(start, stop):
 
 def computeNextAtoms(atoms):
     newAtoms = []
+
+    def isPositionFree(position):
+        return position not in [a.position for a in newAtoms]
+
     for atom in atoms:
-        if atom.position not in [a.position for a in newAtoms]:
-            currentState = atom.state
-            if currentState == AtomState.NEGATIVE:
-                neighbours = [n for n in atoms if
-                              n.closeTo(atom) and (n.position not in [a.position for a in newAtoms])]
-                newStatePosition = random.choice(neighbours)
-                if newStatePosition.position == atom.position:
-                    newAtoms.append(Atom(atom.position, atom.state))
-                else:
-                    newAtoms.append(Atom(atom.position, newStatePosition.state))
-                    newAtoms.append(Atom(newStatePosition.position, atom.state))
-    return [*newAtoms, *[n for n in atoms if n.position not in [a.position for a in newAtoms]]]
+        if isPositionFree(atom.position) and atom.state == AtomState.NEGATIVE:
+            possiblePositions = [n for n in atoms if
+                                 n.isNeigbour(atom) and isPositionFree(n.position)]
+            newStatePosition = random.choice(possiblePositions)
+            if newStatePosition.position == atom.position:
+                newAtoms.append(Atom(atom.position, atom.state))
+            else:
+                newAtoms.append(Atom(atom.position, newStatePosition.state))
+                newAtoms.append(Atom(newStatePosition.position, atom.state))
+    return [*newAtoms, *[n for n in atoms if isPositionFree(n.position)]]
 
 
 class TruthTable(MyScene):
@@ -106,7 +104,6 @@ class TruthTable(MyScene):
         self.wait(0.08)
         steps = functools.reduce(lambda acc, _: [*acc, computeNextAtoms(acc[-1])], range(1, 50), [r1])
         drawings = [drawAtoms(atoms) for atoms in steps]
-        animations = [createAnimationForNextStep(p, n) for (p, n) in zip(drawings, drawings[1:])]
         with self.my_voiceover(
                 r"""TODO""") as timer:
             for drawing in drawings:
