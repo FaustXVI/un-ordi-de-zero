@@ -71,12 +71,43 @@ def createRectangle(start, stop):
             range(starty, (stopy + 1))]
 
 
+def flat_map(f, xs):
+    ys = []
+    for x in xs:
+        ys.extend(f(x))
+    return ys
+
+
+def repeatByWeight(e):
+    (p, i, n) = e
+    return [(p, i) for _ in range(0, n)]
+
+
 def computeNextAtoms(atoms):
     newAtoms = [Atom(a.position, a.state) for a in atoms]
+    negativeAtoms = [Atom(a.position, a.state) for a in atoms if a.state == AtomState.NEGATIVE]
+
+    def closestNegativeDistance(nextPosition, currentAtom):
+        result = min([nextPosition.distance(n) for n in negativeAtoms if n.position != currentAtom.position])
+        return result
+
+    def sameStateAttractionWeight(currentAtom, neighbour):
+        distance = closestNegativeDistance(neighbour, currentAtom)
+        return 10 ** (distance - 1)
+
+    def oppositeStateAttractionWeight(currentAtom, neighbour):
+        distance = closestNegativeDistance(neighbour, currentAtom)
+        return 2 ** max(0, (3 - distance))
+
+    def attractionWeight(currentAtom, neighbour):
+        return sameStateAttractionWeight(currentAtom, neighbour)
 
     for index, atom in enumerate(atoms):
         if atom.state == AtomState.NEGATIVE:
-            possiblePositions = [(n.position, i) for i, n in enumerate(atoms) if n.isNeigbour(atom)]
+            # print("for", atom.position)
+            weightPosition = [(n.position, i, attractionWeight(atom, n)) for i, n in enumerate(atoms) if
+                              n.isNeigbour(atom) and n.state != AtomState.NEGATIVE]
+            possiblePositions = flat_map(repeatByWeight, weightPosition)
             (newPosition, newIndex) = random.choice(possiblePositions)
             newAtoms[index].state = newAtoms[newIndex].state
             newAtoms[newIndex].state = atom.state
@@ -93,7 +124,7 @@ class TruthTable(MyScene):
 
     def construct(self):
         self.next_section(skip_animations=section_done)
-        r1 = createRectangle((-2, -2), (2, 0))
+        r1 = createRectangle((0, 0), (4, 4))
         r1[0].state = AtomState.NEGATIVE
         r1[-1].state = AtomState.NEGATIVE
         atoms = drawAtoms(r1)
