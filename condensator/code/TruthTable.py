@@ -72,22 +72,16 @@ def createRectangle(start, stop):
 
 
 def computeNextAtoms(atoms):
-    newAtoms = []
+    newAtoms = [Atom(a.position, a.state) for a in atoms]
 
-    def isPositionFree(position):
-        return position not in [a.position for a in newAtoms]
-
-    for atom in atoms:
-        if isPositionFree(atom.position) and atom.state == AtomState.NEGATIVE:
-            possiblePositions = [n for n in atoms if
-                                 n.isNeigbour(atom) and isPositionFree(n.position)]
-            newStatePosition = random.choice(possiblePositions)
-            if newStatePosition.position == atom.position:
-                newAtoms.append(Atom(atom.position, atom.state))
-            else:
-                newAtoms.append(Atom(atom.position, newStatePosition.state))
-                newAtoms.append(Atom(newStatePosition.position, atom.state))
-    return [*newAtoms, *[n for n in atoms if isPositionFree(n.position)]]
+    for index, atom in enumerate(atoms):
+        if atom.state == AtomState.NEGATIVE:
+            possiblePositions = [(n.position, i) for i, n in enumerate(atoms) if n.isNeigbour(atom)]
+            (newPosition, newIndex) = random.choice(possiblePositions)
+            if newPosition != atom.position:
+                newAtoms[index].state = newAtoms[newIndex].state
+                newAtoms[newIndex].state = atom.state
+    return newAtoms
 
 
 class TruthTable(MyScene):
