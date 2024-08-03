@@ -57,7 +57,7 @@ class Atom:
         self.state = state
 
     def distance(self, atom):
-        return max(abs(getX(self.position) - getX(atom.position)) , abs(getY(self.position) - getY(atom.position)))
+        return max(abs(getX(self.position) - getX(atom.position)), abs(getY(self.position) - getY(atom.position)))
 
     def isNeigbour(self, atom):
         return self.distance(atom) <= 1
@@ -78,10 +78,12 @@ def computeNextAtoms(atoms):
         if atom.state == AtomState.NEGATIVE:
             possiblePositions = [(n.position, i) for i, n in enumerate(atoms) if n.isNeigbour(atom)]
             (newPosition, newIndex) = random.choice(possiblePositions)
-            if newPosition != atom.position:
-                newAtoms[index].state = newAtoms[newIndex].state
-                newAtoms[newIndex].state = atom.state
+            newAtoms[index].state = newAtoms[newIndex].state
+            newAtoms[newIndex].state = atom.state
     return newAtoms
+
+
+timeBetweenFrames = 0.5
 
 
 class TruthTable(MyScene):
@@ -93,9 +95,10 @@ class TruthTable(MyScene):
         self.next_section(skip_animations=section_done)
         r1 = createRectangle((-2, -2), (2, 0))
         r1[0].state = AtomState.NEGATIVE
+        r1[-1].state = AtomState.NEGATIVE
         atoms = drawAtoms(r1)
         self.add(atoms)
-        self.wait(0.08)
+        self.wait(timeBetweenFrames)
         steps = functools.reduce(lambda acc, _: [*acc, computeNextAtoms(acc[-1])], range(1, 50), [r1])
         drawings = [drawAtoms(atoms) for atoms in steps]
         with self.my_voiceover(
@@ -103,7 +106,7 @@ class TruthTable(MyScene):
             for drawing in drawings:
                 self.clear()
                 self.add(drawing)
-                self.wait(0.08)
+                self.wait(timeBetweenFrames)
 
 
 if __name__ == "__main__":
