@@ -15,6 +15,9 @@ frame_factor = 3
 config.frame_width = 16 * frame_factor
 config.frame_height = 9 * frame_factor
 atomSize = 5
+MAX_DISTANCE_EFFECT = 5
+EFFECT_INTENSITY = 5
+timeBetweenFrames = 0.08
 
 
 class AtomState(Enum):
@@ -85,10 +88,6 @@ def repeatByWeight(e):
     return [(p, i) for _ in range(0, n)]
 
 
-MAX_DISTANCE_EFFECT = 5
-EFFECT_INTENSITY = 5
-
-
 def computeNextAtoms(atoms):
     newAtoms = [Atom(a.position, a.state) for a in atoms]
     negativeAtoms = [Atom(a.position, a.state) for a in atoms if a.state == AtomState.NEGATIVE]
@@ -136,7 +135,9 @@ def computeNextAtoms(atoms):
     return newAtoms
 
 
-timeBetweenFrames = 0.5
+def simulate(circuit, nbFrames):
+    steps = functools.reduce(lambda acc, _: [*acc, computeNextAtoms(acc[-1])], range(1, nbFrames), [circuit])
+    return [drawAtoms(atoms) for atoms in steps]
 
 
 class TruthTable(MyScene):
@@ -144,22 +145,23 @@ class TruthTable(MyScene):
     def __init__(self):
         super().__init__(recording=recording)
 
+    def playSimulation(self, drawings, timer):
+        for drawing in drawings:
+            self.clear()
+            self.add(drawing)
+            self.wait(timeBetweenFrames)
+
     def construct(self):
         self.next_section(skip_animations=section_done)
-        r1 = createRectangle((0, 0), (10, 10))
+        r1 = createRectangle((-5, -5), (-1, 5))
+        r2 = createRectangle((1, -5), (5, 5))
         r1[0].state = AtomState.NEGATIVE
-        r1[-1].state = AtomState.POSITIVE
-        atoms = drawAtoms(r1)
-        self.add(atoms)
-        self.wait(timeBetweenFrames)
-        steps = functools.reduce(lambda acc, _: [*acc, computeNextAtoms(acc[-1])], range(1, 50), [r1])
-        drawings = [drawAtoms(atoms) for atoms in steps]
+        r2[-1].state = AtomState.POSITIVE
+        circuit = [*r1, *r2]
+        simulation = simulate(circuit, 10)
         with self.my_voiceover(
                 r"""TODO""") as timer:
-            for drawing in drawings:
-                self.clear()
-                self.add(drawing)
-                self.wait(timeBetweenFrames)
+            self.playSimulation(simulation, timer)
 
 
 if __name__ == "__main__":
