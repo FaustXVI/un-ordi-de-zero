@@ -57,7 +57,7 @@ class Atom:
         self.state = state
 
     def distance(self, atom):
-        return abs(getX(self.position) - getX(atom.position)) + abs(getY(self.position) - getY(atom.position))
+        return max(abs(getX(self.position) - getX(atom.position)) , abs(getY(self.position) - getY(atom.position)))
 
     def isNeigbour(self, atom):
         return self.distance(atom) <= 1
