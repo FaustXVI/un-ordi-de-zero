@@ -20,7 +20,7 @@ MAX_DISTANCE_EFFECT = 5
 EFFECT_INTENSITY = 100
 # timeBetweenFrames = 0.5
 timeBetweenFrames = 0.08
-SPEED_UP = 10
+SPEED_UP = 1
 
 
 class AtomState(Enum):
@@ -85,14 +85,17 @@ def computeNextAtoms(atoms):
     negativeAtoms = []
     positiveAtoms = []
     neutralAtoms = []
-    for a in atoms:
+    nonNeutralAtoms = []
+    for i, a in enumerate(atoms):
         newAtoms.append(Atom(a.position, a.state))
         if (a.state == AtomState.NEGATIVE):
             negativeAtoms.append(a)
         if (a.state == AtomState.POSITIVE):
             positiveAtoms.append(a)
         if (a.state == AtomState.NEUTRAL):
-            neutralAtoms.append(a)
+            neutralAtoms.append((i, a))
+        else:
+            nonNeutralAtoms.append((i, a))
 
     def closestDistance(nextPosition, currentAtom, poolOfAtoms):
         result = min([nextPosition.distance(n) for n in poolOfAtoms if n.position != currentAtom.position])
@@ -124,18 +127,17 @@ def computeNextAtoms(atoms):
         return EFFECT_INTENSITY ** min(MAX_DISTANCE_EFFECT, max(0, exponent))
 
     # print("next frame")
-    for index, atom in enumerate(atoms):
-        if atom.state != AtomState.NEUTRAL:
-            # print("for", atom.position)
-            positions = []
-            weights = []
-            for i, n in enumerate(atoms):
-                if n.isNeigbour(atom) and (n.state == AtomState.NEUTRAL or n == atom):
-                    positions.append((n.position, i))
-                    weights.append(attractionWeight(atom, n))
-            (newPosition, newIndex) = random.choices(positions, weights)[0]
-            newAtoms[index].state = newAtoms[newIndex].state
-            newAtoms[newIndex].state = atom.state
+    for index, atom in nonNeutralAtoms:
+        # print("for", atom.position)
+        positions = [(atom.position, index)]
+        weights = [attractionWeight(atom, atom)]
+        for i, n in neutralAtoms:
+            if n.isNeigbour(atom):
+                positions.append((n.position, i))
+                weights.append(attractionWeight(atom, n))
+        (newPosition, newIndex) = random.choices(positions, weights)[0]
+        newAtoms[index].state = newAtoms[newIndex].state
+        newAtoms[newIndex].state = atom.state
     return newAtoms
 
 
@@ -145,21 +147,41 @@ def simulate(circuit, nbFrames):
 
 
 def constructLeftSide(distance=0):
+    return [*(createLeftBattery(distance)), *(createLeftCable(distance)), *(createLeftPlate(distance))]
+
+
+def createLeftPlate(distance):
+    return createRectangle((-3 - distance, -5), (-1 - distance, 5))
+
+
+def createLeftCable(distance):
+    return createRectangle((-10 - distance, -1), (-4 - distance, 1))
+
+
+def createLeftBattery(distance):
     leftBattery = createRectangle((-15 - distance, -3), (-11 - distance, 3))
-    leftCable = createRectangle((-10 - distance, -1), (-4 - distance, 1))
-    leftPlate = createRectangle((-3 - distance, -5), (-1 - distance, 5))
     for a in leftBattery:
         a.state = AtomState.NEGATIVE
-    return [*leftBattery, *leftCable, *leftPlate]
+    return leftBattery
 
 
 def constructRightSide(distance=0):
-    rightPlate = createRectangle((1 + distance, -5), (3 + distance, 5))
-    rightCable = createRectangle((4 + distance, -1), (10 + distance, 1))
+    return [*(createRightBattery(distance)), *(createRightCable(distance)), *(createRightPlate(distance))]
+
+
+def createRightPlate(distance):
+    return createRectangle((1 + distance, -5), (3 + distance, 5))
+
+
+def createRightCable(distance):
+    return createRectangle((4 + distance, -1), (10 + distance, 1))
+
+
+def createRightBattery(distance):
     rightBattery = createRectangle((11 + distance, -3), (15 + distance, 3))
     for a in rightBattery:
         a.state = AtomState.POSITIVE
-    return [*rightBattery, *rightCable, *rightPlate]
+    return rightBattery
 
 
 def constructCircuit(distance=0):
