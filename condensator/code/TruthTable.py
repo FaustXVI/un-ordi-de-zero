@@ -169,8 +169,8 @@ def createLeftCable(distance):
     return createRectangle((-10 - distance, -1), (-4 - distance, 1))
 
 
-def createDisconnectedLeftCable(distance):
-    return createRectangle((-9 - distance, -1), (-3 - distance, 1))
+def createLeftLongCable(distance):
+    return createRectangle((-10 - distance, -1), (-1 - distance, 1))
 
 
 def createLeftBattery(distance):
@@ -230,7 +230,7 @@ class TruthTable(MyScene):
                 r"""Prenons un cas très simple :""") as timer:
             self.play(FadeOut(VGroup(soloPos, soloNeg, soloNeutral)), run_time=timer.duration)
 
-        self.next_section(skip_animations=False)
+        self.next_section(skip_animations=section_done)
         square1Neg = createRectangle((-3, -3), (3, 3))
         for a in square1Neg:
             if a.position == (0, 0, 0):
@@ -244,22 +244,82 @@ class TruthTable(MyScene):
             self.playSimulation(square1Neg, timer.duration)
         with self.my_voiceover(
                 r"""Pour savoir ce qu'il se passe quand on a deux charges, il faut s’intéresser à la loi de Coulomb.""") as timer:
-            self.play(*[FadeOut(o) for o in self.mobjects], run_time=timer.duration)
+            self.play(FadeOut(*self.mobjects), run_time=timer.duration)
 
-        self.next_section(skip_animations=False)
-        coulomb = MathTex("k_0",my_frac([r"q_1",r"\times",r"q_2"],["r","^2"]))
-
-        with self.my_voiceover(
-                r"""L'intensité de cette force est donnée par la formule : $k_0 \frac{|q_1 \times q_2|}{r^2}$""") as timer:
+        self.next_section(skip_animations=section_done)
 
         with self.my_voiceover(
-                r"""L'intensité de cette force est donnée par la formule : $k_0 \frac{|q_1 \times q_2|}{r^2}$""") as timer:
+                r"""Elle nous nous dit que les signes opposés s'attirent""") as timer:
+            start = drawAtoms([Atom((-3, 0, 0), AtomState.NEGATIVE), Atom((3, 0, 0), AtomState.POSITIVE)])
+            stop = drawAtoms([Atom((-1, 0, 0), AtomState.NEGATIVE), Atom((1, 0, 0), AtomState.POSITIVE)])
+            self.play(Transform(start, stop), run_time=timer.duration)
+            self.clear()
+
+        with self.my_voiceover(
+                r"""et que les signes identiques se repoussent.""") as timer:
+            start = drawAtoms([Atom((-1, 0, 0), AtomState.NEGATIVE), Atom((1, 0, 0), AtomState.NEGATIVE)])
+            stop = drawAtoms([Atom((-3, 0, 0), AtomState.NEGATIVE), Atom((3, 0, 0), AtomState.NEGATIVE)])
+            self.play(Transform(start, stop), run_time=timer.duration)
+        with self.my_voiceover(r"""L'intensité de cette force est donnée par la formule :""") as timer:
+            self.play(FadeOut(*self.mobjects), run_time=timer.duration)
+
+        self.next_section(skip_animations=section_done)
+        coulomb = MathTex("k_0", *my_frac([r"q_1", r"\times", r"q_2"], ["r_{}", "^2"])).scale(frame_factor)
+        with self.my_voiceover(
+                r"""$k_0 \frac{|q_1 \times q_2|}{r^2}$""") as timer:
             self.play(Write(coulomb), run_time=timer.duration)
-        # self.next_section(skip_animations=section_done)
-        # leftBattery = createLeftBattery(3)
-        # leftBatteryDrawing = drawAtoms(leftBattery)
-        # with self.my_voiceover(r"""TODO""") as timer:
-        #     self.play(FadeIn(leftBatteryDrawing), run_time=timer.duration)
+        with self.my_voiceover(
+                r"""où k0 est une constante de l'univers""") as timer:
+            self.play(Indicate(coulomb.get_part_by_tex("k_0")), run_time=timer.duration)
+        with self.my_voiceover(
+                r"""q1 et q2 sont les charges concernées""") as timer:
+            self.play(Indicate(coulomb.get_part_by_tex("q_1")), Indicate(coulomb.get_part_by_tex("q_2")),
+                      run_time=timer.duration)
+        with self.my_voiceover(
+                r""" r est la distance entre les deux charges""") as timer:
+            self.play(Indicate(coulomb.get_part_by_tex("r_{}")), run_time=timer.duration)
+        self.next_section(skip_animations=section_done)
+        with self.my_voiceover(
+                r"""Donc pour deux même charges, plus la distance est grandes moins la force est importante et ce, très vite""") as timer:
+            self.wait(timer.duration)
+        square2Neg = createRectangle((-3, -3), (3, 3))
+        for a in square2Neg:
+            if a.position == (-1, 0, 0) or a.position == (1, 0, 0):
+                a.state = AtomState.NEGATIVE
+        with self.my_voiceover(
+                r"""Reprenons notre carré de matière, mais avec deux charges négatives cette fois si.""") as timer:
+            self.play(Succession(FadeOut(coulomb), FadeIn(drawAtoms(square2Neg))), run_time=timer.duration)
+        with self.my_voiceover(
+                r"""Les charges de même signe se repoussent. Pour simuler ça, au moment du choix de la prochaine position de la charge, on favorise le choix des positions les plus éloignés des autres charges de même signe. On vois donc bien que les deux charges ne se rapprochent presque jamais.""") as timer:
+            self.clear()
+            self.playSimulation(square2Neg, timer.duration)
+        self.next_section(skip_animations=section_done)
+        square1Pos1Neg = createRectangle((-3, -3), (3, 3))
+        for a in square1Pos1Neg:
+            if a.position == (-3, -3, 0):
+                a.state = AtomState.POSITIVE
+            if a.position == (3, 3, 0):
+                a.state = AtomState.NEGATIVE
+        with self.my_voiceover(
+                r"""Reprenons notre carré de matière, mais avec deux charges négatives cette fois si.""") as timer:
+            self.play(Succession(FadeOut(*self.mobjects), FadeIn(drawAtoms(square1Pos1Neg))), run_time=timer.duration)
+        with self.my_voiceover(
+                r"""Les charges de signe contraires s'attirent. Pour simuler ça, au moment du choix de la prochaine position de la charge, on favorise le choix des positions les plus proches des autres charges de signe opposés. On vois donc bien que les deux charges se rapprochent très vites et restent collées. En réalité, quand elles se rencontres, les deux charges s'annuleraient et notre carré finirait électriquement neutre.""") as timer:
+            self.clear()
+            self.playSimulation(square1Pos1Neg, timer.duration)
+        with self.my_voiceover(
+                r"""Maintenant que les méchaniques de la simulation sont posées,""") as timer:
+            self.play(FadeOut(*self.mobjects), run_time=timer.duration)
+        self.next_section(skip_animations=False)
+        leftBattery = createLeftBattery(3)
+        with self.my_voiceover(
+                r"""Prenons le coté négatif d'une pile. On peut le représenté comme étant une masse d'atomes négativement chargés.""") as timer:
+            self.play(FadeIn(drawAtoms(leftBattery)), run_time=timer.duration)
+        leftCable = createLeftCable(3)
+        with self.my_voiceover(
+                r"""et un fil électriquement neutre que nous mettons en contact avec le côté négatif de la pile.""") as timer:
+            self.play(FadeIn(drawAtoms(leftCable)), run_time=timer.duration)
+        batteryAndCableOnly = [*leftBattery,*leftCable]
         # self.next_section(skip_animations=section_done)
         # circuit = constructCircuit(MAX_DISTANCE_EFFECT)
         # with self.my_voiceover(

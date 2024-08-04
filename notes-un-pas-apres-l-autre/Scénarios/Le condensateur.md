@@ -54,7 +54,7 @@
 > 
 > Maintenant que les bases sont posés. Prenons le coté négatif d'une pile. On peut le représenté comme étant une masse d'atomes négativement chargés.
 > 
-> Prenons un fil électriquement neutre et regardons ce qu'il se passe une fois qu'il est en contact avec le côté négatif de la pile.
+> Prenons un fil électriquement neutre que nous mettons en contact avec le côté négatif de la pile.
 > 
 > On vois que les charges se répartissent rapidement dans la matière et que le fil contient maintenant des charges négatives. Les charges vont se répartir de manière égales dans la matière. On dit alors que le fil est à équipotentiel de la batterie. Si on enlève soudainement la pile.
 > 
