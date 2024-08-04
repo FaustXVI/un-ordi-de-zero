@@ -20,7 +20,6 @@ MAX_DISTANCE_EFFECT = 5
 EFFECT_INTENSITY = 100
 # timeBetweenFrames = 0.5
 timeBetweenFrames = 0.08
-SPEED_UP = 1
 
 
 class AtomState(Enum):
@@ -150,51 +149,57 @@ def computeNextAtoms(atoms):
 
 def simulate(circuit, nbFrames):
     steps = functools.reduce(lambda acc, _: [*acc, computeNextAtoms(acc[-1])], range(1, nbFrames), [circuit])
-    return ([drawAtoms(atoms) for atoms in steps], steps[-1])
+    if recording:
+        return ([drawAtoms(atoms) for atoms in steps], steps[-1])
+    else:
+        return ([drawAtoms(steps[-1])], steps[-1])
 
 
-def constructLeftSide(distance=0):
+plateSize = 8
+batterySize = 4
+
+def createLeftSide(distance=0):
     return [*(createLeftBattery(distance)), *(createLeftCable(distance)), *(createLeftPlate(distance))]
 
 
 def createLeftPlate(distance):
-    return createRectangle((-3 - distance, -5), (-1 - distance, 5))
+    return createRectangle((-3 - distance, -plateSize), (-1 - distance, plateSize))
 
 
-def countNegativesInLeftPlate(distance, atoms):
-    return countStateInRectangle((-3 - distance, -5), (-1 - distance, 5), atoms, AtomState.NEGATIVE)
+def countNegativesInLeftSide(distance, atoms):
+    return countStateInRectangle((-10 - distance, -plateSize), (-1 - distance, plateSize), atoms, AtomState.NEGATIVE)
 
 
 def createLeftCable(distance):
     return createRectangle((-10 - distance, -1), (-4 - distance, 1))
 
 
-def createLeftLongCable(distance):
-    return createRectangle((-10 - distance, -1), (-1 - distance, 1))
-
-
 def createLeftBattery(distance):
-    return createRectangle((-15 - distance, -3), (-11 - distance, 3), AtomState.NEGATIVE)
+    return createRectangle((-15 - distance, -batterySize), (-11 - distance, batterySize), AtomState.NEGATIVE)
 
 
-def constructRightSide(distance=0):
+def createRightSide(distance=0):
     return [*(createRightBattery(distance)), *(createRightCable(distance)), *(createRightPlate(distance))]
 
 
 def createRightPlate(distance):
-    return createRectangle((1 + distance, -5), (3 + distance, 5))
+    return createRectangle((1 + distance, -plateSize), (3 + distance, plateSize))
 
 
 def createRightCable(distance):
     return createRectangle((4 + distance, -1), (10 + distance, 1))
 
 
+def countPositivesInRightSide(distance, atoms):
+    return countStateInRectangle((1 + distance, -plateSize), (10 + distance, plateSize), atoms, AtomState.POSITIVE)
+
+
 def createRightBattery(distance):
-    return createRectangle((11 + distance, -3), (15 + distance, 3), AtomState.POSITIVE)
+    return createRectangle((11 + distance, -batterySize), (15 + distance, batterySize), AtomState.POSITIVE)
 
 
-def constructCircuit(distance=0):
-    return [*constructLeftSide(distance), *constructRightSide(distance)]
+def createCircuit(distance=0):
+    return [*createLeftSide(distance), *createRightSide(distance)]
 
 
 class TruthTable(MyScene):
@@ -206,10 +211,9 @@ class TruthTable(MyScene):
         nbFrames = math.ceil(run_time / timeBetweenFrames)
         (drawings, lastState) = simulate(circuit, nbFrames)
         for (i, drawing) in enumerate(drawings):
-            if (i % SPEED_UP == 0):
-                self.clear()
-                self.add(drawing)
-                self.wait(timeBetweenFrames)
+            self.clear()
+            self.add(drawing)
+            self.wait(timeBetweenFrames)
         return lastState
 
     def construct(self):
@@ -310,7 +314,7 @@ class TruthTable(MyScene):
         with self.my_voiceover(
                 r"""Maintenant que les méchaniques de la simulation sont posées,""") as timer:
             self.play(FadeOut(*self.mobjects), run_time=timer.duration)
-        self.next_section(skip_animations=False)
+        self.next_section(skip_animations=section_done)
         leftBattery = createLeftBattery(3)
         with self.my_voiceover(
                 r"""Prenons le coté négatif d'une pile. On peut le représenté comme étant une masse d'atomes négativement chargés.""") as timer:
@@ -319,23 +323,72 @@ class TruthTable(MyScene):
         with self.my_voiceover(
                 r"""et un fil électriquement neutre que nous mettons en contact avec le côté négatif de la pile.""") as timer:
             self.play(FadeIn(drawAtoms(leftCable)), run_time=timer.duration)
-        batteryAndCableOnly = [*leftBattery,*leftCable]
+        self.next_section(skip_animations=section_done)
+        batteryAndCableOnly = [*leftBattery, *leftCable]
         with self.my_voiceover(
-                r"""On voit que les charges se répartissent rapidement dans la matière et que le fil contient maintenant des charges négatives. Les charges vont se répartir de manière égales dans la matière. On dit alors que le fil est à équipotentiel de la batterie. Si on enlève soudainement la pile et qu'on met sur pause.""") as timer:
+                r"""On voit que les charges se répartissent rapidement dans la matière et que le fil contient maintenant des charges négatives. Les charges vont se répartir de manière égales dans la matière. On dit alors que le fil est à équipotentiel de la batterie. Si on enlève soudainement la pile et qu'on met sur pause.""",
+                duration=30) as timer:
             self.clear()
-            self.playSimulation(batteryAndCableOnly, run_time=timer.duration)
-        # self.next_section(skip_animations=section_done)
-        # circuit = constructCircuit(MAX_DISTANCE_EFFECT)
-        # with self.my_voiceover(
-        #         r"""TODO""", duration=10) as timer:
-        #     finalState = self.playSimulation(circuit, timer.duration)
-        # negativeInLeftPlate = countNegativesInLeftPlate(MAX_DISTANCE_EFFECT, finalState)
-        # with self.my_voiceover(f"""On a {negativeInLeftPlate}""") as timer:
-        #     self.wait(timer.duration)
-        # circuit = constructCircuit()
-        # with self.my_voiceover(
-        #         r"""TODO""", duration=10) as timer:
-        #     self.playSimulation(circuit, timer.duration)
+            batteryAndCableOnlyFinal = self.playSimulation(batteryAndCableOnly, run_time=timer.duration)
+        batteryPositions = [y.position for y in leftBattery]
+        batteryAndCableOnlyFinal = [a for a in batteryAndCableOnlyFinal if a.position not in batteryPositions]
+        self.clear()
+        self.add(drawAtoms(batteryAndCableOnlyFinal))
+        negOnLeft = countNegativesInLeftSide(3, batteryAndCableOnlyFinal)
+        with self.my_voiceover(
+                f"""On vois qu'il reste des charges négatives dans le fil ({negOnLeft} dans notre simulation).
+ Et ça, c'est très intéressant pour nous car c'est une forme de stockage !""") as timer:
+            self.wait(timer.duration)
+        with self.my_voiceover(
+                f"""Le but maintenant, et d'augmenter le nombres de charges contenus dans notre dispositif quand on enlève la pile.""") as timer:
+            self.play(FadeOut(*self.mobjects))
+
+        batteryPositions = [*batteryPositions, *[y.position for y in createRightBattery(3)]]
+        with self.my_voiceover(
+                r"""Pour commencer, il faut qu'on face la même chose de l'autre côté de la pile. Sinon on n'arrivera pas  à brancher notre condensateur à un circuit.""") as timer:
+            self.play(FadeIn(
+                drawAtoms([*createLeftBattery(3), *createLeftCable(3), *createRightCable(3), *createRightBattery(3)])))
+        with self.my_voiceover(
+                r"""Ensuite, la première avancées qu'on peut faire, c'est de se rendre compte que plus on a de matière, plus on a de place pour les charges. On peut donc mettre deux grandes plaques de chaque côté.""") as timer:
+            self.play(FadeIn(drawAtoms([*createLeftPlate(3), *createRightPlate(3)])))
+        circuitFar = createCircuit(3)
+        with self.my_voiceover(
+                r"""Si on lance notre simulation et qu'on la laisse tourner un petit moment … et qu'on enlève la pile d'un coup et qu'on met sur pause.""",
+                duration=30) as timer:
+            self.clear()
+            circuitFarFinal = self.playSimulation(circuitFar, run_time=timer.duration)
+        circuitFarFinal = [a for a in circuitFarFinal if a.position not in batteryPositions]
+        self.clear()
+        self.add(drawAtoms(circuitFarFinal))
+        negOnLeft2 = countNegativesInLeftSide(3, circuitFarFinal)
+        posOnRight2 = countPositivesInRightSide(3, circuitFarFinal)
+        with self.my_voiceover(
+                f"""On obtient {negOnLeft2} charges négatives, ce qui est mieux que les {negOnLeft} d'avant. On a aussi {posOnRight2} charges positives.""") as timer:
+            self.wait(timer.duration)
+        self.next_section(skip_animations=False)
+        with self.my_voiceover(
+                f"""Si on se rappelle la loi de Coulomb, les opposés s'attirent mais l'intensité de cette force diminue avec le carrée de la distance.""") as timer:
+            self.play(FadeOut(*self.mobjects),run_time=timer.duration)
+        circuit = createCircuit()
+        batteryPositions = [y.position for y in [*createRightBattery(0),*createLeftBattery(0)]]
+        with self.my_voiceover(
+                f"""Si on rapproche les deux plaques, les charges opposés seront plus proches et ça pourrait nous aider.""") as timer:
+            self.play(FadeIn(drawAtoms(circuit)),run_time=timer.duration)
+        with self.my_voiceover(
+                r"""Aller, on laisse de nouveau tourner notre simulation pendant un petit moment … et on enlève la pile d'un coup.""",
+                duration=30) as timer:
+            self.clear()
+            circuitFinal = self.playSimulation(circuit, run_time=timer.duration)
+        circuitFinal = [a for a in circuitFinal if a.position not in batteryPositions]
+        self.clear()
+        self.add(drawAtoms(circuitFinal))
+        negOnLeft3 = countNegativesInLeftSide(0, circuitFinal)
+        posOnRight3 = countPositivesInRightSide(0, circuitFinal)
+        print(
+            f"""On obtient {negOnLeft3} vs {negOnLeft2} vs {negOnLeft} charges négatives et {posOnRight3} vs {posOnRight2} charges positives.""")
+        with self.my_voiceover(
+                f"""On obtient {negOnLeft3} charges négatives et {posOnRight3} charges positives. C'est beaucoup mieux. On voit d'ailleurs que les charges se concentrent à la surface des plaques.""") as timer:
+            self.wait(timer.duration)
 
 
 if __name__ == "__main__":
