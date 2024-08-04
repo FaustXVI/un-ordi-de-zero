@@ -56,7 +56,7 @@
 > 
 > Prenons un fil électriquement neutre que nous mettons en contact avec le côté négatif de la pile.
 > 
-> On vois que les charges se répartissent rapidement dans la matière et que le fil contient maintenant des charges négatives. Les charges vont se répartir de manière égales dans la matière. On dit alors que le fil est à équipotentiel de la batterie. Si on enlève soudainement la pile.
+> On vois que les charges se répartissent rapidement dans la matière et que le fil contient maintenant des charges négatives. Les charges vont se répartir de manière égales dans la matière. On dit alors que le fil est à équipotentiel de la batterie. Si on enlève soudainement la pile et qu'on met sur pause.
 > 
 > On vois qu'il reste des charges négatives dans le fil (X dans notre simulation).
 > Et ça, c'est très intéressant pour nous car c'est une forme de stockage ! Le but maintenant, et d'augmenter le nombres de charges contenus dans notre dispositif quand on enlève la pile.

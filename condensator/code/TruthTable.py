@@ -202,8 +202,8 @@ class TruthTable(MyScene):
     def __init__(self):
         super().__init__(recording=recording)
 
-    def playSimulation(self, circuit, duration):
-        nbFrames = math.ceil(duration / timeBetweenFrames)
+    def playSimulation(self, circuit, run_time):
+        nbFrames = math.ceil(run_time / timeBetweenFrames)
         (drawings, lastState) = simulate(circuit, nbFrames)
         for (i, drawing) in enumerate(drawings):
             if (i % SPEED_UP == 0):
@@ -320,6 +320,10 @@ class TruthTable(MyScene):
                 r"""et un fil électriquement neutre que nous mettons en contact avec le côté négatif de la pile.""") as timer:
             self.play(FadeIn(drawAtoms(leftCable)), run_time=timer.duration)
         batteryAndCableOnly = [*leftBattery,*leftCable]
+        with self.my_voiceover(
+                r"""On voit que les charges se répartissent rapidement dans la matière et que le fil contient maintenant des charges négatives. Les charges vont se répartir de manière égales dans la matière. On dit alors que le fil est à équipotentiel de la batterie. Si on enlève soudainement la pile et qu'on met sur pause.""") as timer:
+            self.clear()
+            self.playSimulation(batteryAndCableOnly, run_time=timer.duration)
         # self.next_section(skip_animations=section_done)
         # circuit = constructCircuit(MAX_DISTANCE_EFFECT)
         # with self.my_voiceover(
