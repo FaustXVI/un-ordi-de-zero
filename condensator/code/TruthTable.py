@@ -81,9 +81,18 @@ def createRectangle(start, stop):
 
 def computeNextAtoms(atoms):
     random.shuffle(atoms)
-    newAtoms = [Atom(a.position, a.state) for a in atoms]
-    negativeAtoms = [Atom(a.position, a.state) for a in atoms if a.state == AtomState.NEGATIVE]
-    positiveAtoms = [Atom(a.position, a.state) for a in atoms if a.state == AtomState.POSITIVE]
+    newAtoms = []
+    negativeAtoms = []
+    positiveAtoms = []
+    neutralAtoms = []
+    for a in atoms:
+        newAtoms.append(Atom(a.position, a.state))
+        if (a.state == AtomState.NEGATIVE):
+            negativeAtoms.append(a)
+        if (a.state == AtomState.POSITIVE):
+            positiveAtoms.append(a)
+        if (a.state == AtomState.NEUTRAL):
+            neutralAtoms.append(a)
 
     def closestDistance(nextPosition, currentAtom, poolOfAtoms):
         result = min([nextPosition.distance(n) for n in poolOfAtoms if n.position != currentAtom.position])
@@ -118,10 +127,12 @@ def computeNextAtoms(atoms):
     for index, atom in enumerate(atoms):
         if atom.state != AtomState.NEUTRAL:
             # print("for", atom.position)
-            weightPosition = [(n.position, i, attractionWeight(atom, n)) for i, n in enumerate(atoms) if
-                              n.isNeigbour(atom) and (n.state == AtomState.NEUTRAL or n == atom)]
-            positions = [(a[0], a[1]) for a in weightPosition]
-            weights = [a[2] for a in weightPosition]
+            positions = []
+            weights = []
+            for i, n in enumerate(atoms):
+                if n.isNeigbour(atom) and (n.state == AtomState.NEUTRAL or n == atom):
+                    positions.append((n.position, i))
+                    weights.append(attractionWeight(atom, n))
             (newPosition, newIndex) = random.choices(positions, weights)[0]
             newAtoms[index].state = newAtoms[newIndex].state
             newAtoms[newIndex].state = atom.state
