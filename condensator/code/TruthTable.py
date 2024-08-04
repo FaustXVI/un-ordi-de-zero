@@ -213,19 +213,32 @@ class TruthTable(MyScene):
         return lastState
 
     def construct(self):
-        self.next_section(skip_animations=section_done)
-        leftBattery = createLeftBattery(3)
-        leftBatteryDrawing = drawAtoms(leftBattery)
-        with self.my_voiceover(r"""TODO""") as timer:
-            self.play(FadeIn(leftBatteryDrawing), run_time=timer.duration)
-        self.next_section(skip_animations=section_done)
-        circuit = constructCircuit(MAX_DISTANCE_EFFECT)
+        self.next_section(skip_animations=False)
+        soloNeutral = drawAtoms(createRectangle((0, 0), (0, 0)))
+        with self.my_voiceover(r"""Comme tu le sais, la matière est composé d'atomes. 
+> Nous allons représenter chaque atome éléctriquement neutres par un point jaune.""") as timer:
+            self.play(FadeIn(soloNeutral), run_time=timer.duration)
+        soloNeg = drawAtoms(createRectangle((-1, 0), (-1, 0), AtomState.NEGATIVE))
         with self.my_voiceover(
-                r"""TODO""", duration=10) as timer:
-            finalState = self.playSimulation(circuit, timer.duration)
-        negativeInLeftPlate = countNegativesInLeftPlate(MAX_DISTANCE_EFFECT, finalState)
-        with self.my_voiceover(f"""On a {negativeInLeftPlate}""") as timer:
-            self.wait(timer.duration)
+                r"""Un atome qui a un surplus d'éléctron sera représenté par un point bleu avec un signe moins dedans, signifiant que l'atome a une change négative supplémentaire.""") as timer:
+            self.play(FadeIn(soloNeg), run_time=timer.duration)
+        soloPos = drawAtoms(createRectangle((1, 0), (1, 0), AtomState.POSITIVE))
+        with self.my_voiceover(
+                r"""Un atome qui a un déficite d'éléctron sera représenté par un point rouge avec un signe plus dedans, signifiant que l'atome a une change négative manquante qu'on peut voir comme une charge positive.""") as timer:
+            self.play(FadeIn(soloPos), run_time=timer.duration)
+        # self.next_section(skip_animations=section_done)
+        # leftBattery = createLeftBattery(3)
+        # leftBatteryDrawing = drawAtoms(leftBattery)
+        # with self.my_voiceover(r"""TODO""") as timer:
+        #     self.play(FadeIn(leftBatteryDrawing), run_time=timer.duration)
+        # self.next_section(skip_animations=section_done)
+        # circuit = constructCircuit(MAX_DISTANCE_EFFECT)
+        # with self.my_voiceover(
+        #         r"""TODO""", duration=10) as timer:
+        #     finalState = self.playSimulation(circuit, timer.duration)
+        # negativeInLeftPlate = countNegativesInLeftPlate(MAX_DISTANCE_EFFECT, finalState)
+        # with self.my_voiceover(f"""On a {negativeInLeftPlate}""") as timer:
+        #     self.wait(timer.duration)
         # circuit = constructCircuit()
         # with self.my_voiceover(
         #         r"""TODO""", duration=10) as timer:

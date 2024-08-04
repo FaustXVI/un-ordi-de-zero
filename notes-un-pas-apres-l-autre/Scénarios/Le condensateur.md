@@ -98,6 +98,8 @@
 > 
 > Pour un même voltage $V$ ce qui distingue une capacité d'une autre c'est donc $\epsilon_{0} \times \frac{A}{d}$.
 > 
-> Cette valeur est donc caractèristique d'un condensateur et est noté C. On l'appèle la capacitance et elle se mesure en Farad.
+> Cette valeur est donc caractéristique d'un condensateur et est noté C. On l’appelle la capacitance et elle se mesure en Farad noté F.
 > 
 > 1 Farad = 1 Coulomb par Volt
+> 
+> Enfin, le symbole utilisé dans les schémas électroniques représentent exactement ce qu'on viens de simuler, à savoir deux plaques séparées par un gap.
