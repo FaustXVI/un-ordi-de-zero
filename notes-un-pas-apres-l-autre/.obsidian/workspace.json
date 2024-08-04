@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Condensateur.md",
+                "file": "Scénarios/Le condensateur.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Condensateur.md",
+                "file": "Scénarios/Le condensateur.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Condensateur.md",
+                "file": "Scénarios/Le condensateur.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Condensateur.md"
+                "file": "Scénarios/Le condensateur.md"
               }
             }
           },
@@ -162,8 +162,9 @@
   },
   "active": "2a095e9006e6ee6a",
   "lastOpenFiles": [
-    "Scénarios/Porte OU.md",
     "Condensateur.md",
+    "Scénarios/Le condensateur.md",
+    "Scénarios/Porte OU.md",
     "Scénarios/Le volt-mètre.md",
     "Excalidraw/maille.excalidraw.md",
     "Lois de Kirchhoff.md",
@@ -187,7 +188,6 @@
     "Excalidraw/axe-accuracy.excalidraw.md",
     "Excalidraw/axe-scale.excalidraw.md",
     "Excalidraw/axe-segment.excalidraw.md",
-    "Excalidraw/axe.excalidraw.md",
     "images/zenitech-830B-caracteristics.png",
     "images/2_résistances_parallèles_branche_verte_bb.png",
     "images/2_résistances_parallèles_branche_jaune_bb.png",
