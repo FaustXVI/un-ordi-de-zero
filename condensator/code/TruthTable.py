@@ -213,7 +213,7 @@ class TruthTable(MyScene):
         return lastState
 
     def construct(self):
-        self.next_section(skip_animations=False)
+        self.next_section(skip_animations=section_done)
         soloNeutral = drawAtoms(createRectangle((0, 0), (0, 0)))
         with self.my_voiceover(r"""Comme tu le sais, la matière est composé d'atomes. 
 > Nous allons représenter chaque atome éléctriquement neutres par un point jaune.""") as timer:
@@ -226,6 +226,35 @@ class TruthTable(MyScene):
         with self.my_voiceover(
                 r"""Un atome qui a un déficite d'éléctron sera représenté par un point rouge avec un signe plus dedans, signifiant que l'atome a une change négative manquante qu'on peut voir comme une charge positive.""") as timer:
             self.play(FadeIn(soloPos), run_time=timer.duration)
+        with self.my_voiceover(
+                r"""Prenons un cas très simple :""") as timer:
+            self.play(FadeOut(VGroup(soloPos, soloNeg, soloNeutral)), run_time=timer.duration)
+
+        self.next_section(skip_animations=False)
+        square1Neg = createRectangle((-3, -3), (3, 3))
+        for a in square1Neg:
+            if a.position == (0, 0, 0):
+                a.state = AtomState.NEGATIVE
+        with self.my_voiceover(
+                r"""un carré de matière avec une seul charge négative.""") as timer:
+            self.play(FadeIn(drawAtoms(square1Neg)), run_time=timer.duration)
+        with self.my_voiceover(
+                r"""L'éléctron peut se déplacer librement, on parle d'ailleurs d'éléctron libre. Pour simuler ça, les charges (négatives ou positivent) peuvent soit se déplacent de manière aléatoires sur un atome voisin ou soit rester sur place.""") as timer:
+            self.clear()
+            self.playSimulation(square1Neg, timer.duration)
+        with self.my_voiceover(
+                r"""Pour savoir ce qu'il se passe quand on a deux charges, il faut s’intéresser à la loi de Coulomb.""") as timer:
+            self.play(*[FadeOut(o) for o in self.mobjects], run_time=timer.duration)
+
+        self.next_section(skip_animations=False)
+        coulomb = MathTex("k_0",my_frac([r"q_1",r"\times",r"q_2"],["r","^2"]))
+
+        with self.my_voiceover(
+                r"""L'intensité de cette force est donnée par la formule : $k_0 \frac{|q_1 \times q_2|}{r^2}$""") as timer:
+
+        with self.my_voiceover(
+                r"""L'intensité de cette force est donnée par la formule : $k_0 \frac{|q_1 \times q_2|}{r^2}$""") as timer:
+            self.play(Write(coulomb), run_time=timer.duration)
         # self.next_section(skip_animations=section_done)
         # leftBattery = createLeftBattery(3)
         # leftBatteryDrawing = drawAtoms(leftBattery)

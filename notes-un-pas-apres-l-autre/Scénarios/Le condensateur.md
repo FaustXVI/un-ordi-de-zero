@@ -29,9 +29,11 @@
 > 
 > Prenons un cas très simple : un carré de matière avec une seul charge négative.
 > 
-> L'éléctron peut se déplacer librement, on parle d'ailleurs d'éléctron libre. Pour simuler ça, les charges (négatives ou positivent) peuvent se déplacent de manière aléatoires sur un atome voisin ou rester sur place.
+> L'éléctron peut se déplacer librement, on parle d'ailleurs d'éléctron libre. Pour simuler ça, les charges (négatives ou positivent) peuvent soit se déplacent de manière aléatoires sur un atome voisin ou soit rester sur place.
 > 
-> La loi de Coulomb nous dit que les signes opposés s'attirent et que les les signes identiques se repoussent.
+> Pour savoir ce qu'il se passe quand on a deux charges, il faut s’intéresser à la loi de Coulomb.
+> 
+> Elle nous nous dit que les signes opposés s'attirent et que les signes identiques se repoussent.
 > 
 > L'intensité de cette force est donnée par la formule :
 > $k_0 \frac{|q_1 \times q_2|}{r^2}$
