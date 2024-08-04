@@ -17,10 +17,10 @@ config.frame_width = 16 * frame_factor
 config.frame_height = 9 * frame_factor
 atomSize = 5
 MAX_DISTANCE_EFFECT = 5
-EFFECT_INTENSITY = 5
+EFFECT_INTENSITY = 100
 # timeBetweenFrames = 0.5
 timeBetweenFrames = 0.08
-SEEP_UP = 10
+SPEED_UP = 10
 
 
 class AtomState(Enum):
@@ -79,19 +79,8 @@ def createRectangle(start, stop):
             range(starty, (stopy + 1))]
 
 
-def flat_map(f, xs):
-    ys = []
-    for x in xs:
-        ys.extend(f(x))
-    return ys
-
-
-def repeatByWeight(e):
-    (p, i, n) = e
-    return [(p, i) for _ in range(0, n)]
-
-
 def computeNextAtoms(atoms):
+    random.shuffle(atoms)
     newAtoms = [Atom(a.position, a.state) for a in atoms]
     negativeAtoms = [Atom(a.position, a.state) for a in atoms if a.state == AtomState.NEGATIVE]
     positiveAtoms = [Atom(a.position, a.state) for a in atoms if a.state == AtomState.POSITIVE]
@@ -131,11 +120,11 @@ def computeNextAtoms(atoms):
             # print("for", atom.position)
             weightPosition = [(n.position, i, attractionWeight(atom, n)) for i, n in enumerate(atoms) if
                               n.isNeigbour(atom) and (n.state == AtomState.NEUTRAL or n == atom)]
-            possiblePositions = flat_map(repeatByWeight, weightPosition)
-            (newPosition, newIndex) = random.choice(possiblePositions)
+            positions = [(a[0], a[1]) for a in weightPosition]
+            weights = [a[2] for a in weightPosition]
+            (newPosition, newIndex) = random.choices(positions, weights)[0]
             newAtoms[index].state = newAtoms[newIndex].state
             newAtoms[newIndex].state = atom.state
-    random.shuffle(newAtoms)
     return newAtoms
 
 
@@ -175,7 +164,7 @@ class TruthTable(MyScene):
         nbFrames = math.ceil(duration / timeBetweenFrames)
         drawings = simulate(circuit, nbFrames)
         for (i, drawing) in enumerate(drawings):
-            if (i % SEEP_UP == 0):
+            if (i % SPEED_UP == 0):
                 self.clear()
                 self.add(drawing)
                 self.wait(timeBetweenFrames)
@@ -184,11 +173,11 @@ class TruthTable(MyScene):
         self.next_section(skip_animations=section_done)
         circuit = constructCircuit(MAX_DISTANCE_EFFECT)
         with self.my_voiceover(
-                r"""TODO""", duration=5) as timer:
+                r"""TODO""", duration=10) as timer:
             self.playSimulation(circuit, timer.duration)
         circuit = constructCircuit()
         with self.my_voiceover(
-                r"""TODO""", duration=5) as timer:
+                r"""TODO""", duration=10) as timer:
             self.playSimulation(circuit, timer.duration)
 
 
