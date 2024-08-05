@@ -11,15 +11,16 @@ from electronics import *
 
 section_done = True
 recording = False
+finalOnly = False
 
 frame_factor = 3
 config.frame_width = 16 * frame_factor
 config.frame_height = 9 * frame_factor
+# config.frame_rate = 60
 atomSize = 5
 MAX_DISTANCE_EFFECT = 5
 EFFECT_INTENSITY = 100
-# timeBetweenFrames = 0.5
-timeBetweenFrames = 0.08
+SLOWMO_FACTOR = 10
 
 
 class AtomState(Enum):
@@ -149,7 +150,7 @@ def computeNextAtoms(atoms):
 
 def simulate(circuit, nbFrames):
     steps = functools.reduce(lambda acc, _: [*acc, computeNextAtoms(acc[-1])], range(1, nbFrames), [circuit])
-    if recording:
+    if recording or not finalOnly:
         return ([drawAtoms(atoms) for atoms in steps], steps[-1])
     else:
         return ([drawAtoms(steps[-1])], steps[-1])
@@ -157,6 +158,7 @@ def simulate(circuit, nbFrames):
 
 plateSize = 8
 batterySize = 4
+
 
 def createLeftSide(distance=0):
     return [*(createLeftBattery(distance)), *(createLeftCable(distance)), *(createLeftPlate(distance))]
@@ -207,7 +209,10 @@ class TruthTable(MyScene):
     def __init__(self):
         super().__init__(recording=recording)
 
-    def playSimulation(self, circuit, run_time):
+    def playSimulation(self, circuit, run_time, slow_factor=1):
+        # timeBetweenFrames = 0.5
+        # timeBetweenFrames = 0.08
+        timeBetweenFrames = (1 / config.frame_rate) * slow_factor
         nbFrames = math.ceil(run_time / timeBetweenFrames)
         (drawings, lastState) = simulate(circuit, nbFrames)
         for (i, drawing) in enumerate(drawings):
@@ -245,7 +250,7 @@ class TruthTable(MyScene):
         with self.my_voiceover(
                 r"""L'éléctron peut se déplacer librement, on parle d'ailleurs d'éléctron libre. Pour simuler ça, les charges (négatives ou positivent) peuvent soit se déplacent de manière aléatoires sur un atome voisin ou soit rester sur place.""") as timer:
             self.clear()
-            self.playSimulation(square1Neg, timer.duration)
+            self.playSimulation(square1Neg, timer.duration, SLOWMO_FACTOR)
         with self.my_voiceover(
                 r"""Pour savoir ce qu'il se passe quand on a deux charges, il faut s’intéresser à la loi de Coulomb.""") as timer:
             self.play(FadeOut(*self.mobjects), run_time=timer.duration)
@@ -296,7 +301,7 @@ class TruthTable(MyScene):
         with self.my_voiceover(
                 r"""Les charges de même signe se repoussent. Pour simuler ça, au moment du choix de la prochaine position de la charge, on favorise le choix des positions les plus éloignés des autres charges de même signe. On vois donc bien que les deux charges ne se rapprochent presque jamais.""") as timer:
             self.clear()
-            self.playSimulation(square2Neg, timer.duration)
+            self.playSimulation(square2Neg, timer.duration, SLOWMO_FACTOR)
         self.next_section(skip_animations=section_done)
         square1Pos1Neg = createRectangle((-3, -3), (3, 3))
         for a in square1Pos1Neg:
@@ -310,7 +315,7 @@ class TruthTable(MyScene):
         with self.my_voiceover(
                 r"""Les charges de signe contraires s'attirent. Pour simuler ça, au moment du choix de la prochaine position de la charge, on favorise le choix des positions les plus proches des autres charges de signe opposés. On vois donc bien que les deux charges se rapprochent très vites et restent collées. En réalité, quand elles se rencontres, les deux charges s'annuleraient et notre carré finirait électriquement neutre.""") as timer:
             self.clear()
-            self.playSimulation(square1Pos1Neg, timer.duration)
+            self.playSimulation(square1Pos1Neg, timer.duration, SLOWMO_FACTOR)
         with self.my_voiceover(
                 r"""Maintenant que les méchaniques de la simulation sont posées,""") as timer:
             self.play(FadeOut(*self.mobjects), run_time=timer.duration)
@@ -327,7 +332,7 @@ class TruthTable(MyScene):
         batteryAndCableOnly = [*leftBattery, *leftCable]
         with self.my_voiceover(
                 r"""On voit que les charges se répartissent rapidement dans la matière et que le fil contient maintenant des charges négatives. Les charges vont se répartir de manière égales dans la matière. On dit alors que le fil est à équipotentiel de la batterie. Si on enlève soudainement la pile et qu'on met sur pause.""",
-                duration=30) as timer:
+                duration=10) as timer:
             self.clear()
             batteryAndCableOnlyFinal = self.playSimulation(batteryAndCableOnly, run_time=timer.duration)
         batteryPositions = [y.position for y in leftBattery]
@@ -354,7 +359,7 @@ class TruthTable(MyScene):
         circuitFar = createCircuit(3)
         with self.my_voiceover(
                 r"""Si on lance notre simulation et qu'on la laisse tourner un petit moment … et qu'on enlève la pile d'un coup et qu'on met sur pause.""",
-                duration=30) as timer:
+                duration=10) as timer:
             self.clear()
             circuitFarFinal = self.playSimulation(circuitFar, run_time=timer.duration)
         circuitFarFinal = [a for a in circuitFarFinal if a.position not in batteryPositions]
@@ -368,15 +373,15 @@ class TruthTable(MyScene):
         self.next_section(skip_animations=False)
         with self.my_voiceover(
                 f"""Si on se rappelle la loi de Coulomb, les opposés s'attirent mais l'intensité de cette force diminue avec le carrée de la distance.""") as timer:
-            self.play(FadeOut(*self.mobjects),run_time=timer.duration)
+            self.play(FadeOut(*self.mobjects), run_time=timer.duration)
         circuit = createCircuit()
-        batteryPositions = [y.position for y in [*createRightBattery(0),*createLeftBattery(0)]]
+        batteryPositions = [y.position for y in [*createRightBattery(0), *createLeftBattery(0)]]
         with self.my_voiceover(
                 f"""Si on rapproche les deux plaques, les charges opposés seront plus proches et ça pourrait nous aider.""") as timer:
-            self.play(FadeIn(drawAtoms(circuit)),run_time=timer.duration)
+            self.play(FadeIn(drawAtoms(circuit)), run_time=timer.duration)
         with self.my_voiceover(
                 r"""Aller, on laisse de nouveau tourner notre simulation pendant un petit moment … et on enlève la pile d'un coup.""",
-                duration=30) as timer:
+                duration=10) as timer:
             self.clear()
             circuitFinal = self.playSimulation(circuit, run_time=timer.duration)
         circuitFinal = [a for a in circuitFinal if a.position not in batteryPositions]
