@@ -9,14 +9,14 @@ from electronics import *
 
 # locale.setlocale(locale.LC_ALL, 'fr_FR')
 
-section_done = True
+section_done = False
 recording = False
 finalOnly = False
 
 frame_factor = 3
 config.frame_width = 16 * frame_factor
 config.frame_height = 9 * frame_factor
-# config.frame_rate = 60
+config.frame_rate = 60
 atomSize = 5
 MAX_DISTANCE_EFFECT = 5
 EFFECT_INTENSITY = 100
@@ -310,14 +310,14 @@ class TruthTable(MyScene):
             if a.position == (3, 3, 0):
                 a.state = AtomState.NEGATIVE
         with self.my_voiceover(
-                r"""Reprenons notre carré de matière, mais avec deux charges négatives cette fois si.""") as timer:
+                r"""Si on recommence avec une charge négative et une charge positive.""") as timer:
             self.play(Succession(FadeOut(*self.mobjects), FadeIn(drawAtoms(square1Pos1Neg))), run_time=timer.duration)
         with self.my_voiceover(
                 r"""Les charges de signe contraires s'attirent. Pour simuler ça, au moment du choix de la prochaine position de la charge, on favorise le choix des positions les plus proches des autres charges de signe opposés. On vois donc bien que les deux charges se rapprochent très vites et restent collées. En réalité, quand elles se rencontres, les deux charges s'annuleraient et notre carré finirait électriquement neutre.""") as timer:
             self.clear()
             self.playSimulation(square1Pos1Neg, timer.duration, SLOWMO_FACTOR)
         with self.my_voiceover(
-                r"""Maintenant que les méchaniques de la simulation sont posées,""") as timer:
+                r"""Maintenant que les méchaniques de la simulation ont été vue, on va accèlerer les prochaines simulations pour avoir des résultats intéréssants plus rapidement.""") as timer:
             self.play(FadeOut(*self.mobjects), run_time=timer.duration)
         self.next_section(skip_animations=section_done)
         leftBattery = createLeftBattery(3)
