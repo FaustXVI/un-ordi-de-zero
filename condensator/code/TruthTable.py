@@ -379,22 +379,57 @@ class TruthTable(MyScene):
         with self.my_voiceover(
                 f"""Si on rapproche les deux plaques, les charges opposés seront plus proches et ça pourrait nous aider.""") as timer:
             self.play(FadeIn(drawAtoms(circuit)), run_time=timer.duration)
-        self.next_section(skip_animations=False)
         with self.my_voiceover(
                 r"""Aller, on laisse de nouveau tourner notre simulation pendant un petit moment … et on enlève la pile d'un coup.""",
                 duration=10) as timer:
             self.clear()
             circuitFinal = self.playSimulation(circuit, run_time=timer.duration)
         circuitFinal = [a for a in circuitFinal if a.position not in batteryPositions]
-        # self.clear()
-        # self.add(drawAtoms(circuitFinal))
+        self.clear()
+        self.add(drawAtoms(circuitFinal))
         negOnLeft3 = countNegativesInLeftSide(0, circuitFinal)
         posOnRight3 = countPositivesInRightSide(0, circuitFinal)
         print(
             f"""On obtient {negOnLeft3} vs {negOnLeft2} vs {negOnLeft} charges négatives et {posOnRight3} vs {posOnRight2} charges positives.""")
         with self.my_voiceover(
-                f"""On obtient {negOnLeft3} charges négatives et {posOnRight3} charges positives. C'est beaucoup mieux. On voit d'ailleurs que les charges se concentrent à la surface des plaques.""") as timer:
+                f"""On obtient {negOnLeft3} charges négatives et {posOnRight3} charges positives et on voit que les charges se concentrent à la surface des plaques.""") as timer:
             self.wait(timer.duration)
+        self.next_section(skip_animations=False)
+        with self.my_voiceover(
+                f"""Cependant, il semblerait que l'on manque de charges. Jouons avec un dernier paramètre""") as timer:
+            self.play(FadeOut(*self.mobjects), run_time=timer.duration)
+        bigCircuit = createCircuit(batterySize=defaultBatterySize + 2)
+        batteryPositions = [y.position for y in [*createRightBattery(0, batterySize=defaultBatterySize + 2),
+                                                 *createLeftBattery(0, batterySize=defaultBatterySize + 2)]]
+        with self.my_voiceover(
+                f"""si j'augmente le voltage en mettant une plus grosse pile.""") as timer:
+            self.play(FadeIn(drawAtoms(bigCircuit)), run_time=timer.duration)
+        with self.my_voiceover(
+                r"""Qu'on fait tourner de nouveau notre simulation un peu … et qu'on enlève la pile.""",
+                duration=10) as timer:
+            self.clear()
+            bigCircuitFinal = self.playSimulation(bigCircuit, run_time=timer.duration)
+        bigCircuitFinal = [a for a in bigCircuitFinal if a.position not in batteryPositions]
+        self.clear()
+        self.add(drawAtoms(bigCircuitFinal))
+        negOnLeft4 = countNegativesInLeftSide(0, bigCircuitFinal)
+        posOnRight4 = countPositivesInRightSide(0, bigCircuitFinal)
+        print(
+            f"""On obtient {negOnLeft4} vs {negOnLeft3} vs {negOnLeft2} vs {negOnLeft} charges négatives et {posOnRight4} vs {posOnRight3} vs {posOnRight2} charges positives.""")
+        with self.my_voiceover(
+                f"""On voit qu'on a que {negOnLeft4} charges négatives et {posOnRight4} charges positives.""") as timer:
+            self.wait(timer.duration)
+        with self.my_voiceover(
+                f"""On viens donc de comprendre que :""") as timer:
+            self.play(FadeOut(*self.mobjects), run_time=timer.duration)
+        self.next_section(skip_animations=False)
+        q = MathTex("Q").shift(LEFT * 3)
+        a = MathTex("A").shift(UP * 3)
+        d = MathTex("d").shift(DOWN * 3)
+        v = MathTex("V").shift(UP * 3 + LEFT * 3)
+        with self.my_voiceover(
+                f"""Q, le nombre de charges contenus dans notre condensateur""") as timer:
+            self.play(FadeIn(q), run_time=timer.duration)
 
 
 if __name__ == "__main__":
