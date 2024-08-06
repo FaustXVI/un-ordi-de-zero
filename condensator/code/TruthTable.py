@@ -16,7 +16,7 @@ finalOnly = True
 frame_factor = 3
 config.frame_width = 16 * frame_factor
 config.frame_height = 9 * frame_factor
-config.frame_rate = 60
+config.frame_rate = 30
 atomSize = 5
 MAX_DISTANCE_EFFECT = 5
 EFFECT_INTENSITY = 100
@@ -110,15 +110,15 @@ def computeNextAtoms(atoms):
 
     def sameStateAttractionWeight(currentAtom, neighbour, poolOfAtoms):
         if len(poolOfAtoms) == 0 or (len(poolOfAtoms) == 1 and poolOfAtoms[0].position == currentAtom.position):
-            return 0
+            return MAX_DISTANCE_EFFECT ** 2
         distance = closestDistance(neighbour, currentAtom, poolOfAtoms)
-        return distance - 1
+        return min(MAX_DISTANCE_EFFECT, max(0, distance)) ** 2
 
     def oppositeStateAttractionWeight(currentAtom, neighbour, poolOfAtoms):
         if len(poolOfAtoms) == 0 or (len(poolOfAtoms) == 1 and poolOfAtoms[0].position == currentAtom.position):
             return 0
         distance = closestDistance(neighbour, currentAtom, poolOfAtoms)
-        return MAX_DISTANCE_EFFECT - (distance - 1)
+        return (MAX_DISTANCE_EFFECT - min(MAX_DISTANCE_EFFECT, max(0, distance))) ** 2
 
     def attractionWeight(currentAtom, neighbour):
         assert currentAtom.state != AtomState.NEUTRAL
@@ -131,7 +131,7 @@ def computeNextAtoms(atoms):
         exponent = (sameStateAttractionWeight(currentAtom, neighbour, same)
                     + oppositeStateAttractionWeight(currentAtom, neighbour, opposites))
         # print(exponent, neighbour.position)
-        return EFFECT_INTENSITY ** min(MAX_DISTANCE_EFFECT, max(0, exponent))
+        return EFFECT_INTENSITY ** exponent
 
     # print("next frame")
     for index, atom in nonNeutralAtoms:
@@ -177,7 +177,7 @@ def createLeftCable(distance):
 
 
 def createLeftBattery(distance):
-    return createRectangle((-20 - distance, -batterySize), (-11 - distance, batterySize), AtomState.NEGATIVE)
+    return createRectangle((-11 - (batterySize*2) - distance, -batterySize), (-11 - distance, batterySize), AtomState.NEGATIVE)
 
 
 def createRightSide(distance=0):
@@ -197,7 +197,7 @@ def countPositivesInRightSide(distance, atoms):
 
 
 def createRightBattery(distance):
-    return createRectangle((11 + distance, -batterySize), (20 + distance, batterySize), AtomState.POSITIVE)
+    return createRectangle((11 + distance, -batterySize), (11 + (batterySize*2) + distance, batterySize), AtomState.POSITIVE)
 
 
 def createCircuit(distance=0):
@@ -370,7 +370,7 @@ class TruthTable(MyScene):
         with self.my_voiceover(
                 f"""On obtient {negOnLeft2} charges négatives, ce qui est mieux que les {negOnLeft} d'avant. On a aussi {posOnRight2} charges positives.""") as timer:
             self.wait(timer.duration)
-        self.next_section(skip_animations=False)
+        self.next_section(skip_animations=section_done)
         with self.my_voiceover(
                 f"""Si on se rappelle la loi de Coulomb, les opposés s'attirent mais l'intensité de cette force diminue avec le carrée de la distance.""") as timer:
             self.play(FadeOut(*self.mobjects), run_time=timer.duration)
@@ -379,6 +379,7 @@ class TruthTable(MyScene):
         with self.my_voiceover(
                 f"""Si on rapproche les deux plaques, les charges opposés seront plus proches et ça pourrait nous aider.""") as timer:
             self.play(FadeIn(drawAtoms(circuit)), run_time=timer.duration)
+        self.next_section(skip_animations=False)
         with self.my_voiceover(
                 r"""Aller, on laisse de nouveau tourner notre simulation pendant un petit moment … et on enlève la pile d'un coup.""",
                 duration=10) as timer:
