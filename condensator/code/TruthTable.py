@@ -16,11 +16,13 @@ finalOnly = True
 frame_factor = 3
 config.frame_width = 16 * frame_factor
 config.frame_height = 9 * frame_factor
-config.frame_rate = 30
+# config.frame_rate = 60
 atomSize = 5
-MAX_DISTANCE_EFFECT = 5
+MAX_DISTANCE_EFFECT = 4
 EFFECT_INTENSITY = 100
 SLOWMO_FACTOR = 10
+plateSize = 8
+defaultBatterySize = 5
 
 
 class AtomState(Enum):
@@ -156,12 +158,8 @@ def simulate(circuit, nbFrames):
         return ([drawAtoms(steps[-1])], steps[-1])
 
 
-plateSize = 8
-batterySize = 4
-
-
-def createLeftSide(distance=0):
-    return [*(createLeftBattery(distance)), *(createLeftCable(distance)), *(createLeftPlate(distance))]
+def createLeftSide(distance=0, batterySize=defaultBatterySize):
+    return [*(createLeftBattery(distance, batterySize)), *(createLeftCable(distance)), *(createLeftPlate(distance))]
 
 
 def createLeftPlate(distance):
@@ -176,12 +174,13 @@ def createLeftCable(distance):
     return createRectangle((-10 - distance, -1), (-4 - distance, 1))
 
 
-def createLeftBattery(distance):
-    return createRectangle((-11 - (batterySize*2) - distance, -batterySize), (-11 - distance, batterySize), AtomState.NEGATIVE)
+def createLeftBattery(distance, batterySize=defaultBatterySize):
+    return createRectangle((-10 - batterySize - distance, -math.floor(batterySize / 2)),
+                           (-11 - distance, math.floor(batterySize / 2)), AtomState.NEGATIVE)
 
 
-def createRightSide(distance=0):
-    return [*(createRightBattery(distance)), *(createRightCable(distance)), *(createRightPlate(distance))]
+def createRightSide(distance=0, batterySize=defaultBatterySize):
+    return [*(createRightBattery(distance, batterySize)), *(createRightCable(distance)), *(createRightPlate(distance))]
 
 
 def createRightPlate(distance):
@@ -196,12 +195,13 @@ def countPositivesInRightSide(distance, atoms):
     return countStateInRectangle((1 + distance, -plateSize), (10 + distance, plateSize), atoms, AtomState.POSITIVE)
 
 
-def createRightBattery(distance):
-    return createRectangle((11 + distance, -batterySize), (11 + (batterySize*2) + distance, batterySize), AtomState.POSITIVE)
+def createRightBattery(distance, batterySize=defaultBatterySize):
+    return createRectangle((11 + distance, -math.floor(batterySize / 2)),
+                           (10 + batterySize + distance, math.floor(batterySize / 2)), AtomState.POSITIVE)
 
 
-def createCircuit(distance=0):
-    return [*createLeftSide(distance), *createRightSide(distance)]
+def createCircuit(distance=0, batterySize=5):
+    return [*createLeftSide(distance, batterySize), *createRightSide(distance, batterySize)]
 
 
 class TruthTable(MyScene):
