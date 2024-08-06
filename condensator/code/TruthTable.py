@@ -9,9 +9,9 @@ from electronics import *
 
 # locale.setlocale(locale.LC_ALL, 'fr_FR')
 
-section_done = False
+section_done = True
 recording = False
-finalOnly = False
+finalOnly = True
 
 frame_factor = 3
 config.frame_width = 16 * frame_factor
@@ -177,7 +177,7 @@ def createLeftCable(distance):
 
 
 def createLeftBattery(distance):
-    return createRectangle((-15 - distance, -batterySize), (-11 - distance, batterySize), AtomState.NEGATIVE)
+    return createRectangle((-20 - distance, -batterySize), (-11 - distance, batterySize), AtomState.NEGATIVE)
 
 
 def createRightSide(distance=0):
@@ -197,7 +197,7 @@ def countPositivesInRightSide(distance, atoms):
 
 
 def createRightBattery(distance):
-    return createRectangle((11 + distance, -batterySize), (15 + distance, batterySize), AtomState.POSITIVE)
+    return createRectangle((11 + distance, -batterySize), (20 + distance, batterySize), AtomState.POSITIVE)
 
 
 def createCircuit(distance=0):
@@ -385,8 +385,8 @@ class TruthTable(MyScene):
             self.clear()
             circuitFinal = self.playSimulation(circuit, run_time=timer.duration)
         circuitFinal = [a for a in circuitFinal if a.position not in batteryPositions]
-        self.clear()
-        self.add(drawAtoms(circuitFinal))
+        # self.clear()
+        # self.add(drawAtoms(circuitFinal))
         negOnLeft3 = countNegativesInLeftSide(0, circuitFinal)
         posOnRight3 = countPositivesInRightSide(0, circuitFinal)
         print(
