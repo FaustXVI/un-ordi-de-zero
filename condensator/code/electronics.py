@@ -79,7 +79,7 @@ class Component(Electronic):
 
     def energize(self, electron):
         return Succession(*without_none([o.energize(electron) for o in self.submobjects]),
-                              rate_func=linear)
+                          rate_func=linear)
 
 
 class Branch(Electronic):
@@ -122,7 +122,7 @@ class Circuit(Branch):
         return Succession(
             Create(electron),
             self.energize(electron),
-                          self.battery.consume(electron),
+            self.battery.consume(electron),
             rate_func=linear)
 
 
@@ -208,7 +208,7 @@ class Cable(Line, Electronic):
 
 
 class Resistance(Component):
-    def __init__(self, id=None,**kwargs):
+    def __init__(self, id=None, **kwargs):
         n = 9
         step = 2 / n
 
@@ -219,11 +219,28 @@ class Resistance(Component):
                       range(0, round(n / 2))],
                     RIGHT / 2, RIGHT]
         self.lines = [Line(a, b, **kwargs) for a, b in zip(self.pts, self.pts[1:])]
-        super().__init__(*self.lines, id=id,**kwargs)
+        super().__init__(*self.lines, id=id, **kwargs)
 
     def energize(self, dot):
         return Succession(*[
             MoveAlongPath(dot, line, rate_func=linear) for line in self.lines
+        ], rate_func=linear)
+
+
+class Condensator(Component):
+    def __init__(self, id=None, **kwargs):
+        leftLine = Line(LEFT, LEFT / 4, **kwargs)
+        leftPlate = Line(LEFT / 4 + UP / 2, LEFT / 4 + DOWN / 2, **kwargs)
+        rightPlate = Line(RIGHT / 4 + UP / 2, RIGHT / 4 + DOWN / 2, **kwargs)
+        rightLine = Line(RIGHT / 4, RIGHT, **kwargs)
+        self.left = [leftLine, leftPlate]
+        self.right = [rightPlate, rightLine]
+        super().__init__(*self.left, *self.right, id=id, **kwargs)
+
+    def energize(self, dot):
+        return Succession(*[
+            MoveAlongPath(dot, self.left[0], rate_func=linear),
+            MoveAlongPath(dot, self.right[-1], rate_func=linear),
         ], rate_func=linear)
 
 
@@ -261,12 +278,12 @@ class Switch(Electronic):
 class Battery(Component):
     def __init__(self):
         self.components = [Line(LEFT, LEFT / 6),
-                      Line((LEFT / 6) + UP / 4, (LEFT / 6) + DOWN / 4),
-                      Line((RIGHT / 6) + (UP / 2), (RIGHT / 6) + (DOWN / 2)),
-                      MathTex("-").shift((LEFT / 3) + (UP / 3)).scale(0.75),
-                      MathTex("+").shift((RIGHT / 3) + (UP / 3)).scale(0.75),
-                      Line(RIGHT / 6, RIGHT),
-                      ]
+                           Line((LEFT / 6) + UP / 4, (LEFT / 6) + DOWN / 4),
+                           Line((RIGHT / 6) + (UP / 2), (RIGHT / 6) + (DOWN / 2)),
+                           MathTex("-").shift((LEFT / 3) + (UP / 3)).scale(0.75),
+                           MathTex("+").shift((RIGHT / 3) + (UP / 3)).scale(0.75),
+                           Line(RIGHT / 6, RIGHT),
+                           ]
         super().__init__(*self.components)
 
     def energize(self, dot):
@@ -278,8 +295,8 @@ class Battery(Component):
     def consume(self, dot):
         return Succession(
             MoveAlongPath(dot, self.components[0], rate_func=linear),
-                          dot.animate(rate_func=linear).set_opacity(0).move_to(self.components[0].get_end()),
-                          rate_func=linear)
+            dot.animate(rate_func=linear).set_opacity(0).move_to(self.components[0].get_end()),
+            rate_func=linear)
 
 
 class Mesurement(Component):

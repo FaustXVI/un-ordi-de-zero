@@ -9,7 +9,7 @@ from electronics import *
 
 # locale.setlocale(locale.LC_ALL, 'fr_FR')
 
-section_done = True
+section_done = False
 recording = False
 finalOnly = True
 
@@ -335,8 +335,8 @@ class TruthTable(MyScene):
                 duration=10) as timer:
             self.clear()
             batteryAndCableOnlyFinal = self.playSimulation(batteryAndCableOnly, run_time=timer.duration)
-        batteryPositions = [y.position for y in leftBattery]
-        batteryAndCableOnlyFinal = [a for a in batteryAndCableOnlyFinal if a.position not in batteryPositions]
+        removedPositions = [y.position for y in leftBattery]
+        batteryAndCableOnlyFinal = [a for a in batteryAndCableOnlyFinal if a.position not in removedPositions]
         self.clear()
         self.add(drawAtoms(batteryAndCableOnlyFinal))
         negOnLeft = countNegativesInLeftSide(3, batteryAndCableOnlyFinal)
@@ -348,7 +348,7 @@ class TruthTable(MyScene):
                 f"""Le but maintenant, et d'augmenter le nombres de charges contenus dans notre dispositif quand on enlève la pile.""") as timer:
             self.play(FadeOut(*self.mobjects))
 
-        batteryPositions = [*batteryPositions, *[y.position for y in createRightBattery(3)]]
+        removedPositions = [*removedPositions, *[y.position for y in createRightBattery(3)]]
         with self.my_voiceover(
                 r"""Pour commencer, il faut qu'on face la même chose de l'autre côté de la pile. Sinon on n'arrivera pas  à brancher notre condensateur à un circuit.""") as timer:
             self.play(FadeIn(
@@ -362,20 +362,34 @@ class TruthTable(MyScene):
                 duration=10) as timer:
             self.clear()
             circuitFarFinal = self.playSimulation(circuitFar, run_time=timer.duration)
-        circuitFarFinal = [a for a in circuitFarFinal if a.position not in batteryPositions]
+        circuitFarFinal = [a for a in circuitFarFinal if a.position not in removedPositions]
         self.clear()
         self.add(drawAtoms(circuitFarFinal))
         negOnLeft2 = countNegativesInLeftSide(3, circuitFarFinal)
         posOnRight2 = countPositivesInRightSide(3, circuitFarFinal)
+        print(
+            f"""On obtient {negOnLeft2} charges négatives, ce qui est mieux que les {negOnLeft} d'avant. On a aussi {posOnRight2} charges positives.""")
         with self.my_voiceover(
                 f"""On obtient {negOnLeft2} charges négatives, ce qui est mieux que les {negOnLeft} d'avant. On a aussi {posOnRight2} charges positives.""") as timer:
+            self.wait(timer.duration)
+        removedPositions = [*removedPositions, *[y.position for y in [*createRightCable(3), *createLeftCable(3)]]]
+        circuitFarPlateOnlyFinal = [a for a in circuitFarFinal if a.position not in removedPositions]
+        negOnLeft2 = countNegativesInLeftSide(3, circuitFarPlateOnlyFinal)
+        posOnRight2 = countPositivesInRightSide(3, circuitFarPlateOnlyFinal)
+        with self.my_voiceover(
+                f"""en se concentrant que sur les plaques qui représente notre condensateur.""") as timer:
+            self.play(FadeOut(*self.mobjects), FadeIn(drawAtoms(circuitFarPlateOnlyFinal)), run_time=timer.duration)
+        print(f"""On obtient {negOnLeft2} charges négatives et {posOnRight2} charges positives.""")
+        with self.my_voiceover(
+                f"""On obtient {negOnLeft2} charges négatives et {posOnRight2} charges positives.""") as timer:
             self.wait(timer.duration)
         self.next_section(skip_animations=section_done)
         with self.my_voiceover(
                 f"""Si on se rappelle la loi de Coulomb, les opposés s'attirent mais l'intensité de cette force diminue avec le carrée de la distance.""") as timer:
             self.play(FadeOut(*self.mobjects), run_time=timer.duration)
         circuit = createCircuit()
-        batteryPositions = [y.position for y in [*createRightBattery(0), *createLeftBattery(0)]]
+        removedPositions = [y.position for y in
+                            [*createRightBattery(0), *createLeftBattery(0), *createRightCable(0), *createLeftCable(0)]]
         with self.my_voiceover(
                 f"""Si on rapproche les deux plaques, les charges opposés seront plus proches et ça pourrait nous aider.""") as timer:
             self.play(FadeIn(drawAtoms(circuit)), run_time=timer.duration)
@@ -384,7 +398,7 @@ class TruthTable(MyScene):
                 duration=10) as timer:
             self.clear()
             circuitFinal = self.playSimulation(circuit, run_time=timer.duration)
-        circuitFinal = [a for a in circuitFinal if a.position not in batteryPositions]
+        circuitFinal = [a for a in circuitFinal if a.position not in removedPositions]
         self.clear()
         self.add(drawAtoms(circuitFinal))
         negOnLeft3 = countNegativesInLeftSide(0, circuitFinal)
@@ -394,13 +408,15 @@ class TruthTable(MyScene):
         with self.my_voiceover(
                 f"""On obtient {negOnLeft3} charges négatives et {posOnRight3} charges positives et on voit que les charges se concentrent à la surface des plaques.""") as timer:
             self.wait(timer.duration)
-        self.next_section(skip_animations=False)
+        self.next_section(skip_animations=section_done)
         with self.my_voiceover(
                 f"""Cependant, il semblerait que l'on manque de charges. Jouons avec un dernier paramètre""") as timer:
             self.play(FadeOut(*self.mobjects), run_time=timer.duration)
         bigCircuit = createCircuit(batterySize=defaultBatterySize + 2)
-        batteryPositions = [y.position for y in [*createRightBattery(0, batterySize=defaultBatterySize + 2),
-                                                 *createLeftBattery(0, batterySize=defaultBatterySize + 2)]]
+        removedPositions = [y.position for y in
+                            [*createRightBattery(0, batterySize=defaultBatterySize + 2), *createRightCable(0),
+                             *createLeftCable(0),
+                             *createLeftBattery(0, batterySize=defaultBatterySize + 2)]]
         with self.my_voiceover(
                 f"""si j'augmente le voltage en mettant une plus grosse pile.""") as timer:
             self.play(FadeIn(drawAtoms(bigCircuit)), run_time=timer.duration)
@@ -409,7 +425,7 @@ class TruthTable(MyScene):
                 duration=10) as timer:
             self.clear()
             bigCircuitFinal = self.playSimulation(bigCircuit, run_time=timer.duration)
-        bigCircuitFinal = [a for a in bigCircuitFinal if a.position not in batteryPositions]
+        bigCircuitFinal = [a for a in bigCircuitFinal if a.position not in removedPositions]
         self.clear()
         self.add(drawAtoms(bigCircuitFinal))
         negOnLeft4 = countNegativesInLeftSide(0, bigCircuitFinal)
@@ -422,14 +438,63 @@ class TruthTable(MyScene):
         with self.my_voiceover(
                 f"""On viens donc de comprendre que :""") as timer:
             self.play(FadeOut(*self.mobjects), run_time=timer.duration)
-        self.next_section(skip_animations=False)
-        q = MathTex("Q").shift(LEFT * 3)
-        a = MathTex("A").shift(UP * 3)
-        d = MathTex("d").shift(DOWN * 3)
-        v = MathTex("V").shift(UP * 3 + LEFT * 3)
+        self.next_section(skip_animations=section_done)
+        q = MathTex("Q").shift(LEFT * 3).scale(frame_factor)
+        a = MathTex("A").shift(UP * 3).scale(frame_factor)
+        d = MathTex("d").shift(DOWN * 3).scale(frame_factor)
+        v = MathTex("V").shift(UP * 3 + RIGHT * 3).scale(frame_factor)
+        qFormula = MathTex("Q", "=", r"\epsilon{}_0", r"\times", *my_frac("A", "d"), r"\times", "V").scale(frame_factor)
+        qFormulaSplitReady = MathTex("Q", "=", r"\epsilon{}_0 \times", *my_frac("A", "d"), r"\times", "V").scale(
+            frame_factor)
+        cFormula = MathTex("C", "=", r"\epsilon{}_0 \times", *my_frac("A", "d")).scale(frame_factor)
         with self.my_voiceover(
                 f"""Q, le nombre de charges contenus dans notre condensateur""") as timer:
             self.play(FadeIn(q), run_time=timer.duration)
+        with self.my_voiceover(
+                f"""augmente avec A, la surface de nos plaques.""") as timer:
+            self.play(FadeIn(a), run_time=timer.duration)
+        with self.my_voiceover(
+                f"""diminue avec d, la distance entre nos plaques.""") as timer:
+            self.play(FadeIn(d), run_time=timer.duration)
+        with self.my_voiceover(
+                f"""augmente avec V, le voltage de notre pile.""") as timer:
+            self.play(FadeIn(v), run_time=timer.duration)
+        with self.my_voiceover(
+                f"""Et en effet, la formule du nombre de charges dans un condensateur est : Q = \epsilon_0 * A/d * V""") as timer:
+            self.play(TransformMatchingTex(VGroup(q, a, d, v), qFormula), run_time=timer.duration)
+        with self.my_voiceover(
+                f"""\epsilon_0 étant une constante dépendante de la matière isolante contenue entre les deux plaques.""") as timer:
+            self.play(Indicate(qFormula.get_part_by_tex(r"\epsilon{}_0")), run_time=timer.duration)
+        self.next_section(skip_animations=section_done)
+        self.clear()
+        self.add(qFormulaSplitReady)
+        with self.my_voiceover(
+                f"""Pour un même voltage $V$ ce qui distingue une capacité d'une autre c'est donc \epsilon_0 * A/d$.""") as timer:
+            self.play(Indicate(VGroup(
+                qFormulaSplitReady.get_part_by_tex(r"\epsilon{}_0 \times"),
+                qFormulaSplitReady.get_part_by_tex(r"A"),
+                qFormulaSplitReady.get_part_by_tex(r"\over"),
+                qFormulaSplitReady.get_part_by_tex(r"d"),
+            )), run_time=timer.duration)
+        with self.my_voiceover(
+                f"""Cette valeur est donc caractéristique d'un condensateur et est noté C$.""") as timer:
+            self.play(TransformMatchingTex(qFormulaSplitReady, cFormula), run_time=timer.duration)
+        self.next_section(skip_animations=section_done)
+        f = MathTex("F").shift(DOWN * 5).scale(frame_factor)
+        faradFormula = MathTex("F", "=", *my_frac("C", "V")).shift(DOWN * 5).scale(frame_factor)
+        with self.my_voiceover(
+                f"""On l’appelle la capacitance et elle se mesure en Farad noté F""") as timer:
+            self.play(FadeIn(f), run_time=timer.duration)
+        with self.my_voiceover(
+                f"""avec 1 Farad = 1 Coulomb par Volt""") as timer:
+            self.play(TransformMatchingTex(f, faradFormula), run_time=timer.duration)
+        self.next_section(skip_animations=section_done)
+        symbol = Condensator().scale(frame_factor).shift(UP * 5)
+        with self.my_voiceover(
+                f"""Enfin, le symbole utilisé dans les schémas électroniques représentent exactement ce qu'on viens de simuler, à savoir deux plaques séparées par un gap.""") as timer:
+            self.play(Create(symbol), run_time=timer.duration)
+        self.next_section(skip_animations=section_done)
+        self.play(FadeOut(*self.mobjects), run_time=3)
 
 
 if __name__ == "__main__":
