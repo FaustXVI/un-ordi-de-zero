@@ -11,12 +11,12 @@ from electronics import *
 
 section_done = False
 recording = False
-finalOnly = True
+finalOnly = False
 
 frame_factor = 3
 config.frame_width = 16 * frame_factor
 config.frame_height = 9 * frame_factor
-# config.frame_rate = 60
+config.frame_rate = 30
 atomSize = 5
 MAX_DISTANCE_EFFECT = 4
 EFFECT_INTENSITY = 100
@@ -210,8 +210,6 @@ class TruthTable(MyScene):
         super().__init__(recording=recording)
 
     def playSimulation(self, circuit, run_time, slow_factor=1):
-        # timeBetweenFrames = 0.5
-        # timeBetweenFrames = 0.08
         timeBetweenFrames = (1 / config.frame_rate) * slow_factor
         nbFrames = math.ceil(run_time / timeBetweenFrames)
         (drawings, lastState) = simulate(circuit, nbFrames)
