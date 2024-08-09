@@ -9,14 +9,14 @@ from electronics import *
 
 # locale.setlocale(locale.LC_ALL, 'fr_FR')
 
-section_done = False
-recording = False
-finalOnly = False
+recording = True
+section_done = True and not recording
+finalOnly = True
 
 frame_factor = 3
 config.frame_width = 16 * frame_factor
 config.frame_height = 9 * frame_factor
-config.frame_rate = 30
+# config.frame_rate = 30
 atomSize = 5
 MAX_DISTANCE_EFFECT = 4
 EFFECT_INTENSITY = 100
@@ -209,7 +209,7 @@ class TruthTable(MyScene):
     def __init__(self):
         super().__init__(recording=recording)
 
-    def playSimulation(self, circuit, run_time, slow_factor=1):
+    def playSimulation(self, circuit, run_time, slow_factor=2):
         timeBetweenFrames = (1 / config.frame_rate) * slow_factor
         nbFrames = math.ceil(run_time / timeBetweenFrames)
         (drawings, lastState) = simulate(circuit, nbFrames)
@@ -270,8 +270,8 @@ class TruthTable(MyScene):
         with self.my_voiceover(r"""L'intensité de cette force est donnée par la formule :""") as timer:
             self.play(FadeOut(*self.mobjects), run_time=timer.duration)
 
-        self.next_section(skip_animations=section_done)
-        coulomb = MathTex("k_0", *my_frac([r"q_1", r"\times", r"q_2"], ["r_{}", "^2"])).scale(frame_factor)
+        self.next_section(skip_animations=False)
+        coulomb = MathTex("k_0", *my_frac([r"|",r"q_1", r"\times", r"q_2",r"|"], ["r_{}", "^2"])).scale(frame_factor)
         with self.my_voiceover(
                 r"""$k_0 \frac{|q_1 \times q_2|}{r^2}$""") as timer:
             self.play(Write(coulomb), run_time=timer.duration)
@@ -344,16 +344,16 @@ class TruthTable(MyScene):
             self.wait(timer.duration)
         with self.my_voiceover(
                 f"""Le but maintenant, et d'augmenter le nombres de charges contenus dans notre dispositif quand on enlève la pile.""") as timer:
-            self.play(FadeOut(*self.mobjects))
+            self.play(FadeOut(*self.mobjects), run_time=timer.duration)
 
         removedPositions = [*removedPositions, *[y.position for y in createRightBattery(3)]]
         with self.my_voiceover(
                 r"""Pour commencer, il faut qu'on face la même chose de l'autre côté de la pile. Sinon on n'arrivera pas  à brancher notre condensateur à un circuit.""") as timer:
             self.play(FadeIn(
-                drawAtoms([*createLeftBattery(3), *createLeftCable(3), *createRightCable(3), *createRightBattery(3)])))
+                drawAtoms([*createLeftBattery(3), *createLeftCable(3), *createRightCable(3), *createRightBattery(3)])), run_time=timer.duration)
         with self.my_voiceover(
                 r"""Ensuite, la première avancées qu'on peut faire, c'est de se rendre compte que plus on a de matière, plus on a de place pour les charges. On peut donc mettre deux grandes plaques de chaque côté.""") as timer:
-            self.play(FadeIn(drawAtoms([*createLeftPlate(3), *createRightPlate(3)])))
+            self.play(FadeIn(drawAtoms([*createLeftPlate(3), *createRightPlate(3)])), run_time=timer.duration)
         circuitFar = createCircuit(3)
         with self.my_voiceover(
                 r"""Si on lance notre simulation et qu'on la laisse tourner un petit moment … et qu'on enlève la pile d'un coup et qu'on met sur pause.""",
