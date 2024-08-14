@@ -189,7 +189,7 @@ Voltmètre
 > > Donc si je comprends bien, ton idée est d'utiliser deux feuilles d'alu pour faire les plaques et une feuille de papier pour faire un isolant le plus fin possible.
 > 
 > > [!theo]+
-> > Exactement ! Ça nous donnera le meilleur condensateur qu'on puisse faire avec du matériel de tous les jours.
+> > Exactement ! Et si tu écrase le tout avec un poids pour éviter d'avoir de l'air entre les deux plaque, ça nous donnera le meilleur condensateur qu'on puisse faire avec du matériel de tous les jours.
 > 
 > > [!xav]+
 > > Ok, et pour tester on regarde l'intensité. Sans condensateur, on passera tout de suite à zéro alors qu'avec un condensateur, ça prendra plus de temps. C'est ça ?
@@ -239,9 +239,77 @@ Voltmètre
 
 > [!scene]- 13 / name
 > 
+> > [!theo]+
+> > Oui, c'est pas étonnant.
+> 
 > > [!xav]+
-> > 
+> > Pourquoi ?
 > 
 > > [!theo]+
-> >
+> > Parce que toutes les charges partent trop vite. L'ampère mètre n'a pas le temps de les détecter.
+> 
+> > [!xav]+
+> > Et on fait comment alors ?
+> 
+> > [!theo]+
+> > Là tu es en court circuit, donc le courant va passer aussi vite que possible. Si tu ajoute une résistance, tu devrais voir quelque chose.
+> 
+
+> [!close-up]+ 14 / name
+> 
+> Ok, j'ai le même circuit avec une résistance en plus.
+> 
+> Je charge le condensateur…
+> 
+> Et je bascule vers l'ampère mètre.
+> 
+> Et effectivement, ça bouge.
+
+> [!scene]- 15 / name
+> 
+> > [!xav]+
+> > Par contre, ça bouge pas beaucoup et pendant pas longtemps !
+> 
+> > [!theo]+
+> > Oui, c'est pas un très gros compensateur qu'on viens de faire et on est pas loin des limites de notre matériel.
+>  
+> > [!xav]+
+> > J'aimerais bien voir quelque chose de mieux quand même.
+> 
+> > [!theo]+
+> > Si tu regardes notre circuit, en fait, on viens de faire un voltmètre
+> 
+> > [!xav]+
+> > Ah oui !
+> 
+> > [!theo]+
+> > Le voltmètre de notre multimètre est très probablement de meilleur qualité que ce qu'on viens de faire. Si tu l'utilise, tu verras probablement quelque chose pendant plus longtemps.
+> 
+
+> [!close-up]+ 16 / name
+> 
+> Aller, on essaie. J'ai retiré notre résistance et utilise notre ampère-mètre en tant que voltmètre.
+> 
+> Je charge le condensateur…
+> 
+> Et je bascule vers le voltmètre.
+> 
+> Ah ! Là on vois quelque chose !
+
+> [!scene]- 17 / name
+> 
+> > [!theo]+
+> > Pfiou ! Et bha maintenant on peut utiliser des condensateurs modernes !
+> 
+> > [!xav]+
+> > Et qu'est-ce qu'il se passe quand on en met deux dans un circuit ?
+> 
+> > [!theo]+
+> > Je te propose de garder ça pour la prochaine fois, on a déjà vu beaucoup de choses pour aujourd'hui !
+> 
+> > [!xav]+
+> > Oui, tu as raison, un pas…
+> 
+> > [!theo]+
+> > après l'autre !
 > 
