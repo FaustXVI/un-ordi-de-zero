@@ -200,7 +200,7 @@ Voltmètre
 
 > [!close-up]+ 10 / à vide
 > 
-> Donc là, je fais le test sans capa.
+> Donc là, je fais le test sans condensateur.
 > Pour l'instant j'ai une intensité XX (saturée ?)
 > Et si je coupe,
 > Je tombe à zéro, mais ça prend un peu de temps
@@ -211,7 +211,7 @@ Voltmètre
 > > Comment ça se fait ça ?
 > 
 > > [!theo]+
-> > Parce que notre multimètre est composé de capacités. Et qu'elles sont d'ailleurs de bien meilleure qualité que ce qu'on va arriver à produire. Et ça va nous causer de problèmes
+> > Parce que notre multimètre contient des condensateurs. Et qu'ils sont d'ailleurs de bien meilleure qualité que ce qu'on va arriver à produire. Et ça, ça va nous causer de problèmes
 > > 
 > > [!xav]+
 > > Et avec ça ? c'est que de la mécanique
