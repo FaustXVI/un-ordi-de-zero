@@ -2,6 +2,8 @@
 
 # Références
 
+Voltmètre
+
 # Textes
 
 > [!scene]- 1 / Intro
@@ -13,12 +15,87 @@
 > > Salut !
 > 
 > > [!xav]+
-> >
+> > Aujourd'hui, on s'intéresse aux condensateurs.
 > 
 > > [!theo]+
-> >
+> > Oui, et on a du pain sur la planche ! du coup, je te propose de tout de suite regarder ce que ça donne en spintronics.
 
-> [!manim]+ N / simulation
+> [!close-up]+ 2 / name
+> 
+> Un condensateur en spintronics, c'est la même pièce que le voltmètre.
+> 
+> Si on le branche à notre pile
+> Et qu'on démarre le tout
+> 
+> Ça fini par s'arrêter
+
+> [!scene]- 3 / name
+> 
+> > [!xav]+
+> > On dirait que c'est une résistance variable dans le temps.
+> 
+> > [!theo]+
+> > Alors, c'est pas faux, mais comment on la ferait varier dans l'autre sens ?
+> 
+> > [!xav]+
+> > Je sais pas, en la débranchant ?
+> 
+> > [!theo]+
+> > Essaie pour voir
+> 
+
+> [!close-up]+ 4 / name
+> 
+> Wow !
+> 
+
+> [!scene]- 5 / name
+> 
+> > [!theo]+
+> > Voilà ! c'est ça la vrai utilité d'un condensateur !
+> 
+> > [!xav]+
+> > Euh, c'est à dire ?
+> 
+> > [!theo]+
+> > Ça stock de l’énergie. Méchanique en spintronics et éléctrique en éléctronique.
+> 
+> > [!xav]+
+> > Ok, pourquoi pas, mais je vois toujours pas le cas d'usage.
+> 
+> > [!theo]+
+> > Y'en a plein, mais l'un des plus évident et que ça permet de compenser les petites coupures d'alimentation. Je te montre avec un circuit spintronics.
+> 
+
+> [!close-up]+ 6 / name
+> 
+> Là , j'ai un circuit simple, composé d'une pile, d'une résistance et d'un interrupteur pour couper l'alimentation.
+> J'ai aussi mis un condensateur en parallèle de la résistance.
+> 
+> Si je démarre le circuit, tout se déroule comme d'habitude.
+> Mais si je l'arrête
+> Ça continue de tourner
+> 
+> Alors là ça c'est arrêté parce que la coupure a été longue. Mais si on recommence avec des coupures courtes.
+> 
+> La résistance ne s'est jamais arrêté de tourner !
+
+> [!scene]- 7 / name
+> 
+> > [!xav]+
+> > Ok, sympa. Et comment on en fabrique un en éléctronique ?
+> 
+> > [!theo]+
+> > Avec 2 feuilles d'alu et une feuille de papier
+> 
+> > [!xav]+
+> > Euh… il va falloir m'en dire plus là !
+> 
+> > [!theo]+
+> > ok mais on va avoir besoin de regarder un peut se qu'il se passe à l'échelle de l'électron. Pour ça on va se faire quelques simulations. Alors, je te préviens tout de suite, les simulations vont s'appuyer sur un modèle simplifié et on va prendre quelques raccourcis, mais au vu de ce qu'on cherche à comprendre et de nos connaissances actuelles, ça sera largement suffisant.
+> 
+
+> [!manim]+ 8 / simulation
 > 
 > Comme tu le sais, la matière est composé d'atomes. 
 > Nous allons représenter chaque atome éléctriquement neutres par un point jaune.
@@ -105,3 +182,66 @@
 > 1 Farad = 1 Coulomb par Volt
 > 
 > Enfin, le symbole utilisé dans les schémas électroniques représentent exactement ce qu'on viens de simuler, à savoir deux plaques séparées par un gap.
+
+> [!scene]- 9 / name
+> 
+> > [!xav]+
+> > Donc si je comprends bien, ton idée est d'utiliser deux feuilles d'alu pour faire les plaques et une feuille de papier pour faire un isolant le plus fin possible.
+> 
+> > [!theo]+
+> > Exactement ! Ça nous donnera le meilleur condensateur qu'on puisse faire avec du matériel de tous les jours.
+> 
+> > [!xav]+
+> > Ok, et pour tester on regarde l'intensité. Sans condensateur, on passera tout de suite à zéro alors qu'avec un condensateur, ça prendra plus de temps. C'est ça ?
+> 
+> > [!theo]+
+> > C'est l'idée oui.
+> 
+
+> [!close-up]+ 10 / à vide
+> 
+> Donc là, je fais le test sans capa.
+> Pour l'instant j'ai une intensité XX (saturée ?)
+> Et si je coupe,
+> Je tombe à zéro, mais ça prend un peu de temps
+
+> [!scene]- 11 / name
+> 
+> > [!xav]+
+> > Comment ça se fait ça ?
+> 
+> > [!theo]+
+> > Parce que notre multimètre est composé de capacités. Et qu'elles sont d'ailleurs de bien meilleure qualité que ce qu'on va arriver à produire. Et ça va nous causer de problèmes
+> > 
+> > [!xav]+
+> > Et avec ça ? c'est que de la mécanique
+> 
+> > [!theo]+
+> > Vu la qualité du condensateur qu'on va produire, rien que l'inertie de l'aiguille va nous fausser la mesure.
+> 
+> > [!xav]+
+> > On fait comment alors ?
+> 
+> > [!theo]+
+> > On peut ajouter des interrupteurs pour que le courant ne passe pas par notre ampère-mètre pendant la charge de notre condensateur. Un autre interrupteur nous permettra de vider le condensateur via l'ampère-mètre
+>  
+
+> [!close-up]+ 12 / name
+> 
+> OK, bonne idée. Regarde, je viens de faire le circuit.
+> 
+> Donc quand j'appuie sur le premier bouton, je charge notre condensateur.
+> 
+> Et maintenant je vais arrêter la charge et basculer rapidement sur l'ampère mètre.
+> 
+> Et y'a absolument rien qui se passe…
+> 
+
+> [!scene]- 13 / name
+> 
+> > [!xav]+
+> > 
+> 
+> > [!theo]+
+> >
+> 
