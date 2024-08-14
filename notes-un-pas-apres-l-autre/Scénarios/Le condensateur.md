@@ -230,7 +230,7 @@ Voltmètre
 > 
 > OK, bonne idée. Regarde, je viens de faire le circuit.
 > 
-> Donc quand j'appuie sur le premier bouton, je charge notre condensateur.
+> Donc quand j'appuie sur le premier bouton, je charge notre condensateur et l'ampère-mètre reste à zéro.
 > 
 > Et maintenant je vais arrêter la charge et basculer rapidement sur l'ampère mètre.
 > 
