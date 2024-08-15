@@ -212,7 +212,7 @@ Voltmètre
 > 
 > > [!theo]+
 > > Parce que notre multimètre contient des condensateurs. Et qu'ils sont d'ailleurs de bien meilleure qualité que ce qu'on va arriver à produire. Et ça, ça va nous causer de problèmes
-> > 
+> 
 > > [!xav]+
 > > Et avec ça ? c'est que de la mécanique
 > 

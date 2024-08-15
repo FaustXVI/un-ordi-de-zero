@@ -1,6 +1,6 @@
 {
   "alwaysUpdateLinks": true,
   "propertiesInDocument": "source",
-  "readableLineLength": false,
+  "readableLineLength": true,
   "strictLineBreaks": false
 }
