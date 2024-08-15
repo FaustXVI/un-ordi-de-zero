@@ -3,5 +3,6 @@
   "enabledCssSnippets": [
     "dialog"
   ],
-  "baseFontSize": 24
+  "baseFontSize": 23,
+  "baseFontSizeAction": true
 }
