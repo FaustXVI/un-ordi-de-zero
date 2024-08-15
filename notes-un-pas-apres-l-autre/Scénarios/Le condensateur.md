@@ -1,5 +1,5 @@
 # Description
-
+Aujourd'hui, on créer notre propre condensateur !
 # Références
 
 Voltmètre
