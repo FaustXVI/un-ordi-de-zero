@@ -10,7 +10,7 @@ from electronics import *
 # locale.setlocale(locale.LC_ALL, 'fr_FR')
 
 recording = False
-section_done = True and not recording
+section_done = False and not recording
 
 
 # frame_factor = 3
@@ -44,7 +44,7 @@ class TwoCondensatorSerie(MyScene):
         maille = MathTex("U", "=", "U_{AB}", "+", "U_{BC}").next_to(circuit, DOWN, 1)
         with self.my_voiceover(
                 r"""La loi des mailles nous dit que si la pile de ce circuit a une tension U, alors U = Uab + Ubc""") as timer:
-            self.play(Create(maille), run_time=timer.duration)
+            self.play(Write(maille), run_time=timer.duration)
         self.next_section(skip_animations=section_done)
         sub_circuit = VGroup(*c1.submobjects[-3:], *c2.submobjects[:3], connectionC1C2, dot_b)
         with self.my_voiceover(
@@ -52,33 +52,33 @@ class TwoCondensatorSerie(MyScene):
             self.play(Indicate(sub_circuit, scale_factor=1.25, rate_func=rate_functions.there_and_back_with_pause),
                       run_time=timer.duration)
         self.next_section(skip_animations=section_done)
-        q_form = MathTex("Q_{ab}", "=", "Q_{bc}", "=", "Q_{eq}").next_to(maille, DOWN, 1).shift(LEFT * 2)
+        q_form = MathTex("Q_{AB}", "=", "Q_{BC}", "=", "Q_{eq}").next_to(maille, DOWN, 1).shift(LEFT * 2)
         with self.my_voiceover(
                 r"""On obtient alors Qab = Qbc = Qeq, la charge de notre condensateur équivalent""") as timer:
-            self.play(Create(q_form), run_time=timer.duration)
+            self.play(Write(q_form), run_time=timer.duration)
         qcu = MathTex("Q", "=", "C", r"\times", "U").next_to(q_form, RIGHT, 1)
         with self.my_voiceover(
                 r"""On sait aussi que pour tout condensateur : Q = CU""") as timer:
-            self.play(Create(qcu), run_time=timer.duration)
+            self.play(Write(qcu), run_time=timer.duration)
         uqc = MathTex("U", "=", *my_frac(["Q"], ["C"])).next_to(q_form, RIGHT, 1)
         with self.my_voiceover(
                 r"""soit U = Q/C""") as timer:
             self.play(TransformMatchingTex(qcu, uqc), run_time=timer.duration)
-        maillec = MathTex("U", "=", *my_frac(["Q_{ab}"], ["C_{ab}"]), "+", *my_frac(["Q_{bc}"], ["C_{bc}"])).next_to(
+        maillec = MathTex("U", "=", *my_frac(["Q_{AB}"], ["C_{AB}"]), "+", *my_frac(["Q_{BC}"], ["C_{BC}"])).next_to(
             circuit, DOWN, 1)
         self.next_section(skip_animations=section_done)
         with self.my_voiceover(
                 r"""si on utilise ça dans notre formule de la loi des mailles on obtient : U = Qab/Cab + Qbc / Cbc""") as timer:
             self.play(TransformMatchingTex(VGroup(maille, uqc), maillec), run_time=timer.duration)
         self.next_section(skip_animations=section_done)
-        mailleeq = MathTex("U", "=", *my_frac(["Q_{eq}"], ["C_{ab}"]), "+", *my_frac(["Q_{eq}"], ["C_{bc}"])).next_to(
+        mailleeq = MathTex("U", "=", *my_frac(["Q_{eq}"], ["C_{AB}"]), "+", *my_frac(["Q_{eq}"], ["C_{BC}"])).next_to(
             circuit, DOWN, 1)
         with self.my_voiceover(
                 r"""Et comme on a le même nombre de charges on obtient : U = Qeq/Cab + Qeq/Cbc""") as timer:
             self.play(TransformMatchingTex(VGroup(maillec, q_form), mailleeq), run_time=timer.duration)
         self.next_section(skip_animations=section_done)
-        maille_fac = MathTex("U", "=", "Q_{eq}", r"\times", "(", *my_frac(["1"], ["C_{ab}"]), "+",
-                             *my_frac(["1"], ["C_{bc}"]), ")").next_to(
+        maille_fac = MathTex("U", "=", "Q_{eq}", r"\times", "(", *my_frac(["1"], ["C_{AB}"]), "+",
+                             *my_frac(["1"], ["C_{BC}"]), ")").next_to(
             circuit, DOWN, 1)
         with self.my_voiceover(
                 r"""On peut factoriser Q pour obtenir""") as timer:
@@ -87,10 +87,10 @@ class TwoCondensatorSerie(MyScene):
         uqc.next_to(maille_fac, DOWN, 1)
         with self.my_voiceover(
                 r"""Et comme dit précédement, on sait que U = Q/C""") as timer:
-            self.play(Create(uqc), run_time=timer.duration)
+            self.play(Write(uqc), run_time=timer.duration)
         self.next_section(skip_animations=section_done)
-        result = MathTex(*my_frac(["1"], ["C_{eq}"]), "=", *my_frac(["1"], ["C_{ab}"]), "+",
-                         *my_frac(["1"], ["C_{bc}"])).next_to(circuit, DOWN, 1)
+        result = MathTex(*my_frac(["1"], ["C_{eq}"]), "=", *my_frac(["1"], ["C_{AB}"]), "+",
+                         *my_frac(["1"], ["C_{BC}"])).next_to(circuit, DOWN, 1)
         with self.my_voiceover(
                 r"""On obtient donc 1/Ceq = 1/Cab +  1/Cbc""") as timer:
             self.play(TransformMatchingTex(VGroup(maille_fac, uqc), result), run_time=timer.duration)
