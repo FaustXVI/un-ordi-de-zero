@@ -9,7 +9,7 @@ from electronics import *
 
 # locale.setlocale(locale.LC_ALL, 'fr_FR')
 
-recording = False
+recording = True
 section_done = False and not recording
 
 
@@ -50,7 +50,7 @@ class TwoCondensatorPar(MyScene):
         self.next_section(skip_animations=section_done)
         qeq = MathTex("Q_{eq}", "=", "Q_{C_1}", "+", "Q_{C_2}").next_to(maille, DOWN, 1).shift(LEFT * 2)
         with self.my_voiceover(
-                r"""On a donc""") as timer:
+                r"""On a donc Qeq = Qc1 + Qc2""") as timer:
             self.play(Write(qeq), run_time=timer.duration)
         condo = MathTex("Q", "=", "C", r"\times", "U").next_to(qeq, RIGHT, 1)
         with self.my_voiceover(
@@ -66,7 +66,7 @@ class TwoCondensatorPar(MyScene):
         qeqCondoU = MathTex("Q_{eq}", "=", "C_{C_1}", r"\times", "U", "+", "C_{C_2}", r"\times", "U").next_to(circuit,
                                                                                                               DOWN, 1)
         with self.my_voiceover(
-                r"""En utilisant la formule de la loi des mailles on obtient :""") as timer:
+                r"""En utilisant la formule de la loi des mailles on obtient : Qeq= Cc1 * U + Cc2 * U""") as timer:
             self.play(TransformMatchingTex(VGroup(qeqCondo, maille), qeqCondoU), run_time=timer.duration)
         self.next_section(skip_animations=section_done)
         qeqFac = MathTex("Q_{eq}", "=", "(", "C_{C_1}", "+", "C_{C_2}", ")", r"\times", "U").next_to(circuit,

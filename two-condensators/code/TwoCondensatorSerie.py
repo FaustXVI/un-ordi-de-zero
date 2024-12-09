@@ -9,7 +9,7 @@ from electronics import *
 
 # locale.setlocale(locale.LC_ALL, 'fr_FR')
 
-recording = False
+recording = True
 section_done = False and not recording
 
 
@@ -81,7 +81,7 @@ class TwoCondensatorSerie(MyScene):
                              *my_frac(["1"], ["C_{BC}"]), ")").next_to(
             circuit, DOWN, 1)
         with self.my_voiceover(
-                r"""On peut factoriser Q pour obtenir""") as timer:
+                r"""On peut factoriser Q pour obtenir U = Qeq * (1/Cab + B/Cbc)""") as timer:
             self.play(TransformMatchingTex(mailleeq, maille_fac), run_time=timer.duration)
         self.next_section(skip_animations=section_done)
         uqc.next_to(maille_fac, DOWN, 1)
